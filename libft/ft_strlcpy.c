@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 11:19:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/20 12:05:22 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/20 10:44:45 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/10/20 10:44:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalnum(int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || (c >= 48 && c <= 57))
-		return (1);
-	else
-		return (0);
+
 }
 
-int	main(int argc, char *argv[])
+int	main(void)
 {
-	if (argc == 2)
-		printf("%d\n", ft_isalnum(argv[1][0]));
+	char	dst[15];
+	char	src[] = "Surfer sur le code.";
+	size_t	size;
+
+	size = 0;
+	ft_strlen
 	return (0);
 }
