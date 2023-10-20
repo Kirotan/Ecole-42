@@ -1,45 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 09:57:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/20 09:57:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/20 09:56:17 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/10/20 09:56:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	i;
+	unsigned int	i;
 
 	i = 0;
 	if (!dest && src == NULL)
 		return (0);
-	while (i < n)
+	if (dest > src)
 	{
-		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
-		i++;
+		while (n > 0)
+		{
+			((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
+			n--;
+		}
+	}
+	else
+	{
+		while (n > i)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
 	return (dest);
 }
 
 int	main(void)
 {
-	char	dest[] = "123456789";
-	char	src[] = "abcdefghi";
+	char	dest[] = "ABCDEFGHIJKL";
+	char	src[] = "CBA";
 	size_t	n;
 
 	n = 3;
-	printf("AVANT\n");
 	printf("Sour : %s\n", src);
-	printf("Dest : %s\n", dest);
-	ft_memcpy(dest, src, n);
-	printf("\nAPRES\n");
-	printf("Sour : %s\n", src);
+	printf("Buffer : %ld\n\n", n);
+	printf("Avant ");
+	printf("Dest : %s", dest);
+	ft_memmove(dest, src, n);
+	printf("\nApres ");
 	printf("Dest : %s\n", dest);
 	return (0);
 }
