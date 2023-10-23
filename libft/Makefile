@@ -18,6 +18,9 @@ SRC_FILES	= ft_isalpha.c \
 		ft_memmove.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_strchr.c \
 
 OBJ_FILES	= ft_isalpha.o \
 		ft_isdigit.o \
@@ -31,6 +34,10 @@ OBJ_FILES	= ft_isalpha.o \
 		ft_memmove.o \
 		ft_strlcpy.o \
 		ft_strlcat.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_strchr.c \
+
 #REGLES
 
 all: ${NAME}
