@@ -1,46 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 10:44:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/23 13:29:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/23 13:55:29 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/10/23 13:55:29 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	ft_toupper(int c)
 {
-	size_t	sizesrc;
-	size_t	i;
-
-	i = 0;
-	if (src == NULL)
-		return (0);
-	sizesrc = ft_strlen(src);
-	if (size != 0)
-	{
-		while (src[i] != '\0' && i < (size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (sizesrc);
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
 }
 /*
 int	main(void)
 {
-	size_t	size = 16;
-	char	dst[size];
-	char	src[] = "Surfer sur le code.";
+	int	c;
 
-	printf("Source : %s\n", src);
-	ft_strlcpy(dst, src, size);
-	printf("Avec dst(16) : %s\n", dst);	
+	c = 'h';
+	printf("Avant : %c\n", c);
+	ft_toupper(c);
+	printf("Apres : %c\n", ft_toupper(c));
 	return (0);
 }*/

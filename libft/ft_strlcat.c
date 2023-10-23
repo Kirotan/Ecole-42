@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 10:44:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/23 13:29:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/23 11:17:31 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/10/23 14:04:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	sizesrc;
+	size_t	d;
 	size_t	i;
 
 	i = 0;
-	if (src == NULL)
-		return (0);
-	sizesrc = ft_strlen(src);
-	if (size != 0)
+	d = ft_strlen(dst);
+	if (size <= d)
+		return (size + ft_strlen(src));
+	while (src[i] != '\0' && (d + i) < (size -1))
 	{
-		while (src[i] != '\0' && i < (size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[d + i] = src[i];
+		i++;
 	}
-	return (sizesrc);
+	dst[d + i] = '\0';
+	return (d + ft_strlen(src));
 }
 /*
 int	main(void)
 {
-	size_t	size = 16;
+	size_t	size = 26;
 	char	dst[size];
-	char	src[] = "Surfer sur le code.";
+	char	src[] = "de la fin.";
 
-	printf("Source : %s\n", src);
-	ft_strlcpy(dst, src, size);
-	printf("Avec dst(16) : %s\n", dst);	
+	ft_strlcpy(dst, "C'est le debut ", 16);
+	printf("src : %s\n", src);
+	printf("dst : %s\n", dst);
+	ft_strlcat(dst, src, size);
+	printf("src : %s\n", src);
+	printf("dst : %s\n", dst);
 	return (0);
 }*/
