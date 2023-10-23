@@ -14,20 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	size_t	len;
 
-	i = 0;
 	if (!s)
 		return (NULL);
-	while (s[i] != '\0')
+	len = ft_strlen(s);
+	while (s[len] >= 0)
 	{
-		if (s[i] == (char)c)
-			return (char *)&s[i];
-		i++;
+		if (s[len] == (char)c)
+			return ((char *)&s[len]);
+		len--;
 	}
 	return (NULL);
 }
-
+/*
 int	main(void)
 {
 	const char	*s;
@@ -35,14 +35,13 @@ int	main(void)
 	char		*result;
 
 	s = "Je cherche une lettre.";
-	c = 'u';
+	c = 'r';
 	printf("La phrase : %s\n", s);
 	printf("Lettre cherchee : %c\n", c);
-	ft_strrchr(s, c);
 	result = ft_strrchr(s, c);
 	if (result)
 		printf("La lettre trouvee : %s\n", result);
 	else
 		printf("Pas d'occurence.\n");
 	return (0);
-}
+}*/
