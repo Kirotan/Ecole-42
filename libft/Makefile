@@ -23,6 +23,7 @@ SRC_FILES	=   ft_isalpha.c \
 		        ft_strchr.c \
 		        ft_strrchr.c \
 		        ft_strncmp.c \
+				ft_memchr.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
