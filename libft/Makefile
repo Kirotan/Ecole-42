@@ -2,50 +2,38 @@
 
 NAME		= libft.a
 CFLAGS		= -Wall -Wextra -Werror -c
-CC		= gcc
+CC          = gcc
 
 #SOURCES
 
-SRC_FILES	= ft_isalpha.c \
-		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_isascii.c \
-		ft_isprint.c \
-		ft_strlen.c \
-		ft_memset.c \
-		ft_bzero.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_strlcpy.c \
-		ft_strlcat.c \
-		ft_toupper.c \
-		ft_tolower.c \
-		ft_strchr.c \
+SRC_FILES	=   ft_isalpha.c \
+		        ft_isdigit.c \
+		        ft_isalnum.c \
+		        ft_isascii.c \
+		        ft_isprint.c \
+		        ft_strlen.c \
+		        ft_memset.c \
+		        ft_bzero.c \
+		        ft_memcpy.c \
+		        ft_memmove.c \
+		        ft_strlcpy.c \
+		        ft_strlcat.c \
+		        ft_toupper.c \
+		        ft_tolower.c \
+		        ft_strchr.c \
+		        ft_strrchr.c \
+		        ft_strncmp.c \
 
-OBJ_FILES	= ft_isalpha.o \
-		ft_isdigit.o \
-		ft_isalnum.o \
-		ft_isascii.o \
-		ft_isprint.o \
-		ft_strlen.o \
-		ft_memset.o \
-		ft_bzero.o \
-		ft_memcpy.o \
-		ft_memmove.o \
-		ft_strlcpy.o \
-		ft_strlcat.c \
-		ft_toupper.c \
-		ft_tolower.c \
-		ft_strchr.c \
+OBJ_FILES	= ${SRC_FILES:.c=.o}
 
 #REGLES
 
 all: ${NAME}
 
 ${NAME}: ${OBJ_FILES}
-	${AR} rcs ${OBJ_FILES} -o ${NAME}
+	ar rcs $@  ${OBJ_FILES}
 
-${OBJ_FILES}: ${SRC_FILES}
+%.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
@@ -55,19 +43,5 @@ fclean: clean
 	rm -f ${NAME}
 
 re: fclean all
-
- fclean all
-
-OBJ_FILES	= ft_isalpha.o \
-		ft_isdigit.o \
-		ft_isalnum.o \
-		ft_isascii.o \
-		ft_isprint.o \
-		ft_strlen.o \
-		ft_memset.o \
-		ft_bzero.o \
-		ft_memcpy.o \
-		ft_memmove.o \
-		ft_strlcpy.o \
 
 .PHONY: all clean fclean re

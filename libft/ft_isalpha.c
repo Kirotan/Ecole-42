@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 12:04:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/20 11:58:58 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/24 12:46:29 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -18,7 +18,7 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-
+/*
 int	main(void)
 {
 	int	c;
@@ -26,4 +26,4 @@ int	main(void)
 	c = 'A';
 	printf("%d\n", ft_isalpha(c));
 	return (0);
-}
+}*/

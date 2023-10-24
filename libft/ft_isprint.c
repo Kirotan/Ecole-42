@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:24:10 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/20 12:09:18 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/24 12:47:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-
+/*
 int	main(void)
 {
 	int	c;
@@ -27,4 +27,4 @@ int	main(void)
 	c = '\n';
 	printf("%d\n", ft_isprint(c));
 	return (0);
-}
+}*/

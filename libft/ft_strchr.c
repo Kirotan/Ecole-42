@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:42:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/23 14:57:24 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/24 12:44:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
 	while (s[i] != '\0')
 	{
-		if (s[i] == (char)c)
-			return ((unsigned char *)&s[i]);
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	return (NULL);
+	if ((unsigned char)c == '\0')
+		return ((char *)&s[i]);
+	return (0);
 }
 /*
 int	main(void)
@@ -35,7 +35,7 @@ int	main(void)
 	char		*result;
 
 	s = "Je cherche une lettre.";
-	c = 'u';
+	c = 1024;
 	printf("Phrase : %s\n", s);
 	printf("Lettre cherchee : %c\n", c);
 	result = ft_strchr(s, c);

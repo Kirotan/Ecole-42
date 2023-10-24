@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:19:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/20 12:05:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/24 11:40:12 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-
+/*
 int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 		printf("%d\n", ft_isalnum(argv[1][0]));
 	return (0);
-}
+}*/

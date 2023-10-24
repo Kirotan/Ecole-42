@@ -14,12 +14,12 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	int	len;
 
-	if (!s)
-		return (NULL);
 	len = ft_strlen(s);
-	while (s[len] >= 0)
+	if (len == 0 && s[len] != (char)c)
+		return (NULL);
+	while (len >= 0)
 	{
 		if (s[len] == (char)c)
 			return ((char *)&s[len]);
@@ -34,8 +34,8 @@ int	main(void)
 	int		c;
 	char		*result;
 
-	s = "Je cherche une lettre.";
-	c = 'r';
+	s = "Chercher bateau";
+	c = 'e';
 	printf("La phrase : %s\n", s);
 	printf("Lettre cherchee : %c\n", c);
 	result = ft_strrchr(s, c);
