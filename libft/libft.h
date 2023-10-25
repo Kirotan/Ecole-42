@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:29:13 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/24 21:13:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/25 10:35:55 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
