@@ -28,6 +28,7 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_strnstr.c \
 				ft_atoi.c \
 				ft_calloc.c \
+				ft_strdup.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
