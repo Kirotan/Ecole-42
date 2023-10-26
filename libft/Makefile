@@ -30,6 +30,7 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_calloc.c \
 				ft_strdup.c \
 				ft_substr.c \
+				ft_strjoin.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
