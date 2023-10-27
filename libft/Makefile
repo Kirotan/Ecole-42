@@ -34,6 +34,7 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_strtrim.c \
 				ft_itoa.c \
 				ft_strmapi.c \
+				ft_striteri.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
