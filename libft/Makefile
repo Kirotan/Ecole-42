@@ -33,6 +33,7 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_strjoin.c \
 				ft_strtrim.c \
 				ft_itoa.c \
+				ft_strmapi.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
