@@ -37,13 +37,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (nbr * sign);
 }
-/*
-int	main(void)
-{
-	char	nptr[] = "   -42";
-	int		result;
-
-	result = ft_atoi(nptr);
-	printf("Resultat : %d\n", result);
-	return (0);
-}*/

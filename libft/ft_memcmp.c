@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 21:20:01 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/24 21:20:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:29:36 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return ((int)(ptr1[j] - ptr2[j]));
 }
-/*
-int	main(void)
-{
-	char	s1[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-	char	s2[9] = {1, 2, 3, 4, 5, 6, 7, 'z', 'y'};
-	size_t	n = 7;
-	int	result;
-
-	result = ft_memcmp(s1, s2, n);
-	printf("Valeur renvoyee : %d\n", result);
-	return (0);
-}*/

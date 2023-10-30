@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 12:18:38 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/25 12:18:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:33:05 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
 }
-/*
-int	main(void)
-{
-	size_t	nmemb;
-	size_t	size;
-	void	*result;
-
-	nmemb = 5;
-	size = 3;
-	result = ft_calloc(nmemb, size);
-	printf("Resultat : %p\n", result);
-	return (0);
-}*/

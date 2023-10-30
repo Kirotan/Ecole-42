@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:56:17 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/24 14:03:28 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:30:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char	dest[] = "ABCDEFGHIJKL";
-	char	src[] = "CBA";
-	size_t	n;
-
-	n = 3;
-	printf("Sour : %s\n", src);
-	printf("Buffer : %ld\n\n", n);
-	printf("Avant ");
-	printf("Dest : %s", dest);
-	ft_memmove(dest, src, n);
-	printf("\nApres ");
-	printf("Dest : %s\n", dest);
-	return (0);
-}*/

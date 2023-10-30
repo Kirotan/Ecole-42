@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 09:57:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/24 14:03:16 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:29:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char	dest[] = "123456789";
-	char	src[] = "abcdefghi";
-	size_t	n;
-
-	n = 3;
-	printf("AVANT\n");
-	printf("Sour : %s\n", src);
-	printf("Dest : %s\n", dest);
-	ft_memcpy(dest, src, n);
-	printf("\nAPRES\n");
-	printf("Sour : %s\n", src);
-	printf("Dest : %s\n", dest);
-	return (0);
-}*/

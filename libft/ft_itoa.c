@@ -6,13 +6,13 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 10:03:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/27 10:03:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:33:41 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	nblen(int n)
+static int	nblen(int n)
 {
 	int	len;
 
@@ -59,14 +59,3 @@ char	*ft_itoa(int n)
 	}
 	return (result);
 }
-/*
-int	main(void)
-{
-	int		nb;
-	char	*resultat;
-
-	nb = 12345;
-	resultat = ft_itoa(nb);
-	printf("Nb en char : %s\n", resultat);
-	return (0);
-}*/
