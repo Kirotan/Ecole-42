@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:51:44 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/24 09:54:03 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:12:00 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	char	s1[] = "ABCD";
-	char	s2[] = "ABCDzGA";
-	size_t	n;
-
-	n = 30;
-	printf("s1 : %s\n", s1);
-	printf("s2 : %s\n", s2);
-	printf("Valeur retournee : %d\n", ft_strncmp(s1, s2, n));
-	return (0);
-}*/

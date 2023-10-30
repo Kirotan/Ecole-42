@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 10:57:37 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/26 11:23:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:13:05 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	result[len] = '\0';
 	return (result);
 }
-/*
-int	main(void)
-{
-	char	s1[] = "aaaVous ne passerez pas !aaa";
-	char	set[] = "a";
-	char	*result;
-
-	result = ft_strtrim(s1, set);
-	printf("Resultat : %s\n", result);
-	return (0);
-}*/

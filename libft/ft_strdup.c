@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:32:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/25 13:32:48 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:11:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,3 @@ char	*ft_strdup(const char *s)
 	str[i] = '\0';
 	return (str);
 }
-/*
-int	main(void)
-{
-	char	s[] = "Phrase a copier.";
-	char	*result;
-
-	result = ft_strdup(s);
-	printf("Resultat : %s\n", result);
-	return (0);
-}*/

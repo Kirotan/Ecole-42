@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:44:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/25 14:50:10 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:13:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-/*
-int	main(void)
-{
-	char			s[] = "Phrase a copier.";
-	unsigned int	start;
-	size_t			len;
-	char			*result;
-
-	start = 0;
-	len = 11;
-	result = ft_substr(s, start, len);
-	printf("Resultat : %s\n", result);
-	return (0);
-}*/

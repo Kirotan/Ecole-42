@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:38:25 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/26 10:24:14 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:01:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
 	return (result);
 }
-/*
-int	main(void)
-{
-	char	s1[] = "Chaque debut ";
-	char	s2[] = "a une fin.";
-	char	*resultat;
-
-	resultat = ft_strjoin(s1, s2);
-	printf("Resultat : %s\n", resultat);
-	return (0);
-}*/

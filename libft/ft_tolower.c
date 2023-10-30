@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 14:14:43 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/23 14:14:43 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:16:00 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,3 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
-/*
-int	main(void)
-{
-	int	c;
-
-	c = '9';
-	printf("%c\n", c);
-	printf("%c\n", ft_tolower(c));
-	return (0);
-}*/

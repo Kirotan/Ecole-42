@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 09:31:37 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/25 09:31:37 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:12:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	char	big[] = "Une aiguille dans une botte de foin.";
-	char	little[] = "aiguille";
-	size_t	len = 12;
-	char	*result;	
-
-	result = ft_strnstr(big, little, len);
-	printf("Resultat : %s\n", result);
-	return (0);
-}*/

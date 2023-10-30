@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:38:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/23 15:39:07 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/30 16:12:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	const char	*s;
-	int		c;
-	char		*result;
-
-	s = "Chercher bateau";
-	c = 'e';
-	printf("La phrase : %s\n", s);
-	printf("Lettre cherchee : %c\n", c);
-	result = ft_strrchr(s, c);
-	if (result)
-		printf("La lettre trouvee : %s\n", result);
-	else
-		printf("Pas d'occurence.\n");
-	return (0);
-}*/
