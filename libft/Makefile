@@ -46,6 +46,8 @@ BONUS_FILES	=	ft_lstnew.c \
 				ft_lstlast.c \
 				ft_lstadd_back.c \
 				ft_lstdelone.c \
+				ft_lstclear.c \
+				ft_lstiter.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 BONUS_OBJ	= ${BONUS_FILES:.c=.o}
