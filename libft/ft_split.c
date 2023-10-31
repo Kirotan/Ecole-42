@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:48:04 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/31 15:46:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/10/31 17:26:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,16 @@ static size_t	count_words(char const *s, char c)
 {
 	int		i;
 	size_t	count;
-	
-	if (!s || !c)
+
+	if (!s)
 		return (0);
+	if (c == '\0')
+	{
+		if (*s == '\0') 
+			return 0;
+		else 
+			return 1;
+	}
 	i = 0;
 	count = 0;
 	while (s[i])
@@ -30,17 +37,18 @@ static size_t	count_words(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 	}
-	printf("Nombre de mot(s) : %zu\n", count);
+//	printf("Nombre de mot(s) : %zu\n", count);
 	return (count);
 }
 
 static char	**allocate_memory(size_t count)
 {
-	char	*tab;
+	char	**tab;
 
-	tab = (char *)malloc(sizeof(char *) * (count + 1));
+	tab = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!tab)
 		return (NULL);
+	tab[0] = NULL;
 	return ((char **) tab);
 }
 
@@ -52,38 +60,39 @@ static void	unblock(char **tab)
 	while (tab[i])
 	{
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
 	free(tab);
 }
 
-static char **divide(char const *s, char c, char **tab)
+static char	**divide(char const *s, char c, char **tab)
 {
 	unsigned int		i;
 	int					j;
-	size_t				end;
+	size_t				start;
 
 	i = 0;
 	j = 0;
 	while (s[i])
 	{
-		end = 0;
-		j = 0;
 		while (s[i] == c)
 			i++;
-		if (s[i] != c)
+		start = i;
+		if (s[i] != c && s[i] != '\0')
 		{
-			while (s[i] != c)
-			{
-				end++;
+			while (s[i] != '\0' && s[i] != c)
 				i++;
+			tab[j] = ft_substr(s, start, i - start);
+			if (!tab[j]){
+				unblock(tab);
+				return (NULL);
 			}
+//		printf("Mot : %s\n", tab[j]);
+			j++;
 		}
-		if (!(tab[j] = ft_substr(s, i, end)))
-			unblock(tab);
-		printf("Mot : %s\n", tab[j]);
-		j++;
 	}
+	tab[j] = NULL;
 	return (tab);
 }
 
@@ -94,15 +103,21 @@ char	**ft_split(char const *s, char c)
 
 	count = count_words(s, c);
 	tab = allocate_memory(count);
-	divide(s, c, tab);
+	if (!tab)
+		return (NULL);
+	if (!divide(s, c, tab))
+	{
+		free(tab);
+		return (NULL);
+	}
 	return (tab);
 }
-
+/*
 int	main()
 {
-	char	s[] = "Je surfe sur le code.";
+	char	s[] = "      split       this for   me  !       ";
 	char	c = ' ';
 
 	ft_split(s, c);
 	return (0);
-}
+}*/
