@@ -32,6 +32,7 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_substr.c \
 				ft_strjoin.c \
 				ft_strtrim.c \
+				ft_split.c \
 				ft_itoa.c \
 				ft_strmapi.c \
 				ft_striteri.c \
@@ -48,6 +49,7 @@ BONUS_FILES	=	ft_lstnew.c \
 				ft_lstdelone.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
+				ft_lstmap.c \
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 BONUS_OBJ	= ${BONUS_FILES:.c=.o}
