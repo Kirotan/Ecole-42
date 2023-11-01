@@ -44,7 +44,7 @@ static char	**allocate_memory(size_t count)
 {
 	char	**tab;
 
-	tab = (char **)malloc(sizeof(char *) * (count + 1));
+	tab = (char **)ft_calloc(sizeof(char *), (count + 1));
 	if (!tab)
 		return (NULL);
 	tab[0] = NULL;
@@ -91,7 +91,6 @@ static char	**divide(char const *s, char c, char **tab)
 			j++;
 		}
 	}
-	tab[j] = NULL;
 	return (tab);
 }
 
@@ -110,12 +109,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (tab);
 }
-/*
-int	main()
-{
-	char	s[] = "      split       this for   me  !       ";
-	char	c = ' ';
-
-	ft_split(s, c);
-	return (0);
-}*/
