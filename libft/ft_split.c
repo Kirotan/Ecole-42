@@ -21,10 +21,10 @@ static size_t	count_words(char const *s, char c)
 		return (0);
 	if (c == '\0')
 	{
-		if (*s == '\0') 
-			return 0;
-		else 
-			return 1;
+		if (*s == '\0')
+			return (0);
+		else
+			return (1);
 	}
 	i = 0;
 	count = 0;
@@ -37,7 +37,6 @@ static size_t	count_words(char const *s, char c)
 		while (s[i] && s[i] != c)
 			i++;
 	}
-//	printf("Nombre de mot(s) : %zu\n", count);
 	return (count);
 }
 
@@ -84,11 +83,11 @@ static char	**divide(char const *s, char c, char **tab)
 			while (s[i] != '\0' && s[i] != c)
 				i++;
 			tab[j] = ft_substr(s, start, i - start);
-			if (!tab[j]){
+			if (!tab[j])
+			{
 				unblock(tab);
 				return (NULL);
 			}
-//		printf("Mot : %s\n", tab[j]);
 			j++;
 		}
 	}
@@ -107,7 +106,6 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (!divide(s, c, tab))
 	{
-		free(tab);
 		return (NULL);
 	}
 	return (tab);
