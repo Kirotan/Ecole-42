@@ -12,24 +12,42 @@
 
 #include "ft_printf.h"
 
-void	verif_charac(char c)
+void	recognize_type(char *str, int i)
 {
-	if (c && c != '%')
-			ft_putchar_fd(c, 1);
-	return ;
+	if (str[i] && str[i] == '%')
+		ft_putchar_fd('%', 1);
+}
+
+int	verif_charac(char *str, int i)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] && str[i] != '%')
+		ft_putchar_fd(str[i], 1);
+	else if (str[i] && str[i] == '%')
+	{
+		i++;
+		recognize_type(str, i);
+	}
+	else
+		return (i);
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list		args;
 	int			count;
+	int			i;
 
+	count = 0;
+	i = 0;
 	va_start(args, format);
-	while (*format)
+	while (format[i])
 	{
-		verif_charac(*format);
-		count++;
-		format++;
+		if (format[i] != '%')
+			count += 
 	}
 	va_end(args);
 	return (count);

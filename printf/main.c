@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	ft_printf("Test simple !");
+	ft_printf("Test % simple !");
 	return (0);
 }
