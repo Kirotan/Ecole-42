@@ -6,7 +6,7 @@
 #    By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2023/11/02 15:14:26 by gdoumer          ###   ########.fr        #
+#    Updated: 2023/11/03 15:10:29 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC				= gcc
 LIBFT_DIR		=./libft
 LIBFT_NAME		= libft.a
 
-SRC_FILES	= ft_printf.c \
+SRC_FILES	=	main.c \
+				ft_printf.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 

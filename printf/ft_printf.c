@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 15:17:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/03 13:30:19 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/03 11:29:04 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/03 11:29:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include "./libft/libft.h"
-
-typedef struct	s_flag
+void	verif_charac(char c)
 {
-	char	*s;
-	size_t	i;
-}	t_flag;
+	if (c && c != '%')
+			ft_putchar_fd(c, 1);
+	return ;
+}
 
-int	ft_printf(const char *, ...);
+int	ft_printf(const char *format, ...)
+{
+	va_list		args;
+	int			count;
 
-#endif
+	va_start(args, format);
+	while (*format)
+	{
+		verif_charac(*format);
+		count++;
+		format++;
+	}
+	va_end(args);
+	return (count);
+}
