@@ -43,6 +43,8 @@ int	recognize_char(const char *str, int i, va_list args)
 	}
 	if (str[i] == 's')
 	{
+		while (str[i] != str[i +j])
+			i++;
 		n = write_args(args);
 		return (i + n);
 	}
@@ -57,7 +59,8 @@ int	verif_char(const char *str, int i, va_list args)
 		m = recognize_char(str, i, args);
 	else
 		ft_putchar_fd(str[i], 1);
-	return (m);
+	printf("\nm : %d", m);
+	return (0);
 }
 
 int	ft_printf(const char *format, ...)
@@ -76,6 +79,6 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	printf("%d\n", i);
+	printf("\nNombre char :%d\n", i);
 	return (i + h);
 }
