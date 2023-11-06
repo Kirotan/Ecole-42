@@ -5,50 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 11:29:04 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/03 11:29:04 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/06 17:15:20 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/06 21:04:33 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	recognize_type(char *str, int i)
+int	write_args(va_list args)
 {
-	if (str[i] && str[i] == '%')
-		ft_putchar_fd('%', 1);
+	char	*tmp;
+	int		k;
+
+	tmp = va_arg(args, char *);
+	while (tmp[k])
+	{
+		ft_putchar_fd(tmp[k], 1);
+		k++;
+	}
+	return (k);
 }
 
-int	verif_charac(char *str, int i)
+int	recognize_char(const char *str, int i, va_list args)
 {
-	int	i;
+	int	j;
+	int	n;
 
-	i = 0;
-	if (str[i] && str[i] != '%')
-		ft_putchar_fd(str[i], 1);
-	else if (str[i] && str[i] == '%')
+	j = 0;
+	while (str[i] && str[i] != 's')
 	{
 		i++;
-		recognize_type(str, i);
+		j++;
 	}
+	if (str[i] == '\0')
+	{
+		return (i - j);
+	}
+	if (str[i] == 's')
+	{
+		n = write_args(args);
+		return (i + n);
+	}
+	return (i);
+}
+
+int	verif_char(const char *str, int i, va_list args)
+{
+	int m;
+
+	if (str[i] && str[i] == '%')
+		m = recognize_char(str, i, args);
 	else
-		return (i);
-	return (0);
+		ft_putchar_fd(str[i], 1);
+	return (m);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list		args;
-	int			count;
-	int			i;
+	int		i;
+	va_list	args;
+	int		h;
 
-	count = 0;
 	i = 0;
+	if (!format)
+		return (0);
 	va_start(args, format);
 	while (format[i])
 	{
-		if (format[i] != '%')
-			count += 
+		h = verif_char(format, i, args);
+		i++;
 	}
 	va_end(args);
-	return (count);
+	printf("%d\n", i);
+	return (i + h);
 }
