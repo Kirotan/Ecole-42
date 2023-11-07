@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:15:20 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/06 21:04:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:54:43 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	write_args(va_list args)
 	char	*tmp;
 	int		k;
 
+	k = 0;
 	tmp = va_arg(args, char *);
 	while (tmp[k])
 	{
@@ -26,48 +27,43 @@ int	write_args(va_list args)
 	return (k);
 }
 
-int	recognize_char(const char *str, int i, va_list args)
+int	recognize_char(const char *str, int *i, va_list args)
 {
 	int	j;
-	int	n;
 
 	j = 0;
-	while (str[i] && str[i] != 's')
+	while (str[*i] && str[*i] != 's')
 	{
-		i++;
+		(*i)++;
 		j++;
 	}
-	if (str[i] == '\0')
+	if (str[*i] == '\0')
 	{
-		return (i - j);
+		return (*i - j);
 	}
-	if (str[i] == 's')
+	if (str[*i] == 's')
 	{
-		while (str[i] != str[i +j])
-			i++;
-		n = write_args(args);
-		return (i + n);
+		write_args(args);
+		(*i) = (*i) + j;
+		return (*i);
 	}
-	return (i);
+	return (*i);
 }
 
-int	verif_char(const char *str, int i, va_list args)
+int	verif_char(const char *str, int *i, va_list args)
 {
-	int m;
-
-	if (str[i] && str[i] == '%')
-		m = recognize_char(str, i, args);
+	if (str[*i] && str[*i] == '%')
+		return (recognize_char(str, i, args));
 	else
-		ft_putchar_fd(str[i], 1);
-	printf("\nm : %d", m);
-	return (0);
+		ft_putchar_fd(str[*i], 1);
+	return (*i);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		i;
-	va_list	args;
 	int		h;
+	va_list	args;
 
 	i = 0;
 	if (!format)
@@ -75,7 +71,7 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	while (format[i])
 	{
-		h = verif_char(format, i, args);
+		h = verif_char(format, &i, args);
 		i++;
 	}
 	va_end(args);

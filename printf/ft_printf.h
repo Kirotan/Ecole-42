@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:17:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/03 13:30:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/07 13:22:12 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 typedef struct	s_flag
 {
 	char	*s;
-	size_t	i;
+	int		i;
+	int		k;
 }	t_flag;
 
 int	ft_printf(const char *, ...);
