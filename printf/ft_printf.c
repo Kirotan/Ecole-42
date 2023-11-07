@@ -30,8 +30,10 @@ int	write_args(va_list args)
 int	recognize_char(const char *str, int *i, va_list args)
 {
 	int	j;
+	int	w;
 
 	j = 0;
+	w = 0;
 	while (str[*i] && str[*i] != 's')
 	{
 		(*i)++;
@@ -44,11 +46,11 @@ int	recognize_char(const char *str, int *i, va_list args)
 	if (str[*i] == 's')
 	{
 		*i = *i - j;
-		write_args(args);
+		w = write_args(args);
 		(*i) = (*i) + j;
 		return (*i);
 	}
-	return (*i);
+	return (j);
 }
 
 int	verif_char(const char *str, int *i, va_list args)
@@ -56,8 +58,10 @@ int	verif_char(const char *str, int *i, va_list args)
 	if (str[*i] && str[*i] == '%')
 		return (recognize_char(str, i, args));
 	else
+	{
 		ft_putchar_fd(str[*i], 1);
-	return (*i);
+		return (1);
+	}
 }
 
 int	ft_printf(const char *format, ...)
@@ -65,6 +69,7 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		h;
 	va_list	args;
+	int		count_char;
 
 	i = 0;
 	if (!format)
@@ -74,8 +79,9 @@ int	ft_printf(const char *format, ...)
 	{
 		h = verif_char(format, &i, args);
 		i++;
+		count_char = count_char + h;
 	}
 	va_end(args);
-	printf("\nNombre char :%d\n", i);
-	return (i + h);
+	printf("\nNombre char :%d\n", count_char);
+	return (count_char);
 }
