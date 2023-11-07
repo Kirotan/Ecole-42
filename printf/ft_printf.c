@@ -43,6 +43,7 @@ int	recognize_char(const char *str, int *i, va_list args)
 	}
 	if (str[*i] == 's')
 	{
+		*i = *i - j;
 		write_args(args);
 		(*i) = (*i) + j;
 		return (*i);

@@ -17,6 +17,7 @@ int	main(void)
 	char	*str;
 
 	str = "Oh my ZSH";
-	ft_printf("Test tres % simple !", str);
+	ft_printf("Test tres %simple !", str);
+	printf("Test tres %simple !", str);
 	return (0);
 }
