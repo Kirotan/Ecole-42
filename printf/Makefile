@@ -6,17 +6,18 @@
 #    By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2023/11/07 15:58:41 by gdoumer          ###   ########.fr        #
+#    Updated: 2023/11/08 22:27:57 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= libftprintf.a
-CFLAGS			= 
+CFLAGS			= -Wall -Wextra -Werror
 CC				= gcc
 LIBFT_DIR		=./libft
 LIBFT_NAME		= libft.a
 
 SRC_FILES	=	ft_printf.c \
+				ft_sort.c \
 				main.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}

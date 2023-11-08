@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 13:03:59 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/07 15:37:31 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/08 22:00:48 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/08 22:14:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_sort(const char *str, int *i, int *j, va_list args)
 {
-	char	*str;
-	char	*str2;
+	int x;
 
-	str = "Oh my ZSH";
-	str2 = "test";
-	ft_printf("Test tres %simple !%s %s", str, str2, "bonjour");
-	printf("Test tres %simple !%s %s", str, str2, "bonjour");
-	
-	return (0);
+	x = 0;
+	if (str[*i] == 's')
+	{
+		*i = *i - *j;
+		x = write_args(args);
+		*i = *i + *j;
+		return (x);
+	}
+	else if (str[*i] == 'c')
+	{
+		*i = *i - *j;
+		x = write_args(args);
+		*i = *i + *j;
+		return (x);
+	}
+	else
+		x = -1;
+	return (x);
 }

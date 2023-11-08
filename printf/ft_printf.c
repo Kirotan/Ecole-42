@@ -41,15 +41,10 @@ int	recognize_char(const char *str, int *i, va_list args)
 	}
 	if (str[*i] == '\0')
 	{
-		return (0);
+		return (-j);
 	}
-	if (str[*i] == 's')
-	{
-		*i = *i - j;
-		w = write_args(args);
-		*i = *i + j;
-		return (w);
-	}
+	w = ft_sort(str, i, &j, args);
+	j = 0;
 	return (w);
 }
 
@@ -74,12 +69,13 @@ int	ft_printf(const char *format, ...)
 	i = 0;
 	count_char = 0;
 	if (!format)
-		return (0);
+		return (-1);
 	va_start(args, format);
 	while (format[i])
 	{
 		h = verif_char(format, &i, args);
-		i++;
+		if (format[i])
+			i++;
 		count_char = count_char + h;
 	}
 	va_end(args);
