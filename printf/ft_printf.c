@@ -22,17 +22,18 @@ int	ft_sort(const char *str, int *i, va_list args)
 	return (-1);
 }
 
-int	verif_char(const char *str, int *i, va_list args)
+int	verif_char(const char *str, int *i, int h, va_list args)
 {
-	int	h;
 	int	l;
+	int	z;
 
-	h = 0;
 	l = 0;
+	z = 0;
 	while (str[*i])
 	{
 		if (str[*i] == '%')
 		{
+			z++;
 			h = ft_sort(str, i, args);
 			if (h == -1)
 				return (-1);
@@ -43,23 +44,25 @@ int	verif_char(const char *str, int *i, va_list args)
 			h = ft_putchar_fd(str[*i], 1);
 			if (h == -1)
 				return (-1);
-			l+= h;
+			l += h;
 		}
 		(*i)++;
 	}
-	return (*i + l);
+	return ((*i - (z * 2)) + l);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	int		i;
+	int		h;
 	va_list	args;
 
 	i = 0;
+	h = 0;
 	if (!format)
 		return (-1);
 	va_start(args, format);
-	i = verif_char(format, &i, args);
+	i = verif_char(format, &i, h, args);
 	va_end(args);
 	return (i);
 }

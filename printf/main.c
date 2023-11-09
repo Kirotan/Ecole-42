@@ -19,6 +19,7 @@ int	main(void)
 
 	str = "Oh my ZSH";
 	str2 = "test";
-	ft_printf("Test tres %simple ;%s %s %c\n", str, str2, "bonjour!", 'W');
+	printf("%d\n", ft_printf("Test tres %simple ;%s %s %c\n", str, str2, "bonjour!", 'W'));
+	printf("%d\n", printf("Test tres %simple ;%s %s %c\n", str, str2, "bonjour!", 'W'));
 	fflush(stdout);
 }
