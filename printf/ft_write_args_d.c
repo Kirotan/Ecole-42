@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_write_args_d.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 13:03:59 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/09 10:13:44 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 21:23:05 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 21:23:05 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_write_args_d(va_list args)
 {
-	char	*str;
-	char	*str2;
-	int		i;
+	char	*nb;
+	int		len;
 
-	str = "Oh my ZSH";
-	str2 = "test";
-	i = 12342;
-	printf("%d\n", ft_printf("Test tres %simple ;%s %d %c\n", str, str2, i, 'W'));
-	printf("%d\n", printf("Test tres %simple ;%s %d %c\n", str, str2, i, 'W'));
-	fflush(stdout);
+	nb = ft_itoa(va_arg(args, int));
+	len = ft_strlen(nb);
+	ft_putstr_fd(nb, 1);
+	if (!nb)
+	{
+		free(nb);
+		return (-1);
+	}
+	return (len);
 }
