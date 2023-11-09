@@ -21,6 +21,8 @@ int	ft_sort(const char *str, int *i, va_list args)
 		return (ft_write_args_c(args));
 	else if (str[*i] == 'd')
 		return (ft_write_args_d(args));
+	else if (str[*i] == '%')
+		return (ft_write_args_percent('%'));
 	return (-1);
 }
 

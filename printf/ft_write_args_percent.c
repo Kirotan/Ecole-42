@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_write_args_percent.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 13:03:59 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/09 10:13:44 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 22:43:37 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 22:43:37 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+int	ft_write_args_percent(char c)
 {
-	char	*str;
-	int		i;
-
-	str = "Oh my ZSH";
-	i = 12342;
-	printf("%d\n", ft_printf("Test %simple ;%d %c %%%s\n", str, i, 'W', str));
-	printf("%d\n", printf("Test %simple ;%d %c %%%s\n", str, i, 'W', str));
-	fflush(stdout);
+	ft_putchar_fd(c, 1);
+	return (1);
 }
