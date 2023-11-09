@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:17:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/08 22:43:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/09 12:45:03 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_flag
 }	t_flag;
 
 int	ft_printf(const char *format, ...);
-int	ft_sort(const char *str, int *i, int *j, va_list args);
-int	write_args(va_list args);
+int	ft_write_args_c(va_list args);
 
 #endif

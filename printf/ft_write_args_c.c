@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_write_args_c.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 22:00:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/08 22:14:01 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 12:46:25 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 12:49:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_sort(const char *str, int *i, int *j, va_list args)
+int	ft_write_args_c(va_list args)
 {
-	int x;
+	char	tmp;
 
-	x = 0;
-	if (str[*i] == 's')
-	{
-		*i = *i - *j;
-		x = write_args(args);
-		*i = *i + *j;
-		return (x);
-	}
-	else if (str[*i] == 'c')
-	{
-		*i = *i - *j;
-		x = write_args(args);
-		*i = *i + *j;
-		return (x);
-	}
-	else
-		x = -1;
-	return (x);
+	tmp = (char)va_arg(args, int);
+	if (tmp == '\0')
+		return (-1);
+	if (ft_putchar_fd(tmp, 1) == -1)
+		return (-1);
+	return (1);
 }

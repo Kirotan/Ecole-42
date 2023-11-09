@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 13:03:59 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/07 15:37:31 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/09 10:13:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(void)
 
 	str = "Oh my ZSH";
 	str2 = "test";
-	ft_printf("Test tres %simple !%s %s", str, str2, "bonjour");
-	printf("Test tres %simple !%s %s", str, str2, "bonjour");
-	
-	return (0);
+	ft_printf("Test tres %simple ;%s %s %c\n", str, str2, "bonjour!", 'W');
+	fflush(stdout);
 }
