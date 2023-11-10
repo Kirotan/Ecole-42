@@ -6,13 +6,13 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:25:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 15:38:25 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 16:48:05 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_len_puthex(int tmp)
+static int	ft_len_puthex(unsigned int tmp)
 {
 	int	len;
 
@@ -25,36 +25,26 @@ static int	ft_len_puthex(int tmp)
 	return (len);		
 }
 
-static void	ft_puthex(int tmp)
+static void	ft_puthex(unsigned int tmp, char cha)
 {
-	long	nb;
 
-	nb = tmp;
-	if (nb >= 16)
+	if (tmp >= 16)
 	{
-		ft_puthex(nb / 16);
-		ft_puthex(nb % 16);
-	}
-	else if (nb < 10)
-	{
-		ft_putchar_fd((nb + '0'), 1);
+		ft_puthex((tmp / 16), cha);
+		ft_puthex((tmp % 16), cha);
 	}
 	else
-		ft_putchar_fd((nb - 10 + 'A'), 1);
-}
-
-int	ft_write_args_bigx(va_list args)
-{
-	int	tmp;
-
-	tmp = va_arg(args, int);
-	if (tmp == 0)
-		return (ft_putchar_fd('0', 1));
-	if (tmp < 0)
 	{
-		ft_putchar_fd('-', 1);
-		tmp = -tmp;
+		if (tmp < 10)
+			ft_putchar_fd((tmp + '0'), 1);
+		else
+			ft_putchar_fd((tmp - 10 + cha), 1);
 	}
-	ft_puthex(tmp);
+}
+int	ft_write_args_x(int args, char cha)
+{
+	if (args == 0)
+		return (ft_putchar_fd('0', 1));
+	ft_puthex(tmp, cha);
 	return (ft_len_puthex(tmp));
 }
