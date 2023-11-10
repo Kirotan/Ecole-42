@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 10:03:37 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 10:04:50 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:15:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	ft_write_args_u(va_list args)
 		free(nb);
 		return (-1);
 	}
+	free(nb);
 	return (len);
 }
