@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:17:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 10:27:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 14:54:58 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	ft_write_args_c(va_list args);
 int	ft_write_args_d(va_list args);
 int	ft_write_args_u(va_list args);
 int	ft_write_args_percent(char c);
+int	ft_write_args_littlex(va_list args);
 
 #endif

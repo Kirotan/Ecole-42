@@ -23,6 +23,8 @@ int	ft_sort(const char *str, int *i, va_list args)
 		return (ft_write_args_d(args));
 	else if (str[*i] == 'u')
 		return (ft_write_args_u(args));
+	else if (str[*i] == 'x')
+		return (ft_write_args_littlex(args));
 	else if (str[*i] == '%')
 		return (ft_write_args_percent('%'));
 	return (-1);

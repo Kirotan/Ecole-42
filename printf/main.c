@@ -19,9 +19,9 @@ int	main(void)
 	unsigned int	ui;
 
 	str = "Oh my ZSH";
-	i = 12342;
+	i = 123421;
 	ui = 98765678;
-	printf("%d\n", ft_printf("Test %simple ;%d %c %%%s %u\n", str, i, 'W', str, ui));
-	printf("%d\n", printf("Test %simple ;%d %c %%%s %u\n", str, i, 'W', str, ui));
+	printf("%d\n", ft_printf("Test %simple ;%d %c %%%s %u %x %X\n", str, i, 'W', str, ui, i, i));
+	printf("%d\n", printf("Test %simple ;%d %c %%%s %u %x %X\n", str, i, 'W', str, ui, i, i));
 	fflush(stdout);
 }

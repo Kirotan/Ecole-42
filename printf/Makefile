@@ -6,7 +6,7 @@
 #    By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2023/11/10 10:26:44 by gdoumer          ###   ########.fr        #
+#    Updated: 2023/11/10 14:54:28 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC_FILES	=	ft_printf.c \
 				ft_write_args_d.c \
 				ft_write_args_u.c \
 				ft_write_args_percent.c \
+				ft_write_args_littlex.c \
 				main.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
