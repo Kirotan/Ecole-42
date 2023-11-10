@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 17:15:20 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/07 12:54:43 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:03:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	ft_sort(const char *str, int *i, va_list args)
 	else if (str[*i] == 'u')
 		return (ft_write_args_u(args));
 	else if (str[*i] == 'x')
-		return (ft_write_args_x(va_arg(args, int), 'a'));	
+		return (ft_write_args_x(va_arg(args, int), 'a'));
 	else if (str[*i] == 'X')
-		return (ft_write_args_x(va_arg(args, int), 'A'));	
+		return (ft_write_args_x(va_arg(args, int), 'A'));
 	else if (str[*i] == '%')
 		return (ft_write_args_percent('%'));
 	return (-1);

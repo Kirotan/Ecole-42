@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:25:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 16:51:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 17:06:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ static int	ft_len_puthex(unsigned int args)
 		len++;
 		args = args / 16;
 	}
-	return (len);		
+	return (len);
 }
 
 static void	ft_puthex(unsigned int args, char cha)
 {
-
 	if (args >= 16)
 	{
 		ft_puthex((args / 16), cha);
@@ -41,6 +40,7 @@ static void	ft_puthex(unsigned int args, char cha)
 			ft_putchar_fd((args - 10 + cha), 1);
 	}
 }
+
 int	ft_write_args_x(int args, char cha)
 {
 	if (args == 0)
