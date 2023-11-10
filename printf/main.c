@@ -14,12 +14,14 @@
 
 int	main(void)
 {
-	char	*str;
-	int		i;
+	char			*str;
+	int				i;
+	unsigned int	ui;
 
 	str = "Oh my ZSH";
 	i = 12342;
-	printf("%d\n", ft_printf("Test %simple ;%d %c %%%s\n", str, i, 'W', str));
-	printf("%d\n", printf("Test %simple ;%d %c %%%s\n", str, i, 'W', str));
+	ui = 98765678;
+	printf("%d\n", ft_printf("Test %simple ;%d %c %%%s %u\n", str, i, 'W', str, ui));
+	printf("%d\n", printf("Test %simple ;%d %c %%%s %u\n", str, i, 'W', str, ui));
 	fflush(stdout);
 }

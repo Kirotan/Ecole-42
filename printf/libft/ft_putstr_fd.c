@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:56:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/09 13:46:32 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 09:51:57 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_putstr_fd(char *s, int fd)
 {
 	if (s)
-		write(fd, s, ft_strlen(s));
+		if (write(fd, s, ft_strlen(s)) == -1)
+			return (-1);
 	return (ft_strlen(s));
 }

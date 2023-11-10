@@ -19,8 +19,10 @@ int	ft_sort(const char *str, int *i, va_list args)
 		return (ft_putstr_fd(va_arg(args, char *), 1));
 	else if (str[*i] == 'c')
 		return (ft_write_args_c(args));
-	else if (str[*i] == 'd')
+	else if (str[*i] == 'd' || str[*i] == 'i')
 		return (ft_write_args_d(args));
+	else if (str[*i] == 'u')
+		return (ft_write_args_u(args));
 	else if (str[*i] == '%')
 		return (ft_write_args_percent('%'));
 	return (-1);
