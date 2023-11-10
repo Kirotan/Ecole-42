@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_args_littlex.c                            :+:      :+:    :+:   */
+/*   ft_write_args_bigx.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:25:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 15:38:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 15:38:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void	ft_puthex(int tmp)
 		ft_putchar_fd((nb + '0'), 1);
 	}
 	else
-		ft_putchar_fd((nb - 10 + 'a'), 1);
+		ft_putchar_fd((nb - 10 + 'A'), 1);
 }
 
-int	ft_write_args_littlex(va_list args)
+int	ft_write_args_bigx(va_list args)
 {
 	int	tmp;
 
