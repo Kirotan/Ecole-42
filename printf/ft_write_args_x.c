@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:25:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/10 17:06:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/10 18:19:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ static void	ft_puthex(unsigned int args, char cha)
 int	ft_write_args_x(int args, char cha)
 {
 	if (args == 0)
-		return (ft_putchar_fd('0', 1));
+	{
+		ft_putchar_fd('0', 1);
+		return (1);
+	}
 	ft_puthex(args, cha);
 	return (ft_len_puthex(args));
 }
