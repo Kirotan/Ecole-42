@@ -6,7 +6,7 @@
 #    By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2023/11/11 10:37:56 by gdoumer          ###   ########.fr        #
+#    Updated: 2023/11/11 12:09:27 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,11 @@ makelibft:
 
 clean:
 	rm -f ${OBJ_FILES}
-	cd $(LIBFT_DIR) && make clean
+	make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -f ${NAME}
-	cd $(LIBFT_DIR) && make clean
+	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
