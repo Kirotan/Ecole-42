@@ -16,18 +16,12 @@
 # include <stdarg.h>
 # include "./libft/libft.h"
 
-typedef struct s_flag
-{
-	char	*s;
-	int		i;
-	int		k;
-}	t_flag;
-
 int	ft_printf(const char *format, ...);
 int	ft_write_args_c(va_list args);
 int	ft_write_args_d(va_list args);
 int	ft_write_args_u(va_list args);
 int	ft_write_args_percent(char c);
 int	ft_write_args_x(int args, char cha);
+int	ft_write_args_p(unsigned long long adress);
 
 #endif
