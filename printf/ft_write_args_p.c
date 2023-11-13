@@ -49,7 +49,8 @@ int	ft_write_args_p(unsigned long long adress)
 	len_adress += write(1, "0x", 2);
 	if (adress == 0)
 	{
-		len_adress += ft_putchar_fd('0', 1);
+		ft_putchar_fd('0', 1);
+		len_adress++;
 	}
 	else
 	{
