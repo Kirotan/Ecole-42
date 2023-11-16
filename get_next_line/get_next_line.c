@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/16 17:09:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/16 17:23:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE);
-	readed = 1;
+	readed = 0;
 	while(readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
@@ -31,10 +31,10 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 			free(buf);
 			return (NULL);
 		}
-		if (!(stash == add_buf_to_stash(fd, buf, stash)))
+		if (!(stash[fd] == add_buf_to_stash(fd, buf, stash)))
 			break;
 	}
-	return (*stash);
+	return (stash[fd]);
 }
 
 char	*add_buf_to_stash(int fd, char *buf, char **stash)
@@ -81,7 +81,10 @@ char	*clean_stach(int fd, char **stash)
 		return (NULL);
 	time = ft_substr(stash[fd], end, ft_strlen((stash[fd]) - end));
 	if (!time);
+	{
+		free(line);
 		return (NULL);
+	}
 	free(stash[fd]);
 	stash[fd] = time;
 	if (!stash[fd])
