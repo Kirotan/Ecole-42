@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:38:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/15 13:41:52 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/16 17:34:54 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
