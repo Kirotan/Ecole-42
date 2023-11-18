@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/15 18:34:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:22:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,58 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		dst[i] = '\0';
 	}
 	return (sizesrc);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*str;
+
+	str = s;
+	while (n > 0)
+	{
+		*str = '\0';
+		str++;
+		n--;
+	}
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	str = malloc(ft_strlen(s) + 1);
+	if (!str)
+		return (0);
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*ptr;
+
+	if (size != 0 && nmemb > SIZE_MAX / size)
+		return (0);
+	ptr = (void *)malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, nmemb * size);
+	return (ptr);
 }

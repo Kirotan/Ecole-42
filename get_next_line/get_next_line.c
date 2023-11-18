@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/16 17:23:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:30:33 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 {
 	int			readed;
 
-	if(buffer_size <= 0 || fd < 0 || fd > 1024)
+	if(BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
@@ -94,7 +94,26 @@ char	*clean_stach(int fd, char **stash)
 
 char	*get_next_line(int fd)
 {
+	char		*final_line;
+	static char	*stash[1024];
 
+	final_line = NULL;
+	stash[1024] = {NULL};
+	if (stash[fd] = NULL)
+	{
+		stash[fd] = ft_calloc(1, sizeof(char));
+		if (stash[fd] = NULL)
+			return (NULL);
+	}
+	final_line = read_and_buff(fd, NULL, stash);
+	if (!final_line || final_line[0] == '\0')
+	{
+		free(stash[fd]);
+		stash[fd] == NULL;
+		return (NULL);
+	}
+	line = clean_stash(fd, stash);
+	return (final_line);
 }
 
 int	main(void)
