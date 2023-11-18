@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 13:22:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/18 13:56:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,4 +142,20 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_bzero(ptr, nmemb * size);
 	return (ptr);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((unsigned char)c == '\0')
+		return ((char *)&s[i]);
+	return (0);
 }

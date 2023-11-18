@@ -6,11 +6,14 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 13:30:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:24:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char    *add_buf_to_stash(int fd, char *buf, char **stash);
+char    *clean_stach(int fd, char **stash);
 
 char	*read_and_buf(int fd, char *buf, char **stash)
 {
@@ -22,7 +25,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE);
-	readed = 0;
+	readed = 1;
 	while(readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
@@ -44,28 +47,28 @@ char	*add_buf_to_stash(int fd, char *buf, char **stash)
 
 	if (!stash[fd])
 	{
-		stash[fd] = strdup(buf);
+		stash[fd] = ft_strdup(buf);
 		if (!stash[fd])
 			return (NULL);
 	}	
 	else
 	{
-		tmp = strdup(stash[fd]);
+		tmp = ft_strdup(stash[fd]);
 		if (!tmp)
 			return (NULL);
-		new_stash = strjoin(tmp, buf);
+		new_stash = ft_strjoin(tmp, buf);
 		free(tmp);
 		if (!new_stash)
 			return (NULL);
 		free(stash[fd]);
 		stash[fd] = new_stash;
 	}
-	if (strchr(buf, '\n'))
+	if (ft_strchr(buf, '\n'))
 		return (NULL);
 	return (stash[fd]);
 }
 
-char	*clean_stach(int fd, char **stash)
+char	*clean_stash(int fd, char **stash)
 {
 	int		end;
 	char	*line;
@@ -79,8 +82,8 @@ char	*clean_stach(int fd, char **stash)
 	line = ft_substr(stash[fd], 0, end);
 	if (!line)
 		return (NULL);
-	time = ft_substr(stash[fd], end, ft_strlen((stash[fd]) - end));
-	if (!time);
+	time = ft_substr(stash[fd], end, ft_strlen((stash[fd]) + end));
+	if (!time)
 	{
 		free(line);
 		return (NULL);
@@ -98,26 +101,56 @@ char	*get_next_line(int fd)
 	static char	*stash[1024];
 
 	final_line = NULL;
-	stash[1024] = {NULL};
-	if (stash[fd] = NULL)
+	if (stash[fd] == NULL)
 	{
-		stash[fd] = ft_calloc(1, sizeof(char));
-		if (stash[fd] = NULL)
+		stash[fd] = ft_calloc(1, 1);
+		if (stash[fd] == NULL)
 			return (NULL);
 	}
-	final_line = read_and_buff(fd, NULL, stash);
+	final_line = read_and_buf(fd, NULL, stash);
 	if (!final_line || final_line[0] == '\0')
 	{
 		free(stash[fd]);
-		stash[fd] == NULL;
+		stash[fd] = NULL;
 		return (NULL);
 	}
-	line = clean_stash(fd, stash);
+	final_line = clean_stash(fd, stash);
 	return (final_line);
 }
 
-int	main(void)
+int main(int argc, char **argv)
 {
-	
-	return (0);
+    int fd;
+    char *line;
+
+    if (argc != 2)
+    {
+        fprintf(stderr, "Usage: %s test.txt\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    fd = open(argv[1], O_RDONLY);
+    if (fd == -1)
+    {
+        perror("Error opening file");
+        return EXIT_FAILURE;
+    }
+
+    printf("Starting to read lines from file: %s\n", argv[1]);
+
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("Read line: %s", line); // Assuming line includes a newline character at the end.
+        free(line); // Don't forget to free the line after you're done with it!
+    }
+
+    if (close(fd) == -1)
+    {
+        perror("Error closing file");
+        return EXIT_FAILURE;
+    }
+
+    printf("Finished reading file.\n");
+
+    return EXIT_SUCCESS;
 }
