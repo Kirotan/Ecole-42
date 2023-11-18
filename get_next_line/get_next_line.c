@@ -24,9 +24,9 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
-	ft_bzero(buf, BUFFER_SIZE);
-	readed = 1;
-	while(readed > 0)
+	ft_bzero(buf, BUFFER_SIZE + 1);
+	readed = 0;
+	while(readed >= 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed == -1)
@@ -82,7 +82,7 @@ char	*clean_stash(int fd, char **stash)
 	line = ft_substr(stash[fd], 0, end);
 	if (!line)
 		return (NULL);
-	time = ft_substr(stash[fd], end, ft_strlen((stash[fd]) + end));
+	time = ft_substr(stash[fd], end, ft_strlen(stash[fd] + end));
 	if (!time)
 	{
 		free(line);
@@ -132,25 +132,25 @@ int main(int argc, char **argv)
     fd = open(argv[1], O_RDONLY);
     if (fd == -1)
     {
-        perror("Error opening file");
+        perror("Erreur d'ouverture du fichier");
         return EXIT_FAILURE;
     }
 
-    printf("Starting to read lines from file: %s\n", argv[1]);
+    printf("Commence a lire les lignes depuis le fichier: %s\n", argv[1]);
 
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("Read line: %s", line); // Assuming line includes a newline character at the end.
-        free(line); // Don't forget to free the line after you're done with it!
+        printf("Ligne lu: %s", line);
+        free(line);
     }
 
     if (close(fd) == -1)
     {
-        perror("Error closing file");
+        perror("Erreur, fermeture du fichier.");
         return EXIT_FAILURE;
     }
 
-    printf("Finished reading file.\n");
+    printf("Fin de lecture du fichier.\n");
 
     return EXIT_SUCCESS;
 }
