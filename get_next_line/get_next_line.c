@@ -142,7 +142,7 @@ int main(int argc, char **argv)
 
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("Ligne lu: %s", line);
+        printf("Ligne lu: [%s]", line);
         free(line);
     }
 
