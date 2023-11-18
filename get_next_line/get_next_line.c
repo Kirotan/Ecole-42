@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 14:24:47 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/18 22:04:15 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE + 1);
-	readed = 0;
-	while(readed >= 0)
+	readed = 1;
+	while(readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
+		buf[readed] = '\0';
 		if (readed == -1)
 		{
 			free(buf);
 			return (NULL);
 		}
-		if (!(stash[fd] == add_buf_to_stash(fd, buf, stash)))
+		if (!(stash[fd] == add_buf_to_stash(fd, buf, stash) || (ft_strchr(buf, '\n'))))
 			break;
 	}
 	return (stash[fd]);
@@ -63,8 +64,6 @@ char	*add_buf_to_stash(int fd, char *buf, char **stash)
 		free(stash[fd]);
 		stash[fd] = new_stash;
 	}
-	if (ft_strchr(buf, '\n'))
-		return (NULL);
 	return (stash[fd]);
 }
 
@@ -81,11 +80,14 @@ char	*clean_stash(int fd, char **stash)
 		end++;
 	line = ft_substr(stash[fd], 0, end);
 	if (!line)
+	{
+		free(line);
 		return (NULL);
+	}
 	time = ft_substr(stash[fd], end, ft_strlen(stash[fd] + end));
 	if (!time)
 	{
-		free(line);
+		free(time);
 		return (NULL);
 	}
 	free(stash[fd]);
@@ -151,6 +153,5 @@ int main(int argc, char **argv)
     }
 
     printf("Fin de lecture du fichier.\n");
-
     return EXIT_SUCCESS;
 }
