@@ -27,12 +27,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed == 0)
-		{
-			free(buf);
-			return (stash[fd]);
-		}
-		if (readed < 0)
+		if (readed <= 0)
 		{
 			free(buf);
 			return (NULL);
@@ -82,7 +77,7 @@ char	*clean_stash(int fd, char **stash)
 	end = 0;
 	while (stash[fd][end] && stash[fd][end] != '\n')
 		end++;
-	if (stash[fd][end] && stash[fd][end] == '\n')
+	if (stash[fd][end] == '\n')
 		end++;
 	line = ft_substr(stash[fd], 0, end);
 	if (!line)
@@ -109,7 +104,7 @@ char	*get_next_line(int fd)
 		stash[fd] = malloc(1);
 		if (stash[fd] == NULL)
 			return (NULL);
-		ft_bzero(stash[fd], 1);
+		stash[fd][0] = '\0';
 	}
 	final_line = read_and_buf(fd, NULL, stash);
 	if (final_line == NULL && stash[fd] == NULL)
