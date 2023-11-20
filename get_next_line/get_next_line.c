@@ -88,16 +88,10 @@ char	*clean_stash(int fd, char **stash)
 		end++;
 	line = ft_substr(stash[fd], 0, end);
 	if (!line)
-	{
-		free(line);
 		return (NULL);
-	}
 	time = ft_substr(stash[fd], end, ft_strlen(stash[fd] + end));
 	if (!time)
-	{
-		free(time);
 		return (NULL);
-	}
 	free(stash[fd]);
 	stash[fd] = time;
 	if (!stash[fd])

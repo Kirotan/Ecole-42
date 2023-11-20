@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:28:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/20 19:53:55 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 20:23:09 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int main(int argc, char **argv)
 {
-    int fd;
-    char *line;
-
-	line = get_next_line(798);
-	if (line) free(line);
-	return;
+	int		fd;
+	char	*line;
 
     if (argc != 2)
     {
