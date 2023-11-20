@@ -12,21 +12,21 @@
 
 #include "get_next_line.h"
 
-char    *add_buf_to_stash(int fd, char *buf, char **stash);
-char    *clean_stach(int fd, char **stash);
+char	*add_buf_to_stash(int fd, char *buf, char **stash);
+char	*clean_stach(int fd, char **stash);
 
 char	*read_and_buf(int fd, char *buf, char **stash)
 {
 	int			readed;
 
-	if(BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
 	ft_bzero(buf, BUFFER_SIZE + 1);
 	readed = 1;
-	while(readed > 0)
+	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
 		if (readed <= 0)
@@ -34,8 +34,9 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 			free(buf);
 			return (NULL);
 		}
-		if ((stash[fd] == add_buf_to_stash(fd, buf, stash) || (ft_strchr(buf, '\n'))))
-			break;
+		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
+				|| (ft_strchr(buf, '\n'))))
+			break ;
 	}
 	free(buf);
 	return (stash[fd]);
@@ -51,7 +52,7 @@ char	*add_buf_to_stash(int fd, char *buf, char **stash)
 		stash[fd] = ft_strdup(buf);
 		if (!stash[fd])
 			return (NULL);
-	}	
+	}
 	else
 	{
 		tmp = ft_strdup(stash[fd]);
@@ -111,7 +112,7 @@ char	*get_next_line(int fd)
 	}
 	final_line = read_and_buf(fd, NULL, stash);
 	if (!final_line && !stash[fd])
-        return (NULL);
+		return (NULL);
 	if (stash[fd] && stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
 	if (!final_line || final_line[0] == '\0')
