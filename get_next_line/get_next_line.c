@@ -32,7 +32,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 			free(buf);
 			return (NULL);
 		}
-		if (readed < BUFFER_SIZE)
+		if (readed < BUFFER_SIZE && )//ici il doit manquer quelaue chose)
 			buf[readed] = '\0';
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
 				|| (ft_strchr(buf, '\n'))))
