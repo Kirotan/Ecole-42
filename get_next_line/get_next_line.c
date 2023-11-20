@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/20 20:06:57 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 22:00:27 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 {
 	int			readed;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
-		return (NULL);
 	buf = malloc(BUFFER_SIZE + 1);
 	if (!buf)
 		return (NULL);
@@ -42,7 +40,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 		if (readed < BUFFER_SIZE)
 			buf[readed] = '\0';
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
-				|| (ft_strchr(buf, '\n'))))//si le read ne lit pas la valeur max remplir de \0
+				|| (ft_strchr(buf, '\n'))))
 			break ;
 	}
 	free(buf);
@@ -103,8 +101,8 @@ char	*get_next_line(int fd)
 {
 	char		*final_line;
 	static char	*stash[1024];
-	
-	if (fd < 0)
+
+	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
 	final_line = NULL;
 	if (stash[fd] == NULL)
