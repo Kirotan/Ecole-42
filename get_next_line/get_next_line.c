@@ -29,15 +29,10 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed < 0)
+		if (readed <= 0)
 		{
 			free(buf);
 			return (NULL);
-		}
-		if (readed == 0)
-		{
-			free(buf);
-			return (stash[fd]);
 		}
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
 				|| (ft_strchr(buf, '\n'))))
