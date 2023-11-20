@@ -110,9 +110,9 @@ char	*get_next_line(int fd)
 		if (stash[fd] == NULL)
 			return (NULL);
 	}
-	final_line = read_and_buf(fd, NULL, stash);
 	if (!final_line && !stash[fd])
 		return (NULL);
+	final_line = read_and_buf(fd, NULL, stash);
 	if (stash[fd] && stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
 	if (!final_line || final_line[0] == '\0')
