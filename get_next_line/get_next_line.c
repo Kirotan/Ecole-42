@@ -29,10 +29,15 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed <= 0)
+		if (readed < 0)
 		{
 			free(buf);
 			return (NULL);
+		}
+		if (readed == 0)
+		{
+			free(buf);
+			return (stash[fd]);
 		}
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
 				|| (ft_strchr(buf, '\n'))))
@@ -110,9 +115,9 @@ char	*get_next_line(int fd)
 		if (stash[fd] == NULL)
 			return (NULL);
 	}
-	if (!final_line && !stash[fd])
-		return (NULL);
 	final_line = read_and_buf(fd, NULL, stash);
+	if (final_line == 0)
+		free(final_line);
 	if (stash[fd] && stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
 	if (!final_line || final_line[0] == '\0')
