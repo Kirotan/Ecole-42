@@ -104,19 +104,19 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
-	final_line = NULL;
 	if (stash[fd] == NULL)
 	{
-		stash[fd] = ft_calloc(1, 1);
+		stash[fd] = malloc(1);
 		if (stash[fd] == NULL)
 			return (NULL);
+		ft_bzero(stash[fd], 1);
 	}
 	final_line = read_and_buf(fd, NULL, stash);
-	if (final_line == NULL)
-		return (final_line);
+	if (final_line == NULL && stash[fd] == NULL)
+		return (NULL);
 	if (stash[fd] && stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
-	if (!final_line || final_line[0] == '\0')
+	if (!final_line || (final_line && final_line[0] == '\0'))
 	{
 		free(stash[fd]);
 		stash[fd] = NULL;

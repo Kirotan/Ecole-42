@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/20 18:10:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 23:05:59 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,19 +135,6 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*ptr;
-
-	if (size != 0 && nmemb > SIZE_MAX / size)
-		return (0);
-	ptr = (void *)malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
 }
 
 char	*ft_strchr(const char *s, int c)
