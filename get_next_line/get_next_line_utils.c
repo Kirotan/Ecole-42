@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 13:56:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 18:10:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	d;
 	size_t	i;
 
+	if (!dst || !src)
+		return (0);
 	i = 0;
 	d = ft_strlen(dst);
 	if (size <= d)
@@ -35,7 +37,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*result;
 
 	if (!s1 || !s2)
-		return (0);
+		return (NULL);
 	result = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!result)
 		return (0);
@@ -51,7 +53,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	int		j;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	if (len > ft_strlen(s) - start)
@@ -76,6 +78,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	sizesrc;
 	size_t	i;
 
+	if (!dst || !src)
+		return (0);
 	i = 0;
 	sizesrc = ft_strlen(src);
 	if (size != 0)
@@ -94,6 +98,8 @@ void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 
+	if (!s)
+		return ;
 	str = s;
 	while (n > 0)
 	{
@@ -111,7 +117,7 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	str = malloc(ft_strlen(s) + 1);
 	if (!str)
-		return (0);
+		return (NULL);
 	while (s[i] != '\0')
 	{
 		str[i] = s[i];
@@ -125,6 +131,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i] != '\0')
 		i++;
@@ -148,6 +156,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{
