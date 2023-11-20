@@ -29,15 +29,15 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	while(readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
-		buf[readed] = '\0';
-		if (readed == -1)
+		if (readed <= 0)
 		{
 			free(buf);
 			return (NULL);
 		}
-		if (!(stash[fd] == add_buf_to_stash(fd, buf, stash) || (ft_strchr(buf, '\n'))))
+		if ((stash[fd] == add_buf_to_stash(fd, buf, stash) || (ft_strchr(buf, '\n'))))
 			break;
 	}
+	free(buf);
 	return (stash[fd]);
 }
 
@@ -110,48 +110,15 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	final_line = read_and_buf(fd, NULL, stash);
+	if (!final_line && !stash[fd])
+        return (NULL);
+	if (stash[fd] && stash[fd][0] != '\0')
+		final_line = clean_stash(fd, stash);
 	if (!final_line || final_line[0] == '\0')
 	{
 		free(stash[fd]);
 		stash[fd] = NULL;
 		return (NULL);
 	}
-	final_line = clean_stash(fd, stash);
 	return (final_line);
-}
-
-int main(int argc, char **argv)
-{
-    int fd;
-    char *line;
-
-    if (argc != 2)
-    {
-        fprintf(stderr, "Usage: %s test.txt\n", argv[0]);
-        return EXIT_FAILURE;
-    }
-
-    fd = open(argv[1], O_RDONLY);
-    if (fd == -1)
-    {
-        perror("Erreur d'ouverture du fichier");
-        return EXIT_FAILURE;
-    }
-
-    printf("Commence a lire les lignes depuis le fichier: %s\n", argv[1]);
-
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("Ligne lu: [%s]", line);
-        free(line);
-    }
-
-    if (close(fd) == -1)
-    {
-        perror("Erreur, fermeture du fichier.");
-        return EXIT_FAILURE;
-    }
-
-    printf("Fin de lecture du fichier.\n");
-    return EXIT_SUCCESS;
 }

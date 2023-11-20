@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:38:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 13:57:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 12:31:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <limits.h>
 
 //a supprimer
 #include <stdio.h>
 #include <fcntl.h>
 
 # ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+# if (BUFFER_SIZE <= 0 || BUFFER_SIZE > INT_MAX)
 #  define BUFFER_SIZE 42
 # endif
 
@@ -35,5 +40,7 @@ char    *ft_strdup(const char *s);
 size_t  ft_strlen(const char *s);
 void    *ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(const char *s, int c);
+
+//a supprimer
 
 #endif
