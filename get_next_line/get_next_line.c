@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/18 22:04:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/20 20:06:57 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,20 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	while (readed > 0)
 	{
 		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed <= 0)
+		if (readed == 0)
+		{
+			free(buf);
+			return (stash[fd]);
+		}
+		if (readed < 0)
 		{
 			free(buf);
 			return (NULL);
 		}
+		if (readed < BUFFER_SIZE)
+			buf[readed] = '\0';
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
-				|| (ft_strchr(buf, '\n'))))
+				|| (ft_strchr(buf, '\n'))))//si le read ne lit pas la valeur max remplir de \0
 			break ;
 	}
 	free(buf);
@@ -102,7 +109,9 @@ char	*get_next_line(int fd)
 {
 	char		*final_line;
 	static char	*stash[1024];
-
+	
+	if (fd < 0)
+		return (NULL);
 	final_line = NULL;
 	if (stash[fd] == NULL)
 	{
@@ -111,8 +120,8 @@ char	*get_next_line(int fd)
 			return (NULL);
 	}
 	final_line = read_and_buf(fd, NULL, stash);
-	if (final_line == 0)
-		free(final_line);
+	if (final_line == NULL)
+		return (final_line);
 	if (stash[fd] && stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
 	if (!final_line || final_line[0] == '\0')
