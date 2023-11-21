@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/20 22:00:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/21 01:11:32 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 			free(buf);
 			return (NULL);
 		}
-		if (readed < BUFFER_SIZE && )//ici il doit manquer quelaue chose)
+		if (readed < BUFFER_SIZE)//ici il doit manquer quelque chose ou la place n'est pas bonne)
 			buf[readed] = '\0';
 		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
 				|| (ft_strchr(buf, '\n'))))
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 	final_line = read_and_buf(fd, NULL, stash);
 	if (final_line == NULL && stash[fd] == NULL)
 		return (NULL);
-	if (stash[fd] && stash[fd][0] != '\0')
+	if (stash[fd][0] != '\0')
 		final_line = clean_stash(fd, stash);
 	if (!final_line || (final_line && final_line[0] == '\0'))
 	{

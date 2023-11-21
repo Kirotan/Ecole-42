@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
     while ((line = get_next_line(fd)) != NULL)
     {
-        printf("Ligne lu: [%s]", line);
+        printf("Ligne lu: [%s", line);
         free(line);
     }
 
@@ -45,5 +45,24 @@ int main(int argc, char **argv)
     }
 
     printf("Fin de lecture du fichier.\n");
+	fd = open(argv[1], O_RDONLY); 
+   if (fd == -1)
+    {
+        perror("Erreur d'ouverture du fichier");
+        return EXIT_FAILURE;
+    }
+	printf("Commence a lire les lignes depuis le fichier: %s\n", argv[1]);
+
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("Ligne lu: [%s", line);
+        free(line);
+    }
+	if (close(fd) == -1)
+    {
+        perror("Erreur, fermeture du fichier.");
+        return EXIT_FAILURE;
+    }
+	printf("Fin de lecture du fichier.\n");
     return EXIT_SUCCESS;
 }
