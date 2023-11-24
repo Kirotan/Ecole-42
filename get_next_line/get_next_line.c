@@ -69,6 +69,8 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 	int			readed;
 
 	readed = 1;
+	if (BUFFER_SIZE <= 0)
+		return (NULL);
 	while (readed >= 0)
 	{
 		ft_bzero(buf, BUFFER_SIZE + 1);
@@ -91,7 +93,7 @@ char	*get_next_line(int fd)
 	static char	*stash[1024];
 	char		*tmp_buf;
 
-	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
 	tmp_buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!tmp_buf)
