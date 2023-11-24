@@ -6,49 +6,20 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/21 01:11:32 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:59:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*add_buf_to_stash(int fd, char *buf, char **stash);
-char	*clean_stach(int fd, char **stash);
-
-char	*read_and_buf(int fd, char *buf, char **stash)
+size_t	ft_strlen(const char *s)
 {
-	int			readed;
+	size_t	i;
 
-	readed = 1;
-	while (readed >= 0)
-	{
-		ft_bzero(buf, BUFFER_SIZE + 1);
-		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed < 0)
-		{
-			free(stash[fd]);
-			return (NULL);
-		}
-		stash[fd] = add_buf_to_stash(fd, buf, stash);
-		if (stash[fd] && (ft_strchr(stash[fd], '\n') || readed == 0))
-			return (stash[fd]);
-	}
-	return (NULL);
-}
-
-char	*add_buf_to_stash(int fd, char *buf, char **stash)
-{
-	char	*new_stash;
-
-	if (!stash[fd])
-		stash[fd] = ft_strdup(buf);
-	else
-	{
-		new_stash = ft_strjoin(stash[fd], buf);
-		free(stash[fd]);
-		stash[fd] = new_stash;
-	}
-	return (stash[fd]);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 char	*clean_stash(int fd, char **stash)
@@ -76,6 +47,42 @@ char	*clean_stash(int fd, char **stash)
 		return (NULL);
 	}
 	return (line);
+}
+
+char	*add_buf_to_stash(int fd, char *buf, char **stash)
+{
+	char	*new_stash;
+
+	if (!stash[fd])
+		stash[fd] = ft_strdup(buf);
+	else
+	{
+		new_stash = ft_strjoin(stash[fd], buf);
+		free(stash[fd]);
+		stash[fd] = new_stash;
+	}
+	return (stash[fd]);
+}
+
+char	*read_and_buf(int fd, char *buf, char **stash)
+{
+	int			readed;
+
+	readed = 1;
+	while (readed >= 0)
+	{
+		ft_bzero(buf, BUFFER_SIZE + 1);
+		readed = read(fd, buf, BUFFER_SIZE);
+		if (readed < 0)
+		{
+			free(stash[fd]);
+			return (NULL);
+		}
+		stash[fd] = add_buf_to_stash(fd, buf, stash);
+		if (stash[fd] && (ft_strchr(stash[fd], '\n') || readed == 0))
+			return (stash[fd]);
+	}
+	return (NULL);
 }
 
 char	*get_next_line(int fd)

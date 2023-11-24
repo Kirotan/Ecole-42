@@ -6,44 +6,37 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/20 23:05:59 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/24 16:59:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
-{
-	size_t	d;
-	size_t	i;
-
-	if (!dst || !src)
-		return (0);
-	i = 0;
-	d = ft_strlen(dst);
-	if (size <= d)
-		return (size + ft_strlen(src));
-	while (src[i] != '\0' && (d + i) < (size -1))
-	{
-		dst[d + i] = src[i];
-		i++;
-	}
-	dst[d + i] = '\0';
-	return (d + ft_strlen(src));
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
+	char	*str;
+	size_t	i;
+	size_t	all_size;
 
 	if (!s1 || !s2)
+	{
+		if (s1)
+			return (ft_strdup(s1));
+		else if (s2)
+			return (ft_strdup(""));
 		return (NULL);
-	result = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!result)
-		return (0);
-	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
-	ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
-	return (result);
+	}
+	all_size = ft_strlen(s2) + ft_strlen(s1);
+	str = (char *)malloc((all_size + 1) * sizeof(char));
+	if (!str)
+		return (str);
+	i = 0;
+	while (*s1)
+		str[i++] = *s1++;
+	while (*s2)
+		str[i++] = *s2++;
+	str[i] = '\0';
+	return (str);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
@@ -71,27 +64,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	ptr[i] = '\0';
 	return (ptr);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	sizesrc;
-	size_t	i;
-
-	if (!dst || !src)
-		return (0);
-	i = 0;
-	sizesrc = ft_strlen(src);
-	if (size != 0)
-	{
-		while (src[i] != '\0' && i < (size - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (sizesrc);
 }
 
 void	ft_bzero(void *s, size_t n)
@@ -125,16 +97,6 @@ char	*ft_strdup(const char *s)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }
 
 char	*ft_strchr(const char *s, int c)
