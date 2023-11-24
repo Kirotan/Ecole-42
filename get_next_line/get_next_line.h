@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:38:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/11/24 18:22:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/11/24 19:55:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <limits.h>
-
-//a supp
-# include <stdio.h>
-# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
