@@ -1,5 +1,0 @@
-Le test
-fonctionne presque
-mais pas vraiment
-en faite
-...
