@@ -19,49 +19,32 @@ char	*read_and_buf(int fd, char *buf, char **stash)
 {
 	int			readed;
 
-	buf = malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (NULL);
-	ft_bzero(buf, BUFFER_SIZE + 1);
 	readed = 1;
-	while (readed > 0)
+	while (readed >= 0)
 	{
+		ft_bzero(buf, BUFFER_SIZE + 1);
 		readed = read(fd, buf, BUFFER_SIZE);
-		if (readed <= 0)
+		if (readed < 0)
 		{
-			free(buf);
+			free(stash[fd]);
 			return (NULL);
 		}
-		if (readed < BUFFER_SIZE)//ici il doit manquer quelque chose ou la place n'est pas bonne)
-			buf[readed] = '\0';
-		if ((stash[fd] == add_buf_to_stash(fd, buf, stash)
-				|| (ft_strchr(buf, '\n'))))
-			break ;
+		stash[fd] = add_buf_to_stash(fd, buf, stash);
+		if (stash[fd] && (ft_strchr(stash[fd], '\n') || readed == 0))
+			return (stash[fd]);
 	}
-	free(buf);
-	return (stash[fd]);
+	return (NULL);
 }
 
 char	*add_buf_to_stash(int fd, char *buf, char **stash)
 {
-	char	*tmp;
 	char	*new_stash;
 
 	if (!stash[fd])
-	{
 		stash[fd] = ft_strdup(buf);
-		if (!stash[fd])
-			return (NULL);
-	}
 	else
 	{
-		tmp = ft_strdup(stash[fd]);
-		if (!tmp)
-			return (NULL);
-		new_stash = ft_strjoin(tmp, buf);
-		free(tmp);
-		if (!new_stash)
-			return (NULL);
+		new_stash = ft_strjoin(stash[fd], buf);
 		free(stash[fd]);
 		stash[fd] = new_stash;
 	}
@@ -75,20 +58,23 @@ char	*clean_stash(int fd, char **stash)
 	char	*time;
 
 	end = 0;
+	if (!stash[fd])
+		return (NULL);
 	while (stash[fd][end] && stash[fd][end] != '\n')
 		end++;
 	if (stash[fd][end] == '\n')
 		end++;
 	line = ft_substr(stash[fd], 0, end);
-	if (!line)
-		return (NULL);
-	time = ft_substr(stash[fd], end, ft_strlen(stash[fd] + end));
-	if (!time)
-		return (NULL);
+	time = ft_substr(stash[fd], end, ft_strlen(&stash[fd][end]));
 	free(stash[fd]);
 	stash[fd] = time;
-	if (!stash[fd])
+	if (!line || !time || ft_strlen(line) == 0)
+	{
+		free(stash[fd]);
+		free(line);
+		stash[fd] = NULL;
 		return (NULL);
+	}
 	return (line);
 }
 
@@ -96,26 +82,17 @@ char	*get_next_line(int fd)
 {
 	char		*final_line;
 	static char	*stash[1024];
+	char		*tmp_buf;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
-	if (stash[fd] == NULL)
-	{
-		stash[fd] = malloc(1);
-		if (stash[fd] == NULL)
-			return (NULL);
-		stash[fd][0] = '\0';
-	}
-	final_line = read_and_buf(fd, NULL, stash);
-	if (final_line == NULL && stash[fd] == NULL)
+	tmp_buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!tmp_buf)
 		return (NULL);
-	if (stash[fd][0] != '\0')
-		final_line = clean_stash(fd, stash);
-	if (!final_line || (final_line && final_line[0] == '\0'))
-	{
-		free(stash[fd]);
-		stash[fd] = NULL;
+	stash[fd] = read_and_buf(fd, tmp_buf, stash);
+	free(tmp_buf);
+	if (!stash[fd])
 		return (NULL);
-	}
+	final_line = clean_stash(fd, stash);
 	return (final_line);
 }
