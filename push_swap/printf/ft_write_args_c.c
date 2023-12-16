@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_write_args_c.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:13:07 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 14:05:46 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 12:46:25 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 12:49:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-# include <limits.h>
-# include <stdbool.h>
-# include "./libft/libft.h"
-# include "./printf/ft_printf.h"
-
-typedef struc dbl_list
+int	ft_write_args_c(va_list args)
 {
-	void	*content;
-	struct	dbl_list *prev;
-	struct	dbl_list *next;
-}	dbl_list;
+	char	tmp;
 
-#endif
+	tmp = (char)va_arg(args, int);
+	if (ft_putchar_fd(tmp, 1) == -1)
+		return (-1);
+	return (1);
+}

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_write_args_percent.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 17:13:07 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 14:05:46 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 22:43:37 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 22:43:37 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ft_printf.h"
 
-# include <limits.h>
-# include <stdbool.h>
-# include "./libft/libft.h"
-# include "./printf/ft_printf.h"
-
-typedef struc dbl_list
+int	ft_write_args_percent(char c)
 {
-	void	*content;
-	struct	dbl_list *prev;
-	struct	dbl_list *next;
-}	dbl_list;
-
-#endif
+	ft_putchar_fd(c, 1);
+	return (1);
+}

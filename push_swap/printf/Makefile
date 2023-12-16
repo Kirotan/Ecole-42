@@ -6,48 +6,40 @@
 #    By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2023/12/16 13:50:33 by gdoumer          ###   ########.fr        #
+#    Updated: 2023/12/16 13:53:34 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= push_swap.a
+NAME			= printf.a
 CFLAGS			= -Wall -Wextra -Werror
 CC				= gcc
-PRINTF_DIR		=./printf
-PRINTF_NAME		= printf.a
 LIBFT_DIR		=./libft
 LIBFT_NAME		= libft.a
 
-SRC_FILES	=	push_swap.c \
+SRC_FILES	=	ft_printf.c \
+				ft_write_args_c.c \
+				ft_write_args_d.c \
+				ft_write_args_u.c \
+				ft_write_args_percent.c \
+				ft_write_args_x.c \
+				ft_write_args_p.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
 
 all: ${NAME}
 
-${NAME}: ${LIBFT_DIR}/${LIBFT_NAME} ${PRINTF_DIR}/${PRINTF_NAME} ${OBJ_FILES}
+${NAME}: ../libft.a ${OBJ_FILES}
 	ar rcs $@ ${OBJ_FILES}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
-./libft/libft.a:
-	make -C ${LIBFT_DIR}
-	cp ${LIBFT_DIR}/${LIBFT_NAME} .
-
-./printf/printf.a:
-	make -C ${PRINTF_DIR}
-	cp ${PRINTF_DIR}/${PRINTF_NAME} .
-
 clean:
 	rm -f ${OBJ_FILES}
-	make -C $(LIBFT_DIR) clean
-	make -C $(PRINTF_DIR) clean
 
 fclean: clean
-	rm -f ${NAME} ${LIBFT_NAME} ${PRINTF_NAME}
-	make -C $(LIBFT_DIR) fclean
-	make -C $(PRINTF_DIR) fclean
+	rm -f ${NAME}
 
 re: fclean all
 

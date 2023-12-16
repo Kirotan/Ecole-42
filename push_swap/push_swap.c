@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:12:50 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/04 19:04:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/16 13:27:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	*push_swap()
 {
+	int	l;
 
+	l = 1;
+	l = l + 1;
 }
 
 int	main(int argc, char **argv)
@@ -26,6 +29,6 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	nb_argc = count_argc(argv);
-	a = flood_list(*a);
+	a = fill_list(**a, nb_argc, argv);
 	return (0);
 }

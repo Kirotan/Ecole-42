@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 11:16:27 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/04 18:14:34 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/16 13:29:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *nptr)
 	int		nbr;
 
 	if (!nptr)
-		return (NULL);
+		return (0);
 	i = 0;
 	sign = 1;
 	nbr = 0;
