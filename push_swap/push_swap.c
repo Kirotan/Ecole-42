@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:12:50 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 13:27:39 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/18 17:07:51 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 void	*push_swap()
 {
-	int	l;
-
-	l = 1;
-	l = l + 1;
 }
 
 int	main(int argc, char **argv)
 {
 	dbl_list	a;
 	dbl_list	b;
-	int			nb_argc;
+	int			nb_words;
 
-	if (argc == 1)
+	if (argc < 2 || !argv[1][0])
 		return (0);
-	nb_argc = count_argc(argv);
-	a = fill_list(**a, nb_argc, argv);
+	if (argc == 2)
+	{
+		nb_words = count_words(argv[1]);
+		a.quelquechose = ft_split(argv[1], ' ');
+		error_or_not(nb_words, a);
+	}
+	if (argc > 2)
+	{
+		error_or_not(argc, argv);
+	}
 	return (0);
 }

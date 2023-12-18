@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:32:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/30 16:11:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:16:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *s)
 	char	*str;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	str = malloc(ft_strlen(s) + 1);
 	if (!str)

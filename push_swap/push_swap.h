@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:13:07 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 14:05:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/16 14:20:22 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,14 @@
 # include "./libft/libft.h"
 # include "./printf/ft_printf.h"
 
-typedef struc dbl_list
+typedef struc double_list
 {
-	void	*content;
+	int		content;
+	int		cost;
+	int		index;
+	bool	top_middle;
+	bool	cheap;
+	struct	dbl_list *target_node;
 	struct	dbl_list *prev;
 	struct	dbl_list *next;
 }	dbl_list;

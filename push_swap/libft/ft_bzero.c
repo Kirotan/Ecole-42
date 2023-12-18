@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:48:34 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/30 16:39:24 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/18 10:42:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*str;
 
+	if (!s)
+		return ;
 	str = s;
 	while (n > 0)
 	{
