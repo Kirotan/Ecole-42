@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:23:13 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/20 16:21:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/20 16:47:11 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	check_duplication(int argc, char **argv)
 	while (i < argc)
 	{
 		j = i + 1;
-		while (j < argc - 1)
+		while (j < argc)
 		{
 			if (atoi(argv[i]) == atoi(argv[j]))
 				return (ft_printf("Error\n"));

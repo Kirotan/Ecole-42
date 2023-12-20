@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:12:50 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/20 10:00:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/20 17:37:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int	main(int argc, char **argv)
 {
 	char		**tab;
-	dbl_list	a;
-	dbl_list	b;
+	dbl_list	*a;
+	dbl_list	*b;
 	int			nb_words;
 
 	if (argc < 2 || !argv[1][0])
 		return (0);
+	a = ft_lstnew(0);
+	b = ft_lstnew(0);
 	if (argc == 2)
 	{
 		nb_words = count_words(argv[1]);
