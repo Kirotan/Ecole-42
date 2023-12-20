@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:13:07 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 14:20:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2023/12/19 18:11:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struc double_list
 	int		cost;
 	int		index;
 	bool	top_middle;
-	bool	cheap;
+	bool	cheapest;
 	struct	dbl_list *target_node;
 	struct	dbl_list *prev;
 	struct	dbl_list *next;
