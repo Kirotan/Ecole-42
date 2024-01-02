@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 18:11:11 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/01 18:51:51 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/02 15:45:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char ** argv)
+int	main(int argc, char **argv)
 {
-	dlist	*d_a;
-	dlist	*d_b;
+	dlist	*dl_a;
+	dlist	*dl_b;
 
-	verif_nb_argc(argc, argv);
-
-	return (0);
+	check_error(argc, argv);
 }

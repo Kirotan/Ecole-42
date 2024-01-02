@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/01 18:13:19 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/01 18:29:42 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/02 17:51:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,20 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
-typedef struct double_list_chained
+typedef struct double_list_chain
 {
-	size_t						length;
-	struct double_list_chained	*lst_head;
-	struct double_list_chained	*lst_tail;
-}	dlist;
+	size_t						lenght;
+	struct double_list_chain	*dl_head;
+	struct double_list_chain	*dl_tail;
+}	t_dlist;
 
-typedef struct p_node
+typedef struct node_for_dbl_list_chain
 {
-	int				data;
-	struct p_node	*p_prev;
-	struct p_node	*p_next;
-}	node;
+	int								data;
+	struct node_for_dbl_list_chain	*n_prev;
+	struct node_for_dbl_list_chain	*n_next;
+}	t_node;
 
 #endif
