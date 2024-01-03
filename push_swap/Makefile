@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/03 14:19:30 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/03 16:33:51 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,9 @@ all: ${NAME}
 
 ${NAME}: ${LIBFT_DIR}/${LIBFT_NAME} ${PRINTF_DIR}/${PRINTF_NAME} ${OBJ_FILES}
 	ar rcs $@ ${OBJ_FILES}
+	ar -x ${LIBFT_NAME}
+	ar -x ${PRINTF_NAME}
+	ar rcs $@ *.o
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
@@ -37,12 +40,13 @@ ${NAME}: ${LIBFT_DIR}/${LIBFT_NAME} ${PRINTF_DIR}/${PRINTF_NAME} ${OBJ_FILES}
 	make -C ${LIBFT_DIR}
 	cp ${LIBFT_DIR}/${LIBFT_NAME} .
 
-./printf/printf.a:
+${PRINTF_DIR}/${PRINTF_NAME}:
 	make -C ${PRINTF_DIR}
 	cp ${PRINTF_DIR}/${PRINTF_NAME} .
 
 clean:
 	rm -f ${OBJ_FILES}
+	rm -f *.o
 	make -C $(LIBFT_DIR) clean
 	make -C $(PRINTF_DIR) clean
 
