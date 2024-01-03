@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/02 19:11:31 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:22:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@ void	duplication(int argc, char **argv)
 	int	tmp;
 
 	i = 1;
-	
-	while (i++ <= argc)
+	while (++i <= argc)
 	{
-		j = 1;
-		tmp = ft_atoi(argv[i]);
-		while ()
+		j = 2;
+		nb = ft_atoi(argv[i]);
+		while (j <= argc)
+		{
+			tmp = ft_atoi(argv[j]);
+			if (i == j && j < argc)
+				j++;
+			if (nb == tmp)
+				generate_message_error();
+		}
+		i++;
 	}
 }
 
@@ -38,12 +45,12 @@ void	is_it_number(char *argv)
 	while (argv[i])
 	{
 		if (!((argv[i] >= '0' || argv[i] <= '9') || (argv[i] == '-' || argv[i] == '+')))
-			return (ft_printf("Error\n"));
+			generate_message_error();
 		i++;
 	}
 	nb = ft_atoi(argv);
 	if (nb > INT_MAX || nb < INT_MIN)
-		return (ft_printf("Error\n"));
+		generate_message_error();
 	return ;
 }
 

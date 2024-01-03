@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_write_args_c.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 14:22:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 12:46:25 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/09 12:49:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	ft_write_args_c(va_list args)
 {
-	dlist	*dl_a;
-	dlist	*dl_b;
+	char	tmp;
 
-	check_error(argc, argv);
+	tmp = (char)va_arg(args, int);
+	if (ft_putchar_fd(tmp, 1) == -1)
+		return (-1);
+	return (1);
 }

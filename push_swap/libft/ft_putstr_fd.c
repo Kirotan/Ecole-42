@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 14:22:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/27 12:56:39 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/11/10 17:23:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_putstr_fd(char *s, int fd)
 {
-	dlist	*dl_a;
-	dlist	*dl_b;
-
-	check_error(argc, argv);
+	if (!s)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	if (write(fd, s, ft_strlen(s)) == -1)
+		return (-1);
+	return (ft_strlen(s));
 }

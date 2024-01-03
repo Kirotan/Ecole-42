@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 14:22:15 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/30 10:30:35 by gdoumer           #+#    #+#             */
+/*   Updated: 2023/12/18 10:47:58 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_lstsize(t_list *lst)
 {
-	dlist	*dl_a;
-	dlist	*dl_b;
+	int	len;
 
-	check_error(argc, argv);
+	if (!lst)
+		return (0);
+	len = 0;
+	if (lst != NULL)
+	{
+		len++;
+		while (lst->next != NULL)
+		{
+			len++;
+			lst = lst->next;
+		}
+	}
+	return (len);
 }
