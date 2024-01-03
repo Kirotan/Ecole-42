@@ -39,7 +39,14 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_putchar_fd.c \
 				ft_putstr_fd.c \
 				ft_putendl_fd.c \
-				ft_putnbr_fd.c
+				ft_putnbr_fd.c \
+				ft_printf.c \
+				ft_write_args_c.c \
+				ft_write_args_d.c \
+				ft_write_args_u.c \
+				ft_write_args_percent.c \
+				ft_write_args_x.c \
+				ft_write_args_p.c
 
 BONUS_FILES	=	ft_lstadd_front.c \
 				ft_lstsize.c \

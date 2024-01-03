@@ -6,7 +6,7 @@
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:29:13 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/20 17:13:56 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/03 16:51:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -70,5 +71,13 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+int	ft_printf(const char *format, ...);
+int	ft_write_args_c(va_list args);
+int	ft_write_args_d(va_list args);
+int	ft_write_args_u(va_list args);
+int	ft_write_args_percent(char c);
+int	ft_write_args_x(int args, char cha);
+int	ft_write_args_p(unsigned long long adress);
 
 #endif 

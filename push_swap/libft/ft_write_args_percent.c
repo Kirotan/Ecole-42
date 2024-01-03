@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_write_args_percent.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 15:17:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/12/16 13:25:39 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/11/09 22:43:37 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/03 16:55:33 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include "../libft/libft.h"
-
-int	ft_printf(const char *format, ...);
-int	ft_write_args_c(va_list args);
-int	ft_write_args_d(va_list args);
-int	ft_write_args_u(va_list args);
-int	ft_write_args_percent(char c);
-int	ft_write_args_x(int args, char cha);
-int	ft_write_args_p(unsigned long long adress);
-
-#endif
+int	ft_write_args_percent(char c)
+{
+	ft_putchar_fd(c, 1);
+	return (1);
+}
