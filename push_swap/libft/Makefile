@@ -46,19 +46,18 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_write_args_u.c \
 				ft_write_args_percent.c \
 				ft_write_args_x.c \
-				ft_write_args_p.c
-
-BONUS_FILES	=	ft_lstadd_front.c \
+				ft_write_args_p.c \
+				ft_lstadd_front.c \
 				ft_lstsize.c \
 				ft_lstlast.c \
 				ft_lstadd_back.c \
 				ft_lstdelone.c \
 				ft_lstclear.c \
 				ft_lstiter.c \
-				ft_lstmap.c
+				ft_lstmap.c \
+				ft_lstnew.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
-BONUS_OBJ	= ${BONUS_FILES:.c=.o}
 
 #REGLES
 
@@ -66,9 +65,6 @@ all: ${NAME}
 
 ${NAME}: ${OBJ_FILES}
 	ar rcs $@  ${OBJ_FILES}
-
-bonus: $(BONUS_OBJ) | $(NAME)
-	ar rs $(NAME) $^
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
