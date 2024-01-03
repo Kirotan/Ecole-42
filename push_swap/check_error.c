@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 18:55:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/03 19:00:51 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	is_it_number(char *argv)
 		i++;
 	}
 	nb = ft_atoi(argv);
+	ft_printf("%d\n", nb);
 	if (nb > INT_MAX || nb < INT_MIN)
 	{
 		generate_message_error();
