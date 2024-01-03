@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 14:22:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:30:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	dlist	*dl_a;
-	dlist	*dl_b;
-
+/*	t_dlist	*dl_a;
+	t_dlist	*dl_b;
+*/
 	check_error(argc, argv);
+	return (0);
 }
