@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   new_double_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/04 13:20:23 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/04 15:28:20 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/04 16:14:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+t_dlist	*new_double_list(long number)
 {
-	t_dlist	*dl_a;
-	t_dlist	*dl_b;
+	t_dlist	*node;
 
-	check_error(argc, argv);
-	dl_a = initialize_double_list(argc, argv);
-	dl_b = NULL;
-	return (0);
+	node = (t_dlist *)ft_calloc(1, sizeof(t_dlist));
+	node->data = number;
+	node->dl_prev = node;
+	node->dl_next = node;
+	return (node);
 }

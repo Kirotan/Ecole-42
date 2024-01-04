@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 17:00:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/04 15:42:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,14 @@
 
 typedef struct double_list_chain
 {
-	size_t						lenght;
-	struct double_list_chain	*dl_head;
-	struct double_list_chain	*dl_tail;
+	long						data;
+	struct double_list_chain	*dl_prev;
+	struct double_list_chain	*dl_next;
 }	t_dlist;
-
-typedef struct node_for_dbl_list_chain
-{
-	int								data;
-	struct node_for_dbl_list_chain	*n_prev;
-	struct node_for_dbl_list_chain	*n_next;
-}	t_node;
 
 void	check_error(int argc, char **argv);
 int		generate_message_error(void);
+t_dlist	*initialize_double_list(int argc, char **argv);
+t_dlist	*new_double_list(long number);
 
 #endif
