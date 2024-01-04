@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_double_list.c                                  :+:      :+:    :+:   */
+/*   back_add_double_list.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 15:28:20 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/04 18:45:41 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/04 16:57:26 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/04 19:25:34 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_dlist	*new_double_list(long number)
+void	back_add_double_list(t_dlist **double_list, t_dlist *new)
 {
-	t_dlist	*node;
+	t_dlist	*last;
 
-	node = (t_dlist *)ft_calloc(1, sizeof(t_dlist));
-	if (!node)
-		return (NULL);
-	node->data = number;
-	node->dl_prev = node;
-	node->dl_next = node;
-	return (node);
+	if (!double_list)
+		return ;
+	if (!*double_list)
+		*double_list = new;
+	else
+	{
+		last = (*double_list)->dl_prev;
+		last->dl_next = new;
+		new->dl_prev = last;
+		new->dl_next = *double_list;
+		(*double_list)->dl_prev = new;
+	}
 }
