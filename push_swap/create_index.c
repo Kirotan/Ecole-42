@@ -6,25 +6,11 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:38:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 23:49:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/06 00:01:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	fill_index(t_dlist **dl_a, long mini_value, size_t *index, size_t length)
-{
-	size_t	k;
-
-	k = 0;
-	while (k < length)
-	{
-		if (mini_value == (*dl_a)->data)
-			(*dl_a)->index = *index;
-		(*dl_a) = (*dl_a)->dl_next;
-		k++;
-	}
-}
 
 static long	find_mini_value(t_dlist **dl_a, size_t length)
 {
@@ -59,13 +45,21 @@ void	create_index(t_dlist **dl_a, size_t length)
 	size_t	index;
 	long	minimal_value;
 	size_t	i;
+	size_t	k;
 
 	index = 1;
 	i = 0;
 	while (i < length)
 	{
 		minimal_value = find_mini_value(dl_a, length);
-		fill_index(dl_a, minimal_value, &index, length);
+		k = 0;
+		while (k < length)
+		{
+			if (minimal_value == (*dl_a)->data)
+				(*dl_a)->index = index;
+			(*dl_a) = (*dl_a)->dl_next;
+			k++;
+		}
 		index ++;
 		i++;
 	}
