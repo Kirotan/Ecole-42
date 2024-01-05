@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:38:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 21:13:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 21:34:07 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ static long	find_mini_value(t_dlist **dl_a, size_t length, long current_value)
 	t_dlist	*tmp;
 	long	mini_value;
 
-	j = 1;
-	tmp = (*dl_a)->dl_next;
+	j = 0;
+	tmp = *dl_a;
 	mini_value = current_value;
 	while (j < length)
 	{
-		if (tmp->data < current_value)
+		if (tmp->data < mini_value)
 		{
 			mini_value = tmp->data;
 		}
-		tmp = (*dl_a)->dl_next;
+		tmp = tmp->dl_next;
 		j++;
 	}
 	return (mini_value);
