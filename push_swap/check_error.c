@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 15:18:51 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 16:06:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	duplication(int argc, char **argv)
 			if (nb == tmp)
 			{
 				generate_message_error();
-				exit(0);
+				exit(EXIT_SUCCESS);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ void	is_it_number(char *argv)
 		if (!((argv[i] >= '0' && argv[i] <= '9') || (argv[i] == '-' || argv[i] == '+')))
 		{
 			generate_message_error();
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		i++;
 	}
@@ -60,7 +60,7 @@ void	is_it_number(char *argv)
 	if (nb > INT_MAX || nb < INT_MIN)
 	{
 		generate_message_error();
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	return ;
 }
