@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:28:20 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/04 18:45:41 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 14:49:42 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_dlist	*new_double_list(long number)
 	if (!node)
 		return (NULL);
 	node->data = number;
+	node->index = 0;
 	node->dl_prev = node;
 	node->dl_next = node;
 	return (node);

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   back_add_double_list.c                             :+:      :+:    :+:   */
+/*   length_double_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/04 16:57:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 14:06:17 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/05 15:00:12 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/05 15:47:51 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	back_add_double_list(t_dlist **double_list, t_dlist *new)
+size_t	length_double_list(t_dlist **dl_a)
 {
-	t_dlist	*last;
+	size_t	length;
+	t_dlist	*tmp;
+	long	*start;
 
-	if (!double_list)
-		return ;
-	if (!*double_list)
-		*double_list = new;
-	else
+	length = 0;
+	tmp = *dl_a;
+	start = tmp->data;
+	while (length < start)
 	{
-		last = (*double_list)->dl_prev;
-		last->dl_next = new;
-		new->dl_prev = last;
-		new->dl_next = *double_list;
-		(*double_list)->dl_prev = new;
+
 	}
 }
