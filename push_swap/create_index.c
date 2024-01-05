@@ -6,29 +6,36 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:38:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 21:50:55 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 22:37:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
+static void	fill_index(t_dlist **dl_a, long mini_value, size_t *index)
+{
+	while (*index != (*dl_a)->index)
+	{
+		if (mini_value == (*dl_a)->data)
+			(*dl_a)->index = *index;
+		(*dl_a) = (*dl_a)->dl_next;
+	}
+}
 
 static long	find_mini_value(t_dlist **dl_a, size_t length)
 {
 	size_t	j;
+	t_dlist	*tmp;
 	long	mini_value;
 
 	j = 0;
-	mini_value = (*dl_a)->data;
+	tmp = (*dl_a);
+	mini_value = tmp->data;
 	while (j < length)
 	{
-		if ((*dl_a)->data < mini_value)
-		{
-			mini_value = (*dl_a)->data;
-
-		}
-		(*dl_a) = (*dl_a)->dl_next;
+		if (tmp->data < mini_value)
+			mini_value = tmp->data;
+		tmp = tmp->dl_next;
 		j++;
 	}
 	return (mini_value);
@@ -36,16 +43,19 @@ static long	find_mini_value(t_dlist **dl_a, size_t length)
 
 void	create_index(t_dlist **dl_a, size_t length)
 {
-//	size_t	index;
+	size_t	index;
 	long	minimal_value;
 	size_t	i;
 
-//	index = 0;
+	index = 1;
 	i = 0;
 	while (i < length)
 	{
 		minimal_value = find_mini_value(dl_a, length);
-		printf("%ld\n", minimal_value);
+		fill_index(dl_a, minimal_value, &index);
+		printf("Mini : %ld ", minimal_value);
+		printf("Index : %ld\n", index);
+		index ++;
 		i++;
 	}
 }
