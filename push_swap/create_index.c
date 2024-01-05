@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:38:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 23:17:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 23:33:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ static void	fill_index(t_dlist **dl_a, long mini_value, size_t *index)
 	while (*index != (*dl_a)->index)
 	{
 		if (mini_value == (*dl_a)->data)
-		{
 			(*dl_a)->index = *index;
-			printf("Num : %ld", (*dl_a)->data);
-			printf("Index : %ld\n", (*dl_a)->index);
-		}
 		(*dl_a) = (*dl_a)->dl_next;
 	}
 }
