@@ -6,8 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:38:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 14:58:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 19:23:12 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	create_index(t_dlist **dl_a, size_t index)
+{
+
+}

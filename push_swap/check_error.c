@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 16:06:39 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 19:24:54 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	duplication(int argc, char **argv)
+static	void	duplication(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -41,7 +41,7 @@ void	duplication(int argc, char **argv)
 	}
 }
 
-void	is_it_number(char *argv)
+static	void	is_it_number(char *argv)
 {
 	long	nb;
 	int		i;
@@ -49,7 +49,8 @@ void	is_it_number(char *argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (!((argv[i] >= '0' && argv[i] <= '9') || (argv[i] == '-' || argv[i] == '+')))
+		if (!((argv[i] >= '0' && argv[i] <= '9')
+				|| (argv[i] == '-' || argv[i] == '+')))
 		{
 			generate_message_error();
 			exit(EXIT_SUCCESS);
