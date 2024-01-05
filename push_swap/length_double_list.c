@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 15:00:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 17:28:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/05 17:31:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ size_t	length_double_list(t_dlist **dl_a)
 			return (length);
 		length++;
 	}
-	return (0);
+	return (length - 1);
 }
