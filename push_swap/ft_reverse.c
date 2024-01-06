@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 18:43:57 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/06 22:12:55 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	change_last(t_dlist **double_list)
+static void	change_last(t_dlist **double_list)
 {
 	*double_list = (*double_list)->dl_prev;
 }

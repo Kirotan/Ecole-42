@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 19:10:43 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/06 22:14:15 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,14 @@ void	create_index(t_dlist **dl_a, size_t index);
 void	swap_a(t_dlist **dl_a);
 void	swap_b(t_dlist **dl_b);
 void	swap_both(t_dlist **dl_a, t_dlist **dl_b);
+void	rotate_a(t_dlist **dl_a);
+void	rotate_b(t_dlist **dl_b);
+void	rotate_both(t_dlist **dl_a, t_dlist **dl_b);
+void	reverse_a(t_dlist **dl_a);
+void	reverse_b(t_dlist **dl_b);
+void	reverse_both(t_dlist **dl_a, t_dlist **dl_b);
+void	push_a(t_dlist **dl_a, t_dlist **dl_b);
+void	push_b(t_dlist **dl_a, t_dlist **dl_b);
 void	delete_node(t_dlist **double_list, t_dlist *node_to_delete);
 
 #endif
