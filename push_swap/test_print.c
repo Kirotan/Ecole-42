@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   test_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 15:00:18 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/06 14:49:32 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/06 14:59:15 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	test_print(t_dlist *dl_a)
 {
-	t_dlist	*dl_a;
-	t_dlist	*dl_b;
+	t_dlist	*tmp;
 
-	check_error(argc, argv);
-	dl_a = initialize_double_list(argc, argv);
-	dl_b = NULL;
-	create_index(&dl_a, length_double_list(&dl_a));
-	test_print(dl_a);
-	return (0);
+	if (!dl_a)
+		return ;
+	tmp = dl_a;
+	while (tmp->dl_next != dl_a)
+	{
+		printf("Data : %ld | Index: %ld\n", tmp->data, tmp->index);
+		tmp = tmp->dl_next;
+	}
+	printf("Data : %ld | Index: %ld\n", tmp->data, tmp->index);
+	return ;
 }

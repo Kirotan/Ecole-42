@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/05 15:43:51 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/06 14:50:39 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,12 @@ SRC_FILES	=	push_swap.c \
 				new_double_list.c \
 				back_add_double_list.c \
 				length_double_list.c \
-				create_index.c
+				create_index.c \
+				ft_push.c \
+				ft_swap.c \
+				ft_rotate.c \
+				ft_reverse.c \
+				test_print.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
 
