@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 14:51:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/06 16:24:09 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	check_error(int argc, char **argv);
 int		generate_message_error(void);
 t_dlist	*initialize_double_list(int argc, char **argv);
 t_dlist	*new_double_list(long number);
+void	front_add_double_list(t_dlist **double_list, t_dlist *new);
 void	back_add_double_list(t_dlist **double_list, t_dlist *new);
 size_t	length_double_list(t_dlist **dl_a);
 void	create_index(t_dlist **dl_a, size_t index);

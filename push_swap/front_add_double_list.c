@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   front_add_double_list.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 14:41:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 15:27:13 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/06 15:31:56 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/06 17:40:55 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ss(t_dlist **dl_a, t_dlist **dl_b)
+void	front_add_double_list(t_dlist **double_list, t_dlist *new)
 {
+	if (!*double_list)
+	{
+		*double_list = new;
+		new->dl_prev = new;
+		new->dl_next = new;
+	}
+	else
+	{
+		new->dl_prev = (*double_list)->dl_prev;
+		new->dl_next = *double_list;
+		new->dl_prev->dl_next = new;
+		(*double_list)->dl_prev = new;
 
-}
-
-void	sb(t_dlist **dl_b)
-{
-
-}
-
-void	sa(t_dlist **dl_a)
-{
-
+	}
 }
