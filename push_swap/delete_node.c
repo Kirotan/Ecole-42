@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   length_double_list.c                               :+:      :+:    :+:   */
+/*   delete_node.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 15:00:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 18:56:23 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/06 18:57:06 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/06 19:07:32 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	length_double_list(t_dlist **dl_a)
+void	delete_node(t_dlist **double_list, t_dlist	*node_to_delete)
 {
-	size_t	length;
-	t_dlist	*tmp;
-	long	start;
-
-	if (!dl_a)
-		return (0);
-	if (!(*dl_a))
-		return (0);
-	length = 2;
-	tmp = *dl_a;
-	start = tmp->data;
-	tmp = tmp->dl_next;
-	while (start != tmp->data)
+	if (!double_list || !node_to_delete || length_double_list(double_list) = 1)
+		return ;
+	if (*double_list == node_to_delete)
 	{
-		tmp = tmp->dl_next;
-		if (start == tmp->data)
-			return (length);
-		length++;
+
 	}
-	return (length - 1);
 }
