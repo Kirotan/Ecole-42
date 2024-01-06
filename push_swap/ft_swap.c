@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 14:41:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 18:24:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/06 18:30:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ void	swap_double_list(t_dlist **double_list)
 
 void	swap_both(t_dlist **dl_a, t_dlist **dl_b)
 {
-
+	if (*dl_a && *dl_b)
+	{
+		swap_double_list(dl_a);
+		swap_double_list(dl_b);
+	}
+	ft_printf("ss\n");
 }
 
 void	swap_b(t_dlist **dl_b)
