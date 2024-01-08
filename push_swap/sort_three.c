@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 13:41:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/08 17:30:59 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/08 19:07:53 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,25 @@ void	sort_three_a(t_dlist **dl_a)
 
 void	sort_three_b(t_dlist **dl_b)
 {
-	if ((*dl_b)->index < (*dl_b)->dl_next->index
-		&& (*dl_b)->dl_next->index > (*dl_b)->dl_next->dl_next->index)
+	if ((*dl_b)->index > (*dl_b)->dl_next->index
+		&& (*dl_b)->dl_next->index < (*dl_b)->dl_next->dl_next->index)
 	{
 		reverse_b(dl_b);
 		swap_b(dl_b);
 	}
-	if ((*dl_b)->index > (*dl_b)->dl_next->index
-		&& (*dl_b)->dl_next->index < (*dl_b)->dl_next->dl_next->index
-		&& (*dl_b)->index < (*dl_b)->dl_prev->index)
-		swap_b(dl_b);
 	if ((*dl_b)->index < (*dl_b)->dl_next->index
-		&& (*dl_b)->dl_next->index > (*dl_b)->dl_next->dl_next->index)
-		reverse_b(dl_b);
-	if ((*dl_b)->index > (*dl_b)->dl_next->index
-		&& (*dl_b)->dl_next->index < (*dl_b)->dl_next->dl_next->index
+		&& (*dl_b)->dl_next->index > (*dl_b)->dl_next->dl_next->index
 		&& (*dl_b)->index > (*dl_b)->dl_prev->index)
-		rotate_b(dl_b);
+		swap_b(dl_b);
 	if ((*dl_b)->index > (*dl_b)->dl_next->index
-		&& (*dl_b)->dl_next->index > (*dl_b)->dl_next->dl_next->index)
+		&& (*dl_b)->dl_next->index < (*dl_b)->dl_next->dl_next->index)
+		reverse_b(dl_b);
+	if ((*dl_b)->index < (*dl_b)->dl_next->index
+		&& (*dl_b)->dl_next->index > (*dl_b)->dl_next->dl_next->index
+		&& (*dl_b)->index < (*dl_b)->dl_prev->index)
+		rotate_b(dl_b);
+	if ((*dl_b)->index < (*dl_b)->dl_next->index
+		&& (*dl_b)->dl_next->index < (*dl_b)->dl_next->dl_next->index)
 	{
 		swap_b(dl_b);
 		reverse_b(dl_b);
