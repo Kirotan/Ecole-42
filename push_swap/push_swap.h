@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/06 22:14:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/08 14:18:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,8 @@ void	reverse_both(t_dlist **dl_a, t_dlist **dl_b);
 void	push_a(t_dlist **dl_a, t_dlist **dl_b);
 void	push_b(t_dlist **dl_a, t_dlist **dl_b);
 void	delete_node(t_dlist **double_list, t_dlist *node_to_delete);
+void	algorithm(int nb_param, t_dlist **dl_a, t_dlist **dl_b);
+void	sort_three_a(t_dlist **dl_a);
+void	sort_three_b(t_dlist **dl_b);
 
 #endif

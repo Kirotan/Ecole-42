@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/08 14:24:04 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/08 13:41:55 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/08 14:23:26 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_three_a(t_dlist **dl_a)
 {
-	t_dlist	*dl_a;
-	t_dlist	*dl_b;
+	if ((*dl_a)->index == 3)
+		rotate_a(dl_a);
+	if ((*dl_a)->index == 2 && (*dl_a)->dl_next->index == 1)
+		swap_a(dl_a);
+}
 
-	check_error(argc, argv);
-	dl_a = initialize_double_list(argc, argv);
-	dl_b = NULL;
-	create_index(&dl_a, length_double_list(&dl_a));
-	algorithm(argc -1, &dl_a, &dl_b);
-
-	test_print(dl_a);
-	ft_printf("\n");
-	test_print(dl_b);
-	return (0);
+void	sort_three_b(t_dlist **dl_b)
+{
+	if ((*dl_b)->index == 3)
+		rotate_b(dl_b);
+	if ((*dl_b)->index == 2 && (*dl_b)->dl_next->index == 1)
+		swap_b(dl_b);
 }
