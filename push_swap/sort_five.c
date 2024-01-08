@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:14:38 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/08 16:08:12 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:55:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	sort_five(t_dlist **dl_a, t_dlist **dl_b, int nb_param)
 	j = 0;
 	while (i < nb_param)
 	{
-		printf("%ld\n", (*dl_a)->index);
 		if ((*dl_a)->index <= median)
 		{
 			k = (size_t)j;
@@ -42,4 +41,6 @@ void	sort_five(t_dlist **dl_a, t_dlist **dl_b, int nb_param)
 	if ((*dl_b)->index < (*dl_b)->dl_next->index)
 		swap_b(dl_b);
 	sort_three_a(dl_a);
+	push_a(dl_a, dl_b);
+	push_a(dl_a, dl_b);
 }
