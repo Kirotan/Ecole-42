@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/08 13:42:44 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/08 15:15:32 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_FILES	=	push_swap.c \
 				delete_node.c \
 				algorithm.c \
 				sort_three.c \
+				sort_five.c \
 				test_print.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}

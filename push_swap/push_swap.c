@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:08:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/08 14:26:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/08 15:09:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	dl_a = initialize_double_list(argc, argv);
 	dl_b = NULL;
 	create_index(&dl_a, length_double_list(&dl_a));
-	algorithm(argc -1, &dl_a);
+	algorithm(argc -1, &dl_a, &dl_b);
 
 	test_print(dl_a);
 	ft_printf("\n");
