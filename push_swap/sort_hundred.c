@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/09 16:38:51 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/09 17:02:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,15 @@ size_t	position_averag(t_dlist **dlist, size_t len_list, size_t index_position)
 	size_t	average;
 	size_t	i;
 
+	if (!dlist || !*dlist)
+		return (0);
+	if (!len_list)
+		return (0);
 	i = 1;
 	x_one = 0;
 	y_two = 0;
 	z_three = 0;
-	while (i < len_list)
+	while (i <= len_list)
 	{
 		if ((*dlist)->index == index_position)
 			x_one = i;
@@ -34,23 +38,26 @@ size_t	position_averag(t_dlist **dlist, size_t len_list, size_t index_position)
 			y_two = i;
 		if ((*dlist)->index == index_position + 2)
 			z_three = i;
-		(*dlist)->dl_next;
+		(*dlist) = (*dlist)->dl_next;
 		i++;
 	}
 	average = (x_one + y_two + z_three) / 3;
 	return (average);
 }
 
-void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b, int nb_param)
+void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b)
 {
 	size_t	index_position;
 	size_t	len_a;
+	size_t	average_a;
+	size_t	average_b;
 	size_t	len_b;
-	size_t	average;
 
 	index_position = 1;
-	len_a = 0;
-	len_b = 0;
-	average = 0;
-
+	len_a = length_double_list(dl_a);
+	len_b = length_double_list(dl_b);
+	average_a = position_averag(dl_a, len_a, index_position);
+	average_b = position_averag(dl_b, len_b, index_position);
+	printf("Moyenne : %ld\n", average_a);
+	printf("Moyenne : %ld\n", average_b);
 }
