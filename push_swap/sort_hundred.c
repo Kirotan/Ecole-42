@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/09 18:27:48 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/09 18:33:57 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b)
 	size_t	aver_a;
 //	size_t	aver_b;
 
-	index_pos = 1;
+	index_pos = 0;
 	while (index_pos < length_double_list(dl_a))
 	{
 		aver_a = position_averag(dl_a, length_double_list(dl_a), index_pos);
