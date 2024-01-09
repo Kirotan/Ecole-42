@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/09 19:04:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/09 19:22:19 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	rotate_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 2)
 		{
 			push_b(dl_a, dl_b);
-			if (length_double_list(dl_b) > 1
+			if (length_double_list(dl_b) > 0
 				&& (*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
 			i++;
@@ -66,7 +66,7 @@ void	reverse_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 2)
 		{
 			push_b(dl_a, dl_b);
-			if (length_double_list(dl_b) > 1
+			if (length_double_list(dl_b) > 0
 				&& (*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
 			i++;
