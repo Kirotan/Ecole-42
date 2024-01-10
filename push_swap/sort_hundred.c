@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/10 18:00:54 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 18:02:30 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	reverse_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 2)
 		{
 			push_b(dl_a, dl_b);
+			if ((*dl_b)->index < (*dl_b)->dl_next->index)
+				swap_b(dl_b);
 			sort_or_not = rest_of_b(dl_a, dl_b);
 			if (sort_or_not == 1)
 				return ;
