@@ -6,20 +6,20 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/09 19:22:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:04:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	rest_of_b(t_dlist **dl_a, t_dlist **dl_b)
+int	rest_of_b(t_dlist **dl_a)
 {
-	if (length_double_list(dl_b) == 2)
+	if (length_double_list(dl_a) == 2)
 	{
 		sort_two_a(dl_a);
 		return (1);
 	}
-	if (length_double_list(dl_b) == 3)
+	if (length_double_list(dl_a) == 3)
 	{
 		sort_three_a(dl_a);
 		return (1);
@@ -42,9 +42,8 @@ void	rotate_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			if (length_double_list(dl_b) > 0
 				&& (*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
-			i++;
-			sort_or_not = rest_of_b(dl_a, dl_b);
-			if (sort_or_not == 2 || sort_or_not == 3)
+			sort_or_not = rest_of_b(dl_a);
+			if (sort_or_not == 1)
 				return ;
 			if (i > 3)
 				break ;
@@ -66,12 +65,11 @@ void	reverse_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 2)
 		{
 			push_b(dl_a, dl_b);
-			if (length_double_list(dl_b) > 0
+			if (length_double_list(dl_b) > 1
 				&& (*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
-			i++;
-			sort_or_not = rest_of_b(dl_a, dl_b);
-			if (sort_or_not == 2 || sort_or_not == 3)
+			sort_or_not = rest_of_b(dl_a);
+			if (sort_or_not == 1)
 				return ;
 			if (i > 3)
 				break ;
@@ -88,7 +86,7 @@ void	fill_b(t_dlist **dl_a, t_dlist **dl_b, size_t aver_a, size_t index_pos)
 	i = 0;
 	while (i < 3)
 	{
-		if (aver_a > length_double_list(dl_a) / 2)
+		if (aver_a >= length_double_list(dl_a) / 2)
 		{
 			reverse_list(dl_a, dl_b, index_pos);
 		}
@@ -97,7 +95,6 @@ void	fill_b(t_dlist **dl_a, t_dlist **dl_b, size_t aver_a, size_t index_pos)
 			rotate_list(dl_a, dl_b, index_pos);
 		}
 		i++;
-		index_pos++;
 	}
 }
 
