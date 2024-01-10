@@ -6,19 +6,11 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/10 19:41:41 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 20:04:29 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	rest_of_b(t_dlist **dl_b)
-{
-	if (length_double_list(dl_b) == 2)
-		sort_two_b(dl_b);
-	else if (length_double_list(dl_b) == 3)
-		sort_three_b(dl_b);
-}
 
 void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
@@ -47,8 +39,6 @@ void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 				swap_b(dl_b);
 			i++;
 			j++;
-			if (j == 3)
-				rest_of_b(dl_b);
 		}
 		else if (ft_position(dl_a, index_pos) == 0)
 			reverse_a(dl_a);
