@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/09 17:08:13 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:41:16 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,6 @@ void	sort_three_a(t_dlist **dl_a);
 void	sort_three_b(t_dlist **dl_b);
 void	sort_five(t_dlist **dl_a, t_dlist **dl_b, int nb_param);
 void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b);
-size_t	position_averag(t_dlist **dlist, size_t len_list, size_t index_pos);
+int		ft_position(t_dlist **dl_a, size_t index_pos);
 
 #endif

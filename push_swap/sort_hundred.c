@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/10 19:19:29 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:41:41 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	rest_of_b(t_dlist **dl_b)
 		sort_three_b(dl_b);
 }
 
-void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t aver_a, size_t index_pos)
+void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
 	size_t	i;
 	size_t	j;
@@ -50,7 +50,7 @@ void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t aver_a, size_t index_pos
 			if (j == 3)
 				rest_of_b(dl_b);
 		}
-		else if (aver_a >= length_double_list(dl_a) / 2)
+		else if (ft_position(dl_a, index_pos) == 0)
 			reverse_a(dl_a);
 		else
 			rotate_a(dl_a);
@@ -61,23 +61,21 @@ void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t aver_a, size_t index_pos
 void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b)
 {
 	size_t	index_pos;
-	size_t	aver_a;
 	size_t	tmp;
-//	size_t	i;
+	size_t	i;
 
-//	i = 0;
+	i = 0;
 	index_pos = 1;
 	tmp = length_double_list(dl_a);
 	while (index_pos < tmp)
 	{
-		aver_a = position_averag(dl_a, length_double_list(dl_a), index_pos);
-		change_list(dl_a, dl_b, aver_a, index_pos);
+		change_list(dl_a, dl_b, index_pos);
 		index_pos = index_pos + 3;
 	}
 	tmp = length_double_list(dl_b);
-	// while (i < tmp)
-	// {
-	// 	push_a(dl_a, dl_b);
-	// 	i++;
-	// }
+	while (i < tmp)
+	{
+		push_a(dl_a, dl_b);
+		i++;
+	}
 }

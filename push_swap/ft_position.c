@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   position_averag.c                                  :+:      :+:    :+:   */
+/*   ft_position.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:05:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/10 17:37:32 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/10 19:38:19 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	position_averag(t_dlist **dlist, size_t len_list, size_t index_pos)
+int	ft_position(t_dlist **dl_a, size_t index_pos)
 {
-	size_t	x_one;
-	size_t	y_two;
-	size_t	z_three;
-	size_t	average;
-	size_t	i;
+	int		i;
+	int		res;
+	t_dlist	*tmp;
 
-	if (!dlist || !*dlist || !len_list)
-		return (0);
-	i = 1;
-	x_one = 0;
-	y_two = 0;
-	z_three = 0;
-	while (i <= len_list)
+	i = 0;
+	res = 100;
+	tmp = *dl_a;
+	while (tmp->index != index_pos && tmp->index != index_pos + 1
+		&& tmp->index != index_pos + 2)
 	{
-		if ((*dlist)->index == index_pos)
-			x_one = i;
-		if ((*dlist)->index == index_pos + 1)
-			y_two = i;
-		if ((*dlist)->index == index_pos + 2)
-			z_three = i;
-		(*dlist) = (*dlist)->dl_next;
+		tmp = tmp->dl_next;
 		i++;
 	}
-	average = (x_one + y_two + z_three) / 3;
-	return (average);
+	res = i;
+	i = 0;
+	tmp = *dl_a;
+	while (tmp->index != index_pos && tmp->index != index_pos + 1
+		&& tmp->index != index_pos + 2)
+	{
+		tmp = tmp->dl_prev;
+		i++;
+	}
+	if (i < res)
+		return (0);
+	return (1);
 }
