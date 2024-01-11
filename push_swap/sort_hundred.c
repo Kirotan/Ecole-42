@@ -6,11 +6,19 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 14:13:57 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:47:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	rest_of_a(t_dlist **dl_a)
+{
+	if (length_double_list(dl_a) == 2)
+		sort_two_a(dl_a);
+	if (length_double_list(dl_a) == 3)
+		sort_three_a(dl_a);
+}
 
 void	handle_case(t_dlist	**dl_a, t_dlist **dl_b)
 {
@@ -31,25 +39,26 @@ void	handle_case(t_dlist	**dl_a, t_dlist **dl_b)
 
 void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
-	size_t	i;
 	size_t	j;
 
-	i = 0;
 	j = 0;
 	while (j < 3)
 	{
+		if (length_double_list(dl_a) <= 3)
+		{
+			rest_of_a(dl_a);
+			break ;
+		}
 		if ((*dl_a)->index == index_pos || (*dl_a)->index == index_pos + 1
 			|| (*dl_a)->index == index_pos + 2)
 		{
 			handle_case(dl_a, dl_b);
-			i++;
 			j++;
 		}
 		else if (ft_position(dl_a, index_pos) == 0)
 			reverse_a(dl_a);
-		else
+		else if (ft_position(dl_a, index_pos) == 1)
 			rotate_a(dl_a);
-		i++;
 	}
 }
 
@@ -57,9 +66,9 @@ void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b)
 {
 	size_t	index_pos;
 	size_t	tmp;
-//	size_t	i;
+	size_t	i;
 
-//	i = 0;
+	i = 0;
 	index_pos = 1;
 	tmp = length_double_list(dl_a);
 	while (index_pos < tmp)
@@ -68,9 +77,9 @@ void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b)
 		index_pos = index_pos + 3;
 	}
 	tmp = length_double_list(dl_b);
-	// while (i < tmp)
-	// {
-	// 	push_a(dl_a, dl_b);
-	// 	i++;
-	// }
+	while (i < tmp)
+	{
+		push_a(dl_a, dl_b);
+		i++;
+	}
 }
