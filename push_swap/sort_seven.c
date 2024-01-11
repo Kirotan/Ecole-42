@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:10:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 17:41:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:53:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	change_list_seven(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			if ((*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
 	}
-	while (k++ < 4)
+	while (k++ < 40)
 		loop_sort(dl_a, dl_b, &i);
 }
 
@@ -77,4 +77,5 @@ void	sort_seven(t_dlist **dl_a, t_dlist **dl_b)
 		change_list_seven(dl_a, dl_b, index_pos);
 		index_pos = index_pos + 7;
 	}
+	push_b(dl_a, dl_b);
 }
