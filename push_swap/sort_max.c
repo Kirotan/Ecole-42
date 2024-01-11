@@ -6,11 +6,19 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 14:06:30 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:54:43 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	rest_of_a_max(t_dlist **dl_a)
+{
+	if (length_double_list(dl_a) == 2)
+		sort_two_a(dl_a);
+	if (length_double_list(dl_a) == 3)
+		sort_three_a(dl_a);
+}
 
 static void	handle_case_max(t_dlist	**dl_a, t_dlist **dl_b)
 {
@@ -31,27 +39,28 @@ static void	handle_case_max(t_dlist	**dl_a, t_dlist **dl_b)
 
 static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
-	size_t	i;
 	size_t	j;
 
-	i = 0;
 	j = 0;
 	while (j < 5)
 	{
+		if (length_double_list(dl_a) <= 3)
+		{
+			rest_of_a_max(dl_a);
+			break ;
+		}
 		if ((*dl_a)->index == index_pos || (*dl_a)->index == index_pos + 1
 			|| (*dl_a)->index == index_pos + 2
 			|| (*dl_a)->index == index_pos + 3
 			|| (*dl_a)->index == index_pos + 4)
 		{
 			handle_case_max(dl_a, dl_b);
-			i++;
 			j++;
 		}
 		else if (ft_position_max(dl_a, index_pos) == 0)
 			reverse_a(dl_a);
-		else
+		else if (ft_position_max(dl_a, index_pos) == 1)
 			rotate_a(dl_a);
-		i++;
 	}
 }
 
