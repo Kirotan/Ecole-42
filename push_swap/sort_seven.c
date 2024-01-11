@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:10:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 19:14:24 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 19:44:33 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	change_list_seven(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			if ((*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
 	}
-	while (k++ < 40)
+	while (k++ < 2)
 		loop_sort(dl_a, dl_b, &i);
 }
 
