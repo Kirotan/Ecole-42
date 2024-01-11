@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 15:53:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 16:49:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 	j = 0;
 	while (j < 3)
 	{
-		if (length_double_list(dl_a) == 4 && j == 0)
+		if (length_double_list(dl_a) == 4 && (j == 0 || j == 1))
 			while ((*dl_a)->index != index_pos)
 				rotate_a(dl_a);
 		if (length_double_list(dl_a) <= 3)

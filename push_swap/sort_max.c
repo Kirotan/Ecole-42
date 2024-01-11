@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 14:54:43 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 16:06:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 	size_t	j;
 
 	j = 0;
-	while (j < 5)
+	while (j < 7)
 	{
+		if (length_double_list(dl_a) == 4 && j == 0)
+			while ((*dl_a)->index != index_pos)
+				rotate_a(dl_a);
 		if (length_double_list(dl_a) <= 3)
 		{
 			rest_of_a_max(dl_a);
@@ -52,7 +55,9 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 		if ((*dl_a)->index == index_pos || (*dl_a)->index == index_pos + 1
 			|| (*dl_a)->index == index_pos + 2
 			|| (*dl_a)->index == index_pos + 3
-			|| (*dl_a)->index == index_pos + 4)
+			|| (*dl_a)->index == index_pos + 4
+			|| (*dl_a)->index == index_pos + 5
+			|| (*dl_a)->index == index_pos + 6)
 		{
 			handle_case_max(dl_a, dl_b);
 			j++;
@@ -76,7 +81,7 @@ void	sort_max(t_dlist **dl_a, t_dlist **dl_b)
 	while (index_pos < tmp)
 	{
 		change_list_max(dl_a, dl_b, index_pos);
-		index_pos = index_pos + 5;
+		index_pos = index_pos + 7;
 	}
 	tmp = length_double_list(dl_b);
 	while (i < tmp)

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:34:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 13:37:42 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 16:02:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	ft_position_max(t_dlist **dl_a, size_t index_pos)
 	tmp = *dl_a;
 	while (tmp->index != index_pos && tmp->index != index_pos + 1
 		&& tmp->index != index_pos + 2 && tmp->index != index_pos + 3
-		&& tmp->index != index_pos + 4)
+		&& tmp->index != index_pos + 4 && tmp->index != index_pos + 5
+		&& tmp->index != index_pos + 6)
 	{
 		tmp = tmp->dl_next;
 		i++;
@@ -33,7 +34,8 @@ int	ft_position_max(t_dlist **dl_a, size_t index_pos)
 	tmp = *dl_a;
 	while (tmp->index != index_pos && tmp->index != index_pos + 1
 		&& tmp->index != index_pos + 2 && tmp->index != index_pos + 3
-		&& tmp->index != index_pos + 4)
+		&& tmp->index != index_pos + 4 && tmp->index != index_pos + 5
+		&& tmp->index != index_pos + 6)
 	{
 		tmp = tmp->dl_prev;
 		i++;
