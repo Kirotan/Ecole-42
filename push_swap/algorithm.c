@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:47:09 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 19:13:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 19:18:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	algorithm(int nb_param, t_dlist **dl_a, t_dlist **dl_b)
 		sort_two_a(dl_a);
 	if (nb_param == 3)
 		sort_three_a(dl_a);
-	if (nb_param == 4 && nb_param == 5)
+	if (nb_param == 4 || nb_param == 5)
 		sort_five(dl_a, dl_b, nb_param);
 	if (nb_param >=6 && nb_param <= 100)
 		sort_hundred(dl_a, dl_b);
