@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:10:12 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 17:53:50 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:20:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	loop_sort(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
+static void	loop_sort(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 {
 	while (*i < 6)
 	{
@@ -36,7 +36,7 @@ void	loop_sort(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 	}
 }
 
-void	change_list_seven(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
+static void	change_list_seven(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
 	size_t	j;
 	size_t	i;
