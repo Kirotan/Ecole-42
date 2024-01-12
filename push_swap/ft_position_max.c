@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:34:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 16:02:52 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 16:45:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 int	ft_position_max(t_dlist **dl_a, size_t index_pos)
 {
-	int		i;
-	int		res;
+	size_t	i;
+	size_t	res;
 	t_dlist	*tmp;
+	size_t	m;
 
 	i = 0;
-	res = 100;
 	tmp = *dl_a;
-	while (tmp->index != index_pos && tmp->index != index_pos + 1
+	m = length_double_list(dl_a);
+	while (i < m && (tmp->index != index_pos && tmp->index != index_pos + 1
 		&& tmp->index != index_pos + 2 && tmp->index != index_pos + 3
 		&& tmp->index != index_pos + 4 && tmp->index != index_pos + 5
-		&& tmp->index != index_pos + 6)
+		&& tmp->index != index_pos + 6))
 	{
 		tmp = tmp->dl_next;
 		i++;
@@ -32,10 +33,10 @@ int	ft_position_max(t_dlist **dl_a, size_t index_pos)
 	res = i;
 	i = 0;
 	tmp = *dl_a;
-	while (tmp->index != index_pos && tmp->index != index_pos + 1
+	while (i < m && (tmp->index != index_pos && tmp->index != index_pos + 1
 		&& tmp->index != index_pos + 2 && tmp->index != index_pos + 3
 		&& tmp->index != index_pos + 4 && tmp->index != index_pos + 5
-		&& tmp->index != index_pos + 6)
+		&& tmp->index != index_pos + 6))
 	{
 		tmp = tmp->dl_prev;
 		i++;

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/12 15:33:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 16:55:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,17 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 			push_a(dl_a, dl_b);
 			(*i)++;
 		}
+		else if (length_double_list(dl_b) == 1)
+		{
+			push_a(dl_a, dl_b);
+			(*i)++;
+		}
 		if ((*dl_b)->index < (*dl_b)->dl_next->index)
 			swap_b(dl_b);
 	}
 	while (*i != 1)
 	{
+		ft_printf("Test");
 		if ((*dl_a)->index > (*dl_a)->dl_next->index)
 			swap_a(dl_a);
 		if ((*dl_a)->index < (*dl_a)->dl_next->index)
@@ -43,13 +49,16 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 	size_t	i;
 	size_t	k;
 	size_t	p;
+	size_t	len_a;
 
 	j = 0;
 	i = 0;
 	k = 0;
 	p = 0;
-	while (j < 7 || p < length_double_list(dl_a))
+	len_a = length_double_list(dl_a);
+	while (j < 7 && p < len_a)
 	{
+		ft_printf("test");
 		if (j > 1 && length_double_list(dl_b) > 1)
 			if ((*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
