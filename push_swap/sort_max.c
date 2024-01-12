@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/12 17:39:20 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:03:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 			swap_b(dl_b);
 		}
 	}
-	while (*i != 0)
+	while (*i != 0 && *i < length_double_list(dl_a))
 	{
 		if (length_double_list(dl_a) != 0 && (*dl_a)->index > (*dl_a)->dl_next->index)
 			swap_a(dl_a);
@@ -42,6 +42,7 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 		}
 		if ((*dl_a)->index < (*dl_a)->dl_next->index)
 		{
+			ft_printf("erreur");
 			push_b(dl_a, dl_b);
 			(*i)--;
 		}
