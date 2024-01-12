@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:52:21 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 16:49:47 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 21:12:29 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ static void	handle_case(t_dlist	**dl_a, t_dlist **dl_b)
 		swap_b(dl_b);
 }
 
-static void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
+void	change_list(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
 	size_t	j;
 
 	j = 0;
 	while (j < 3)
 	{
-		if (length_double_list(dl_a) == 4 && (j == 0 || j == 1))
-			while ((*dl_a)->index != index_pos)
-				rotate_a(dl_a);
-		if (length_double_list(dl_a) <= 3)
+		if ((length_double_list(dl_a) == 4 && (j == 0 || j == 1))
+			&& (*dl_a)->index != index_pos)
+			swap_a(dl_a);
+		if (j == 0 && length_double_list(dl_a) <= 3)
 		{
 			rest_of_a(dl_a);
 			break ;

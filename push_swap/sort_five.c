@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:14:38 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 19:17:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 19:37:03 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	sort_five_median(int nb_param, size_t median, t_dlist **a, t_dlist **b)
 		}
 		rotate_a(a);
 	}
-
 }
 
 void	sort_five(t_dlist **dl_a, t_dlist **dl_b, int nb_param)

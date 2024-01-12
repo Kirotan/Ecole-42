@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:05:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/10 19:38:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 20:13:40 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_position(t_dlist **dl_a, size_t index_pos)
 	t_dlist	*tmp;
 
 	i = 0;
-	res = 100;
 	tmp = *dl_a;
 	while (tmp->index != index_pos && tmp->index != index_pos + 1
 		&& tmp->index != index_pos + 2)
