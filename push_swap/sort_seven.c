@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/12 19:21:54 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 19:23:28 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
+static void	loop_sort_seven(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 {
 	while (*i < 6 && *i < length_double_list(dl_b))
 	{
@@ -48,7 +48,7 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 	}
 }
 
-static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
+static void	change_list_seven(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 {
 	size_t	j;
 	size_t	i;
@@ -76,14 +76,14 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			push_b(dl_a, dl_b);
 			j++;
 		}
-		else if (ft_position_max(dl_a, index_pos) == 0)
+		else if (ft_position_seven(dl_a, index_pos) == 0)
 			reverse_a(dl_a);
-		else if (ft_position_max(dl_a, index_pos) == 1)
+		else if (ft_position_seven(dl_a, index_pos) == 1)
 			rotate_a(dl_a);
 		p++;
 	}
 	while (k++ < 3)
-		loop_sort_max(dl_a, dl_b, &i);
+		loop_sort_seven(dl_a, dl_b, &i);
 }
 
 void	sort_seven(t_dlist **dl_a, t_dlist **dl_b)
@@ -97,7 +97,7 @@ void	sort_seven(t_dlist **dl_a, t_dlist **dl_b)
 	tmp = length_double_list(dl_a);
 	while (index_pos < tmp)
 	{
-		change_list_max(dl_a, dl_b, index_pos);
+		change_list_seven(dl_a, dl_b, index_pos);
 		index_pos = index_pos + 7;
 	}
 	tmp = length_double_list(dl_b);

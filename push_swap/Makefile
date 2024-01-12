@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/11 16:35:08 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/12 19:23:45 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_FILES	=	push_swap.c \
 				sort_hundred.c \
 				sort_max.c \
 				ft_position.c \
-				ft_position_max.c \
+				ft_position_seven.c \
 				test_print.c
 
 OBJ_FILES	= ${SRC_FILES:.c=.o}
