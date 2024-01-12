@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/11 19:24:57 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 15:33:15 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 {
 	while (*i < 6)
 	{
+		ft_printf("test");
 		if ((*dl_b)->index > (*dl_b)->dl_next->index)
 		{
 			push_a(dl_a, dl_b);
@@ -34,7 +35,6 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 			(*i)--;
 		}
 	}
-	push_b(dl_a, dl_b);
 }
 
 static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
@@ -60,6 +60,7 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 5
 			|| (*dl_a)->index == index_pos + 6)
 		{
+			ft_printf("1er boucle");
 			push_b(dl_a, dl_b);
 			j++;
 		}
@@ -69,7 +70,7 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			rotate_a(dl_a);
 		p++;
 	}
-	while (k++ < 4)
+	while (k++ < 3)
 		loop_sort_max(dl_a, dl_b, &i);
 }
 
