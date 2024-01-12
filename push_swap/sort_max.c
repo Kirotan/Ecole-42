@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 13:31:08 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/12 16:55:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/12 17:24:32 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 {
-	while (*i < 6)
+	while (*i < 6 && *i < length_double_list(dl_b))
 	{
-		ft_printf("test");
 		if ((*dl_b)->index > (*dl_b)->dl_next->index)
 		{
 			push_a(dl_a, dl_b);
@@ -27,14 +26,20 @@ void	loop_sort_max(t_dlist **dl_a, t_dlist **dl_b, size_t *i)
 			push_a(dl_a, dl_b);
 			(*i)++;
 		}
-		if ((*dl_b)->index < (*dl_b)->dl_next->index)
+		if (length_double_list(dl_b) != 0 && (*dl_b)->index < (*dl_b)->dl_next->index)
+		{
 			swap_b(dl_b);
+		}
 	}
 	while (*i != 1)
 	{
-		ft_printf("Test");
-		if ((*dl_a)->index > (*dl_a)->dl_next->index)
+		if (length_double_list(dl_a) != 0 && (*dl_a)->index > (*dl_a)->dl_next->index)
 			swap_a(dl_a);
+		else if (length_double_list(dl_b) == 1)
+		{
+			push_b(dl_a, dl_b);
+			(*i)--;
+		}
 		if ((*dl_a)->index < (*dl_a)->dl_next->index)
 		{
 			push_b(dl_a, dl_b);
@@ -58,7 +63,6 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 	len_a = length_double_list(dl_a);
 	while (j < 7 && p < len_a)
 	{
-		ft_printf("test");
 		if (j > 1 && length_double_list(dl_b) > 1)
 			if ((*dl_b)->index < (*dl_b)->dl_next->index)
 				swap_b(dl_b);
@@ -69,7 +73,6 @@ static void	change_list_max(t_dlist **dl_a, t_dlist **dl_b, size_t index_pos)
 			|| (*dl_a)->index == index_pos + 5
 			|| (*dl_a)->index == index_pos + 6)
 		{
-			ft_printf("1er boucle");
 			push_b(dl_a, dl_b);
 			j++;
 		}
