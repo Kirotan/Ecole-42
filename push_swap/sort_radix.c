@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix.c                                            :+:      :+:    :+:   */
+/*   sort_radix.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:27:20 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/15 14:41:41 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:19:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_bits(t_dlist **stack)
+static int	get_max_bits(t_dlist **double_list)
 {
 	t_dlist		*head;
 	size_t		max;
 	size_t		max_bits;
+	size_t		i;
+	size_t		len;
 
-	head = *stack;
+	head = *double_list;
 	max = head->index;
+	len = length_double_list(&head);
 	max_bits = 0;
-	while (head)
+	i = 0;
+	while (i++ < len)
 	{
 		if (head->index > max)
 			max = head->index;
@@ -42,12 +46,12 @@ void	sort_radix(t_dlist **dl_a, t_dlist **dl_b)
 
 	i = 0;
 	head_a = *dl_a;
-	size = length_double_list(&head_a);
+	size = length_double_list(&head_a) - 1;
 	max_bits = get_max_bits(dl_a);
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j++ < size)
+		while (j++ <= size)
 		{
 			head_a = *dl_a;
 			if (((head_a->index >> i) & 1) == 1)
