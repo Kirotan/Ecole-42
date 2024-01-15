@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:47:09 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/15 14:56:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:40:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,4 @@ void	algorithm(int nb_param, t_dlist **dl_a, t_dlist **dl_b)
 		sort_five(dl_a, dl_b, nb_param);
 	if (nb_param >= 6 && nb_param <= 500)
 		sort_radix(dl_a, dl_b);
-	// if (nb_param >=6 && nb_param <= 100)
-	// 	sort_hundred(dl_a, dl_b);
-	// if (nb_param >= 101 && nb_param <= 500)
-	// 	sort_seven(dl_a, dl_b);
 }

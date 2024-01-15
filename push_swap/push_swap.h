@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:09:35 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/15 14:42:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:42:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,6 @@ void	sort_two_b(t_dlist **dl_b);
 void	sort_three_a(t_dlist **dl_a);
 void	sort_three_b(t_dlist **dl_b);
 void	sort_five(t_dlist **dl_a, t_dlist **dl_b, int nb_param);
-void	sort_seven(t_dlist **dl_a, t_dlist **dl_b);
-void	sort_hundred(t_dlist **dl_a, t_dlist **dl_b);
-int		ft_position(t_dlist **dl_a, size_t index_pos);
-int		ft_position_seven(t_dlist **dl_a, size_t index_pos);
 void	sort_radix(t_dlist **dl_a, t_dlist **dl_b);
 
 #endif

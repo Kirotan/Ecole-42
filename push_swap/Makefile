@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/15 14:42:14 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/15 16:46:35 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,6 @@ SRC_FILES	=	push_swap.c \
 				sort_two.c \
 				sort_three.c \
 				sort_five.c \
-				sort_seven.c \
-				sort_hundred.c \
-				ft_position.c \
-				ft_position_seven.c \
 				sort_radix.c \
 				test_print.c
 
