@@ -6,12 +6,12 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/16 17:05:24 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/16 17:46:32 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= push_swap
-CFLAGS			= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror
 CC				= gcc
 LIBFT_DIR		=./libft
 LIBFT_NAME		= libft.a

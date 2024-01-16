@@ -1,7 +1,7 @@
 #ARGUMENTS
 
 NAME		= libft.a
-CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS		= -Wall -Wextra -Werror
 CC          = gcc
 
 #SOURCES
