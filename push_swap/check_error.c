@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/16 16:06:55 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/16 17:34:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,16 @@ static void	duplication(int argc, char **argv)
 	int	nb;
 	int	tmp;
 
-	i = 1;
+	i = 0;
 	while (++i < argc)
 	{
 		j = 0;
 		nb = ft_atoi(argv[i]);
 		while (++j < argc)
 		{
+			if (i == j)
+				continue ;
 			tmp = ft_atoi(argv[j]);
-			if (i == j && j < argc)
-			{
-				j++;
-				tmp = ft_atoi(argv[j]);
-			}
 			if (nb == tmp)
 			{
 				generate_message_error();
