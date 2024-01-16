@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/15 17:44:21 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/16 13:39:49 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ clean:
 	make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f ${NAME} ${LIBFT_NAME} ${PRINTF_NAME}
+	rm -f ${NAME} ${LIBFT_NAME} ${PRINTF_NAME} a.out
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
