@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 15:36:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/05 20:18:52 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/16 16:06:16 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ void	check_error(int argc, char **argv)
 {
 	int	i;
 
-	if (argc == 1)
-		return ;
+	if (argc < 2)
+		exit(EXIT_SUCCESS);
 	i = 1;
 	while (i < argc)
 		is_it_number(argv[i++]);
 	duplication(argc, argv);
+	if (argc == 2)
+		exit(EXIT_SUCCESS);
 }

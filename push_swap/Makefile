@@ -6,12 +6,12 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/16 13:39:49 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/16 15:54:21 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= push_swap.a
-CFLAGS			= -Wall -Wextra -Werror
+NAME			= push_swap
+CFLAGS			= -Wall -Wextra -Werror -g3 -fsanitize=address
 CC				= gcc
 LIBFT_DIR		=./libft
 LIBFT_NAME		= libft.a
@@ -37,29 +37,27 @@ SRC_FILES	=	push_swap.c \
 				sort_radix.c \
 				free_dlist.c
 
-OBJ_FILES	= ${SRC_FILES:.c=.o}
+OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${LIBFT_DIR}/${LIBFT_NAME} ${OBJ_FILES}
-	ar rcs $@ ${OBJ_FILES}
+$(NAME): $(OBJ_FILES) | $(LIBFT_DIR)/$(LIBFT_NAME)
+	@$(CC) $^ -L$(LIBFT_DIR) -lft $(CFLAGS) -o $@
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
-${LIBFT_DIR}/${LIBFT_NAME}:
-	make -C ${LIBFT_DIR}
-	cp ${LIBFT_DIR}/${LIBFT_NAME} .
-	mv ${LIBFT_NAME} ${NAME}
+$(LIBFT_DIR)/$(LIBFT_NAME):
+	@make -C $(LIBFT_DIR)
 
 clean:
-	rm -f ${OBJ_FILES}
-	make -C $(LIBFT_DIR) clean
+	@rm -f $(OBJ_FILES)
+	@make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	rm -f ${NAME} ${LIBFT_NAME} ${PRINTF_NAME} a.out
-	make -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

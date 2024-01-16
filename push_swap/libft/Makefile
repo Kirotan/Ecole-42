@@ -1,7 +1,7 @@
 #ARGUMENTS
 
 NAME		= libft.a
-CFLAGS		= -Wall -Wextra -Werror -c
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address
 CC          = gcc
 
 #SOURCES
@@ -58,23 +58,23 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_lstmap.c \
 				ft_lstnew.c
 
-OBJ_FILES	= ${SRC_FILES:.c=.o}
+OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 #REGLES
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJ_FILES}
-	ar rcs $@  ${OBJ_FILES}
+$(NAME): $(OBJ_FILES)
+	@ar rcs $@  $(OBJ_FILES)
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f ${OBJ_FILES}
+	@rm -f $(OBJ_FILES)
 
 fclean: clean
-	rm -f ${NAME}
+	@rm -f $(NAME)
 
 re: fclean all
 
