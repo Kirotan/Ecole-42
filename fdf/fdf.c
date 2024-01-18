@@ -6,35 +6,34 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/18 18:15:16 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:48:43 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/fdf.h"
-#define WIDTH 256
-#define HEIGHT 256
+#include "fdf.h"
+#define WIDTH 1920
+#define HEIGHT 1080
 
 // Exit the program as failure.
-static void ft_error(void)
+static void	ft_error(void)
 {
 	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
 }
 
 // Print the window width and height.
-static void ft_hook(void* param)
+static void	ft_hook(void *param)
 {
-	const mlx_t* mlx = param;
+	const mlx_t *mlx = param;
 
 	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
 }
 
 int32_t	main(void)
 {
-
 	// MLX allows you to define its core behaviour before startup.
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	mlx_set_setting(MLX_MAXIMIZED, false);
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!mlx)
 		ft_error();
 
