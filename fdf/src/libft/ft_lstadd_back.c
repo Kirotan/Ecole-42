@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:47:09 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/17 15:24:36 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/30 12:38:25 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/04 18:46:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	algorithm(int nb_param, t_dlist **dl_a, t_dlist **dl_b)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (nb_param == 2)
-		sort_two_a(dl_a);
-	else if (nb_param == 3)
-		sort_three_a(dl_a);
-	else if (nb_param == 4 || nb_param == 5)
-		sort_five(dl_a, dl_b, nb_param);
-	else
-		sort_radix(dl_a, dl_b);
+	t_list	*last;
+
+	if (!lst)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->next)
+	{
+		last = last->next;
+	}
+	last->next = new;
 }

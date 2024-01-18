@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algorithm.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:47:09 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/17 15:24:36 by gdoumer          ###   ########.fr       */
+/*   Created: 2023/10/25 11:16:27 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/16 17:23:27 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	algorithm(int nb_param, t_dlist **dl_a, t_dlist **dl_b)
+int	ft_atoi(const char *nptr)
 {
-	if (nb_param == 2)
-		sort_two_a(dl_a);
-	else if (nb_param == 3)
-		sort_three_a(dl_a);
-	else if (nb_param == 4 || nb_param == 5)
-		sort_five(dl_a, dl_b, nb_param);
-	else
-		sort_radix(dl_a, dl_b);
+	size_t	i;
+	int		sign;
+	int		nbr;
+
+	if (!nptr)
+		return (0);
+	i = 0;
+	sign = 1;
+	nbr = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+')
+		i++;
+	else if (nptr[i] == '-')
+	{
+		sign = -sign;
+		i++;
+	}
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+	{
+		nbr = (nbr * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }
