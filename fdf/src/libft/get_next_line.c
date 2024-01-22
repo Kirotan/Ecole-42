@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:37:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 15:50:28 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:11:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 size_t	ft_strlen_gnl(const char *s)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 15:39:26 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 15:47:51 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:11:58 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {

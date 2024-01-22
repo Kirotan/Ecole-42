@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/22 15:39:16 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/22 18:56:58 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBX			= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 HEADERS	:= -I ./include -I $(LIBMLX)/include/MLX42/
 
 SRC_FILES	=	fdf.c \
+				.src/extract_array.c \
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

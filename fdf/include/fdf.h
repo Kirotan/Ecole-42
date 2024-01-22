@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/18 18:21:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/22 18:55:40 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <limits.h>
+# include <fcntl.h>
+
+char	**extract_array(char *name_map);
 
 #endif
