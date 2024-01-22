@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 19:02:07 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/22 19:26:05 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	count_lines(int fd)
 
 int	**extract_array(char *name_map)
 {
-	int	**array;
+	int		**array;
 	int		path_image;
 	char	*path;
 	char	*current_line;
@@ -49,7 +49,7 @@ int	**extract_array(char *name_map)
 	while (i < nb_line && get_next_line (path_image) > 0)
 	{
 		current_line = get_next_line(path_image);
-		array[i] = ft_split(current_line, " ");
+		array[i] = ft_split_int(current_line, " ");
 		free(current_line);
 		i++;
 	}

@@ -58,7 +58,8 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_lstmap.c \
 				ft_lstnew.c \
 				get_next_line.c \
-				get_next_line_utils.c
+				get_next_line_utils.c \
+				ft_split_int.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
