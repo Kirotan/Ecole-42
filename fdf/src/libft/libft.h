@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:29:13 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/18 17:27:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:54:43 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdint.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <limits.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -81,5 +86,13 @@ int		ft_write_args_u(va_list args);
 int		ft_write_args_percent(char c);
 int		ft_write_args_x(int args, char cha);
 int		ft_write_args_p(unsigned long long adress);
+
+char	*get_next_line(int fd);
+char	*ft_strjoin_gnl(char const *s1, char const *s2);
+char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
+void	ft_bzero_gnl(void *s, size_t n);
+char	*ft_strdup_gnl(const char *s);
+size_t	ft_strlen_gnl(const char *s);
+char	*ft_strchr_gnl(const char *s, int c);
 
 #endif

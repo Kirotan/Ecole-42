@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/18 18:51:27 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/22 15:39:16 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,14 @@ OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 all: $(NAME) libmlx $(LIBFT_DIR)/$(LIBFT_NAME)
 
-libmlx:
+$(LIBMLX)/build/libmlx42.a:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
-$(NAME): $(OBJ_FILES)
-	@$(CC) $(OBJ_FILES) $(LIBX) $(HEADERS) -o $(NAME)
+$(NAME): $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME) $(LIBMLX)/build/libmlx42.a
+	@$(CC) $(OBJ_FILES) $(LIBX) -o $(NAME)
 
 $(LIBFT_DIR)/$(LIBFT_NAME):
 	@make -C $(LIBFT_DIR)
