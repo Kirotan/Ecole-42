@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:23:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/30 15:23:31 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:26:00 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./include/libft.h"
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:48:04 by gdoumer           #+#    #+#             */
-/*   Updated: 2023/10/31 17:26:39 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:32:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./include/libft.h"
 
-static size_t	count_words(char const *s, char c)
+static size_t	count_words_split(char const *s, char c)
 {
 	int		i;
 	size_t	count;
@@ -99,7 +99,7 @@ char	**ft_split(char const *s, char c)
 	size_t	count;
 	char	**tab;
 
-	count = count_words(s, c);
+	count = count_words_split(s, c);
 	tab = allocate_memory(count);
 	if (!tab)
 		return (NULL);

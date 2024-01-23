@@ -6,39 +6,11 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:48:04 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 19:13:13 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:03:35 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static size_t	count_words(char const *s, char c)
-{
-	int		i;
-	size_t	count;
-
-	if (!s)
-		return (0);
-	if (c == '\0')
-	{
-		if (*s == '\0')
-			return (0);
-		else
-			return (1);
-	}
-	i = 0;
-	count = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			count++;
-		while (s[i] && s[i] != c)
-			i++;
-	}
-	return (count);
-}
+#include "./include/libft.h"
 
 static int	**allocate_memory(size_t count)
 {
@@ -51,7 +23,7 @@ static int	**allocate_memory(size_t count)
 	return ((int **) tab);
 }
 
-static void	unblock(char **tab)
+static void	unblock(int **tab)
 {
 	int	i;
 
@@ -65,11 +37,25 @@ static void	unblock(char **tab)
 	free(tab);
 }
 
-static int	**divide(char const *s, char c, char **tab)
+static void	loop(unsigned int i, size_t start, char *substr, char const *s)
+{
+	size_t	k;
+
+	k = 0;
+	while (k < i - start)
+	{
+		substr[k] = s[start + k];
+		k++;
+	}
+	substr[i - start] = '\0';
+}
+
+static int	**divide(char const *s, char c, int **tab, size_t row)
 {
 	unsigned int		i;
 	int					j;
 	size_t				start;
+	char				*substr;
 
 	i = 0;
 	j = 0;
@@ -82,11 +68,19 @@ static int	**divide(char const *s, char c, char **tab)
 		{
 			while (s[i] != '\0' && s[i] != c)
 				i++;
-			tab[j] = ft_atoi(ft_substr(s, start, i - start));
-			if (!tab[j])
+			substr = ft_calloc(i - start + 1, 0);
+			if (!substr)
 			{
 				unblock(tab);
-				return (NULL);
+				return (0);
+			}
+			loop(i, start, substr, s);
+			tab[row][j] = ft_atoi(substr);
+			free(substr);
+			if (!tab[j] && s[start])
+			{
+				unblock(tab);
+				return (0);
 			}
 			j++;
 		}
@@ -94,16 +88,16 @@ static int	**divide(char const *s, char c, char **tab)
 	return (tab);
 }
 
-int	**ft_split_int(char const *s, char c)
+int	**ft_split_int(char const *s, char c, size_t row)
 {
 	size_t	count;
 	int		**tab;
 
-	count = count_words(s, c);
+	count = ft_count_words(s, c);
 	tab = allocate_memory(count);
 	if (!tab)
 		return (0);
-	if (!divide(s, c, tab))
+	if (!divide(s, c, tab, row))
 	{
 		return (0);
 	}

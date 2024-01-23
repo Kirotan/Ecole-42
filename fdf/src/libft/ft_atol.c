@@ -6,11 +6,11 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 19:09:43 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 19:11:56 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:24:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./include/libft.h"
 
 long	ft_atol(const char *nptr)
 {

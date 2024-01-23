@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_write_args_percent.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdoumer <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 22:43:37 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/03 16:55:33 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 14:28:20 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./include/libft.h"
 
 int	ft_write_args_percent(char c)
 {

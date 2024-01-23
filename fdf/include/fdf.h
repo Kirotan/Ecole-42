@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 19:25:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:26:35 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include "MLX42.h"
+# include "../src/libft/include/libft.h"
 # include <math.h>
 # include <unistd.h>
 # include <stdlib.h>

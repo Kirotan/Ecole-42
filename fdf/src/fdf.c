@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/22 19:24:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 13:05:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static void	ft_hook(void *param)
 	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
 }
 
-int32_t	main(int argc, char **argv)
+int32_t	main(void)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	int			**map_array;
+//	int			**map_array;
 
-	map_array = extract_array(argv[0]);
+//	map_array = extract_array(argv[0]);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!mlx)

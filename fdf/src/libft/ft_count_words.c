@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 12:56:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 14:27:01 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/23 14:29:06 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/23 14:33:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./include/libft.h"
 
-int	ft_putstr_fd(char *s, int fd)
+size_t	ft_count_words(char const *s, char c)
 {
+	int		i;
+	size_t	count;
+
 	if (!s)
+		return (0);
+	if (c == '\0')
 	{
-		write(1, "(null)", 6);
-		return (6);
+		if (*s == '\0')
+			return (0);
+		else
+			return (1);
 	}
-	if (write(fd, s, ft_strlen(s)) == -1)
-		return (-1);
-	return (ft_strlen(s));
+	i = 0;
+	count = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i] != '\0')
+			count++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	return (count);
 }
