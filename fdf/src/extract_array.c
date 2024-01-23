@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 16:07:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 18:47:36 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,15 @@ int	**extract_array(char *name_map)
 {
 	int		**array;
 	int		path_image;
-	char	*path;
 	char	*current_line;
 	size_t	i;
 	size_t	nb_line;
 
-	path = ft_strlcat_char("../test_maps/", name_map, ft_strlen(name_map));
-	path_image = open(path, O_RDONLY);
+	path_image = open(name_map, O_RDONLY);
 	if (path_image == -1)
 		perror("Error opening file.");
 	nb_line = count_lines(path_image);
-	path_image = open(path, O_RDONLY);
+	path_image = open(name_map, O_RDONLY);
 	array = (int **)ft_calloc(sizeof(int *) * nb_line, 0);
 	if (!array)
 	{
