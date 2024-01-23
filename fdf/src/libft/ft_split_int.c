@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:48:04 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 16:03:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:21:35 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,7 @@ static int	**divide(char const *s, char c, int **tab, size_t row)
 		{
 			while (s[i] != '\0' && s[i] != c)
 				i++;
-			substr = ft_calloc(i - start + 1, 0);
-			if (!substr)
-			{
-				unblock(tab);
-				return (0);
-			}
+			substr = NULL;
 			loop(i, start, substr, s);
 			tab[row][j] = ft_atoi(substr);
 			free(substr);

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 18:47:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/23 19:27:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 int	count_lines(int fd)
 {
 	int		nb_line;
+	char	*tmp;
 
 	nb_line = 0;
-	while (get_next_line(fd) != NULL)
+	tmp = get_next_line(fd);
+	while (tmp != NULL)
+	{
+		free (tmp);
+		tmp = get_next_line(fd);
 		nb_line++;
+	}
 	close (fd);
 	return (nb_line);
 }
