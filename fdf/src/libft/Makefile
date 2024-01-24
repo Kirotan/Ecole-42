@@ -60,7 +60,9 @@ SRC_FILES	=   ft_isalpha.c \
 				ft_lstnew.c \
 				get_next_line.c \
 				get_next_line_utils.c \
-				ft_count_words.c
+				ft_count_words.c \
+				ft_len_y.c \
+				ft_len_x.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

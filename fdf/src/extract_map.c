@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 15:25:21 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 16:03:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,7 @@ t_stray	*extract_map(char *name_map)
 	join_line(check_fd(name_map));
 	final_line = join_line(check_fd(name_map));
 	final_line = del_return_line(final_line);
-	ft_printf("%s\n", final_line);
-	fill_array(final_line);
+	fill_array(final_line, ft_len_x(check_fd(name_map)));
 	close(check_fd(name_map));
 	return (0);
 }

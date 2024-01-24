@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   ft_len_x.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:30 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/24 16:00:19 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/24 16:02:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "./include/libft.h"
 
-# include "MLX42.h"
-# include "../src/libft/include/libft.h"
-# include <math.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
-# include <fcntl.h>
-
-typedef struct s_struc_array
+size_t	ft_len_x(int fd)
 {
-	int		x;
-	int		y;
-	int		z;
 	size_t	len;
-}	t_stray;
+	char	*s;
 
-t_stray	*extract_map(char *name_map);
-void	check_argc(int argc);
-t_stray	*fill_array(char *final_line, size_t len);
-
-#endif
+	if (fd == -1)
+		return (0);
+	len = 0;
+	s = get_next_line(fd);
+	len = ft_count_words(s, 32);
+	free(s);
+	close (fd);
+	return (len);
+}
