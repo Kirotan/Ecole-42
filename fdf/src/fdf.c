@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 19:03:58 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:26:53 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int32_t	main(int argc, char **argv)
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img;
-	int			**map_array;
+//	t_stray		*array;
 
-	(void)argc;
-	map_array = extract_array(argv[1]);
-	printf("Afficher : %d\n", map_array[1][1]);
+	check_argc(argc);
+	// array = extract_map(argv[1]);
+	extract_map(argv[1]);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!mlx)

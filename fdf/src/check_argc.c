@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat_char.c                                  :+:      :+:    :+:   */
+/*   check_argc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 11:17:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 16:06:08 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/24 13:34:55 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/24 14:41:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/libft.h"
+#include "fdf.h"
 
-char	*ft_strlcat_char(char *dst, const char *src, size_t size)
+void	check_argc(int argc)
 {
-	size_t	d;
-	size_t	i;
-
-	i = 0;
-	d = ft_strlen(dst);
-	if (size <= d)
-		return (NULL);
-	while (src[i] != '\0' && (d + i) < (size -1))
+	if (argc < 2)
 	{
-		dst[d + i] = src[i];
-		i++;
+		perror("Add map please.");
+		exit (EXIT_SUCCESS);
 	}
-	dst[d + i] = '\0';
-	return (dst);
 }

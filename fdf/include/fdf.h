@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/23 15:26:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:25:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@
 # include <limits.h>
 # include <fcntl.h>
 
-int	**extract_array(char *name_map);
+typedef struct s_struc_array
+{
+	int	x;
+	int	y;
+	int	z;
+}	t_stray;
+
+t_stray	*extract_map(char *name_map);
+void	check_argc(int argc);
 
 #endif
