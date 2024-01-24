@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/24 14:25:10 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/24 15:16:38 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ HEADERS			= -I./include -I$(LIBMLX)/include/MLX42/ -I$(LIBFT_DIR)/include
 
 SRC_FILES	=	./src/fdf.c \
 				./src/extract_map.c \
-				./src/check_argc.c
+				./src/check_argc.c \
+				./src/fill_array.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

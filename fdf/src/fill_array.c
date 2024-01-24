@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fill_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 15:27:21 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/01/24 15:29:22 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "fdf.h"
 
-# include "MLX42.h"
-# include "../src/libft/include/libft.h"
-# include <math.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <limits.h>
-# include <fcntl.h>
-
-typedef struct s_struc_array
+t_stray	*fill_array(char *final_line)
 {
-	int		x;
-	int		y;
-	int		z;
 	size_t	len;
-}	t_stray;
+	t_stray	*array;
 
-t_stray	*extract_map(char *name_map);
-void	check_argc(int argc);
-t_stray	*fill_array(char *final_line);
 
-#endif
+	len = ft_count_words(final_line, 32);
+
+}
