@@ -6,11 +6,25 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 14:46:29 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:01:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static char	*del_return_line(char *final_line)
+{
+	size_t	i;
+
+	i = 0;
+	while (final_line[i])
+	{
+		if (final_line[i] == '\n')
+			final_line[i] = 32;
+		i++;
+	}
+	return (final_line);
+}
 
 static char	*join_line(int fd)
 {
@@ -56,6 +70,7 @@ t_stray	*extract_map(char *name_map)
 	check_fd(name_map);
 	join_line(check_fd(name_map));
 	final_line = join_line(check_fd(name_map));
+	final_line = del_return_line(final_line);
 	ft_printf("%s\n", final_line);
 	close(check_fd(name_map));
 	return (0);
