@@ -6,12 +6,12 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/24 15:16:38 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/24 18:55:28 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= fdf
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g3
 CC				= gcc
 LIBFT_DIR		=./src/libft
 LIBFT_NAME		= libft.a

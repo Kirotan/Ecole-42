@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 16:33:44 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:11:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static char	*join_line(int fd)
 {
 	char	*s1;
 	char	*s2;
+	char	*old_s1;
 
 	s1 = get_next_line(fd);
 	if (!s1)
@@ -42,7 +43,9 @@ static char	*join_line(int fd)
 		return (s1);
 	while (s2)
 	{
+		old_s1 = s1;
 		s1 = ft_strjoin(s1, s2);
+		free(old_s1);
 		free(s2);
 		s2 = get_next_line(fd);
 		if (!s2)

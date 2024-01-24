@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:30 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/24 19:00:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@
 
 typedef struct s_struc_array
 {
+	int		a;
 	int		x;
 	int		y;
 	int		z;
-	size_t	len;
 }	t_stray;
 
 t_stray	*extract_map(char *name_map);
