@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 19:16:14 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 19:32:38 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@ static void	extract_and_convert(char *final_line, t_coordinates *coords,
 	int		result;
 
 	temp = ft_substr(final_line, coords->start, coords->i - coords->start);
+	r_g_b(temp, array, *coords);
 	result = ft_atoi(temp);
 	array[coords->j].z = result;
-	ft_printf("data : %d | ", array[coords->j].z);
 	array[coords->j].x = coords->x;
-	ft_printf("x : %d | ", coords->x);
 	array[coords->j].y = coords->y;
-	ft_printf("y : %d\n", coords->y);
 	free(temp);
 	return ;
 }
