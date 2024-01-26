@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:29:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 21:00:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 21:08:54 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	blue_color(char *color)
 	size_t	i;
 
 	i = 0;
+	if (ft_strlen(color) < 6)
+		return (0);
 	blue = (char *)ft_calloc(sizeof(char), 3);
 	while (color[i] && i < 2)
 	{
@@ -25,7 +27,6 @@ static int	blue_color(char *color)
 		i++;
 	}
 	blue[3] = '\0';
-	ft_printf("%s\n", blue);
 	return (0);
 }
 
@@ -35,6 +36,8 @@ static int	green_color(char *color)
 	size_t	i;
 
 	i = 0;
+	if (ft_strlen(color) < 4)
+		return (0);
 	green = (char *)ft_calloc(sizeof(char), 3);
 	while (color[i] && i < 2)
 	{
@@ -42,7 +45,6 @@ static int	green_color(char *color)
 		i++;
 	}
 	green[3] = '\0';
-	ft_printf("%s\n", green);
 	return (0);
 }
 
@@ -59,7 +61,6 @@ static int	red_color(char *color)
 		i++;
 	}
 	red[3] = '\0';
-	ft_printf("%s\n", red);
 	return (0);
 }
 
