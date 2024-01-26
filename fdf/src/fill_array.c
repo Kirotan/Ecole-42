@@ -6,11 +6,31 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 15:35:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:51:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	extract_and_convert(char *final_line, size_t *start, size_t *i)
+{
+	char	*temp;
+	int		result;
+
+	temp = ft_substr(final_line, *start, *i - *start);
+	result = ft_atoi(temp);
+	free(temp);
+	return (result);
+}
+
+void	increment_coordinates(int *x, int *y, int len)
+{
+	if (*x + 1 == len)
+		(*y)++;
+	if (*x + 1 == len)
+		*x = -1;
+	(*x)++;
+}
 
 t_stray	*allocate_memory_stray(size_t len_total)
 {
@@ -24,19 +44,16 @@ t_stray	*allocate_memory_stray(size_t len_total)
 
 int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 {
-	size_t	i;
-	size_t	j;
-	size_t	start;
-	int		x;
-	int		y;
-	char	c;
-	char	*temp;
+	size_t			i;
+	size_t			start;
+	char			c;
+	t_coordinates	coords;
 
 	i = 0;
-	j = 0;
-	x = 0;
-	y = 0;
 	c = 32;
+	coords.j = 0;
+	coords.x = 0;
+	coords.y = 0;
 	while (final_line[i])
 	{
 		if (final_line[i] == c)
@@ -46,16 +63,11 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 			start = i;
 			while (final_line[i] && final_line[i] != c)
 				i++;
-			temp = ft_substr(final_line, start, i - start);
-			array[j].z = ft_atoi(temp);
-			array[j].x = x;
-			array[j].y = y;
-			if (x + 1 == (int)len)
-				y++;
-			if (x + 1 == (int)len)
-				x = -1;
-			x++;
-			j++;
+			array[coords.j].z = extract_and_convert(final_line, &start, &i);
+			array[coords.j].x = coords.x;
+			array[coords.j].y = coords.y;
+			increment_coordinates(&coords.x, &coords.y, len);
+			coords.j++;
 		}
 	}
 	return (0);
