@@ -6,21 +6,18 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:29:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 20:19:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 20:40:57 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-
-void	r_g_b(char *temp, t_stray *array, t_coordinates coord)
+static char	*find_color(char *temp)
 {
 	size_t	i;
 	size_t	j;
 	size_t	k;
 	char	*color;
-	(void)array;
-	(void)coord;
 
 	i = 0;
 	j = 0;
@@ -31,21 +28,25 @@ void	r_g_b(char *temp, t_stray *array, t_coordinates coord)
 	if (temp[i] && temp[i] == 'x')
 		i++;
 	k = i;
-	while (temp[i])
-	{
-		i++;
+	while (temp[i++])
 		j++;
-	}
 	if (j > 0)
 		color = (char *)ft_calloc(sizeof(char), j + 1);
 	if (!color)
-		return ;
+		return (NULL);
 	j = 0;
 	while (temp[k])
-	{
-		color[j] = temp[k];
-		j++;
-		k++;
-	}
+		color[j++] = temp[k++];
+	color[j] = '\0';
+	return (color);
+}
+
+void	r_g_b(char *temp, t_stray *array, t_coordinates coord)
+{
+	char	*color;
+	(void)array;
+	(void)coord;
+
+	color = find_color(temp);
 	ft_printf("%s\n", color);
 }
