@@ -6,18 +6,18 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 16:20:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 17:09:22 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	extract_and_convert(char *final_line, size_t *start, size_t *i)
+static int	extract_and_convert(char *final_line, t_coordinates *coords)
 {
 	char	*temp;
 	int		result;
 
-	temp = ft_substr(final_line, *start, *i - *start);
+	temp = ft_substr(final_line, coords->start, coords->i - coords->start);
 	result = ft_atoi(temp);
 	free(temp);
 	return (result);
@@ -44,26 +44,27 @@ static t_stray	*allocate_memory_stray(size_t len_total)
 
 int	split_line_into_array(t_stray *array, size_t len, char *final_line, char c)
 {
-	size_t			i;
-	size_t			start;
 	t_coordinates	coords;
 
-	i = 0;
+	coords.i = 0;
 	coords.x = 0;
 	coords.y = 0;
 	coords.j = 0;
-	while (final_line[i])
+	while (final_line[coords.i])
 	{
-		if (final_line[i] == c)
-			i++;
-		if (final_line[i] != c && final_line[i])
+		if (final_line[coords.i] == c)
+			coords.i++;
+		if (final_line[coords.i] != c && final_line[coords.i])
 		{
-			start = i;
-			while (final_line[i] && final_line[i] != c)
-				i++;
-			array[coords.j].z = extract_and_convert(final_line, &start, &i);
+			coords.start = coords.i;
+			while (final_line[coords.i] && final_line[coords.i] != c)
+				coords.i++;
+			array[coords.j].z = extract_and_convert(final_line, &coords);
+			ft_printf("data : %d | ", array[coords.j].z);
 			array[coords.j].x = coords.x;
+			ft_printf("x : %d | ", coords.x);
 			array[coords.j].y = coords.y;
+			ft_printf("y : %d\n", coords.y);
 			increment_coordinates(&coords.x, &coords.y, len);
 			coords.j++;
 		}

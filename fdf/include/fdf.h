@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 15:44:14 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 16:57:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_struc_array
 	int		x;
 	int		y;
 	int		z;
+	int		r;
+	int		g;
+	int		b;
 }	t_stray;
 
 typedef struct s_coordinates
@@ -35,6 +38,8 @@ typedef struct s_coordinates
 	int		x;
 	int		y;
 	size_t	j;
+	size_t	start;
+	size_t	i;
 }	t_coordinates;
 
 t_stray	*extract_map(char *name_map);
