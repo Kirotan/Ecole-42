@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 19:28:48 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:19:03 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 	int		x;
 	int		y;
 	char	c;
+	char	*temp;
 
 	i = 0;
 	j = 0;
@@ -38,7 +39,6 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 	c = 32;
 	while (final_line[i])
 	{
-		ft_printf("test\n");
 		if (final_line[i] == c)
 			i++;
 		if (final_line[i] != c && final_line[i])
@@ -46,18 +46,18 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 			start = i;
 			while (final_line[i] && final_line[i] != c)
 				i++;
-			ft_printf("PP\n");
-			char * temp = ft_substr(final_line, start, i - start);
-			printf("Substr: %s\tJ=%ld\tlen=%zu\n", temp, j, len);
+			temp = ft_substr(final_line, start, i - start);
 			array[j].z = ft_atoi(temp);
-			ft_printf("OO\n");
+			ft_printf("data : %d | ", array[j].z);
 			array[j].x = x;
-			if (x == (int)len)
-				x = 0;
-			x++;
+			ft_printf("x : %d | ", x);
 			array[j].y = y;
-			if (x == (int)len)
+			ft_printf("y : %d\n", y);
+			if (x + 1 == (int)len)
 				y++;
+			if (x + 1 == (int)len)
+				x = -1;
+			x++;
 			j++;
 		}
 	}
@@ -70,10 +70,7 @@ t_stray	*fill_array(char *final_line, size_t len)
 	size_t	len_total;
 
 	len_total = ft_count_words(final_line, 32);
-	printf("LEN TOTAL %ld\n", len_total );
 	array = allocate_memory_stray(len_total);
 	split_line_into_array(array, len, final_line);
-	ft_printf("%s\n", final_line);
-	printf("%ld\n", len);
 	return (array);
 }
