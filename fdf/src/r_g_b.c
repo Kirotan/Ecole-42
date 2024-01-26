@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:29:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 21:34:24 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 21:37:19 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	blue_color(char *color)
 	}
 	blue[3] = '\0';
 	nb = ft_atoi_base(blue);
+	free(blue);
 	return (nb);
 }
 
@@ -51,6 +52,7 @@ static int	green_color(char *color)
 	}
 	green[3] = '\0';
 	nb = ft_atoi_base(green);
+	free(green);
 	return (nb);
 }
 
@@ -70,6 +72,7 @@ static int	red_color(char *color)
 	}
 	red[3] = '\0';
 	nb = ft_atoi_base(red);
+	free(red);
 	return (nb);
 }
 
