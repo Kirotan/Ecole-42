@@ -6,11 +6,62 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:29:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 20:40:57 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 21:00:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	blue_color(char *color)
+{
+	char	*blue;
+	size_t	i;
+
+	i = 0;
+	blue = (char *)ft_calloc(sizeof(char), 3);
+	while (color[i] && i < 2)
+	{
+		blue[i] = color[i + 4];
+		i++;
+	}
+	blue[3] = '\0';
+	ft_printf("%s\n", blue);
+	return (0);
+}
+
+static int	green_color(char *color)
+{
+	char	*green;
+	size_t	i;
+
+	i = 0;
+	green = (char *)ft_calloc(sizeof(char), 3);
+	while (color[i] && i < 2)
+	{
+		green[i] = color[i + 2];
+		i++;
+	}
+	green[3] = '\0';
+	ft_printf("%s\n", green);
+	return (0);
+}
+
+static int	red_color(char *color)
+{
+	char	*red;
+	size_t	i;
+
+	i = 0;
+	red = (char *)ft_calloc(sizeof(char), 3);
+	while (color[i] && i < 2)
+	{
+		red[i] = color[i];
+		i++;
+	}
+	red[3] = '\0';
+	ft_printf("%s\n", red);
+	return (0);
+}
 
 static char	*find_color(char *temp)
 {
@@ -41,12 +92,15 @@ static char	*find_color(char *temp)
 	return (color);
 }
 
-void	r_g_b(char *temp, t_stray *array, t_coordinates coord)
+void	r_g_b(char *temp, t_stray *array, t_coordinates coords)
 {
 	char	*color;
-	(void)array;
-	(void)coord;
 
 	color = find_color(temp);
-	ft_printf("%s\n", color);
+	if (!color)
+		return ;
+	array[coords.j].r = red_color(color);
+	array[coords.j].g = green_color(color);
+	array[coords.j].b = blue_color(color);
+	free(color);
 }
