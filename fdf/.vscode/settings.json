@@ -7,5 +7,6 @@
 		"fdf.h": "c",
 		"array": "c",
 		"functional": "c"
-	}
+	},
+	"cmake.configureOnOpen": true
 }
