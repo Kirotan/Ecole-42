@@ -6,30 +6,39 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 17:09:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 19:16:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	extract_and_convert(char *final_line, t_coordinates *coords)
+static void	extract_and_convert(char *final_line, t_coordinates *coords,
+	t_stray *array)
 {
 	char	*temp;
 	int		result;
 
 	temp = ft_substr(final_line, coords->start, coords->i - coords->start);
 	result = ft_atoi(temp);
+	array[coords->j].z = result;
+	ft_printf("data : %d | ", array[coords->j].z);
+	array[coords->j].x = coords->x;
+	ft_printf("x : %d | ", coords->x);
+	array[coords->j].y = coords->y;
+	ft_printf("y : %d\n", coords->y);
 	free(temp);
-	return (result);
+	return ;
 }
 
 static void	increment_coordinates(int *x, int *y, int len)
 {
 	if (*x + 1 == len)
+	{
+		*x = 0;
 		(*y)++;
-	if (*x + 1 == len)
-		*x = -1;
-	(*x)++;
+	}
+	else
+		(*x)++;
 }
 
 static t_stray	*allocate_memory_stray(size_t len_total)
@@ -59,12 +68,7 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line, char c)
 			coords.start = coords.i;
 			while (final_line[coords.i] && final_line[coords.i] != c)
 				coords.i++;
-			array[coords.j].z = extract_and_convert(final_line, &coords);
-			ft_printf("data : %d | ", array[coords.j].z);
-			array[coords.j].x = coords.x;
-			ft_printf("x : %d | ", coords.x);
-			array[coords.j].y = coords.y;
-			ft_printf("y : %d\n", coords.y);
+			extract_and_convert(final_line, &coords, array);
 			increment_coordinates(&coords.x, &coords.y, len);
 			coords.j++;
 		}

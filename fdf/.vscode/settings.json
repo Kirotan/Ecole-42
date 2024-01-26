@@ -5,6 +5,7 @@
 		"libft.h": "c",
 		"math.h": "c",
 		"fdf.h": "c",
-		"array": "c"
+		"array": "c",
+		"functional": "c"
 	}
 }
