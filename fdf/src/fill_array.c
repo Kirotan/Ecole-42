@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 15:19:03 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 15:35:19 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,8 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line)
 				i++;
 			temp = ft_substr(final_line, start, i - start);
 			array[j].z = ft_atoi(temp);
-			ft_printf("data : %d | ", array[j].z);
 			array[j].x = x;
-			ft_printf("x : %d | ", x);
 			array[j].y = y;
-			ft_printf("y : %d\n", y);
 			if (x + 1 == (int)len)
 				y++;
 			if (x + 1 == (int)len)
