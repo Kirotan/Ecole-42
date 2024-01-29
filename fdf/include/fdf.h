@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/29 16:08:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/29 18:58:35 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WIDTH 3000
 # define HEIGHT 1500
+# define M_PI 3.14159265358979323846
 
 # include "MLX42.h"
 # include "../src/libft/include/libft.h"
@@ -52,5 +53,8 @@ void	check_argc(int argc);
 t_stray	*fill_array(char *final_line, size_t len);
 void	r_g_b(char *temp, t_stray *array, t_coordinates coord);
 void	drawing_map(t_stray *array, mlx_image_t	*img, int ratio);
+void	rotation_x(t_stray *array, int angle);
+void	rotation_y(t_stray *array, int angle);
+void	rotation_z(t_stray *array, int angle);
 
 #endif
