@@ -6,7 +6,8 @@
 		"math.h": "c",
 		"fdf.h": "c",
 		"array": "c",
-		"functional": "c"
+		"functional": "c",
+		"unistd.h": "c"
 	},
 	"cmake.configureOnOpen": true
 }

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 11:41:34 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/29 14:24:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/29 15:31:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	drawing_line(t_stray start, t_stray end,
 		}
 		else
 			param_k = param_k + 2 * delta_y;
-		mlx_put_pixel(img, x, y, 0xFF0000FF);
+		mlx_put_pixel(img, x, y, 0xFFFFFFFF);
 		x = x + 1;
 	}
 }
