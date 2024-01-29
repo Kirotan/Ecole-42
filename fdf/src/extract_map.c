@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:17:56 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/24 19:11:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/29 11:06:40 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ static int	check_fd(char *name_map)
 t_stray	*extract_map(char *name_map)
 {
 	char	*final_line;
+	t_stray	*array;
 
 	check_fd(name_map);
 	join_line(check_fd(name_map));
 	final_line = join_line(check_fd(name_map));
 	final_line = del_return_line(final_line);
-	fill_array(final_line, ft_len_x(check_fd(name_map)));
+	array = fill_array(final_line, ft_len_x(check_fd(name_map)));
 	close(check_fd(name_map));
-	return (0);
+	return (array);
 }

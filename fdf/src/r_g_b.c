@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 19:29:06 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 21:37:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/26 21:40:48 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,7 @@ void	r_g_b(char *temp, t_stray *array, t_coordinates coords)
 	if (!color)
 		return ;
 	array[coords.j].r = red_color(color);
-	ft_printf("r = %d\n", array[coords.j].r);
 	array[coords.j].g = green_color(color);
-	ft_printf("g = %d\n", array[coords.j].g);
 	array[coords.j].b = blue_color(color);
 	free(color);
 }

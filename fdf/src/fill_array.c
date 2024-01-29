@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/26 19:57:32 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/29 14:23:10 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line, char c)
 			coords.j++;
 		}
 	}
+	array[0].len_total = coords.j;
+	array[0].len_line = len;
 	return (0);
 }
 

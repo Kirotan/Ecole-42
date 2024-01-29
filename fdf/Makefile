@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/01/26 19:31:48 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/01/29 11:50:01 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_FILES	=	./src/fdf.c \
 				./src/extract_map.c \
 				./src/check_argc.c \
 				./src/fill_array.c \
-				./src/r_g_b.c
+				./src/r_g_b.c \
+				./src/drawing.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
