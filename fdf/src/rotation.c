@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:49:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/29 19:07:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/29 19:16:22 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ void	rotation_x(t_stray *array, int angle)
 	double	y;
 	double	z;
 
-	i = 0;
-	radian = angle * (M_PI / 180);
-	while (array[i].z)
+	if (angle != 0)
 	{
-		y = array[i].y;
-		z = array[i].z;
-		array[i].y = y * cos(radian) - z * sin(radian);
-		array[i].z = y * sin(radian) + z * cos(radian);
-		i++;
+		i = 0;
+		radian = angle * (M_PI / 180);
+		while (i < array->len_total)
+		{
+			y = array[i].y;
+			z = array[i].z;
+			array[i].y = y * cos(radian) - z * sin(radian);
+			array[i].z = y * sin(radian) + z * cos(radian);
+			i++;
+		}
 	}
 }
 
@@ -38,15 +41,18 @@ void	rotation_y(t_stray *array, int angle)
 	double	x;
 	double	z;
 
-	i = 0;
-	radian = angle * (M_PI / 180);
-	while (array[i].z)
+	if (angle != 0)
 	{
-		x = array[i].x;
-		z = array[i].z;
-		array[i].x = x * cos(radian) + z * sin(radian);
-		array[i].z = -x * sin(radian) + z * cos(radian);
-		i++;
+		i = 0;
+		radian = angle * (M_PI / 180);
+		while (i < array->len_total)
+		{
+			x = array[i].x;
+			z = array[i].z;
+			array[i].x = x * cos(radian) + z * sin(radian);
+			array[i].z = -x * sin(radian) + z * cos(radian);
+			i++;
+		}
 	}
 }
 
@@ -57,14 +63,17 @@ void	rotation_z(t_stray *array, int angle)
 	double	x;
 	double	y;
 
-	i = 0;
-	radian = angle * (M_PI / 180);
-	while (array[i].z)
+	if (angle != 0)
 	{
-		x = array[i].x;
-		y = array[i].y;
-		array[i].x = x * cos(radian) - y * sin(radian);
-		array[i].y = x * sin(radian) + y * cos(radian);
-		i++;
+		i = 0;
+		radian = angle * (M_PI / 180);
+		while (i < array->len_total)
+		{
+			x = array[i].x;
+			y = array[i].y;
+			array[i].x = x * cos(radian) - y * sin(radian);
+			array[i].y = x * sin(radian) + y * cos(radian);
+			i++;
+		}
 	}
 }
