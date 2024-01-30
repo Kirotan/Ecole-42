@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:49:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/29 20:04:03 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/30 11:17:46 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	rotation_x(t_stray *array, int angle)
 	if (angle != 0)
 	{
 		i = 0;
+		angle = angle * (M_PI / 180);
 		while (i < array->len_total)
 		{
 			y = array[i].y;
@@ -63,7 +64,6 @@ void	rotation_z(t_stray *array, int angle)
 			x = array[i].x;
 			array[i].x = x * cos(angle) - array[i].y * sin(angle);
 			array[i].y = x * sin(angle) + array[i].y * cos(angle);
-			ft_printf("x: %d | y: %d | z: %d\n", array[i].x, array[i].y, array[i].z);
 			i++;
 		}
 	}

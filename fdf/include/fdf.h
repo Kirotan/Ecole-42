@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/29 18:58:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:54:51 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define WIDTH 3000
 # define HEIGHT 1500
-# define M_PI 3.14159265358979323846
 
 # include "MLX42.h"
 # include "../src/libft/include/libft.h"
