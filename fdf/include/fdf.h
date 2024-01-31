@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/30 18:54:50 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/31 16:17:48 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_struc_array
 	int			b;
 	int			len_total;
 	int			len_line;
+	int			start_x;
+	int			start_y;
 }	t_stray;
 
 typedef struct s_coordinates

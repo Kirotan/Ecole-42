@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:49:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/30 19:07:59 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/01/31 15:52:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	rotation_x(t_stray *array, int angle)
 {
 	int		i;
 	float	y;
+	float	z;
 	float	radian;
 
 	if (angle != 0)
@@ -25,8 +26,9 @@ void	rotation_x(t_stray *array, int angle)
 		while (i < array->len_total)
 		{
 			y = array[i].y;
-			array[i].y = y * cos(radian) - array[i].z * sin(radian);
-			array[i].z = y * sin(radian) + array[i].z * cos(radian);
+			z = array[i].z;
+			array[i].y = y * cos(radian) - z * sin(radian);
+			array[i].z = y * sin(radian) + z * cos(radian);
 			i++;
 		}
 	}
@@ -36,6 +38,7 @@ void	rotation_y(t_stray *array, int angle)
 {
 	int		i;
 	float	x;
+	float	z;
 	float	radian;
 
 	if (angle != 0)
@@ -45,8 +48,9 @@ void	rotation_y(t_stray *array, int angle)
 		while (i < array->len_total)
 		{
 			x = array[i].x;
-			array[i].x = x * cos(radian) + array[i].z * sin(radian);
-			array[i].z = -x * sin(radian) + array[i].z * cos(radian);
+			z = array[i].z;
+			array[i].x = x * cos(radian) + z * sin(radian);
+			array[i].z = -x * sin(radian) + z * cos(radian);
 			i++;
 		}
 	}
@@ -56,6 +60,7 @@ void	rotation_z(t_stray *array, int angle)
 {
 	int		i;
 	float	x;
+	float	y;
 	float	radian;
 
 	if (angle != 0)
@@ -65,8 +70,9 @@ void	rotation_z(t_stray *array, int angle)
 		while (i < array->len_total)
 		{
 			x = array[i].x;
-			array[i].x = x * cos(radian) - array[i].y * sin(radian);
-			array[i].y = x * sin(radian) + array[i].y * cos(radian);
+			y = array[i].y;
+			array[i].x = x * cos(radian) - y * sin(radian);
+			array[i].y = x * sin(radian) + y * cos(radian);
 			i++;
 		}
 	}
