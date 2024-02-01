@@ -26,33 +26,13 @@ void	drawing_map(t_stray *array, mlx_image_t *img)
 	i = 0;
 	while (array[0].len_total - 1 > i)
 	{
-		draw(array[i], array[i + 1], img);
+		if ((i + 1) % array[0].len_line != 0)
+			draw(array[i], array[i + 1], img);
 		if (array[0].len_total - array[0].len_line > i)
 			draw(array[i], array[i + array[0].len_line], img);
 		i++;
 	}
 }
-
-// static void	calcul_center(t_stray *array)
-// {
-// 	int	map_height;
-// 	int	map_width;
-// 	int	start_x;
-// 	int	start_y;
-// 	int	i;
-
-// 	map_height = (array[0].len_total / array[0].len_line);
-// 	map_width = array[0].len_line;
-// 	start_x = (WIDTH - map_width) / 2;
-// 	start_y = (HEIGHT - map_height) / 2;
-// 	i = 0;
-// 	while (array[0].len_total > i)
-// 	{
-// 		array[i].start_x = start_x;
-// 		array[i].start_y = start_y;
-// 		i++;
-// 	}
-// }
 
 // static void	drawing_raw(t_stray start, t_stray end,
 // 	mlx_img_t *img)

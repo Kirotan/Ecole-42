@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:16:45 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 13:15:29 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/01 14:02:21 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ static void	extract_and_convert(char *final_line, t_coordinates *coords,
 	temp = ft_substr(final_line, coords->start, coords->i - coords->start);
 	r_g_b(temp, array, *coords);
 	result = ft_atoi(temp);
-	array[coords->j].z = result;
-	array[coords->j].x = coords->x;
-	array[coords->j].y = coords->y;
+	array[coords->j].z = (result * 1);
+	array[coords->j].x = (coords->x * 30) + (array[coords->j].start_x
+			- (array[0].len_line * 30) / 2);
+	array[coords->j].y = (coords->y * 30) + (array[coords->j].start_y
+			+ ((array[0].len_total / array[0].len_line) * 30) / 2);
 	free(temp);
 	return ;
 }
@@ -71,8 +73,6 @@ int	split_line_into_array(t_stray *array, size_t len, char *final_line, char c)
 			coords.j++;
 		}
 	}
-	array[0].len_total = coords.j;
-	array[0].len_line = len;
 	return (0);
 }
 
@@ -85,6 +85,9 @@ t_stray	*fill_array(char *final_line, size_t len)
 	c = 32;
 	len_total = ft_count_words(final_line, 32);
 	array = allocate_memory_stray(len_total);
+	array[0].len_total = len_total;
+	array[0].len_line = len;
+	calcul_center(array);
 	split_line_into_array(array, len, final_line, c);
 	return (array);
 }

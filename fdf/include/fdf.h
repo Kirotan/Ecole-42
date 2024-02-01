@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 13:10:58 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/01 13:51:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void	draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
 void	rotation_x(t_stray *array, int angle);
 void	rotation_y(t_stray *array, int angle);
 void	rotation_z(t_stray *array, int angle);
+void	calcul_center(t_stray *array);
 
 #endif
