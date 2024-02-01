@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/31 16:23:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/01 11:51:50 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_hook(void *param)
 	const mlx_t	*mlx;
 
 	mlx = param;
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+	(void)mlx;
 }
 
 int32_t	main(int argc, char **argv)
@@ -30,7 +30,7 @@ int32_t	main(int argc, char **argv)
 	array = extract_map(argv[1]);
 	rotation_x(array, 0);
 	rotation_y(array, 0);
-	rotation_z(array, 45);
+	rotation_z(array, 0);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!mlx)

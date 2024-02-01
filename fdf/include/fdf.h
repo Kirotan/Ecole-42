@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/01/31 16:17:48 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/01 13:10:58 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 typedef struct s_struc_array
 {
 	int			a;
-	float		x;
-	float		y;
-	float		z;
+	double		x;
+	double		y;
+	double		z;
 	int			r;
 	int			g;
 	int			b;
@@ -49,11 +49,25 @@ typedef struct s_coordinates
 	size_t	i;
 }	t_coordinates;
 
+typedef struct s_bresenham
+{
+	int		dx;
+	int		dy;
+	int		inc_y;
+	int		inc_x;
+	int		hill;
+	int		error;
+	int		inc_e;
+	int		p;
+}	t_bres;
+
 t_stray	*extract_map(char *name_map);
 void	check_argc(int argc);
 t_stray	*fill_array(char *final_line, size_t len);
 void	r_g_b(char *temp, t_stray *array, t_coordinates coord);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
+void	draw(t_stray start, t_stray end, void *img);
+void	draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
 void	rotation_x(t_stray *array, int angle);
 void	rotation_y(t_stray *array, int angle);
 void	rotation_z(t_stray *array, int angle);

@@ -9,5 +9,30 @@
 		"functional": "c",
 		"unistd.h": "c"
 	},
-	"cmake.configureOnOpen": true
+	"cmake.configureOnOpen": true,
+	"editor.fontSize": 28,
+	"editor.tokenColorCustomizations": {
+
+		"[*Light*]": {
+			"textMateRules": [
+				{
+					"scope": "ref.matchtext",
+					"settings": {
+						"foreground": "#000"
+					}
+				}
+			]
+		},
+		"[*Dark*]": {
+			"textMateRules": [
+				{
+					"scope": "ref.matchtext",
+					"settings": {
+						"foreground": "#fff"
+					}
+				}
+			]
+		}
+	},
+	"explorer.openEditors.visible": 9
 }
