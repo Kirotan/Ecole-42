@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/01 13:43:32 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/01 18:41:51 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,8 @@ LIBX			= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 HEADERS			= -I./include -I$(LIBMLX)/include/MLX42/ -I$(LIBFT_DIR)/include
 
 SRC_FILES	=	./src/fdf.c \
-				./src/extract_map.c \
 				./src/check_argc.c \
 				./src/fill_array.c \
-				./src/r_g_b.c \
 				./src/draw.c \
 				./src/drawing_line.c \
 				./src/rotation.c \
@@ -41,7 +39,7 @@ $(LIBMLX)/build/libmlx42.a:
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 $(NAME): $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME)
-	@$(CC) $(OBJ_FILES) $(LIBX) $(LIBFT_DIR)/$(LIBFT_NAME) -o $(NAME)
+	@$(CC) $(OBJ_FILES) $(LIBX) $(LIBFT_DIR)/$(LIBFT_NAME) $(CFLAGS) -o $(NAME)
 
 $(LIBFT_DIR)/$(LIBFT_NAME):
 	@make -C $(LIBFT_DIR)

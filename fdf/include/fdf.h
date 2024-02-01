@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 13:51:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/01 18:26:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_struc_array
 	int			b;
 	int			len_total;
 	int			len_line;
+	int			len_raw;
 	int			start_x;
 	int			start_y;
 }	t_stray;
@@ -61,9 +62,8 @@ typedef struct s_bresenham
 	int		p;
 }	t_bres;
 
-t_stray	*extract_map(char *name_map);
 void	check_argc(int argc);
-t_stray	*fill_array(char *final_line, size_t len);
+int		extract_map(char *filename, t_stray **vars);
 void	r_g_b(char *temp, t_stray *array, t_coordinates coord);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
 void	draw(t_stray start, t_stray end, void *img);

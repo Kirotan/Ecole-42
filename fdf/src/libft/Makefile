@@ -1,7 +1,7 @@
 #ARGUMENTS
 
 NAME		= libft.a
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g3
 CC          = gcc
 INCLUDE		= -I./include
 
