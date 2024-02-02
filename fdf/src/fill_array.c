@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 18:53:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 18:15:11 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,16 @@ static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
 	points = ft_split(a_line, ' ');
 	while (points[i] != NULL)
 	{
-		array[*j].z = (ft_atoi(points[i]) * 1);
-		array[*j].x = (i * ratio) + array[0].start_x
-			- (array[0].len_line * ratio / 2);
-		array[*j].y = ((*j / array[0].len_line) * ratio) \
-					+ array[0].start_y - (array[0].len_raw * ratio / 4);
+		array[*j].z = ft_atoi(points[i]);
+		array[*j].x = (i * ratio);
+		array[*j].y = (*j / array[0].len_line) * ratio;
 		array[*j].r = get_color(points[i], 0, 0);
 		array[*j].g = get_color(points[i], 2, 0);
 		array[*j].b = get_color(points[i], 4, 0);
 		array[*j].a = 255;
 		free(points[i]);
 		i++;
-		*j += 1;
+		(*j)++;
 	}
 	free(points[i]);
 	free(points);
@@ -122,18 +120,18 @@ int	extract_map(char *fdname, t_stray **array)
 	int			i;
 	int			ratio;
 
-	ratio = 3;
+	ratio = 5;
 	fd = open(fdname, O_RDONLY);
 	if (!fd)
 		return (1);
 	str = get_next_line(fd);
 	*array = calloc(((get_nb_strs(str, ' '))
 				* get_nb_lines(fdname)), sizeof(t_stray));
+	array[0]->ratio = ratio;
 	i = 0;
 	(*array[0]).len_line = get_nb_strs(str, ' ');
 	(*array[0]).len_raw = get_nb_lines(fdname);
 	(*array)[0].len_total = (*array)[0].len_line * (*array)[0].len_raw;
-	calcul_center(*array);
 	while (str != NULL)
 	{
 		put_line_in_tab(str, *array, &i, ratio);

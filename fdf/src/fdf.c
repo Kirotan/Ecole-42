@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 18:38:30 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 18:14:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ int32_t	main(int argc, char **argv)
 	array = NULL;
 	check_argc(argc);
 	extract_map(argv[1], &array);
-	rotation_x(array, 45);
-	rotation_y(array, 0);
+	rotation_x(array, 8800);
+	rotation_y(array, 300);
 	rotation_z(array, 0);
+	re_calcul_center(array);
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!mlx)

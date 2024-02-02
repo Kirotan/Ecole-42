@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 18:26:31 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 15:47:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,8 @@ typedef struct s_struc_array
 	int			len_raw;
 	int			start_x;
 	int			start_y;
+	int			ratio;
 }	t_stray;
-
-typedef struct s_coordinates
-{
-	int		x;
-	int		y;
-	size_t	j;
-	size_t	start;
-	size_t	i;
-}	t_coordinates;
 
 typedef struct s_bresenham
 {
@@ -64,13 +56,12 @@ typedef struct s_bresenham
 
 void	check_argc(int argc);
 int		extract_map(char *filename, t_stray **vars);
-void	r_g_b(char *temp, t_stray *array, t_coordinates coord);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
 void	draw(t_stray start, t_stray end, void *img);
 void	draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
 void	rotation_x(t_stray *array, int angle);
 void	rotation_y(t_stray *array, int angle);
 void	rotation_z(t_stray *array, int angle);
-void	calcul_center(t_stray *array);
+void	re_calcul_center(t_stray *array);
 
 #endif
