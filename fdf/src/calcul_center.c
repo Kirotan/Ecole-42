@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 13:42:40 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 18:13:53 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 18:28:29 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static double	median_y(t_stray *array)
 	return (median);
 }
 
-static int	median_x(t_stray *array)
+static double	median_x(t_stray *array)
 {
 	int		i;
 	double	median;
@@ -60,24 +60,3 @@ void	re_calcul_center(t_stray *array)
 		i++;
 	}
 }
-
-// void	calcul_center(t_stray *array)
-// {
-// 	int	map_height;
-// 	int	map_width;
-// 	int	start_x;
-// 	int	start_y;
-// 	int	i;
-
-// 	map_height = (array[0].len_total / array[0].len_line);
-// 	map_width = array[0].len_line;
-// 	start_x = (WIDTH - map_width) / 2;
-// 	start_y = (HEIGHT - map_height) / 2;
-// 	i = 0;
-// 	while (array[0].len_total > i)
-// 	{
-// 		array[i].start_x = start_x;
-// 		array[i].start_y = start_y;
-// 		i++;
-// 	}
-// }
