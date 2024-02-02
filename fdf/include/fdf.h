@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 18:33:53 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 22:09:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,10 @@
 
 typedef struct s_struc_array
 {
-	int			a;
 	double		x;
 	double		y;
 	double		z;
-	int			r;
-	int			g;
-	int			b;
+	char		*color;
 	int			len_total;
 	int			len_line;
 	int			len_raw;

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 18:40:42 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 22:11:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,54 @@ static unsigned int	get_nb_strs(char const *s, char c)
 	return (nb_strs);
 }
 
-static int	get_color(char *str, int rgb, int i)
+static char	*get_color(char *str)
 {
-	int	j;
-	int	r;
+	int		j;
+	char	*r;
+	int		i;
 
-	r = 0;
-	while (str[i] != 'x' && str[i] != '\0')
-		i++;
-	if (str[i] && str[i])
-		i++;
-	j = i + rgb;
-	while (i < j && str[i] != '\0')
-		i++;
-	j = i + 2;
-	while (i != j && str[i] != '\0')
+	i = 0;
+	printf("%s\n", str);
+	while (str[i] != '\0')
 	{
-		r = r * 16;
-		if (str[i] >= '0' && str[i] <= '9')
-			r += str[i] - '0';
-		else if (str[i] >= 'A' && str[i] <= 'F')
-			r += str[i] - 'A' + 10;
-		else if (str[i] >= 'a' && str[i] <= 'f')
-			r += str[i] - 'a' + 10;
+		if (str[i] == 'x')
+			break ;
+		else if (str[i + 1] == '\0')
+			return (NULL);
 		i++;
 	}
+	j = 0;
+	while (*str != 'x' && *str != '\0')
+		str++;
+	str++;
+	r = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 3);
+	if (!r)
+		return (NULL);
+	while (*str != '\0')
+	{
+		r[j] = *str;
+		j++;
+		str++;
+	}
+	r[j] = 'f';
+	r[j + 1] = 'f';
+	printf("r: %s\n", r);
 	return (r);
+}
+
+char	*ft_strlower(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i++;
+	}
+	return (str);
 }
 
 static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
@@ -76,13 +98,12 @@ static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
 	points = ft_split(a_line, ' ');
 	while (points[i] != NULL)
 	{
-		array[*j].z = ft_atoi(points[i]);
+		array[*j].z = ft_atoi(points[i]) * 3;
 		array[*j].x = (i * ratio);
 		array[*j].y = (*j / array[0].len_line) * ratio;
-		array[*j].r = get_color(points[i], 0, 0);
-		array[*j].g = get_color(points[i], 2, 0);
-		array[*j].b = get_color(points[i], 4, 0);
-		array[*j].a = 255;
+		array[*j].color = ft_strlower(get_color(points[i]));
+		if (array[*j].color == NULL)
+			array[*j].color = ft_strdup("ffffffff");
 		free(points[i]);
 		i++;
 		(*j)++;
@@ -120,7 +141,7 @@ int	extract_map(char *fdname, t_stray **array)
 	int			i;
 	int			ratio;
 
-	ratio = 5;
+	ratio = 50;
 	fd = open(fdname, O_RDONLY);
 	if (!fd)
 		return (1);

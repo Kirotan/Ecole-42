@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 12:51:59 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/01 18:42:37 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 21:39:42 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	draw_other(t_stray start, t_stray end, void *img, t_bres bres)
 	bres.inc_e = bres.error << 1;
 	while ((int)start.y != (int)end.y + bres.inc_y)
 	{
-		draw_pixel(img, start.x, start.y, 0xFF0000FF);
+		draw_pixel(img, start.x, start.y, ft_atoi_base(start.color));
 		bres.error += bres.hill;
 		if (bres.error >= 0)
 		{
