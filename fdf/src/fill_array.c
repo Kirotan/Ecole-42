@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 22:11:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/02 23:07:26 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static char	*get_color(char *str)
 	int		i;
 
 	i = 0;
-	printf("%s\n", str);
 	while (str[i] != '\0')
 	{
 		if (str[i] == 'x')
@@ -70,7 +69,6 @@ static char	*get_color(char *str)
 	}
 	r[j] = 'f';
 	r[j + 1] = 'f';
-	printf("r: %s\n", r);
 	return (r);
 }
 
@@ -141,7 +139,7 @@ int	extract_map(char *fdname, t_stray **array)
 	int			i;
 	int			ratio;
 
-	ratio = 50;
+	ratio = 5;
 	fd = open(fdname, O_RDONLY);
 	if (!fd)
 		return (1);
