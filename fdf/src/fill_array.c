@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 23:07:26 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:46:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,54 +39,6 @@ static unsigned int	get_nb_strs(char const *s, char c)
 	return (nb_strs);
 }
 
-static char	*get_color(char *str)
-{
-	int		j;
-	char	*r;
-	int		i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == 'x')
-			break ;
-		else if (str[i + 1] == '\0')
-			return (NULL);
-		i++;
-	}
-	j = 0;
-	while (*str != 'x' && *str != '\0')
-		str++;
-	str++;
-	r = (char *)ft_calloc(sizeof(char), ft_strlen(str) + 3);
-	if (!r)
-		return (NULL);
-	while (*str != '\0')
-	{
-		r[j] = *str;
-		j++;
-		str++;
-	}
-	r[j] = 'f';
-	r[j + 1] = 'f';
-	return (r);
-}
-
-char	*ft_strlower(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i])
-	{
-		str[i] = ft_tolower(str[i]);
-		i++;
-	}
-	return (str);
-}
-
 static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
 {
 	char	**points;
@@ -101,7 +53,12 @@ static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
 		array[*j].y = (*j / array[0].len_line) * ratio;
 		array[*j].color = ft_strlower(get_color(points[i]));
 		if (array[*j].color == NULL)
-			array[*j].color = ft_strdup("ffffffff");
+		{
+			if (array[*j].z > 0)
+				array[*j].color = ft_strdup("ff00ffff");
+			else
+				array[*j].color = ft_strdup("ff3070ff");
+		}
 		free(points[i]);
 		i++;
 		(*j)++;

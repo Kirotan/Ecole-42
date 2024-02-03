@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/02 23:03:32 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/03 17:15:01 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRC_FILES	=	./src/fdf.c \
 				./src/draw.c \
 				./src/drawing_line.c \
 				./src/rotation.c \
-				./src/calcul_center.c
+				./src/calcul_center.c \
+				./src/get_color.c \
+				./src/free_everythings.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

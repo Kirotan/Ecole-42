@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/02 21:11:56 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 17:16:55 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int32_t	main(int argc, char **argv)
 	check_argc(argc);
 	extract_map(argv[1], &array);
 	rotation_x(array, 45);
-	rotation_y(array,20);
+	rotation_y(array, 20);
 	rotation_z(array, 0);
 	re_calcul_center(array);
 	mlx_set_setting(MLX_MAXIMIZED, false);
@@ -41,7 +41,7 @@ int32_t	main(int argc, char **argv)
 	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		return (EXIT_FAILURE);
 	drawing_map(array, img);
-	free(array);
+	free_everythings(array);
 	mlx_loop_hook(mlx, ft_hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
