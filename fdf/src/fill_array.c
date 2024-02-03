@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 19:13:13 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 21:29:07 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static unsigned int	get_nb_strs(char const *s, char c)
 	return (nb_strs);
 }
 
-static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
+static int	put_line_in_tab(char *a_line, t_stray *array, int *j)
 {
 	char	**points;
 	int		i;
@@ -48,9 +48,9 @@ static int	put_line_in_tab(char *a_line, t_stray *array, int *j, int ratio)
 	points = ft_split(a_line, ' ');
 	while (points[i] != NULL)
 	{
-		array[*j].z = ft_atoi(points[i]) * 3;
-		array[*j].x = (i * ratio);
-		array[*j].y = (*j / array[0].len_line) * ratio;
+		array[*j].z = ft_atoi(points[i]) * array[0].height_of_z;
+		array[*j].x = (i * array[0].ratio);
+		array[*j].y = (*j / array[0].len_line) * array[0].ratio;
 		array[*j].color = ft_strlower(get_color(points[i]));
 		if (array[*j].color == NULL)
 		{
@@ -94,23 +94,22 @@ int	extract_map(char *fdname, t_stray **array)
 	int			fd;
 	char		*str;
 	int			i;
-	int			ratio;
 
-	ratio = 7;
 	fd = open(fdname, O_RDONLY);
 	if (!fd)
 		return (1);
 	str = get_next_line(fd);
 	*array = calloc(((get_nb_strs(str, ' '))
 				* get_nb_lines(fdname)), sizeof(t_stray));
-	array[0]->ratio = ratio;
 	i = 0;
+	array[0]->ratio = 10;
+	array[0]->height_of_z = 3;
 	(*array[0]).len_line = get_nb_strs(str, ' ');
 	(*array[0]).len_raw = get_nb_lines(fdname);
 	(*array)[0].len_total = (*array)[0].len_line * (*array)[0].len_raw;
 	while (str != NULL)
 	{
-		put_line_in_tab(str, *array, &i, ratio);
+		put_line_in_tab(str, *array, &i);
 		free(str);
 		str = get_next_line(fd);
 	}

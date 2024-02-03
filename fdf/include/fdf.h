@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 21:06:56 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 21:28:23 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_struc_array
 	int			start_x;
 	int			start_y;
 	int			ratio;
+	int			height_of_z;
 }	t_stray;
 
 typedef struct s_bresenham
