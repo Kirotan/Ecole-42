@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 17:12:51 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 17:48:11 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:15:26 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_everythings(t_stray *array)
+void	free_everythings(t_stray *array, t_hook_pos *hook)
 {
 	int	i;
 	int	len;
@@ -24,5 +24,6 @@ void	free_everythings(t_stray *array)
 		free(array[i].color);
 		i++;
 	}
+	free(hook);
 	free(array);
 }

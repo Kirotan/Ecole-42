@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 21:28:23 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:15:55 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stdio.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 typedef struct s_struc_array
 {
@@ -52,6 +53,16 @@ typedef struct s_bresenham
 	int		p;
 }	t_bres;
 
+typedef struct s_hook_pos
+{
+	mlx_t		*mlx;
+	mlx_image_t	*img;
+	t_stray		*array;
+	int			angle_x;
+	int			angle_y;
+	int			angle_z;
+}	t_hook_pos;
+
 void	check_argc(int argc);
 int		extract_map(char *filename, t_stray **vars);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
@@ -63,7 +74,7 @@ void	rotation_y(t_stray *array, int angle);
 void	rotation_z(t_stray *array, int angle);
 void	re_calcul_center(t_stray *array);
 char	*get_color(char *str);
-void	free_everythings(t_stray *array);
+void	free_everythings(t_stray *array, t_hook_pos *hook);
 void	ft_hook(void *param);
 void	create_mlx(mlx_t **mlx, mlx_image_t **img);
 
