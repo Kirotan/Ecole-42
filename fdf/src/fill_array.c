@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 17:46:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 19:13:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	extract_map(char *fdname, t_stray **array)
 	int			i;
 	int			ratio;
 
-	ratio = 5;
+	ratio = 7;
 	fd = open(fdname, O_RDONLY);
 	if (!fd)
 		return (1);

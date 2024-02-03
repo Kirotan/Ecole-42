@@ -6,15 +6,15 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 17:14:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/03 21:06:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH 3000
-# define HEIGHT 1500
+# define WIDTH 3840
+# define HEIGHT 2160
 
 # include "MLX42.h"
 # include "../src/libft/include/libft.h"
@@ -56,11 +56,14 @@ int		extract_map(char *filename, t_stray **vars);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
 void	draw(t_stray start, t_stray end, void *img);
 void	draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
+void	ft_rotation(t_stray *array);
 void	rotation_x(t_stray *array, int angle);
 void	rotation_y(t_stray *array, int angle);
 void	rotation_z(t_stray *array, int angle);
 void	re_calcul_center(t_stray *array);
 char	*get_color(char *str);
 void	free_everythings(t_stray *array);
+void	ft_hook(void *param);
+void	create_mlx(mlx_t **mlx, mlx_image_t **img);
 
 #endif
