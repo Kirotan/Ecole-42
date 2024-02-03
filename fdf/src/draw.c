@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:41:53 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 18:41:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:48:40 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ void	drawing_map(t_stray *array, mlx_image_t *img)
 	int		i;
 
 	i = 0;
+	while (array[0].len_total > i)
+	{
+		array[i].x *= array[0].ratio;
+		array[i].y *= array[0].ratio;
+		i++;
+	}
+	i = 0;
+	re_calcul_center(array);
 	while (array[0].len_total - 1 > i)
 	{
 		if ((i + 1) % array[0].len_line != 0)

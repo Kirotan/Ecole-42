@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:50:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 00:14:02 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:50:35 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,27 @@ void	handle_rotation(t_hook_pos *data)
 	rotation_x(data->array, data->angle_x);
 	rotation_y(data->array, data->angle_y);
 	rotation_z(data->array, data->angle_z);
-	re_calcul_center(data->array);
 	drawing_map(data->array, data->img);
 }
 
 void	inc_angle(t_hook_pos *data, int flag)
 {
 	if (flag == 1)
-		data->angle_x += 6;
+		data->angle_x += 4;
 	if (flag == 2)
-		data->angle_x -= 6;
+		data->angle_x -= 4;
 	if (flag == 3)
-		data->angle_y += 6;
+		data->angle_y += 4;
 	if (flag == 4)
-		data->angle_y -= 6;
+		data->angle_y -= 4;
 	if (flag == 5)
-		data->angle_z += 6;
+		data->angle_z += 4;
 	if (flag == 6)
-		data->angle_z -= 6;
+		data->angle_z -= 4;
+	if (flag == 7)
+		data->array->ratio += 0.1;
+	if (flag == 8 && data->array->ratio > 0.1)
+		data->array->ratio -= 0.1;
 	handle_rotation(data);
 }
 
@@ -76,6 +79,10 @@ void	ft_rotate(t_hook_pos *hook, mlx_t *mlx)
 		inc_angle(hook, 5);
 	else if (mlx_is_key_down(hook->mlx, MLX_KEY_E))
 		inc_angle(hook, 6);
+	else if (mlx_is_key_down(mlx, MLX_KEY_1))
+		inc_angle(hook, 7);
+	else if (mlx_is_key_down(mlx, MLX_KEY_2))
+		inc_angle(hook, 8);
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	handle_rotation(hook);
@@ -88,5 +95,6 @@ void	ft_hook(void *param)
 
 	hook = param;
 	mlx = hook->mlx;
+	hook->array[0].ratio = 1;
 	ft_rotate(hook, mlx);
 }

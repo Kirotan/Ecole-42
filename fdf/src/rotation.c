@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 18:49:32 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 21:02:11 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:32:03 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,4 @@ void	rotation_z(t_stray *array, int angle)
 			i++;
 		}
 	}
-}
-
-void	ft_rotation(t_stray *array)
-{
-	int	angle_x;
-	int	angle_y;
-	int	angle_z;
-
-	angle_x = 45;
-	angle_y = 0;
-	angle_z = 0;
-	rotation_x(array, angle_x);
-	rotation_y(array, angle_y);
-	rotation_z(array, angle_z);
-	re_calcul_center(array);
 }

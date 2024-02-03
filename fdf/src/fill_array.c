@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 21:29:07 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 00:53:15 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int	extract_map(char *fdname, t_stray **array)
 	*array = calloc(((get_nb_strs(str, ' '))
 				* get_nb_lines(fdname)), sizeof(t_stray));
 	i = 0;
-	array[0]->ratio = 10;
-	array[0]->height_of_z = 3;
+	array[0]->ratio = 1;
+	array[0]->height_of_z = 5;
 	(*array[0]).len_line = get_nb_strs(str, ' ');
 	(*array[0]).len_raw = get_nb_lines(fdname);
 	(*array)[0].len_total = (*array)[0].len_line * (*array)[0].len_raw;
