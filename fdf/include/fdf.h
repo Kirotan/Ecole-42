@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 00:39:03 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 01:04:04 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_hook_pos
 	int			angle_x;
 	int			angle_y;
 	int			angle_z;
+	int			height_of_z;
 }	t_hook_pos;
 
 void	check_argc(int argc);

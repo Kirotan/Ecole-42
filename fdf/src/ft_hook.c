@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 20:50:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 00:50:35 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 01:22:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ void	ft_rotate(t_hook_pos *hook, mlx_t *mlx)
 		inc_angle(hook, 5);
 	else if (mlx_is_key_down(hook->mlx, MLX_KEY_E))
 		inc_angle(hook, 6);
-	else if (mlx_is_key_down(mlx, MLX_KEY_1))
-		inc_angle(hook, 7);
 	else if (mlx_is_key_down(mlx, MLX_KEY_2))
+		inc_angle(hook, 7);
+	else if (mlx_is_key_down(mlx, MLX_KEY_1))
 		inc_angle(hook, 8);
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);

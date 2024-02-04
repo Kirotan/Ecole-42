@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 00:53:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/04 01:13:01 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static int	put_line_in_tab(char *a_line, t_stray *array, int *j)
 	while (points[i] != NULL)
 	{
 		array[*j].z = ft_atoi(points[i]) * array[0].height_of_z;
-		array[*j].x = (i * array[0].ratio);
-		array[*j].y = (*j / array[0].len_line) * array[0].ratio;
+		array[*j].x = i;
+		array[*j].y = *j / array[0].len_line;
 		array[*j].color = ft_strlower(get_color(points[i]));
 		if (array[*j].color == NULL)
 		{
@@ -102,7 +102,6 @@ int	extract_map(char *fdname, t_stray **array)
 	*array = calloc(((get_nb_strs(str, ' '))
 				* get_nb_lines(fdname)), sizeof(t_stray));
 	i = 0;
-	array[0]->ratio = 1;
 	array[0]->height_of_z = 5;
 	(*array[0]).len_line = get_nb_strs(str, ' ');
 	(*array[0]).len_raw = get_nb_lines(fdname);
