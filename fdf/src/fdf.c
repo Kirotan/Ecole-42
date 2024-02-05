@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:55 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 00:57:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:30:36 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int32_t	main(int argc, char **argv)
 	t_stray		*array;
 	t_hook_pos	*hook;
 
-	hook = malloc(sizeof(t_hook_pos));
 	check_argc(argc);
 	extract_map(argv[1], &array);
+	hook = malloc(sizeof(t_hook_pos));
+	if (!hook)
+		return (0);
 	create_mlx(&mlx, &img);
 	hook->mlx = mlx;
 	hook->img = img;

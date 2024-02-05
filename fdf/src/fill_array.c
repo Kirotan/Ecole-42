@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 01:13:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 18:01:59 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static unsigned int	get_nb_strs(char const *s, char c)
+static unsigned int	get_nb_row(char const *s, char c)
 {
 	unsigned int	i;
 	unsigned int	nb_strs;
@@ -39,32 +39,104 @@ static unsigned int	get_nb_strs(char const *s, char c)
 	return (nb_strs);
 }
 
-static int	put_line_in_tab(char *a_line, t_stray *array, int *j)
+static int	put_line_in_tab(char *str, t_stray *array, int *j)
 {
 	char	**points;
 	int		i;
 
 	i = 0;
-	points = ft_split(a_line, ' ');
+	points = ft_split(str, ' ');
+	if (!points)
+	{
+		free(str);
+		while (i < *j)
+		{
+			free(array[i].color);
+			i++;
+		}
+		free(array);
+		perror("Malloc error.\n");
+		exit (EXIT_FAILURE);
+	}
 	while (points[i] != NULL)
 	{
-		array[*j].z = ft_atoi(points[i]) * array[0].height_of_z;
-		array[*j].x = i;
-		array[*j].y = *j / array[0].len_line;
-		array[*j].color = ft_strlower(get_color(points[i]));
-		if (array[*j].color == NULL)
+		if (ft_isdigit(points[i][0]) == 0)
 		{
-			if (array[*j].z > 0)
-				array[*j].color = ft_strdup("ff00ffff");
-			else
-				array[*j].color = ft_strdup("ff3070ff");
+			free(points);
+			free(str);
+			while (i < *j)
+			{
+				free(array[i].color);
+				i++;
+			}
+			free(array);
+			perror("Bad digit.\n");
+			exit (EXIT_FAILURE);
+		}
+		if (*j < array[0].len_total)
+		{
+			array[*j].z = ft_atoi(points[i]) * array[0].height_of_z;
+			array[*j].x = i;
+			array[*j].y = (*j / array[0].len_line);
+			array[*j].color = ft_strlower(get_color(points[i]));
+			if (array[*j].color == NULL)
+			{
+				if (array[*j].z > 0)
+				{
+					array[*j].color = ft_strdup("ff00ffff");
+					if (!array[*j].color)
+					{
+						free(str);
+						free(points[i]);
+						free(points);
+						while (i < *j)
+						{
+							free(array[i].color);
+							i++;
+						}
+						free(array);
+						perror("Malloc error, transparent line.\n");
+						exit (EXIT_FAILURE);
+					}
+				}
+				else
+				{
+					array[*j].color = ft_strdup("ff3070ff");
+					if (!array[*j].color)
+					{
+						free(str);
+						free(points[i]);
+						free(points);
+						while (i < *j)
+						{
+							free(array[i].color);
+							i++;
+						}
+						free(array);
+						perror("Malloc error, transparent line.\n");
+						exit (EXIT_FAILURE);
+					}
+				}
+			}
+			(*j)++;
 		}
 		free(points[i]);
 		i++;
-		(*j)++;
 	}
 	free(points[i]);
 	free(points);
+	if (i != array[0].len_line)
+	{
+		i = 0;
+		while (i < *j)
+		{
+			free(array[i].color);
+			i++;
+		}
+		free(array);
+		perror("Bad line.\n");
+		exit (EXIT_FAILURE);
+	}
 	return (0);
 }
 
@@ -75,9 +147,7 @@ static int	get_nb_lines(char *fdname)
 	int		i;
 
 	i = 0;
-	fd = open(fdname, O_RDONLY);
-	if (!fd)
-		return (0);
+	fd = check_fd(fdname);
 	str = get_next_line(fd);
 	while (str != NULL)
 	{
@@ -89,26 +159,36 @@ static int	get_nb_lines(char *fdname)
 	return (i);
 }
 
+static void	give_value(t_stray *array, char *str, char *fdname)
+{
+	array[0].height_of_z = 5;
+	array[0].len_line = get_nb_row(str, ' ');
+	array[0].len_raw = get_nb_lines(fdname);
+	array[0].len_total = array[0].len_line * array[0].len_raw;
+}
+
 int	extract_map(char *fdname, t_stray **array)
 {
 	int			fd;
 	char		*str;
-	int			i;
+	int			j;
 
-	fd = open(fdname, O_RDONLY);
-	if (!fd)
-		return (1);
+	fd = check_fd(fdname);
 	str = get_next_line(fd);
-	*array = calloc(((get_nb_strs(str, ' '))
+	check_gnl(str);
+	*array = ft_calloc(((get_nb_row(str, ' '))
 				* get_nb_lines(fdname)), sizeof(t_stray));
-	i = 0;
-	array[0]->height_of_z = 5;
-	(*array[0]).len_line = get_nb_strs(str, ' ');
-	(*array[0]).len_raw = get_nb_lines(fdname);
-	(*array)[0].len_total = (*array)[0].len_line * (*array)[0].len_raw;
+	if (!*array)
+	{
+		free(str);
+		close(fd);
+		exit (EXIT_FAILURE);
+	}
+	give_value(*array, str, fdname);
+	j = 0;
 	while (str != NULL)
 	{
-		put_line_in_tab(str, *array, &i);
+		put_line_in_tab(str, *array, &j);
 		free(str);
 		str = get_next_line(fd);
 	}

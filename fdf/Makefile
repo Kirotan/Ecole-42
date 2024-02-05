@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/03 22:41:12 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/05 12:19:56 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ LIBX			= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 HEADERS			= -I./include -I$(LIBMLX)/include/MLX42/ -I$(LIBFT_DIR)/include
 
 SRC_FILES	=	./src/fdf.c \
-				./src/check_argc.c \
+				./src/check_error.c \
 				./src/fill_array.c \
 				./src/draw.c \
 				./src/drawing_line.c \

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 16:32:23 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/03 17:57:02 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:47:21 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*get_color(char *str)
 	char	*r;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	j = 0;
 	r = NULL;

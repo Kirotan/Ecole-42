@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/04 01:04:04 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 12:27:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include <stdio.h>
 # include <limits.h>
 # include <fcntl.h>
-# include <stdbool.h>
 
 typedef struct s_struc_array
 {
@@ -65,6 +64,8 @@ typedef struct s_hook_pos
 }	t_hook_pos;
 
 void	check_argc(int argc);
+int		check_fd(char *fdname);
+void	check_gnl(char *str);
 int		extract_map(char *filename, t_stray **vars);
 void	drawing_map(t_stray *array, mlx_image_t	*img);
 void	draw(t_stray start, t_stray end, void *img);
