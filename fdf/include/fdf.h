@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/05 19:03:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 19:34:22 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef struct s_struc_array
 	double		x;
 	double		y;
 	double		z;
+	int			i;
+	int			j;
 	char		*color;
 	int			len_total;
 	int			len_line;
@@ -82,10 +84,10 @@ void			create_mlx(mlx_t **mlx, mlx_image_t **img);
 unsigned int	get_nb_row(char const *s, char c);
 int				get_nb_lines(char *fdname);
 void			give_value(t_stray *array, char *str, char *fdname);
-void			verif_1(char *str, t_stray *array, int *i, int *j);
-void			verif_2(char *str, t_stray *array, int *i, int *j);
-void			verif_3(char *str, t_stray *array, int *i, int *j);
-void			verif_4(t_stray *array, char **points, char *point_str, int *j);
-void			verif_5(t_stray *array, int *j, int i);
+void			verif_1(char *str, t_stray *array);
+void			verif_2(char *str, t_stray *array);
+void			verif_3(char *str, t_stray *array);
+void			verif_4(t_stray *array, char **points, char *point_str);
+void			verif_5(t_stray *array);
 
 #endif
