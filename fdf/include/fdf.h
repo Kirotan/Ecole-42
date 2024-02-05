@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/05 12:27:47 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/05 19:03:49 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,29 @@ typedef struct s_hook_pos
 	int			height_of_z;
 }	t_hook_pos;
 
-void	check_argc(int argc);
-int		check_fd(char *fdname);
-void	check_gnl(char *str);
-int		extract_map(char *filename, t_stray **vars);
-void	drawing_map(t_stray *array, mlx_image_t	*img);
-void	draw(t_stray start, t_stray end, void *img);
-void	draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
-void	ft_rotation(t_stray *array);
-void	rotation_x(t_stray *array, int angle);
-void	rotation_y(t_stray *array, int angle);
-void	rotation_z(t_stray *array, int angle);
-void	re_calcul_center(t_stray *array);
-char	*get_color(char *str);
-void	free_everythings(t_stray *array, t_hook_pos *hook);
-void	ft_hook(void *param);
-void	create_mlx(mlx_t **mlx, mlx_image_t **img);
+void			check_argc(int argc);
+int				check_fd(char *fdname);
+void			check_gnl(char *str);
+int				extract_map(char *filename, t_stray **vars);
+void			drawing_map(t_stray *array, mlx_image_t	*img);
+void			draw(t_stray start, t_stray end, void *img);
+void			draw_pixel(void *mlx_ptr, int32_t x, int32_t y, int32_t color);
+void			ft_rotation(t_stray *array);
+void			rotation_x(t_stray *array, int angle);
+void			rotation_y(t_stray *array, int angle);
+void			rotation_z(t_stray *array, int angle);
+void			re_calcul_center(t_stray *array);
+char			*get_color(char *str);
+void			free_everythings(t_stray *array, t_hook_pos *hook);
+void			ft_hook(void *param);
+void			create_mlx(mlx_t **mlx, mlx_image_t **img);
+unsigned int	get_nb_row(char const *s, char c);
+int				get_nb_lines(char *fdname);
+void			give_value(t_stray *array, char *str, char *fdname);
+void			verif_1(char *str, t_stray *array, int *i, int *j);
+void			verif_2(char *str, t_stray *array, int *i, int *j);
+void			verif_3(char *str, t_stray *array, int *i, int *j);
+void			verif_4(t_stray *array, char **points, char *point_str, int *j);
+void			verif_5(t_stray *array, int *j, int i);
 
 #endif

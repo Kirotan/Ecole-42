@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/05 12:19:56 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/05 18:41:28 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,9 @@ SRC_FILES	=	./src/fdf.c \
 				./src/get_color.c \
 				./src/free_everythings.c \
 				./src/ft_hook.c \
-				./src/create_mlx.c
+				./src/create_mlx.c \
+				./src/get_number.c \
+				./src/verification.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
