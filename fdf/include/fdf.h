@@ -6,15 +6,15 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 14:31:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 15:11:11 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH 3840
-# define HEIGHT 2160
+# define WIDTH 3000
+# define HEIGHT 2000
 
 # include "MLX42.h"
 # include "../src/libft/include/libft.h"

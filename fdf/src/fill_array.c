@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 13:33:03 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 16:33:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	core_put_in_tab(t_stray *array, char **points, char *str)
 static int	put_line_in_tab(char *str, t_stray *array)
 {
 	char	**points;
+	int		i;
 
 	points = ft_split(str, ' ');
 	if (!points)
@@ -50,7 +51,10 @@ static int	put_line_in_tab(char *str, t_stray *array)
 	array[0].i = 0;
 	while (points[array[0].i] != NULL)
 	{
-		if (ft_isdigit(points[array[0].i][0]) == 0)
+		i = 0;
+		while (points[array[0].i][i] == '-' || points[array[0].i][i] == '+')
+			i++;
+		if (ft_isdigit(points[array[0].i][i]) == 0)
 		{
 			free(points);
 			verif_2(str, array);

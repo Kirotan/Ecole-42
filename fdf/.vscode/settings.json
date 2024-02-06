@@ -46,7 +46,9 @@
 		"semaphore": "c",
 		"fdf.h": "c",
 		"mlx42_int.h": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"mlx42.h": "c",
+		"fcntl.h": "c"
 	},
 	"cmake.configureOnOpen": true,
 	"editor.fontSize": 28,
