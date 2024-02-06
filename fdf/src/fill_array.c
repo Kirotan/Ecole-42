@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 18:01:49 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 18:16:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static void	core_put_in_tab(t_stray *array, char **points, char *str)
 			if (array[array[0].j].z > 0)
 			{
 				array[array[0].j].color = ft_strdup("ff00ffff");
-				verif_4(array, points, points[array[0].i]);
+				verif_4(array, points);
 				verif_3(str, array);
 			}
 			else
 			{
 				array[array[0].j].color = ft_strdup("ff3070ff");
-				verif_4(array, points, points[array[0].i]);
+				verif_4(array, points);
 				verif_3(str, array);
 			}
 		}

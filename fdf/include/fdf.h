@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:55:30 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 15:11:11 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 18:13:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void			give_value(t_stray *array, char *str, char *fdname);
 void			verif_1(char *str, t_stray *array);
 void			verif_2(char *str, t_stray *array);
 void			verif_3(char *str, t_stray *array);
-void			verif_4(t_stray *array, char **points, char *point_str);
+void			verif_4(t_stray *array, char **points);
 void			verif_5(t_stray *array);
 
 #endif

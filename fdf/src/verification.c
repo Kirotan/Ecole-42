@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:41:05 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 17:34:52 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 18:12:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ void	verif_3(char *str, t_stray *array)
 	}
 }
 
-void	verif_4(t_stray *array, char **points, char *point_str)
+void	verif_4(t_stray *array, char **points)
 {
 	if (!array[array[0].j].color)
 	{
-		free(point_str);
+		while (points[array[0].i])
+		{
+			free(points[array[0].i]);
+			(array[0].i)++;
+		}
 		free(points);
 	}
 }
