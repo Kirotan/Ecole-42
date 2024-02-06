@@ -6,12 +6,12 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/05 18:41:28 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/06 16:38:52 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= fdf
-CFLAGS			= -Wall -Wextra -Werror -g3
+CFLAGS			= -Wall -Wextra -Werror -g3 -fsanitize=address
 CC				= gcc
 LIBFT_DIR		=./src/libft
 LIBFT_NAME		= libft.a

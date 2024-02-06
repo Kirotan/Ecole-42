@@ -6,11 +6,21 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/06 16:33:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 18:01:49 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	ft_free_points(char **points, t_stray *array)
+{
+	while (points[array[0].i])
+	{
+		free(points[array[0].i]);
+		(array[0].i)++;
+	}
+	free(points);
+}
 
 static void	core_put_in_tab(t_stray *array, char **points, char *str)
 {
@@ -56,7 +66,7 @@ static int	put_line_in_tab(char *str, t_stray *array)
 			i++;
 		if (ft_isdigit(points[array[0].i][i]) == 0)
 		{
-			free(points);
+			ft_free_points(points, array);
 			verif_2(str, array);
 		}
 		core_put_in_tab(array, points, str);
