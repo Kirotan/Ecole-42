@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 18:13:46 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/05 19:39:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 14:27:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,19 @@ int	get_nb_lines(char *fdname)
 
 void	give_value(t_stray *array, char *str, char *fdname)
 {
-	array[0].height_of_z = 5;
+	double	widt;
+	double	heigh;
+
 	array[0].len_line = get_nb_row(str, ' ');
 	array[0].len_raw = get_nb_lines(fdname);
 	array[0].len_total = array[0].len_line * array[0].len_raw;
+	array[0].height_of_z = 5;
+	widt = HEIGHT / array[0].len_line;
+	heigh = WIDTH / array[0].len_raw;
+	if (widt < heigh)
+		array[0].zoom = widt;
+	else
+		array[0].zoom = heigh;
 	array[0].i = 0;
 	array[0].j = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:43:00 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/05 19:52:30 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/06 13:33:03 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	core_put_in_tab(t_stray *array, char **points, char *str)
 	{
 		array[array[0].j].z = ft_atoi(points[array[0].i])
 			* array[0].height_of_z;
-		array[array[0].j].x = array[0].i;
-		array[array[0].j].y = (array[0].j / array[0].len_line);
+		array[array[0].j].x = (array[0].i) * array[0].zoom;
+		array[array[0].j].y = (array[0].j / array[0].len_line) * array[0].zoom;
 		array[array[0].j].color = ft_strlower(get_color(points[array[0].i]));
 		if (array[array[0].j].color == NULL)
 		{
