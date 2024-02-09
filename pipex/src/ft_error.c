@@ -6,11 +6,29 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:37:17 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/09 18:25:00 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/09 19:22:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_error_malloc(char **tab)
+{
+	int	i;
+
+	i = 0;
+	perror("Error malloc.\n");
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	exit(1);
+}
+
+void	ft_error_exerve(void)
+{
+	perror("Error execve.\n");
+	exit(1);
+}
 
 void	ft_error_file(int filein)
 {
