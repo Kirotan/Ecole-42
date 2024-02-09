@@ -6,46 +6,31 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/06 20:14:45 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/09 16:55:54 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= fdf
+NAME			= pipex
 CFLAGS			= -Wall -Wextra -Werror
 CC				= gcc
 LIBFT_DIR		=./src/libft
 LIBFT_NAME		= libft.a
-LIBMLX			=./MLX42
-LIBX			= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-HEADERS			= -I./include -I$(LIBMLX)/include/MLX42/ -I$(LIBFT_DIR)/include
+HEADERS			= -I./include -I$(LIBFT_DIR)/include
 
-SRC_FILES	=	./src/fdf.c \
-				./src/check_error.c \
-				./src/fill_array.c \
-				./src/draw.c \
-				./src/drawing_line.c \
-				./src/rotation.c \
-				./src/calcul_center.c \
-				./src/get_color.c \
-				./src/free_everythings.c \
-				./src/ft_hook.c \
-				./src/create_mlx.c \
-				./src/get_number.c \
-				./src/verification.c
+SRC_FILES	=	./src/pipex.c \
+				./src/ft_error.c \
+				./src/ft_execve.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 
 
-all: $(NAME) $(LIBFT_DIR)/$(LIBFT_NAME) $(LIBMLX)/build/libmlx42.a
-
-$(LIBMLX)/build/libmlx42.a:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+all: $(NAME) $(LIBFT_DIR)/$(LIBFT_NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
 $(NAME): $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME)
-	@$(CC) $(OBJ_FILES) $(LIBX) $(LIBFT_DIR)/$(LIBFT_NAME) $(CFLAGS) -o $(NAME)
+	@$(CC) $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME) $(CFLAGS) -o $(NAME)
 
 $(LIBFT_DIR)/$(LIBFT_NAME):
 	@make -C $(LIBFT_DIR)
