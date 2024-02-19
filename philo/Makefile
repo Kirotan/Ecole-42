@@ -5,51 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/02 12:08:12 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/18 16:55:49 by gdoumer          ###   ########.fr        #
+#    Created: 2024/02/19 17:14:04 by gdoumer           #+#    #+#              #
+#    Updated: 2024/02/19 17:15:23 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= pipex
+
+NAME			= philo
 CFLAGS			= -Wall -Wextra -Werror
 CC				= gcc
-LIBFT_DIR		=./src/libft
-LIBFT_NAME		= libft.a
-HEADERS			= -I./include -I$(LIBFT_DIR)/include
+HEADERS			= -I./include
 
-SRC_FILES	=	./src/pipex.c \
-				./src/ft_error.c \
-				./src/ft_execve.c
-
-SRC_FILES_BONUS	=	./src/pipex_bonus.c \
-					./src/ft_error.c \
-					./src/ft_execve.c
+SRC_FILES	=	./src/philo.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
-OBJ_FILES_BONUS	= $(SRC_FILES_BONUS:.c=.o)
 
 
-all: $(NAME) $(LIBFT_DIR)/$(LIBFT_NAME)
+all: $(NAME)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(HEADERS) -o $@ -c $<
 
-$(NAME): $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME)
-	@$(CC) $(OBJ_FILES) $(LIBFT_DIR)/$(LIBFT_NAME) $(CFLAGS) -o $(NAME)
-
-$(LIBFT_DIR)/$(LIBFT_NAME):
-	@make -C $(LIBFT_DIR)
-
-bonus: $(OBJ_FILES_BONUS) $(LIBFT_DIR)/$(LIBFT_NAME)
-	@$(CC) $(OBJ_FILES_BONUS) $(LIBFT_DIR)/$(LIBFT_NAME) $(CFLAGS) -o $(NAME)
+$(NAME): $(OBJ_FILES)
+	@$(CC) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
 
 clean:
-	@rm -f $(OBJ_FILES) $(OBJ_FILES_BONUS)
-	@make -C $(LIBFT_DIR) clean
+	@rm -f $(OBJ_FILES)
 
 fclean: clean
 	@rm -f $(NAME)
-	@make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
