@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/19 17:22:54 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/21 13:56:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,31 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <pthread.h>
+# include <limits.h>
+
+typedef struct s_data
+{
+	int		nb_philo;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		nb_time_must_eat;
+	int		start_time;
+}				t_data;
+
+typedef struct s_philo
+{
+	int				id;
+	pthread_t		thread;
+	int				nb_meal_eaten;
+	int				time_before_die;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	t_data			*data;
+}				t_philo;
+
+int		check_error(int argc, char **argv);
+long	ft_atol(const char *nptr);
+int		get_data(int argc, char **argv);
 
 #endif

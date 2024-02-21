@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 17:15:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/20 16:23:21 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/02/20 14:42:44 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/02/20 14:43:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+long	ft_atol(const char *nptr)
 {
-	if (check_error(argc, argv) == 1)
-		return (1);
-	if (get_data(argc, argv) == 1)
-		return (1);
-	return (0);
+	size_t	i;
+	int		sign;
+	long	nbr;
+
+	if (!nptr)
+		return (0);
+	i = 0;
+	sign = 1;
+	nbr = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '+')
+		i++;
+	else if (nptr[i] == '-')
+	{
+		sign = sign * -1;
+		i++;
+	}
+	while (nptr[i] >= 48 && nptr[i] <= 57)
+	{
+		nbr = (nbr * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }
