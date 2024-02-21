@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 17:14:04 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/20 15:35:29 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/21 15:49:55 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ HEADERS			= -I./include
 SRC_FILES	=	./src/philo.c \
 				./src/check_error.c \
 				./src/utils.c \
-				./src/get_data.c
+				./src/get_data.c \
+				./src/mechanism.c
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

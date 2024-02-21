@@ -6,11 +6,17 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:58:25 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/21 14:08:29 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/21 15:24:12 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check_if(char *message)
+{
+	printf("%s\n", message);
+	return (1);
+}
 
 static int	check_argc(int argc)
 {

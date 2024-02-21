@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   mechanism.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/19 17:15:31 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/21 15:11:44 by gdoumer          ###   ########.fr       */
+/*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
+/*   Updated: 2024/02/21 17:04:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int argc, char **argv)
+void	mechanism(t_philo *philo)
 {
-	if (check_error(argc, argv) == 1)
-		return (1);
-	if (get_data(argc, argv) == 1)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i < philo[0].data->nb_philo)
+	{
+		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)
+			check_if(ERROR_THREAD);
+		i++;
+	}
 }
