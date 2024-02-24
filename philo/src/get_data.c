@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 16:02:19 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 16:26:44 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ int	get_data(int argc, char **argv)
 		return (check_if(ERROR_MALLOC));
 	init_philo(&data, philo);
 	if (mechanism(philo) == 1)
+	{
+		freeing_machine(philo);
 		check_if(ERROR_THREAD);
+	}
 	freeing_machine(philo);
 	return (0);
 }
