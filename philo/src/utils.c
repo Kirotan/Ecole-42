@@ -6,11 +6,26 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:42:44 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/20 14:43:31 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 15:48:41 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	ft_display(t_philo *philo, char *message)
+{
+	printf("%ld %d %s\n", get_time()
+		- philo->data->start_time, philo->id, message);
+}
+
+long int	get_time(void)
+{
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL) == -1)
+		return (check_if(ERROR_TIME));
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
 
 long	ft_atol(const char *nptr)
 {

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/21 16:26:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 15:43:07 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 
 # define ERROR_MALLOC "Error : malloc failed.\n"
 # define ERROR_THREAD "Error : thread failed.\n"
+# define ERROR_TIME "Error : gettimeofday failed.\n"
+# define FORK "has taken"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+# define DIE "died"
+# define MESSAGE "%ld %d %s\n"
 
 typedef struct s_data
 {
@@ -46,10 +53,19 @@ typedef struct s_philo
 	t_data			*data;
 }				t_philo;
 
-int		check_error(int argc, char **argv);
-long	ft_atol(const char *nptr);
-int		get_data(int argc, char **argv);
-int		check_if(char *message);
-void	mechanism(t_philo *philo);
+int			check_error(int argc, char **argv);
+long		ft_atol(const char *nptr);
+int			get_data(int argc, char **argv);
+int			check_if(char *message);
+int			mechanism(t_philo *philo);
+void		ft_display(t_philo *philo, char *message);
+long int	get_time(void);
+void		take_fork(t_philo *philo);
+void		give_way_fork(t_philo *philo);
+void		ft_dionysos(t_philo *philo);
+void		ft_athena(t_philo *philo);
+void		ft_morphe(t_philo *philo);
+void		freeing_machine(t_philo *philo);
+void		freeing_machine_loop(t_philo *philo, int i);
 
 #endif
