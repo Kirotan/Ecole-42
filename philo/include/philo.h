@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 16:17:44 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:22:38 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@
 
 typedef struct s_data
 {
-	int		nb_philo;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		nb_time_must_eat;
-	int		start_time;
+	int					nb_philo;
+	int					time_to_die;
+	int					time_to_eat;
+	int					time_to_sleep;
+	int					nb_time_must_eat;
+	time_t				start_time;
+	pthread_mutex_t		*is_it_dead;
 }				t_data;
 
 typedef struct s_philo
@@ -48,7 +49,6 @@ typedef struct s_philo
 	pthread_t		thread;
 	int				nb_meal_eaten;
 	int				time_before_die;
-	pthread_mutex_t	*is_it_dead;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*own_fork;
 	t_data			*data;

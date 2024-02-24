@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 16:26:44 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:33:08 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->time_to_die = ft_atol(argv[2]) * 1000;
 	data->time_to_eat = ft_atol(argv[3]) * 1000;
 	data->time_to_sleep = ft_atol(argv[4]) * 1000;
-	data->start_time = get_time();
+	data->is_it_dead = malloc(sizeof(pthread_mutex_t));
+	if (!data[0].is_it_dead)
+		check_if(ERROR_MALLOC);
 	if (argc == 6)
 		data->nb_time_must_eat = ft_atol(argv[5]);
 	else

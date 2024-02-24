@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 17:14:04 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/24 15:37:50 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/24 16:58:12 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_FILES	=	./src/philo.c \
 				./src/get_data.c \
 				./src/mechanism.c \
 				./src/ft_gotto.c \
-				./src/freeing_machine.c
+				./src/freeing_machine.c \
 
 OBJ_FILES	= $(SRC_FILES:.c=.o)
 

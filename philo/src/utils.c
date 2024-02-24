@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:42:44 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 15:48:41 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:17:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	ft_display(t_philo *philo, char *message)
 {
-	printf("%ld %d %s\n", get_time()
-		- philo->data->start_time, philo->id, message);
+	printf(MESSAGE, get_time() - philo->data->start_time, philo->id, message);
 }
 
 long int	get_time(void)
