@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 16:23:28 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 16:40:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_morphe(t_philo *philo)
 		+ philo->data->time_to_sleep > philo->data->time_to_die)
 	{
 		philo->data->dead = -1;
-		usleep((philo->data->time_to_die - philo->time_since_last_meal) / 2);
+		usleep((philo->data->time_to_die - philo->time_since_last_meal) - 1000);
 		ft_display(philo, DIE);
 		return (1);
 	}
