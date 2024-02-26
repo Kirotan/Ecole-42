@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 17:22:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 15:24:30 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_data
 	int					nb_time_must_eat;
 	time_t				start_time;
 	pthread_mutex_t		*is_it_dead;
+	int				dead;
 }				t_data;
 
 typedef struct s_philo
@@ -48,7 +49,8 @@ typedef struct s_philo
 	int				id;
 	pthread_t		thread;
 	int				nb_meal_eaten;
-	int				time_before_die;
+	time_t			time_since_last_meal;
+	time_t			last_meal;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*own_fork;
 	t_data			*data;
@@ -61,12 +63,15 @@ int			check_if(char *message);
 int			mechanism(t_philo *philo);
 void		ft_display(t_philo *philo, char *message);
 long int	get_time(void);
-void		take_fork(t_philo *philo);
+int			take_fork(t_philo *philo);
 void		give_way_fork(t_philo *philo);
-void		ft_dionysos(t_philo *philo);
-void		ft_athena(t_philo *philo);
-void		ft_morphe(t_philo *philo);
-void		freeing_machine(t_philo *philo);
-void		freeing_machine_loop(t_philo *philo, int i);
+int			ft_dionysos(t_philo *philo);
+int			ft_athena(t_philo *philo);
+int			ft_morphe(t_philo *philo);
+int			freeing_machine(t_philo *philo);
+int			freeing_machine_loop(t_philo *philo, int i);
+int			ft_thanatos_master(t_philo *philo);
+int			ft_thanatos_eater(t_philo *philo);
+int			ft_thanatos_sleeper(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/24 17:33:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 15:24:57 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ static void	init_philo(t_data *data, t_philo *philo)
 	{
 		philo[i].id = i + 1;
 		philo[i].nb_meal_eaten = data->nb_time_must_eat;
-		philo[i].time_before_die = data->time_to_die;
 		philo[i].data = data;
+		philo[i].time_since_last_meal = 0;
+		philo[i].last_meal = 0;
 		philo[i].own_fork = malloc(sizeof(pthread_mutex_t));
 		if (!philo[i].own_fork)
 		{
@@ -43,9 +44,11 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->time_to_die = ft_atol(argv[2]) * 1000;
 	data->time_to_eat = ft_atol(argv[3]) * 1000;
 	data->time_to_sleep = ft_atol(argv[4]) * 1000;
+	data->dead = 0;
 	data->is_it_dead = malloc(sizeof(pthread_mutex_t));
-	if (!data[0].is_it_dead)
+	if (!data->is_it_dead)
 		check_if(ERROR_MALLOC);
+	pthread_mutex_init(data->is_it_dead, NULL);
 	if (argc == 6)
 		data->nb_time_must_eat = ft_atol(argv[5]);
 	else
@@ -64,9 +67,14 @@ int	get_data(int argc, char **argv)
 	init_philo(&data, philo);
 	if (mechanism(philo) == 1)
 	{
-		freeing_machine(philo);
 		check_if(ERROR_THREAD);
+		freeing_machine(philo);
+		return (1);
 	}
-	freeing_machine(philo);
+	else
+	{
+		freeing_machine(philo);
+		return (0);
+	}
 	return (0);
 }
