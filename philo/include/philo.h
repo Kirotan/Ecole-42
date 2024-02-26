@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 15:24:30 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 18:36:16 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_data
 	int					nb_time_must_eat;
 	time_t				start_time;
 	pthread_mutex_t		*is_it_dead;
-	int				dead;
+	int					dead;
 }				t_data;
 
 typedef struct s_philo

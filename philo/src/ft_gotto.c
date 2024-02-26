@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 16:40:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 18:41:25 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	take_fork(t_philo *philo)
 {
+	if (philo->data->dead == -1)
+		return (1);
 	if (pthread_mutex_lock(philo->own_fork) == -1)
 	{
 		check_if(ERROR_THREAD);
@@ -83,6 +85,5 @@ int	ft_morphe(t_philo *philo)
 	}
 	else
 		usleep(philo->data->time_to_sleep);
-
 	return (0);
 }

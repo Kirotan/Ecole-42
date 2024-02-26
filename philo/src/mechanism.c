@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 16:43:23 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 18:47:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ static int	ft_routine(t_philo *philo)
 		if (take_fork(philo) == 1)
 			return (1);
 		if (ft_dionysos(philo) == 1)
+		{
+			give_way_fork(philo);
 			return (1);
+		}
 		give_way_fork(philo);
 		if (ft_morphe(philo) == 1)
 			return (1);

@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 16:24:08 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 17:26:56 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	init_philo(t_data *data, t_philo *philo)
+static int	init_philo(t_data *data, t_philo *philo)
 {
 	int	i;
 
@@ -29,6 +29,7 @@ static void	init_philo(t_data *data, t_philo *philo)
 		{
 			freeing_machine_loop(philo, i);
 			check_if(ERROR_MALLOC);
+			return (1);
 		}
 		pthread_mutex_init(philo[i].own_fork, NULL);
 		if (i > 0)
@@ -36,6 +37,7 @@ static void	init_philo(t_data *data, t_philo *philo)
 		i++;
 	}
 	philo[0].left_fork = philo[data->nb_philo - 1].own_fork;
+	return (0);
 }
 
 static void	init_data(int argc, char **argv, t_data *data)
@@ -64,7 +66,8 @@ int	get_data(int argc, char **argv)
 	philo = malloc(sizeof(t_philo) * data.nb_philo);
 	if (!philo)
 		return (check_if(ERROR_MALLOC));
-	init_philo(&data, philo);
+	if (init_philo(&data, philo) == 1)
+		return (1);
 	if (mechanism(philo) == 1)
 	{
 		check_if(ERROR_THREAD);
