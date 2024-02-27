@@ -6,26 +6,11 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:29:16 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 18:47:01 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 19:08:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-int	ft_thanatos_sleeper(t_philo *philo)
-{
-	if (philo->data->dead == -1)
-		return (1);
-	if (philo->data->time_to_die < philo->data->time_to_sleep)
-	{
-		if (pthread_mutex_lock(philo->data->is_it_dead) == -1)
-			check_if(ERROR_THREAD);
-		philo->data->dead = -1;
-		ft_display(philo, DIE);
-		return (1);
-	}
-	return (0);
-}
 
 int	ft_thanatos_eater(t_philo *philo)
 {
@@ -36,6 +21,7 @@ int	ft_thanatos_eater(t_philo *philo)
 		if (pthread_mutex_lock(philo->data->is_it_dead) == -1)
 			check_if(ERROR_THREAD);
 		philo->data->dead = -1;
+		usleep(philo->data->time_to_die);
 		ft_display(philo, DIE);
 		return (1);
 	}

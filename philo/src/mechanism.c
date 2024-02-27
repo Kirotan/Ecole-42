@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 17:36:24 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:33:48 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	ft_routine(t_philo *philo)
 			give_way_fork(philo);
 			return (1);
 		}
-		give_way_fork(philo);
+		if (give_way_fork(philo) == 1)
+			return (1);
 		if (ft_morphe(philo) == 1)
 			return (1);
 		if (ft_athena(philo) == 1)
@@ -71,3 +72,4 @@ int	mechanism(t_philo *philo)
 			return (1);
 	return (0);
 }
+

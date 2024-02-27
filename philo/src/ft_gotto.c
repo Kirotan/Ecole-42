@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 16:29:10 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:55:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ int	take_fork(t_philo *philo)
 	return (0);
 }
 
-void	give_way_fork(t_philo *philo)
+int	give_way_fork(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->own_fork);
 	pthread_mutex_unlock(philo->left_fork);
+	if (philo->data->dead == -1)
+		return (1);
+	return (0);
 }
 
 int	ft_dionysos(t_philo *philo)
@@ -70,16 +73,14 @@ int	ft_morphe(t_philo *philo)
 {
 	if (ft_thanatos_master(philo) == 1)
 		return (1);
-	if (ft_thanatos_sleeper(philo) == 1)
-		return (1);
 	if (philo->data->dead == -1)
 		return (1);
 	ft_display(philo, SLEEP);
-	if (philo->time_since_last_meal
+	if (philo->data->dead == 0 && philo->time_since_last_meal
 		+ philo->data->time_to_sleep > philo->data->time_to_die)
 	{
 		philo->data->dead = -1;
-		usleep((philo->data->time_to_die - philo->time_since_last_meal) - 1000);
+		usleep((philo->data->time_to_die - philo->time_since_last_meal));
 		ft_display(philo, DIE);
 		return (1);
 	}
