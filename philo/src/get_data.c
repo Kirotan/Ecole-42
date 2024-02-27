@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 17:26:56 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 16:53:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,34 @@ static int	init_philo(t_data *data, t_philo *philo)
 	return (0);
 }
 
-static void	init_data(int argc, char **argv, t_data *data)
+static int	init_data(int argc, char **argv, t_data *data)
 {
 	data->nb_philo = ft_atol(argv[1]);
 	data->time_to_die = ft_atol(argv[2]) * 1000;
 	data->time_to_eat = ft_atol(argv[3]) * 1000;
 	data->time_to_sleep = ft_atol(argv[4]) * 1000;
 	data->dead = 0;
+	data->already_write_dead = 0;
 	data->is_it_dead = malloc(sizeof(pthread_mutex_t));
 	if (!data->is_it_dead)
+	{
 		check_if(ERROR_MALLOC);
+		return (1);
+	}
 	pthread_mutex_init(data->is_it_dead, NULL);
+	data->write_dead = malloc(sizeof(pthread_mutex_t));
+	if (!data->write_dead)
+	{
+		check_if(ERROR_MALLOC);
+		free(data->is_it_dead);
+		return (1);
+	}
+	pthread_mutex_init(data->write_dead, NULL);
 	if (argc == 6)
 		data->nb_time_must_eat = ft_atol(argv[5]);
 	else
 		data->nb_time_must_eat = INT_MAX;
+	return (0);
 }
 
 int	get_data(int argc, char **argv)

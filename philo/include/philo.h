@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 18:36:16 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 16:32:13 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ typedef struct s_data
 	int					nb_time_must_eat;
 	time_t				start_time;
 	pthread_mutex_t		*is_it_dead;
+	pthread_mutex_t		*write_dead;
 	int					dead;
+	int					already_write_dead;
 }				t_data;
 
 typedef struct s_philo
@@ -58,6 +60,7 @@ typedef struct s_philo
 
 int			check_error(int argc, char **argv);
 long		ft_atol(const char *nptr);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			get_data(int argc, char **argv);
 int			check_if(char *message);
 int			mechanism(t_philo *philo);

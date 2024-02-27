@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 18:47:45 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/26 19:24:34 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	best_life(t_philo *philo)
 	}
 	else
 	{
-		usleep(2000);
+		usleep(1500);
 		if (ft_routine(philo) == 1)
 			return (1);
 	}
