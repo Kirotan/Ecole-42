@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 16:53:18 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:15:38 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,8 @@ static int	init_philo(t_data *data, t_philo *philo)
 	return (0);
 }
 
-static int	init_data(int argc, char **argv, t_data *data)
+static int	init_data_2(t_data *data)
 {
-	data->nb_philo = ft_atol(argv[1]);
-	data->time_to_die = ft_atol(argv[2]) * 1000;
-	data->time_to_eat = ft_atol(argv[3]) * 1000;
-	data->time_to_sleep = ft_atol(argv[4]) * 1000;
-	data->dead = 0;
-	data->already_write_dead = 0;
 	data->is_it_dead = malloc(sizeof(pthread_mutex_t));
 	if (!data->is_it_dead)
 	{
@@ -63,6 +57,20 @@ static int	init_data(int argc, char **argv, t_data *data)
 		return (1);
 	}
 	pthread_mutex_init(data->write_dead, NULL);
+	return (0);
+}
+
+static int	init_data(int argc, char **argv, t_data *data)
+{
+	data->nb_philo = ft_atol(argv[1]);
+	if (data->nb_philo == 0)
+		return (1);
+	data->time_to_die = ft_atol(argv[2]) * 1000;
+	data->time_to_eat = ft_atol(argv[3]) * 1000;
+	data->time_to_sleep = ft_atol(argv[4]) * 1000;
+	data->dead = 0;
+	data->already_write_dead = 0;
+	init_data_2(data);
 	if (argc == 6)
 		data->nb_time_must_eat = ft_atol(argv[5]);
 	else
@@ -75,7 +83,8 @@ int	get_data(int argc, char **argv)
 	t_data	data;
 	t_philo	*philo;
 
-	init_data(argc, argv, &data);
+	if (init_data(argc, argv, &data) == 1)
+		return (1);
 	philo = malloc(sizeof(t_philo) * data.nb_philo);
 	if (!philo)
 		return (check_if(ERROR_MALLOC));

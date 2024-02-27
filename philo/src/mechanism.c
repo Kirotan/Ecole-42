@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/26 19:24:34 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:36:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,16 @@ int	mechanism(t_philo *philo)
 	{
 		if (pthread_create(&philo[i].thread, NULL, (void *)best_life,
 				&philo[i]) != 0)
+		{
+			while (i > 0)
+				pthread_join(philo[i--].thread, NULL);
 			return (1);
+		}
 		i++;
 	}
-	i = 0;
-	while (i < philo[0].data->nb_philo)
-	{
+	i = -1;
+	while (++i < philo[0].data->nb_philo)
 		if (pthread_join(philo[i].thread, NULL) != 0)
 			return (1);
-		i++;
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:42:44 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 16:39:22 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:13:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_display(t_philo *philo, char *message)
 	pthread_mutex_lock(philo->data->write_dead);
 	if (ft_strncmp(message, "died", 4) == 0)
 		philo->data->already_write_dead++;
-	printf("already_write_dead = %d\n", philo->data->already_write_dead);
 	if (philo->data->already_write_dead == 0)
 		printf(MESSAGE, get_time()
 			- philo->data->start_time, philo->id, message);

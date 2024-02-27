@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:58:25 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 16:29:18 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:15:14 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	check_argv(int argc, char **argv)
 		tmp = ft_atol(argv[argc - 1]);
 		if (tmp <= 0 || tmp > INT_MAX)
 		{
-			printf("Error : wrong argument. Only number.\n");
+			printf("Error : wrong argument.\n");
 			return (1);
 		}
 		argc--;
