@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:36:15 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 18:43:21 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:44:18 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	freeing_machine_loop(t_philo *philo, int i)
 {
-	while (i > 0)
+	while (i > 1)
 	{
 		pthread_mutex_destroy(philo[i].own_fork);
 		free(philo[i].own_fork);
 		i--;
 	}
+	free(philo[i - 1].own_fork);
 	pthread_mutex_destroy(philo->data->is_it_dead);
 	pthread_mutex_destroy(philo->data->write_dead);
 	free(philo->data->is_it_dead);
