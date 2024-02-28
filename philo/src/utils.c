@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:42:44 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 18:24:29 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 12:25:06 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,13 @@ long	ft_atol(const char *nptr)
 		i++;
 	}
 	return (nbr * sign);
+}
+
+void	only_one(t_philo *philo)
+{
+	philo[0].data->start_time = get_time();
+	ft_display(philo, FORK);
+	usleep(philo->data->time_to_die);
+	ft_display(philo, DIE);
+	freeing_machine(philo);
 }

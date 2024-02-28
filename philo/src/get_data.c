@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 17:15:38 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 12:40:27 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,15 @@ static int	init_data(int argc, char **argv, t_data *data)
 	return (0);
 }
 
+int	get_data_2(t_data *data)
+{
+	pthread_mutex_destroy(data->is_it_dead);
+	pthread_mutex_destroy(data->write_dead);
+	free(data->is_it_dead);
+	free(data->write_dead);
+	return (check_if(ERROR_MALLOC));
+}
+
 int	get_data(int argc, char **argv)
 {
 	t_data	data;
@@ -87,10 +96,12 @@ int	get_data(int argc, char **argv)
 		return (1);
 	philo = malloc(sizeof(t_philo) * data.nb_philo);
 	if (!philo)
-		return (check_if(ERROR_MALLOC));
+		return (get_data_2(&data));
 	if (init_philo(&data, philo) == 1)
 		return (1);
-	if (mechanism(philo) == 1)
+	if (ft_atol(argv[1]) == 1)
+		only_one(philo);
+	else if (ft_atol(argv[1]) > 1 && mechanism(philo) == 1)
 	{
 		check_if(ERROR_THREAD);
 		freeing_machine(philo);

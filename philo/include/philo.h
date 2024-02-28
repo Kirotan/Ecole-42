@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 18:56:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 12:17:39 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int			freeing_machine(t_philo *philo);
 int			freeing_machine_loop(t_philo *philo, int i);
 int			ft_thanatos_master(t_philo *philo);
 int			ft_thanatos_eater(t_philo *philo);
+void		only_one(t_philo *philo);
 
 #endif
