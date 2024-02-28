@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/27 18:55:14 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:18:52 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	take_fork(t_philo *philo)
 		return (1);
 	}
 	if (philo->data->dead == -1)
+	{
+		pthread_mutex_unlock(philo->own_fork);
 		return (1);
+	}
 	ft_display(philo, FORK);
 	if (pthread_mutex_lock(philo->left_fork) == -1)
 	{
@@ -30,15 +33,18 @@ int	take_fork(t_philo *philo)
 		return (1);
 	}
 	if (philo->data->dead == -1)
+	{
+		give_way_fork(philo);
 		return (1);
+	}
 	ft_display(philo, FORK);
 	return (0);
 }
 
 int	give_way_fork(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->own_fork);
 	pthread_mutex_unlock(philo->left_fork);
+	pthread_mutex_unlock(philo->own_fork);
 	if (philo->data->dead == -1)
 		return (1);
 	return (0);
@@ -79,9 +85,17 @@ int	ft_morphe(t_philo *philo)
 	if (philo->data->dead == 0 && philo->time_since_last_meal
 		+ philo->data->time_to_sleep > philo->data->time_to_die)
 	{
-		philo->data->dead = -1;
-		usleep((philo->data->time_to_die - philo->time_since_last_meal));
-		ft_display(philo, DIE);
+		if (pthread_mutex_lock(philo->data->is_it_dead) == -1)
+		{
+			check_if(ERROR_THREAD);
+			return (1);
+		}
+		if (philo->data->dead == -1)
+		{
+			pthread_mutex_unlock(philo->data->is_it_dead);
+			return (1);
+		}
+		ft_hammer(philo);
 		return (1);
 	}
 	else

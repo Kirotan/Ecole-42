@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:29:16 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 11:56:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:10:43 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,18 @@ int	ft_thanatos_master(t_philo *philo)
 	if (philo->time_since_last_meal > philo->data->time_to_die)
 	{
 		if (pthread_mutex_lock(philo->data->is_it_dead) == -1)
+		{
 			check_if(ERROR_THREAD);
+			return (1);
+		}
+		if (philo->data->dead == -1)
+		{
+			pthread_mutex_unlock(philo->data->is_it_dead);
+			return (1);
+		}
 		philo->data->dead = -1;
 		ft_display(philo, DIE);
+		pthread_mutex_unlock(philo->data->is_it_dead);
 		return (1);
 	}
 	return (0);

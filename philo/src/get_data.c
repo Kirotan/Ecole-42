@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 13:38:48 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 14:17:24 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static int	init_philo(t_data *data, t_philo *philo)
 		philo[i].own_fork = malloc(sizeof(pthread_mutex_t));
 		if (!philo[i].own_fork)
 		{
+			printf("test\n");
 			freeing_machine_loop(philo, i);
 			check_if(ERROR_MALLOC);
 			return (1);
