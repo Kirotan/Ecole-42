@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 15:50:58 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 16:33:47 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ERROR_MALLOC "Error : malloc failed.\n"
 # define ERROR_THREAD "Error : thread failed.\n"
 # define ERROR_TIME "Error : gettimeofday failed.\n"
-# define FORK "has taken"
+# define FORK "has taken a fork"
 # define EAT "is eating"
 # define SLEEP "is sleeping"
 # define THINK "is thinking"
@@ -79,5 +79,6 @@ int			ft_thanatos_master(t_philo *philo);
 int			ft_thanatos_eater(t_philo *philo);
 void		only_one(t_philo *philo);
 void		ft_hammer(t_philo *philo);
+int			guardian_of_the_dead(t_philo *philo);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 15:46:17 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 17:03:59 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 int	take_fork(t_philo *philo)
 {
-	if (philo->data->dead == -1)
-		return (1);
 	if (pthread_mutex_lock(philo->own_fork) == -1)
 	{
 		check_if(ERROR_THREAD);
 		return (1);
 	}
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 	{
 		pthread_mutex_unlock(philo->own_fork);
 		return (1);
@@ -32,7 +30,7 @@ int	take_fork(t_philo *philo)
 		check_if(ERROR_THREAD);
 		return (1);
 	}
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 	{
 		give_way_fork(philo);
 		return (1);
@@ -45,7 +43,7 @@ int	give_way_fork(t_philo *philo)
 {
 	pthread_mutex_unlock(philo->own_fork);
 	pthread_mutex_unlock(philo->left_fork);
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 		return (1);
 	return (0);
 }
@@ -56,7 +54,7 @@ int	ft_dionysos(t_philo *philo)
 		return (1);
 	if (ft_thanatos_eater(philo) == 1)
 		return (1);
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 		return (1);
 	ft_display(philo, EAT);
 	philo->last_meal = get_time();
@@ -69,7 +67,7 @@ int	ft_athena(t_philo *philo)
 {
 	if (ft_thanatos_master(philo) == 1)
 		return (1);
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 		return (1);
 	ft_display(philo, THINK);
 	return (0);
@@ -79,10 +77,10 @@ int	ft_morphe(t_philo *philo)
 {
 	if (ft_thanatos_master(philo) == 1)
 		return (1);
-	if (philo->data->dead == -1)
+	if (guardian_of_the_dead(philo) == -1)
 		return (1);
 	ft_display(philo, SLEEP);
-	if (philo->data->dead == 0 && philo->time_since_last_meal
+	if (guardian_of_the_dead(philo) == 0 && philo->time_since_last_meal
 		+ philo->data->time_to_sleep > philo->data->time_to_die)
 	{
 		if (pthread_mutex_lock(philo->data->is_it_dead) == -1)
