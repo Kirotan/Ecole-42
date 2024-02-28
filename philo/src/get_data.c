@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 15:34:39 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 12:40:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 13:04:45 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	init_data_2(t_data *data)
 	if (!data->write_dead)
 	{
 		check_if(ERROR_MALLOC);
+		pthread_mutex_destroy(data->is_it_dead);
 		free(data->is_it_dead);
 		return (1);
 	}
@@ -70,7 +71,8 @@ static int	init_data(int argc, char **argv, t_data *data)
 	data->time_to_sleep = ft_atol(argv[4]) * 1000;
 	data->dead = 0;
 	data->already_write_dead = 0;
-	init_data_2(data);
+	if (init_data_2(data) == 1)
+		return (1);
 	if (argc == 6)
 		data->nb_time_must_eat = ft_atol(argv[5]);
 	else
