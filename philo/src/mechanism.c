@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 14:20:21 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:48:09 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,27 @@ static int	ft_routine(t_philo *philo)
 	return (0);
 }
 
+static int	ft_routine_odd(t_philo *philo)
+{
+	while (philo->nb_meal_eaten > 0)
+	{
+		if (take_fork_odd(philo) == 1)
+			return (1);
+		if (ft_dionysos(philo) == 1)
+		{
+			give_way_fork_odd(philo);
+			return (1);
+		}
+		if (give_way_fork_odd(philo) == 1)
+			return (1);
+		if (ft_morphe(philo) == 1)
+			return (1);
+		if (ft_athena(philo) == 1)
+			return (1);
+	}
+	return (0);
+}
+
 static int	best_life(t_philo *philo)
 {
 	if (philo->id % 2 == 0)
@@ -43,7 +64,7 @@ static int	best_life(t_philo *philo)
 	else
 	{
 		usleep(1500);
-		if (ft_routine(philo) == 1)
+		if (ft_routine_odd(philo) == 1)
 			return (1);
 	}
 	return (0);

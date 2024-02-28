@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 15:18:52 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:46:17 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	take_fork(t_philo *philo)
 
 int	give_way_fork(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->own_fork);
+	pthread_mutex_unlock(philo->left_fork);
 	if (philo->data->dead == -1)
 		return (1);
 	return (0);

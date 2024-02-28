@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 15:17:16 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/28 15:50:58 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int			mechanism(t_philo *philo);
 void		ft_display(t_philo *philo, char *message);
 long int	get_time(void);
 int			take_fork(t_philo *philo);
+int			take_fork_odd(t_philo *philo);
 int			give_way_fork(t_philo *philo);
+int			give_way_fork_odd(t_philo *philo);
 int			ft_dionysos(t_philo *philo);
 int			ft_athena(t_philo *philo);
 int			ft_morphe(t_philo *philo);

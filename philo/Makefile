@@ -6,7 +6,7 @@
 #    By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 17:14:04 by gdoumer           #+#    #+#              #
-#    Updated: 2024/02/28 15:13:08 by gdoumer          ###   ########.fr        #
+#    Updated: 2024/02/28 15:49:58 by gdoumer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_FILES	=	./src/philo.c \
 				./src/get_data.c \
 				./src/mechanism.c \
 				./src/ft_gotto.c \
+				./src/ft_gotto_odd.c \
 				./src/freeing_machine.c \
 				./src/ft_thanatos.c \
 				./src/hammer.c
