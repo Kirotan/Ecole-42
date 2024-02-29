@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 15:49:03 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/29 17:05:07 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 18:17:49 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	best_life(t_philo *philo)
 	}
 	else
 	{
-		usleep(1500);
+		usleep(philo->data->time_to_eat);
 		if (ft_routine_odd(philo) == 1)
 			return (1);
 	}
