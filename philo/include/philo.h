@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/29 16:29:46 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 21:27:11 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int			give_way_fork_odd(t_philo *philo);
 int			ft_dionysos(t_philo *philo);
 int			ft_athena(t_philo *philo);
 int			ft_morphe(t_philo *philo);
-int			freeing_machine(t_philo *philo);
-int			freeing_machine_loop(t_philo *philo, int i);
+void		freeing_machine(t_philo *philo);
+void		freeing_machine_loop(t_philo *philo, int i);
 int			ft_thanatos_master(t_philo *philo);
 int			ft_thanatos_eater(t_philo *philo);
 void		only_one(t_philo *philo);

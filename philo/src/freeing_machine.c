@@ -6,13 +6,13 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 15:36:15 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 15:12:02 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 21:26:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	freeing_machine_loop(t_philo *philo, int i)
+void	freeing_machine_loop(t_philo *philo, int i)
 {
 	while (i > 1)
 	{
@@ -26,10 +26,9 @@ int	freeing_machine_loop(t_philo *philo, int i)
 	free(philo->data->is_it_dead);
 	free(philo->data->write_dead);
 	free(philo);
-	return (1);
 }
 
-int	freeing_machine(t_philo *philo)
+void	freeing_machine(t_philo *philo)
 {
 	int	i;
 
@@ -45,5 +44,4 @@ int	freeing_machine(t_philo *philo)
 	free(philo->data->is_it_dead);
 	free(philo->data->write_dead);
 	free(philo);
-	return (1);
 }

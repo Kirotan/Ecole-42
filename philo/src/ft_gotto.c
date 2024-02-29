@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/29 18:41:36 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 21:32:19 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	take_fork(t_philo *philo)
 	{
 		pthread_mutex_unlock(philo->own_fork);
 		check_if(ERROR_THREAD);
+		return (1);
+	}
+	if (ft_thanatos_master(philo) == 1)
+	{
+		give_way_fork(philo);
 		return (1);
 	}
 	if (guardian_of_the_dead(philo) == 1)
@@ -60,7 +65,7 @@ int	ft_dionysos(t_philo *philo)
 	ft_display(philo, EAT);
 	philo->last_meal = get_time();
 	philo->nb_meal_eaten--;
-	usleep(philo->data->time_to_eat - 50);
+	usleep(philo->data->time_to_eat);
 	return (0);
 }
 
