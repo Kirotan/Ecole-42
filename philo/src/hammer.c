@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:12:47 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 16:36:10 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 17:19:49 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_hammer(t_philo *philo)
 {
 	philo->data->dead = -1;
 	usleep((philo->data->time_to_die - philo->time_since_last_meal));
-	ft_display(philo, DIE);
 	pthread_mutex_unlock(philo->data->is_it_dead);
+	ft_display(philo, DIE);
 }
 
 int	guardian_of_the_dead(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 14:29:16 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/28 17:15:27 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/02/29 17:24:59 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_thanatos_eater(t_philo *philo)
 {
-	if (guardian_of_the_dead(philo) == -1)
+	if (guardian_of_the_dead(philo) == 1)
 		return (1);
 	if (philo->data->time_to_die < philo->data->time_to_eat)
 	{
@@ -44,7 +44,7 @@ int	ft_thanatos_master(t_philo *philo)
 		philo->time_since_last_meal = 0;
 	else
 		philo->time_since_last_meal = (get_time() - philo->last_meal) * 1000;
-	if (guardian_of_the_dead(philo) == -1)
+	if (guardian_of_the_dead(philo) == 1)
 		return (1);
 	if (philo->time_since_last_meal > philo->data->time_to_die)
 	{
