@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 14:04:48 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/03/04 11:28:37 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/03/04 12:45:31 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ int	ft_athena(t_philo *philo)
 		return (1);
 	if (guardian_of_the_dead(philo) == 1)
 		return (1);
+	if (philo->data->nb_philo % 2 == 1)
+	{
+		if (ft_thanatos_thinker(philo) == 1)
+			return (1);
+		usleep(philo->data->time_to_eat);
+	}
 	ft_display(philo, THINK);
 	return (0);
 }
