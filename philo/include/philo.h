@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/03/04 12:45:15 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/03/04 13:17:02 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void		freeing_machine(t_philo *philo);
 void		freeing_machine_loop(t_philo *philo, int i);
 int			ft_thanatos_master(t_philo *philo);
 int			ft_thanatos_eater(t_philo *philo);
+int			ft_thanatos_thinker_0(t_philo *philo);
 int			ft_thanatos_thinker(t_philo *philo);
 void		only_one(t_philo *philo);
 void		ft_hammer(t_philo *philo);
