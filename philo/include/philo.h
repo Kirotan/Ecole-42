@@ -6,7 +6,7 @@
 /*   By: gdoumer <gdoumer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:16:22 by gdoumer           #+#    #+#             */
-/*   Updated: 2024/02/29 21:27:11 by gdoumer          ###   ########.fr       */
+/*   Updated: 2024/03/04 13:17:02 by gdoumer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int			mechanism(t_philo *philo);
 void		ft_display(t_philo *philo, char *message);
 long int	get_time(void);
 int			take_fork(t_philo *philo);
+int			take_fork_2(t_philo *philo);
 int			take_fork_odd(t_philo *philo);
 int			give_way_fork(t_philo *philo);
 int			give_way_fork_odd(t_philo *philo);
@@ -77,6 +78,8 @@ void		freeing_machine(t_philo *philo);
 void		freeing_machine_loop(t_philo *philo, int i);
 int			ft_thanatos_master(t_philo *philo);
 int			ft_thanatos_eater(t_philo *philo);
+int			ft_thanatos_thinker_0(t_philo *philo);
+int			ft_thanatos_thinker(t_philo *philo);
 void		only_one(t_philo *philo);
 void		ft_hammer(t_philo *philo);
 int			guardian_of_the_dead(t_philo *philo);
