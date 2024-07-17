@@ -2,17 +2,19 @@
 
 void	display_gamer(t_mlx *mlx)
 {
-	int		x;
-	int		y;
-	int		i;
-	int		radius;
+	double		x;
+	double		y;
+	int			i;
+	double		radius;
+	double		rad;
 
-	radius = GAMER_SIZE;
+	radius = GAMER_SIZE / 2;
 	i = 0;
 	while (i < 360)
 	{
-		x = (int)(mlx->gmr->gmr_x + radius * cos(mlx->gmr->fov_rd));
-		y = (int)(mlx->gmr->gmr_y + radius * sin(mlx->gmr->fov_rd));
+		rad = (i * M_PI) /180 ;
+		x = (double)(mlx->gmr->gmr_x + radius * cos(rad));
+		y = (double)(mlx->gmr->gmr_y + radius * sin(rad));
 		mlx_put_pixel(mlx->img, x, y, PURPLE);
 		i++;
 	}

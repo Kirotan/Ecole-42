@@ -10,5 +10,6 @@ void	game_loop(void *the_mlx)
 	display_background(mlx);
 	display_map(mlx);
 	display_gamer(mlx);
+	gamer_movement(mlx);
 	mlx_image_to_window(mlx->mlx_p, mlx->img, 0, 0);
 }

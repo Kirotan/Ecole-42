@@ -25,6 +25,9 @@ SRC_FILES = main.c \
 			display_gamer.c \
 			draw_shape.c \
 			display_map.c \
+			normalize_angle.c \
+			gamer_movement.c \
+			ft_free_all.c \
 
 SRC_FILES := $(addprefix src/, $(SRC_FILES))
 OBJ_FILES = $(SRC_FILES:.c=.o)
