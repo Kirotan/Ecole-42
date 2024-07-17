@@ -82,5 +82,6 @@ void	gamer_movement(t_mlx *mlx)
 	rotate_gamer(mlx);
 	up_down_move(mlx);
 	left_right_move(mlx);
+	normalize_angle(mlx);
 	update_move(mlx, move_x, move_y);
 }
