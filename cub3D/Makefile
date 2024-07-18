@@ -28,6 +28,7 @@ SRC_FILES = main.c \
 			normalize_angle.c \
 			gamer_movement.c \
 			ft_free_all.c \
+			cast_rays.c \
 
 SRC_FILES := $(addprefix src/, $(SRC_FILES))
 OBJ_FILES = $(SRC_FILES:.c=.o)

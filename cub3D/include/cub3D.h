@@ -103,5 +103,8 @@ void	display_map(t_mlx *mlx);
 void	normalize_angle(t_mlx *mlx);
 void	gamer_movement(t_mlx *mlx);
 void	ft_free_all(t_mlx *mlx);
+void	cast_rays(t_mlx *mlx);
+double	inter_horiz(t_mlx *mlx);
+double	inter_verti(t_mlx *mlx);
 
 #endif
