@@ -100,6 +100,7 @@ void	draw_wall_square(t_mlx *mlx, int x, int y, int color);
 void	display_gamer(t_mlx *mlx);
 void	draw_circle(t_mlx *mlx, int x0, int y0, int size);
 void	display_map(t_mlx *mlx);
+void	norm_angle(double *angle);
 void	normalize_angle(t_mlx *mlx);
 void	gamer_movement(t_mlx *mlx);
 void	ft_free_all(t_mlx *mlx);
