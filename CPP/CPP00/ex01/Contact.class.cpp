@@ -28,6 +28,10 @@ str	Contact::getDarkestSecret(void) {
 	return this->_darkestSecret;
 }
 
+int	Contact::getIndex(void) {
+	return this->_index;
+}
+
 void	Contact::setFirstName(str firstName) {
 	this->_firstName = firstName;
 }
@@ -46,4 +50,8 @@ void	Contact::setPhoneNumber(str phoneNumber) {
 
 void	Contact::setDarkestSecret(str darkestSecret) {
 	this->_darkestSecret = darkestSecret;
+}
+
+void	Contact::setIndex(int index) {
+	this->_index = index;
 }

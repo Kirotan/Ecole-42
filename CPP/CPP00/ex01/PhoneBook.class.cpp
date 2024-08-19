@@ -4,7 +4,10 @@
 
 PhoneBook::PhoneBook(void) {
 
-	_nbContacts = 0;
+	if (_nbContacts)
+		_nbContacts = 0;
+	else
+		_nbContacts += 1;
 	return;
 }
 
@@ -12,24 +15,47 @@ PhoneBook::~PhoneBook(void) {
 	return;
 }
 
-void	PhoneBook::addNumberPhone() {
+void	PhoneBook::addDarkestSecret() {
 
 	str	line;
 
+	std::cout << "Darkest secret :" << std::endl;
+	std::getline(std::cin, line);
+	while (line.empty()) {
+		std::cout << "Darkest secret need almost one character." << std::endl;
+		std::cout << "Darkest secret :" << std::endl;
+		std::getline(std::cin, line);
+	}
+	_contacts[_nbContacts].setDarkestSecret(line);
+
+	return ;
+}
+
+void	PhoneBook::addNumberPhone() {
+
+	str		line;
+	size_t	i;
+
 	std::cout << "Phone number :" << std::endl;
 	std::getline(std::cin, line);
-	while (line.size() < 6) {
-		for (size_t i = 0; i < line.size(); i++) {
-			if (!std::isdigit(line[i])) {
-				std::cout << "Phone number take ONLY number." << std::endl;
-				break ;
-			}
+	i = 0;
+	while (i < line.size()) {
+		if (!std::isdigit(line[i])) {
+			std::cout << "Phone number take ONLY number." << std::endl;
+			std::cout << "Phone number :" << std::endl;
+			std::getline(std::cin, line);
+			i = 0;
 		}
+		i++;
+	}
+	while (line.size() < 6) {
 		std::cout << "Phone number need almost 6 numbers." << std::endl;
 		std::cout << "Phone number:" << std::endl;
 		std::getline(std::cin, line);
 	}
 	_contacts[_nbContacts].setPhoneNumber(line);
+
+	return ;
 }
 
 void	PhoneBook::addNickname() {
@@ -44,6 +70,8 @@ void	PhoneBook::addNickname() {
 		std::getline(std::cin, line);
 	}
 	_contacts[_nbContacts].setNickname(line);
+
+	return ;
 }
 
 void	PhoneBook::addLastName() {
@@ -58,6 +86,8 @@ void	PhoneBook::addLastName() {
 		std::getline(std::cin, line);
 	}
 	_contacts[_nbContacts].setLastName(line);
+
+	return ;
 }
 
 void	PhoneBook::addFirstName() {
@@ -72,6 +102,12 @@ void	PhoneBook::addFirstName() {
 		std::getline(std::cin, line);
 	}
 	_contacts[_nbContacts].setFirstName(line);
+	if (_nbContacts >= 8)
+		_contacts[_nbContacts].setIndex(_nbContacts % 8);
+	else
+		_contacts[_nbContacts].setIndex(_nbContacts);
+
+	return ;
 }
 
 void	PhoneBook::addContact() {
@@ -80,8 +116,12 @@ void	PhoneBook::addContact() {
 	addLastName();
 	addNickname();
 	addNumberPhone();
-	if (_nbContacts < 8)
-		_nbContacts += 1;
+	addDarkestSecret();
 
 	return;
+}
+
+void	PhoneBook::searchContact() {
+
+
 }

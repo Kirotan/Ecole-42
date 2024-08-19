@@ -17,6 +17,9 @@ class PhoneBook {
 		void	addLastName();
 		void	addNickname();
 		void	addNumberPhone();
+		void	addDarkestSecret();
+
+		void	searchContact();
 
 	private :
 		Contact	_contacts[8];

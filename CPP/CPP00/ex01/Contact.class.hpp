@@ -17,6 +17,7 @@ class Contact {
 		str	getNickname(void);
 		str	getPhoneNumber(void);
 		str	getDarkestSecret(void);
+		int	getIndex(void);
 
 	//Setters
 		void	setFirstName(str firstName);
@@ -24,6 +25,7 @@ class Contact {
 		void	setNickname(str nickname);
 		void	setPhoneNumber(str phoneNumber);
 		void	setDarkestSecret(str darkestSecret);
+		void	setIndex(int index);
 
 	private :
 		str	_firstName;
@@ -31,5 +33,6 @@ class Contact {
 		str	_nickname;
 		str	_phoneNumber;
 		str	_darkestSecret;
+		int	_index;
 };
 #endif
