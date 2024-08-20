@@ -208,6 +208,7 @@ void	PhoneBook::searchContact() {
 			while (check_if_number(line) == 0) {
 				std::cout << "Enter a valid index." << std::endl;
 				std::getline(std::cin, line);
+				check_eof();
 			}
 			i = atoi(line.c_str());
 			if (i < 8 && i >= 0 && i <= (_nbContacts - 1)) {
