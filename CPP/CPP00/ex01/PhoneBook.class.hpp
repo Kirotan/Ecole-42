@@ -1,5 +1,4 @@
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#pragma once
 # include "Contact.class.hpp"
 
 typedef std::string str;
@@ -24,7 +23,8 @@ class PhoneBook {
 		void	addNickname();
 		void	addNumberPhone();
 		void	addDarkestSecret();
+		void	displayColumn(int i);
 		void	displayMiniContact(int i);
 		void	displayContact(int i);
+		void	set_str(str line);
 };
-#endif

@@ -47,6 +47,11 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp",
-		"phonebook.class.hpp": "c"
+		"phonebook.class.hpp": "c",
+		"iomanip": "cpp",
+		"ctime": "cpp",
+		"sstream": "cpp",
+		"cstring": "cpp",
+		"cinttypes": "cpp"
 	}
 }

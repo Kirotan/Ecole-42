@@ -1,5 +1,4 @@
-#ifndef	CONTACT_CLASS_HPP
-# define CONTACT_CLASS_HPP
+#pragma once
 # include <iostream>
 
 typedef std::string str;
@@ -35,4 +34,3 @@ class Contact {
 		str	_darkestSecret;
 		int	_index;
 };
-#endif

@@ -1,8 +1,9 @@
 # include <iostream>
+# include <cstdlib>
+# include <iomanip>
 # include "Contact.class.hpp"
 # include "PhoneBook.class.hpp"
 # include "Master.hpp"
-# include <cstdlib>
 
 PhoneBook::PhoneBook(void) {
 
@@ -114,31 +115,48 @@ void	PhoneBook::addContact() {
 	addDarkestSecret();
 
 	_nbContacts++;
-	std::cout << "_nbContacts : " << _nbContacts << std::endl;
 
 	return;
 }
 
+void	PhoneBook::displayColumn(int i) {
+
+	if (i == 0) {
+	std::cout << std::setw(10) << "Index" << "|";
+	std::cout << std::setw(10) << "First name" << "|";
+	std::cout << std::setw(10) << "Last name" << "|";
+	std::cout << std::setw(10) << "Nickname"  << "|" << std::endl;
+	}
+
+	return ;
+}
+
+void	PhoneBook::set_str(str line) {
+
+	int	tmp = line.length();
+	(tmp > 10) ? std::cout << line.substr(0, 9) << ".|" : std::cout << std::setw(10) << line << "|";
+
+	return ;
+}
+
 void	PhoneBook::displayMiniContact(int i) {
 
-	std::cout << "Index : " << _contacts[i].getIndex();
-	std::cout << " | ";
-	std::cout << "First name : " << _contacts[i].getFirstName();
-	std::cout << " | ";
-	std::cout << " Last name : " << _contacts[i].getLastName();
-	std::cout << " | ";
-	std::cout << "Nickname : " << _contacts[i].getNickname() << std::endl;
+	std::cout << std::setw(10) << _contacts[i].getIndex() << "|";
+	set_str(_contacts[i].getFirstName());
+	set_str(_contacts[i].getLastName());
+	set_str(_contacts[i].getNickname());
+	std::cout << std::endl;
 
 	return ;
 }
 
 void	PhoneBook::displayContact(int i) {
 
-	std::cout << "First name : " << _contacts[i].getFirstName() << std::endl;
-	std::cout << "Last name : " << _contacts[i].getLastName() << std::endl;
-	std::cout << "Nickname : " << _contacts[i].getNickname() << std::endl;
-	std::cout << "Phone number : " << _contacts[i].getPhoneNumber() << std::endl;
-	std::cout << "Darkest secret : " << _contacts[i].getDarkestSecret() << std::endl << std::endl;
+	std::cout << "First name	: " << _contacts[i].getFirstName() << std::endl;
+	std::cout << "Last name	: " << _contacts[i].getLastName() << std::endl;
+	std::cout << "Nickname	: " << _contacts[i].getNickname() << std::endl;
+	std::cout << "Phone number	: " << _contacts[i].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret	: " << _contacts[i].getDarkestSecret() << std::endl << std::endl;
 
 	return ;
 }
@@ -154,6 +172,7 @@ void	PhoneBook::searchContact() {
 	}
 	i = 0;
 	while (i < 8 && i < _nbContacts) {
+		displayColumn(i);
 		displayMiniContact(i);
 		i++;
 	}
