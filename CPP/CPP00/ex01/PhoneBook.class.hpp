@@ -13,16 +13,18 @@ class PhoneBook {
 		~PhoneBook(void);
 
 		void	addContact();
-		void	addFirstName();
-		void	addLastName();
-		void	addNickname();
-		void	addNumberPhone();
-		void	addDarkestSecret();
-
 		void	searchContact();
 
 	private :
 		Contact	_contacts[8];
 		int		_nbContacts;
+
+		void	addFirstName();
+		void	addLastName();
+		void	addNickname();
+		void	addNumberPhone();
+		void	addDarkestSecret();
+		void	displayMiniContact(int i);
+		void	displayContact(int i);
 };
 #endif

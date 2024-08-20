@@ -9,10 +9,9 @@ void	which_command(str line, PhoneBook& PB) {
 		PB.addContact();
 	}
 	else if (line == "SEARCH") {
-		std::cout << "SEARCH" << std::endl;
+		PB.searchContact();
 	}
 	else if (line == "EXIT") {
-		std::cout << "EXIT" << std::endl;
 		exit(0);
 	}
 	else {

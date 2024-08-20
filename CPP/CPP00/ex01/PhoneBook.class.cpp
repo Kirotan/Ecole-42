@@ -1,14 +1,12 @@
 # include <iostream>
 # include "Contact.class.hpp"
 # include "PhoneBook.class.hpp"
+# include "Master.hpp"
+# include <cstdlib>
 
 PhoneBook::PhoneBook(void) {
 
-	if (_nbContacts)
 		_nbContacts = 0;
-	else
-		_nbContacts += 1;
-	return;
 }
 
 PhoneBook::~PhoneBook(void) {
@@ -26,7 +24,7 @@ void	PhoneBook::addDarkestSecret() {
 		std::cout << "Darkest secret :" << std::endl;
 		std::getline(std::cin, line);
 	}
-	_contacts[_nbContacts].setDarkestSecret(line);
+	_contacts[_nbContacts % 8].setDarkestSecret(line);
 
 	return ;
 }
@@ -53,7 +51,7 @@ void	PhoneBook::addNumberPhone() {
 		std::cout << "Phone number:" << std::endl;
 		std::getline(std::cin, line);
 	}
-	_contacts[_nbContacts].setPhoneNumber(line);
+	_contacts[_nbContacts % 8].setPhoneNumber(line);
 
 	return ;
 }
@@ -69,7 +67,7 @@ void	PhoneBook::addNickname() {
 		std::cout << "Nickname :" << std::endl;
 		std::getline(std::cin, line);
 	}
-	_contacts[_nbContacts].setNickname(line);
+	_contacts[_nbContacts % 8].setNickname(line);
 
 	return ;
 }
@@ -85,7 +83,7 @@ void	PhoneBook::addLastName() {
 		std::cout << "Last name :" << std::endl;
 		std::getline(std::cin, line);
 	}
-	_contacts[_nbContacts].setLastName(line);
+	_contacts[_nbContacts % 8].setLastName(line);
 
 	return ;
 }
@@ -101,11 +99,8 @@ void	PhoneBook::addFirstName() {
 		std::cout << "First name :" << std::endl;
 		std::getline(std::cin, line);
 	}
-	_contacts[_nbContacts].setFirstName(line);
-	if (_nbContacts >= 8)
-		_contacts[_nbContacts].setIndex(_nbContacts % 8);
-	else
-		_contacts[_nbContacts].setIndex(_nbContacts);
+	_contacts[_nbContacts % 8].setFirstName(line);
+	_contacts[_nbContacts % 8].setIndex(_nbContacts % 8);
 
 	return ;
 }
@@ -118,10 +113,75 @@ void	PhoneBook::addContact() {
 	addNumberPhone();
 	addDarkestSecret();
 
+	_nbContacts++;
+	std::cout << "_nbContacts : " << _nbContacts << std::endl;
+
 	return;
+}
+
+void	PhoneBook::displayMiniContact(int i) {
+
+	std::cout << "Index : " << _contacts[i].getIndex();
+	std::cout << " | ";
+	std::cout << "First name : " << _contacts[i].getFirstName();
+	std::cout << " | ";
+	std::cout << " Last name : " << _contacts[i].getLastName();
+	std::cout << " | ";
+	std::cout << "Nickname : " << _contacts[i].getNickname() << std::endl;
+
+	return ;
+}
+
+void	PhoneBook::displayContact(int i) {
+
+	std::cout << "First name : " << _contacts[i].getFirstName() << std::endl;
+	std::cout << "Last name : " << _contacts[i].getLastName() << std::endl;
+	std::cout << "Nickname : " << _contacts[i].getNickname() << std::endl;
+	std::cout << "Phone number : " << _contacts[i].getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret : " << _contacts[i].getDarkestSecret() << std::endl << std::endl;
+
+	return ;
 }
 
 void	PhoneBook::searchContact() {
 
+	int	i;
+	str	line;
 
+	if (_nbContacts == 0) {
+		std::cout << "No contact available." << std::endl;
+		return ;
+	}
+	i = 0;
+	while (i < 8 && i < _nbContacts) {
+		displayMiniContact(i);
+		i++;
+	}
+	i = 0;
+	std::cout << "Enter the index of the contact you want to see." << std::endl;
+	std::getline(std::cin, line);
+	i = atoi(line.c_str());
+	while (check_if_number(line) == 0) {
+		std::cout << "Enter a valid index." << std::endl;
+		std::getline(std::cin, line);
+	}
+	if (i < 8 && i >= 0 && i <= (_nbContacts - 1)) {
+		displayContact(i);
+		}
+	else {
+		while (1) {
+			std::cout << "Enter a valid index." << std::endl;
+			std::getline(std::cin, line);
+			while (check_if_number(line) == 0) {
+				std::cout << "Enter a valid index." << std::endl;
+				std::getline(std::cin, line);
+			}
+			i = atoi(line.c_str());
+			if (i < 8 && i >= 0 && i <= (_nbContacts - 1)) {
+				displayContact(i);
+				break ;
+			}
+		}
+	}
+	return ;
 }
