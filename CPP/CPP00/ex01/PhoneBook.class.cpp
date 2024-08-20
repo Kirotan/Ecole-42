@@ -20,10 +20,12 @@ void	PhoneBook::addDarkestSecret() {
 
 	std::cout << "Darkest secret :" << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	while (line.empty()) {
 		std::cout << "Darkest secret need almost one character." << std::endl;
 		std::cout << "Darkest secret :" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	_contacts[_nbContacts % 8].setDarkestSecret(line);
 
@@ -37,12 +39,14 @@ void	PhoneBook::addNumberPhone() {
 
 	std::cout << "Phone number :" << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	i = 0;
 	while (i < line.size()) {
 		if (!std::isdigit(line[i])) {
 			std::cout << "Phone number take ONLY number." << std::endl;
 			std::cout << "Phone number :" << std::endl;
 			std::getline(std::cin, line);
+			check_eof();
 			i = 0;
 		}
 		i++;
@@ -51,6 +55,7 @@ void	PhoneBook::addNumberPhone() {
 		std::cout << "Phone number need almost 6 numbers." << std::endl;
 		std::cout << "Phone number:" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	_contacts[_nbContacts % 8].setPhoneNumber(line);
 
@@ -63,10 +68,12 @@ void	PhoneBook::addNickname() {
 
 	std::cout << "Nickname :" << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	while (line.empty()) {
 		std::cout << "Nickname need almost one character." << std::endl;
 		std::cout << "Nickname :" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	_contacts[_nbContacts % 8].setNickname(line);
 
@@ -79,10 +86,12 @@ void	PhoneBook::addLastName() {
 
 	std::cout << "Last name :" << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	while (line.empty()) {
 		std::cout << "Last name need almost one character." << std::endl;
 		std::cout << "Last name :" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	_contacts[_nbContacts % 8].setLastName(line);
 
@@ -95,10 +104,12 @@ void	PhoneBook::addFirstName() {
 
 	std::cout << "First name :" << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	while (line.empty()) {
 		std::cout << "First name need almost one character." << std::endl;
 		std::cout << "First name :" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	_contacts[_nbContacts % 8].setFirstName(line);
 	_contacts[_nbContacts % 8].setIndex(_nbContacts % 8);
@@ -179,10 +190,12 @@ void	PhoneBook::searchContact() {
 	i = 0;
 	std::cout << "Enter the index of the contact you want to see." << std::endl;
 	std::getline(std::cin, line);
+	check_eof();
 	i = atoi(line.c_str());
 	while (check_if_number(line) == 0) {
 		std::cout << "Enter a valid index." << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 	}
 	if (i < 8 && i >= 0 && i <= (_nbContacts - 1)) {
 		displayContact(i);
@@ -191,6 +204,7 @@ void	PhoneBook::searchContact() {
 		while (1) {
 			std::cout << "Enter a valid index." << std::endl;
 			std::getline(std::cin, line);
+			check_eof();
 			while (check_if_number(line) == 0) {
 				std::cout << "Enter a valid index." << std::endl;
 				std::getline(std::cin, line);

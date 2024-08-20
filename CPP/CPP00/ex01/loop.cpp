@@ -11,6 +11,7 @@ void	loop(void) {
 		std::cout << "Enter one of following commands" << std::endl;
 		std::cout << "ADD || SEARCH || EXIT" << std::endl;
 		std::getline(std::cin, line);
+		check_eof();
 		which_command(line, PB);
 	}
 }

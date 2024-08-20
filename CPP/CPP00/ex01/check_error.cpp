@@ -19,3 +19,11 @@ int	check_if_number(str line) {
 	}
 	return (1);
 }
+
+void	check_eof() {
+
+	if (std::cin.eof()) {
+		std::cout << "EOF detected." << std::endl;
+		exit (1);
+	}
+}
