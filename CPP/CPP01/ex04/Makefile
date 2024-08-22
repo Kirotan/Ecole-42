@@ -1,4 +1,4 @@
-NAME			= CPP02
+NAME			= sed
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 CC				= c++
 

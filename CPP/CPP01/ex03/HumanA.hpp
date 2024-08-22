@@ -1,18 +1,19 @@
 #pragma once
-# include <iostream>
 # include "Weapon.hpp"
+# include <iostream>
 
 typedef std::string str;
 
-class HumanA{
+class HumanA {
 
 	public :
-		HumanA(str name, Weapon type);
+		HumanA(str name, Weapon &type);
 		~HumanA();
 		void	attack(void);
 
+
 	private :
 		str		_name;
-		Weapon	_type;
+		Weapon	&_type;
 
 };

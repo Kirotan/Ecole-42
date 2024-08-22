@@ -12,7 +12,7 @@ Weapon::~Weapon() {
 
 }
 
-str const	Weapon::getType(void) {
+str const	&Weapon::getType(void) {
 
 	return (this->_type);
 }

@@ -3,10 +3,9 @@ CFLAGS			= -Wall -Wextra -Werror -std=c++98
 CC				= c++
 
 SRC_FILES	= main.cpp \
-				Weapon.cpp \
 				HumanA.cpp \
-				HumanB.cpp
-
+				HumanB.cpp \
+				Weapon.cpp
 
 
 OBJ_FILES	= $(SRC_FILES:.cpp=.o)

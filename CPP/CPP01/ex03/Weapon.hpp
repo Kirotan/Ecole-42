@@ -9,7 +9,7 @@ class Weapon {
 		Weapon();
 		Weapon(str type);
 		~Weapon();
-		str const	getType(void);
+		str const	&getType(void);
 		void		setType(str type);
 
 	private :
