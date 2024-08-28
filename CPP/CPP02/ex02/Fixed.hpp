@@ -22,6 +22,15 @@ class Fixed {
 		// Surcharge d'operateur
 		Fixed	&operator=(const Fixed &other);
 		bool	operator<(const Fixed &other);
+		bool	operator>(const Fixed &other);
+		bool	operator<=(const Fixed &other);
+		bool	operator>=(const Fixed &other);
+		bool	operator==(const Fixed &other);
+		bool	operator!=(const Fixed &other);
+		Fixed	operator+(const Fixed &other);
+		Fixed	operator-(const Fixed &other);
+		Fixed	operator*(const Fixed &other);
+		Fixed	operator/(const Fixed &other);
 
 	private :
 		int					_value;
