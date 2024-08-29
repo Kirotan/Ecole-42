@@ -14,19 +14,19 @@ int main( void ) {
 	Point	p3(5,7);
 
 	// inside
-	 if (bsp(a, b, c, p1) == true)
+	 if (bsp(a, b, c, p1) == false)
 	 	std::cout << "Inside" << std::endl;
 
 	//outside
-	if (bsp(a, b, c, p2) == true)
+	if (bsp(a, b, c, p2) == false)
 	 	std::cout << "Outside" << std::endl;
 
 	//on line
-	if (bsp(a, b, c, p3) == true)
+	if (bsp(a, b, c, p3) == false)
 	 	std::cout << "On line" << std::endl;
 
 	//on point
-	if (bsp(a, b, c, b) == true)
+	if (bsp(a, b, c, b) == false)
 	 	std::cout << "On point" << std::endl;
 
 	return 0;

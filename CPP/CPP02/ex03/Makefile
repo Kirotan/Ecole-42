@@ -1,9 +1,11 @@
-NAME			= canon
+NAME			= triangle
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 CC				= c++
 
 SRC_FILES	= main.cpp \
-				Fixed.cpp
+				Fixed.cpp \
+				Point.cpp \
+				bsp.cpp
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)
 OBJ_DIR = object

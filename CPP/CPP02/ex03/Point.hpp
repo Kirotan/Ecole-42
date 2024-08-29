@@ -12,10 +12,8 @@ class Point {
 		~Point();
 
 	//Getteur et setteur
-		Fixed	getX(void);
-		void	setX(Fixed x);
-		Fixed	getY(void);
-		void	setY(Fixed y);
+		const Fixed	&getX(void) const;
+		const Fixed	&getY(void) const;
 
 	// Surcharge d'operateur
 		Point	&operator=(const Point &other);
