@@ -36,7 +36,7 @@ class Fixed {
 		Fixed	operator--(int value);
 		Fixed	&operator--();
 
-		// Foction max min
+		// Fonction max min
 		static Fixed		&min(Fixed &a, Fixed &b);
 		static const Fixed	&min(const Fixed &a, const Fixed &b);
 		static Fixed		&max(Fixed &a, Fixed &b);
