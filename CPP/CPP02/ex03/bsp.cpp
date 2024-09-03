@@ -30,14 +30,10 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point) {
 		(px == cx && py == cy))
 		return true;
 
-	std::cout << "test1" << std::endl;
-
 	if (isOnLine(ax, ay, bx, by, px, py) ||
 		isOnLine(bx, by, cx, cy, px, py) ||
 		isOnLine(cx, cy, ax, ay, px, py))
 		return true;
-
-	std::cout << "test2" << std::endl;
 
 	float	areaABC = area(ax, ay, bx, by, cx, cy);
 	float	areaPAB = area(px, py, ax, ay, bx, by);

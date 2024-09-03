@@ -1,7 +1,5 @@
 {
-	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
-		"string": "cpp",
 		"array": "cpp",
 		"atomic": "cpp",
 		"bit": "cpp",
@@ -19,6 +17,7 @@
 		"cwchar": "cpp",
 		"cwctype": "cpp",
 		"deque": "cpp",
+		"string": "cpp",
 		"unordered_map": "cpp",
 		"vector": "cpp",
 		"exception": "cpp",
@@ -28,6 +27,7 @@
 		"memory": "cpp",
 		"memory_resource": "cpp",
 		"numeric": "cpp",
+		"optional": "cpp",
 		"random": "cpp",
 		"string_view": "cpp",
 		"system_error": "cpp",
@@ -44,10 +44,6 @@
 		"ostream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
-		"typeinfo": "cpp",
-		"ctime": "cpp",
-		"fstream": "cpp",
-		"iomanip": "cpp",
-		"sstream": "cpp"
+		"typeinfo": "cpp"
 	}
 }
