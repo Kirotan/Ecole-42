@@ -8,7 +8,7 @@ class ClapTrap {
 		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &copy);
-		virtual ~ClapTrap();
+		~ClapTrap();
 
 
 		void attack(const std::string& target);

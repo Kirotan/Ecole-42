@@ -1,5 +1,6 @@
 #pragma once
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 class ScavTrap : public ClapTrap {
 
