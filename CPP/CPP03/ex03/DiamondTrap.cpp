@@ -2,9 +2,9 @@
 
 // Constructors & Desctructor
 
-DiamondTrap::DiamondTrap(){
+DiamondTrap::DiamondTrap(): ClapTrap("default_clap_name"){
 
-	ClapTrap::_name = "default_clap_name";
+	this->_name = "default";
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
@@ -13,6 +13,7 @@ DiamondTrap::DiamondTrap(){
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"){
 
+	this->_name = name;
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
@@ -40,7 +41,7 @@ void	DiamondTrap::whoAmI(){
 		return;
 	}
 	if (this->_energyPoints > 1) {
-	std::cout << "DiamondTrap" << this->_name << " is " << ClapTrap::_name << " !" << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " is " << ClapTrap::_name << " !" << std::endl;
 	this->_energyPoints -= 1;
 	}
 	else
