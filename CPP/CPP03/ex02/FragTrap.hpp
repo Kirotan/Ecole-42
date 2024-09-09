@@ -13,4 +13,7 @@ class FragTrap : public ClapTrap {
 	//FragTrap functions
 		void highFivesGuys(void);
 
+	// Surcharge operator
+		FragTrap	&operator=(const FragTrap &copy);
+
 };

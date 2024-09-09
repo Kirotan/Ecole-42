@@ -67,3 +67,15 @@ void	ScavTrap::guardGate(){
 
 	}
 }
+
+// Surcharge operator
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &copy){
+
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_isGuardingGate = copy._isGuardingGate;
+
+	return *this;
+}

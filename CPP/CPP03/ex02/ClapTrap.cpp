@@ -13,7 +13,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoint
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy){
-	
+
 	std::cout << "Copy constructor called." << std::endl;
 
 	*this = copy;
@@ -74,4 +74,16 @@ void	ClapTrap::beRepaired(unsigned int amount){
 	}
 	else
 		std::cout << "ClapTrap " << this->_name << " doesn't have enought point energy for repairing himself." << std::endl;
+}
+
+// Surcharge operator
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &copy){
+
+	this->_name = copy._name;
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+
+	return *this;
 }

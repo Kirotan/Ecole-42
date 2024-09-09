@@ -50,3 +50,14 @@ void	FragTrap::highFivesGuys(void){
 		std::cout << "FragTrap " << this->_name << " can't high five, he's knocked out." << std::endl;
 
 }
+
+// Surcharge operator
+
+FragTrap	&FragTrap::operator=(const FragTrap &copy){
+
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+
+	return *this;
+}

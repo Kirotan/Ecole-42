@@ -57,7 +57,6 @@ void ScavTrap::guardGate(){
 		std::cout << "ScavTrap " << this->_name << " can't turn on Gate keeper mode, he's knocked out." << std::endl;
 		return;
 	}
-	std::cout << this->_energyPoints << std::endl;
 	if (this->_energyPoints == 0) {
 		std::cout << "ScavTrap " << this->_name << " doesn't have enought point energy for Guarding gate." << std::endl;
 		return;
@@ -72,4 +71,16 @@ void ScavTrap::guardGate(){
 		std::cout << "ScavTrap " << this->_name << " turn off Gate keeper mode." << std::endl;
 		this->_energyPoints -= 1;
 	}
+}
+
+// Surcharge operator
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &copy){
+
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_isGuardingGate = copy._isGuardingGate;
+
+	return *this;
 }
