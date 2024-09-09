@@ -5,7 +5,7 @@
 
 int	main(){
 
-	DiamondTrap	Kiro;
+	DiamondTrap	Kiro("pioupiou");
 
 	// Kiro.whoAmI();
 	// Kiro.attack("ennemy");

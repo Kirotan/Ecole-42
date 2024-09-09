@@ -15,9 +15,12 @@ class ClapTrap {
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 
+	// Surcharge operator
+		ClapTrap	&operator=(const ClapTrap &copy);
+
 	protected :
-		std::string		_name;
-		unsigned short	_hitPoints;
-		unsigned short	_energyPoints;
-		unsigned short	_attackDamage;
+		std::string			_name;
+		unsigned short		_hitPoints;
+		unsigned short		_energyPoints;
+		unsigned short		_attackDamage;
 };

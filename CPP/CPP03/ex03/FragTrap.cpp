@@ -19,7 +19,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name){
 	this->_energyPoints = 100;
 	this->_attackDamage = 30;
 
-	std::cout << "FragTrap name constructor called." << std::endl;
+	std::cout << "FragTrap " << this->_name << " name constructor called." << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap &copy) : ClapTrap(copy){
@@ -50,4 +50,15 @@ void	FragTrap::highFivesGuys(void){
 	else
 		std::cout << "FragTrap " << this->_name << " can't high five, he's knocked out." << std::endl;
 
+}
+
+// Surcharge operator
+
+FragTrap	&FragTrap::operator=(const FragTrap &copy){
+
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+
+	return *this;
 }

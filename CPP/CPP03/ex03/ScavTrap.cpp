@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
 	this->_attackDamage = 20;
 	this->_isGuardingGate = false;
 
-	std::cout << "ScavTrap name constructor called." << std::endl;
+	std::cout << "ScavTrap " << this->_name << " name constructor called." << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy){
@@ -67,4 +67,16 @@ void	ScavTrap::guardGate(){
 		std::cout << "ScavTrap " << this->_name << " turn off Gate keeper mode." << std::endl;
 
 	}
+}
+
+// Surcharge operator
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &copy){
+
+	this->_hitPoints = copy._hitPoints;
+	this->_energyPoints = copy._energyPoints;
+	this->_attackDamage = copy._attackDamage;
+	this->_isGuardingGate = copy._isGuardingGate;
+
+	return *this;
 }

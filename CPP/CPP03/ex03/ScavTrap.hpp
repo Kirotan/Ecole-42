@@ -14,6 +14,9 @@ class ScavTrap : public virtual ClapTrap {
 		void attack(const std::string& target);
 		void guardGate();
 
+	// Surcharge operator
+		ScavTrap	&operator=(const ScavTrap &copy);
+
 	protected :
 		bool	_isGuardingGate;
 

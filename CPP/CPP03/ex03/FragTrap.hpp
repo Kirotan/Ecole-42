@@ -12,6 +12,9 @@ class FragTrap : public virtual ClapTrap {
 		FragTrap(const FragTrap &copy);
 		~FragTrap();
 
+	// SUrcharge operator
+		FragTrap	&operator=(const FragTrap &copy);
+
 	//FragTrap functions
 		void highFivesGuys(void);
 

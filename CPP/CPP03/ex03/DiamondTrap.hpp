@@ -17,6 +17,9 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 		void	whoAmI();
 		void	attack(const std::string &target);
 
+	// Surcharge operator
+		DiamondTrap	&operator=(const DiamondTrap &copy);
+
 	private :
 		std::string	_name;
 

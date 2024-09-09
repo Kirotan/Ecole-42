@@ -8,16 +8,16 @@ DiamondTrap::DiamondTrap(): ClapTrap("default_clap_name"){
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
-	std::cout << "DiamondTrap " << ClapTrap::_name << " constructor called." << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " constructor called." << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"){
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name){
 
 	this->_name = name;
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
-	std::cout << "DiamondTrap " << ClapTrap::_name << " name constructor called." << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " name constructor called." << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), FragTrap(copy), ScavTrap(copy){
@@ -51,4 +51,14 @@ void	DiamondTrap::whoAmI(){
 void	DiamondTrap::attack(const std::string &target){
 
 	ScavTrap::attack(target);
+}
+
+
+// Surcharge operator
+
+DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &copy){
+
+	ClapTrap::operator=(copy);
+
+	return *this;
 }
