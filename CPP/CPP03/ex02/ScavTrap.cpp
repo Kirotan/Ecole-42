@@ -25,6 +25,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
 ScavTrap::ScavTrap(const ScavTrap &copy) : ClapTrap(copy){
 
 	this->_isGuardingGate = copy._isGuardingGate;
+	std::cout << "ScavTrap copy constructor called." << std::endl;
 }
 
 ScavTrap::~ScavTrap(){

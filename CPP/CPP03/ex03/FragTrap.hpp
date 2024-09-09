@@ -3,7 +3,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : public virtual ClapTrap {
 
 	public :
 	//Constructors & Destructor

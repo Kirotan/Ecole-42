@@ -1,8 +1,7 @@
 #pragma once
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : public virtual ClapTrap {
 
 	public :
 	//Constructors & Destructor
@@ -17,5 +16,5 @@ class ScavTrap : public ClapTrap {
 
 	protected :
 		bool	_isGuardingGate;
-		
+
 };

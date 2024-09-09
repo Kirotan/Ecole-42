@@ -4,7 +4,7 @@ int	main(){
 
 	ClapTrap	Kiro("Kiro");
 	ClapTrap	Def;
-	
+
 	Kiro.attack("zombie");
 	Kiro.takeDamage(5);
 	// Kiro.takeDamage(6);
