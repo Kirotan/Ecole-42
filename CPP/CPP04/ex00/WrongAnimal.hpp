@@ -1,17 +1,17 @@
 #pragma once
 #include <iostream>
 
-class Animal {
+class WrongAnimal {
 
 	public :
 	// Constructors & Destructor
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &copy);
-		virtual ~Animal();
+		WrongAnimal();
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal &copy);
+		virtual ~WrongAnimal();
 
 	// Surchage operator
-		Animal	&operator=(const Animal &copy);
+		WrongAnimal	&operator=(const WrongAnimal &copy);
 
 	// Animal fonctions
 		virtual void	makeSound() const;

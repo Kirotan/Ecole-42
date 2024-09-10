@@ -1,16 +1,16 @@
 # pragma once
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog : public Animal {
+class WrongCat : public WrongAnimal {
 
 	public :
 	// Constructors & Destructor
-		Dog();
-		Dog(const Dog &copy);
-		virtual ~Dog();
+		WrongCat();
+		WrongCat(const WrongCat &copy);
+		virtual ~WrongCat();
 
 	// Surcharge operator
-		Dog	&operator=(const Dog &copy);
+		WrongCat	&operator=(const WrongCat &copy);
 
 	// Fonction membre
 		virtual void	makeSound() const;

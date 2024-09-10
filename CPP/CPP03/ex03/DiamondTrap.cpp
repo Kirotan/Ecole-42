@@ -32,6 +32,7 @@ DiamondTrap::~DiamondTrap(){
 	std::cout << "DiamondTrap " << this->_name << " destructor called." << std::endl;
 }
 
+
 // DiamondTrap functions
 
 void	DiamondTrap::whoAmI(){
