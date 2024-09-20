@@ -19,7 +19,7 @@ int main(){
 
 	std::cout << l->getType() << " " << std::endl;
 
-	i->makeSound(); //will output the cat sound!
+	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
 

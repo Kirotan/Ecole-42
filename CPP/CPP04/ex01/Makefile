@@ -1,6 +1,6 @@
-NAME			= Polymorphisme
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
-CC				= c++
+NAME			= Burn
+CXXFLAGS			= -Wall -Wextra -Werror -Wshadow -std=c++98
+CXX				= c++
 
 SRC_FILES	= main.cpp \
 				Animal.cpp \
@@ -18,10 +18,10 @@ OBJ_DIR = object
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ_FILES)
-	@$(CC) $(OBJ_FILES) $(CFLAGS) -o $(NAME)
+	@$(CXX) $(OBJ_FILES) $(CXXFLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)

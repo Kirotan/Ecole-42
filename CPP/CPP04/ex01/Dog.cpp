@@ -7,10 +7,10 @@ Dog::Dog() : Animal("Dog"), _brain(new Brain){
 	std::cout << "Dog default constructor." << std::endl;
 }
 
-Dog::Dog(const Dog &copy){
+Dog::Dog(const Dog &copy) : _brain(new Brain){
 
-	*this = copy;
 	std::cout << "Dog copy constructor." << std::endl;
+	*this = copy;
 }
 
 Dog::~Dog(){
@@ -23,7 +23,12 @@ Dog::~Dog(){
 
 Dog	&Dog::operator=(const Dog &copy){
 
-	this->_type = copy._type;
+	if (this != &copy){
+		this->_type = copy._type;
+		if (this->_brain != NULL)
+			delete this->_brain;
+		this->_brain = new Brain(*copy._brain);
+	}
 	return *this;
 }
 
