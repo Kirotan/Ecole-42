@@ -6,19 +6,20 @@
 
 int main(){
 
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	Animal* tab[10];
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
+	unsigned int	b = 4;
+	Animal*			tab[b];
 
-	for (int a = 0; a < 5; a++)
+	for (unsigned int a = 0; a < (b / 2); a++)
 		tab[a] = new Dog();
-	for (int a = 5; a < 10; a++)
+	for (unsigned int a = (b / 2); a < b; a++)
 		tab[a] = new Cat();
-	for (int a = 0; a < 10; a++)
+	for (unsigned int a = 0; a < b; a++)
 		delete tab[a];
 
-	delete j;//should not create a leak
-	delete i;
+	// delete j;//should not create a leak
+	// delete i;
 
 	return 0;
 }
