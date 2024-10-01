@@ -8,28 +8,29 @@ class Bureaucrat{
 	//Constructor & Destructor
 		Bureaucrat();
 		Bureaucrat(const short grade);
+		Bureaucrat(const std::string name);
+		Bureaucrat(const std::string name, const short grade);
 		Bureaucrat(const Bureaucrat &copy);
 		~Bureaucrat();
 
 	//Getter
 		std::string		getName() const;
-		short	getGrade() const;
-
-	//Setter
-		void	setName(std::string name);
-		void	setGrade(short grade);
-
+		short			getGrade() const;
 
 	//Surcharge operator
 		Bureaucrat	&operator=(const Bureaucrat &other);
 
 	//Bureaucrat variables
-		std::string		_name;
-		short	_grade;
+		const std::string		_name;
+		short					_grade;
 
 	//Members functions
 		void	incrementGrade();
 		void	decrementGrade();
+
+	private :
+	//Setter
+		void	setGrade(short grade);
 
 	//Handle exception
 		class GradeTooHighException : public std::exception {

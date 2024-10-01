@@ -3,23 +3,49 @@
 
 
 //Constructor && Destructor
-Bureaucrat::Bureaucrat(){
+Bureaucrat::Bureaucrat() : _name("default"){
 
 	std::cout << "Bureaucrat default constructor." << std::endl;
-	this->_name = "default";
 	this->_grade = 150;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy){
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name + "_copy"){
 
 	std::cout << "Bureaucrat copy constructor." << std::endl;
 	this->_grade = copy._grade;
-	this->_name = copy._name + "_copy";
 }
 
 Bureaucrat::Bureaucrat(const short grade) : _name("default"){
 
 	std::cout << "Bureaucrat grade constructor." << std::endl;
+
+	try {
+		std::cout << "Trying to set grade." << std::endl;
+		this->setGrade(grade);
+	}
+	catch (Bureaucrat::GradeTooHighException &e) {
+		std::cerr << "Impossible to set grade of " << this->_name << std::endl;
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Default grade initialization to 1." << std::endl;
+		this->_grade = 1;
+	}
+	catch (Bureaucrat::GradeTooLowException &e) {
+		std::cerr << "Impossible to set grade of " << this->_name << std::endl;
+		std::cerr << e.what() << std::endl;
+		std::cerr << "Default grade initialization to 150." << std::endl;
+		this->_grade = 150;
+	}
+}
+
+Bureaucrat::Bureaucrat(const std::string name) : _name(name){
+
+	std::cout << "Bureaucrat name constructor." << std::endl;
+	this->_grade = 150;
+}
+
+Bureaucrat::Bureaucrat(const std::string name, const short grade) : _name(name){
+
+	std::cout << "Bureaucrat name & grade constructor." << std::endl;
 
 	try {
 		std::cout << "Trying to set grade." << std::endl;
@@ -69,16 +95,17 @@ short	Bureaucrat::getGrade() const{
 
 
 //Setter
-void	Bureaucrat::setName(std::string name){
-	this->_name = name;
-}
-
 void	Bureaucrat::setGrade(short grade){
-	if (grade <= 1)
+	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	else if (grade >= 150)
+	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	this->_grade = grade;
+	if (grade < 1 || grade > 150)
+		return ;
+	else {
+		std::cout << "test !!!!!" << std::endl;
+		this->_grade = grade;
+	}
 }
 
 
