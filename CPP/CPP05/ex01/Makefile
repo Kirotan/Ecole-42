@@ -3,7 +3,8 @@ CXXFLAGS		= -Wall -Wextra -Werror -Wshadow -std=c++98
 CXX				= c++
 
 SRC_FILES	= main.cpp \
-				Bureaucrat.cpp
+				Bureaucrat.cpp \
+				Form.cpp
 
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)

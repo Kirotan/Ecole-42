@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 //Constructor && Destructor
@@ -100,8 +101,6 @@ void	Bureaucrat::setGrade(short grade){
 		throw Bureaucrat::GradeTooHighException();
 	else if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
-	if (grade < 1 || grade > 150)
-		return ;
 	else {
 		this->_grade = grade;
 	}
@@ -129,6 +128,10 @@ void	Bureaucrat::decrementGrade(){
 		std::cerr << "Impossible to decrement grade of " << this->_name << std::endl;
 		std::cerr << e.what() << std::endl;
 	}
+}
+
+void	Bureaucrat::signForm(Form &a){
+	a.beSigned(*this);
 }
 
 
