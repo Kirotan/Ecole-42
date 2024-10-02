@@ -51,7 +51,9 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor)const{
 		std::cerr << e.what() << std::endl;
 		return;
 	}
-
+	std::cout << executor.getName() << " bureaucrat executed "
+	<< this->getName() << " form." << std::endl;
+	
 	std::cout << executor.getName() << " bureaucrat creates "
 	<< this->getTarget().append("_shrubbery").c_str() << " and draws a ASCII tree." << std::endl;
 

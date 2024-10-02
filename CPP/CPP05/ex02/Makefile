@@ -6,7 +6,8 @@ SRC_FILES	= main.cpp \
 				Bureaucrat.cpp \
 				AForm.cpp \
 				ShrubberyCreationForm.cpp \
-				RobotomyRequestForm.cpp
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp
 
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)

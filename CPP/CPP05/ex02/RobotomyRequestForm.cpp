@@ -53,9 +53,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor)const{
 		std::cerr << e.what() << std::endl;
 		return;
 	}
-
+	std::cout << executor.getName() << " bureaucrat executed "
+	<< this->getName() << " form." << std::endl;
 	if (kill_robot++ % 2)
-		std::cout << "*Drill execution*" << this->getTarget() << " has been robotomized." << std::endl;
+		std::cout << "*Drill execution* " << this->getTarget() << " has been robotomized." << std::endl;
 	else
 		std::cout << "Robotomy failed." << std::endl;
 

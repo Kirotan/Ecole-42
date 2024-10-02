@@ -8,7 +8,7 @@ class AForm;
 class Bureaucrat;
 
 class ShrubberyCreationForm: public AForm {
-		
+
 	public:
 	// Constructors
 		ShrubberyCreationForm(void);
