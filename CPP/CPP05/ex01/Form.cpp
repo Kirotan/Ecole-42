@@ -50,6 +50,13 @@ Form	&Form::operator=(const Form &other){
 	return *this;
 }
 
+std::ostream	&operator<<(std::ostream &out, const Form &other){
+	
+	out << other.getName() << " form with " << other.getGradeSigned()
+	<< " in grade signed and " << other.getGradeExecuted() << " in grade executed." << std::endl;
+	return out;
+}
+
 
 //Getter
 std::string	Form::getName() const{
