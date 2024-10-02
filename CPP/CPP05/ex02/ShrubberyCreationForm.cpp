@@ -34,9 +34,6 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 // Members functions
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor)const{
-	std::cout << "Executor grade : " << executor.getGrade() << std::endl;
-	std::cout << "Signed ? : " << this->getSigned() << std::endl;
-
 	try {
 		if (this->getSigned() == false)
 			throw AForm::FormNotSignedException();

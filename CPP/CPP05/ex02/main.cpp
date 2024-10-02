@@ -5,11 +5,16 @@
 
 int	main(){
 
-	Bureaucrat	k("Kiro", 150);
+	Bureaucrat	k("Kiro", 1);
 	ShrubberyCreationForm	tt("toto");
+	ShrubberyCreationForm	dd("dede");
 
-	// k.signAForm(tt);
+
+	k.signAForm(tt);
 	tt.execute(k);
+
+	k.signAForm(dd);
+	dd.execute(k);
 
 	return 0;
 }
