@@ -31,5 +31,5 @@ class ShrubberyCreationForm: public AForm {
 		const std::string _target;
 };
 
-// // ostream Overload
+//Surcharge operator
 std::ostream	&operator<<(std::ostream &out, ShrubberyCreationForm a);

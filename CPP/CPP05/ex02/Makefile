@@ -5,7 +5,8 @@ CXX				= c++
 SRC_FILES	= main.cpp \
 				Bureaucrat.cpp \
 				AForm.cpp \
-				ShrubberyCreationForm.cpp
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp
 
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)
