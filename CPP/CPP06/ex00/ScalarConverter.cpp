@@ -1,3 +1,6 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
 #include "ScalarConverter.hpp"
 
 //Constructors & Destructor
@@ -26,7 +29,14 @@ void	ScalarConverter::convert(const std::string &str){
 //Char
 bool	isItChar(const std::string &str){
 
-	(void)str;
+	if(str.length() == 1){
+			return true;
+	}
+
+	if(str.length() == 3){
+		if (str[0] == '\'' && str[2] == '\'')
+			return true;
+	}
 	return false;
 }
 
