@@ -49,8 +49,22 @@ void	convertChar(const std::string &str){
 //Integer
 bool	isItInt(const std::string &str){
 
-	(void)str;
-	return false;
+	size_t	index = 0;
+
+	if ((str[0] == '+' || str[0] == '-') && str.length() <= 1)
+		return (false);
+	while (index < str.length() && std::isspace(str[index]))
+		index++;
+	if (index == str.length())
+		return (false);
+	if (str[index] == '+' || str[index] == '-')
+		index++;
+	for (size_t i = index; i < str.length(); i++)
+	{
+		if (!std::isdigit(str[i]))
+			return (false);
+	}
+	return true;
 }
 
 void	convertInt(const std::string &str){
@@ -62,8 +76,33 @@ void	convertInt(const std::string &str){
 //Double
 bool	isItDouble(const std::string &str){
 
-	(void)str;
-	return false;
+	size_t	index = 0;
+	bool	doubleOrnNot = false;
+
+	if ((str[0] == '+' || str[0] == '-') && str.length() <= 1)
+		return (false);
+	while (index < str.length() && std::isspace(str[index]))
+		index++;
+	if (index == str.length())
+		return (false);
+	if (str[index] == '+' || str[index] == '-')
+		index++;
+	for (size_t i = index; i < str.length(); i++)
+	{
+		if (!isdigit(str[i]))
+		{
+			if (str[i] == '.')
+			{
+				if (doubleOrnNot)
+					return (false);
+				doubleOrnNot = true;
+			}
+			else
+				return (false);
+		}
+	}
+
+	return true;
 }
 
 void	convertDouble(const std::string &str){
@@ -75,8 +114,35 @@ void	convertDouble(const std::string &str){
 //Floating
 bool	isItFloat(const std::string &str){
 
-	(void)str;
-	return false;
+	size_t	index = 0;
+	bool	floatOrNot = false;
+
+	if ((str[0] == '+' || str[0] == '-') && str.length() <= 1)
+		return (false);
+	while (index < str.length() && std::isspace(str[index]))
+		index++;
+	if (index == str.length())
+		return (false);
+	if (str[index] == '+' || str[index] == '-')
+		index++;
+	for (size_t i = index; i < str.length(); i++)
+	{
+		if (!isdigit(str[i]))
+		{
+			if (i == str.length() - 1)
+				return (str[i] == 'f');
+			if (str[i] == '.')
+			{
+				if (floatOrNot)
+					return (false);
+				floatOrNot = true;
+			}
+			else
+				return (false);
+		}
+
+	}
+	return true;
 }
 
 void	convertFloat(const std::string &str){
