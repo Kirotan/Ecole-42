@@ -15,14 +15,16 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &other){(void)
 //Convert functions
 void	ScalarConverter::convert(const std::string &str){
 
-	if (isItChar(str) == true)
-		convertChar(str);
 	if (isItInt(str) == true)
 		convertInt(str);
-	if (isItDouble(str) == true)
+	else if (isItChar(str) == true)
+		convertChar(str);
+	else if (isItDouble(str) == true)
 		convertDouble(str);
-	if (isItFloat(str) == true)
+	else if (isItFloat(str) == true)
 		convertFloat(str);
+	else
+		std::cout << "Please, enter a correct input.\nYour options :\nChar\nInteger\nDouble\nFloat\nThank you." << std::endl;
 }
 
 
@@ -42,6 +44,7 @@ bool	isItChar(const std::string &str){
 
 void	convertChar(const std::string &str){
 
+	std::cout << "Char !" << std::endl;
 	(void)str;
 }
 
@@ -70,6 +73,7 @@ bool	isItInt(const std::string &str){
 void	convertInt(const std::string &str){
 
 	(void)str;
+	std::cout << "Integer !" << std::endl;
 }
 
 
@@ -108,6 +112,7 @@ bool	isItDouble(const std::string &str){
 void	convertDouble(const std::string &str){
 
 	(void)str;
+	std::cout << "Double !" << std::endl;
 }
 
 
@@ -148,4 +153,5 @@ bool	isItFloat(const std::string &str){
 void	convertFloat(const std::string &str){
 
 	(void)str;
+	std::cout << "Float !" << std::endl;
 }
