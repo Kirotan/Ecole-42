@@ -9,11 +9,12 @@ int	main(int argc, char **argv){
 		exit (EXIT_FAILURE);
 	}
 
-	for (int i = 0; !i; i++)
+	for (int i = 0; argv[1][i] != '\0'; i++){
 		if ((argv[1][i] >= 0 && argv[1][0] <= 31) || argv[1][i] == 127){
 			std::cerr << "Non displayable characters shouldn’t be used as inputs." << std::endl;
 			exit (EXIT_FAILURE);
 		}
+	}
 
 	ScalarConverter::convert(argv[1]);
 
