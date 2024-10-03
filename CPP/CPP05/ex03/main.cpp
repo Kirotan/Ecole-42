@@ -8,14 +8,18 @@
 
 int	main(){
 
-	Intern	*ii = new Intern;
+	Intern someRandomIntern;
+	AForm* rrf;
+	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
 
-	ii->makeForm("nul", "target_nul");
-	ii->makeForm("ShrubberyCreationForm", "plant it");
-	ii->makeForm("RobotomyRequestForm", "die !");
-	ii->makeForm("PresidentialPardonForm", "Wash");
+	// Intern	*ii = new Intern;
 
-	delete ii;
+	// ii->makeForm("nul", "target_nul");
+	// ii->makeForm("ShrubberyCreationForm", "plant it");
+	// ii->makeForm("RobotomyRequestForm", "die !");
+	// ii->makeForm("PresidentialPardonForm", "Wash");
+
+	// delete ii;
 
 	return 0;
 }
