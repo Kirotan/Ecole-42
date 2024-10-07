@@ -33,3 +33,6 @@ void	convertDouble(const std::string &str);
 
 bool	isItFloat(const std::string &str);
 void	convertFloat(const std::string &str);
+
+bool	infinityOrNotANumb(const std::string &str);
+void	convertInfOrNotNumb(const std::string &str);

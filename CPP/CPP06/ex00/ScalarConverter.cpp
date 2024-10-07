@@ -25,6 +25,8 @@ void	ScalarConverter::convert(const std::string &str){
 		convertDouble(str);
 	else if (isItFloat(str) == true)
 		convertFloat(str);
+	else if (infinityOrNotANumb(str))
+		convertInfOrNotNumb(str);
 	else
 		std::cout << "Please, enter a correct input.\nYour options :\nChar\nInteger\nDouble\nFloat\nThank you." << std::endl;
 }
@@ -239,4 +241,36 @@ void	convertFloat(const std::string &str){
 	<< static_cast<float>(f) << "f" << std::endl;
 	std::cout << "double:\t " << std::fixed << std::setprecision(precision)
 	<< static_cast<double>(f) << std::endl;
+}
+
+
+//Infinity or Not A Number
+bool	infinityOrNotANumb(const std::string &str){
+
+	const std::string	infiniTab[] = { "-inff", "+inff", "nanf", "-inf", "+inf", "nan" };
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (str == infiniTab[i])
+			return (true);
+	}
+	return (false);
+}
+
+void	convertInfOrNotNumb(const std::string &str)
+{
+	std::cout << "char:\t " << "impossible" << std::endl;
+	std::cout << "int:\t " << "impossible" << std::endl;
+
+	if (str == "-inff" || str == "+inff" || str == "nanf")
+	{
+		std::cout << "float:\t " << str << std::endl;
+		std::string newStr = str.substr(0, str.size() - 1);
+		std::cout << "double:\t " << newStr << std::endl;
+	}
+	else
+	{
+		std::cout << "float:\t " << str << "f" << std::endl;
+		std::cout << "double:\t " << str << std::endl;
+	}
 }
