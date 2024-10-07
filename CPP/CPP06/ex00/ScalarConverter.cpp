@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
+#include <climits>
 #include "ScalarConverter.hpp"
 
 //Constructors & Destructor
@@ -44,8 +46,21 @@ bool	isItChar(const std::string &str){
 
 void	convertChar(const std::string &str){
 
-	std::cout << "Char !" << std::endl;
-	(void)str;
+	char c;
+
+	if(str[0] == '\'' && str[2] == '\'')
+		c = str[1];
+	else
+		c = str[0];
+
+	if (static_cast<int> (c) < 32 || static_cast<int> (c)  > 126)
+		std::cout << "char:\t Non displayable" << std::endl;
+	else
+		std::cout << "char:\t " << static_cast<char>(c) << std::endl;
+	std::cout << "int:\t " << static_cast<int>(c) << std::endl;
+	std::cout << "float:\t " << std::fixed << std::setprecision(1)
+	<< static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double:\t " << static_cast<double>(c) << std::endl;
 }
 
 
@@ -72,8 +87,24 @@ bool	isItInt(const std::string &str){
 
 void	convertInt(const std::string &str){
 
-	(void)str;
-	std::cout << "Integer !" << std::endl;
+	//strtod convert string to double
+	double d = strtod(str.c_str(), NULL);
+
+	if ( d < 0. || d >= 128.)
+		std::cout << "char:\t overflow" << std::endl;
+	else if (d < 32. || d == 127.)
+		std::cout << "char:\t Non displayable" << std::endl;
+	else
+		std::cout << "char:\t " << static_cast<char>(d) << std::endl;
+
+	if ( d < static_cast<double> (INT_MIN) || d > static_cast<double> (INT_MAX))
+		std::cout << "int:\t overflow" << std::endl;
+	else
+		std::cout << "int:\t " << static_cast<int>(d) << std::endl;
+
+	std::cout << "float:\t " << std::fixed << std::setprecision(1)
+	<< static_cast<float>(d) << "f" << std::endl;
+	std::cout << "double:\t " << static_cast<double>(d) << std::endl;
 }
 
 
@@ -111,8 +142,35 @@ bool	isItDouble(const std::string &str){
 
 void	convertDouble(const std::string &str){
 
-	(void)str;
-	std::cout << "Double !" << std::endl;
+	//Dynamique handle of precision
+	size_t	dotPos = str.find('.');
+	size_t	precision = 1; //default value
+
+	if(dotPos != std::string::npos){
+		precision = str.length() - dotPos -1;
+		if(str[str.length() - 1] == 'f')
+			precision--;
+	}
+
+
+	double d = strtod(str.c_str(), NULL);
+
+	if ( d < 0. || d >= 128.)
+		std::cout << "char:\t overflow" << std::endl;
+	else if (d < 32. || d == 127.)
+		std::cout << "char:\t Non displayable" << std::endl;
+	else
+		std::cout << "char:\t " << static_cast<char>(d) << std::endl;
+
+	if ( d < static_cast<double> (INT_MIN) || d > static_cast<double> (INT_MAX))
+		std::cout << "int:\t overflow" << std::endl;
+	else
+		std::cout << "int:\t " << static_cast<int>(d) << std::endl;
+
+	std::cout << "float:\t " << std::fixed << std::setprecision(precision)
+	<< static_cast<float>(d) << "f" << std::endl;
+	std::cout << "double:\t " << std::fixed << std::setprecision(precision)
+	<< static_cast<double>(d) << std::endl;
 }
 
 
@@ -152,6 +210,33 @@ bool	isItFloat(const std::string &str){
 
 void	convertFloat(const std::string &str){
 
-	(void)str;
-	std::cout << "Float !" << std::endl;
+	//Dynamique handle of precision
+	size_t	dotPos = str.find('.');
+	size_t	precision = 1; //default value
+
+	if(dotPos != std::string::npos){
+		precision = str.length() - dotPos -1;
+		if(str[str.length() - 1] == 'f')
+			precision--;
+	}
+
+
+	double f = strtod(str.c_str(), NULL);
+
+	if ( f < 0. || f >= 128.)
+		std::cout << "char:\t overflow" << std::endl;
+	else if (f < 32. || f == 127.)
+		std::cout << "char:\t Non displayable" << std::endl;
+	else
+		std::cout << "char:\t " << static_cast<char>(f) << std::endl;
+
+	if ( f < static_cast<double> (INT_MIN) || f > static_cast<double> (INT_MAX))
+		std::cout << "int:\t overflow" << std::endl;
+	else
+		std::cout << "int:\t " << static_cast<int>(f) << std::endl;
+
+	std::cout << "float:\t " << std::fixed << std::setprecision(precision)
+	<< static_cast<float>(f) << "f" << std::endl;
+	std::cout << "double:\t " << std::fixed << std::setprecision(precision)
+	<< static_cast<double>(f) << std::endl;
 }
