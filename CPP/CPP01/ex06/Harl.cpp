@@ -34,7 +34,7 @@ void	Harl::complain(std::string level) {
 			break;
 		}
 		default:{
-			std::cerr << "Bad arguments. Choice : DEBUG | INFO | WARNING | ERROR";
+			std::cerr << "[ Probably complaining about insignificant problems ]";
 			std::exit (1);
 		}
 

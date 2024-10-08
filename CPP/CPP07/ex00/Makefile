@@ -1,11 +1,9 @@
-NAME			= triangle
-CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
+NAME			= template
+CXXFLAGS		= -Wall -Wextra -Werror -Wshadow -std=c++98
 CXX				= c++
 
 SRC_FILES	= main.cpp \
-				Fixed.cpp \
-				Point.cpp \
-				bsp.cpp
+
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)
 OBJ_DIR = object

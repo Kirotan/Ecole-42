@@ -2,8 +2,12 @@
 
 int	main(int argc, char **argv) {
 
-	if (argc != 2) {
+	if (argc < 2) {
 		std::cout << "Not enought argument." << std::endl;
+		std::exit (1);
+	}
+	if (argc > 2) {
+		std::cout << "Too many argument." << std::endl;
 		std::exit (1);
 	}
 

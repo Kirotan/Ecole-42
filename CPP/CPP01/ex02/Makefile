@@ -1,10 +1,8 @@
-NAME			= CPP02
+NAME			= Brain
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 CC				= c++
 
 SRC_FILES	= main.cpp \
-
-
 
 OBJ_FILES	= $(SRC_FILES:.cpp=.o)
 

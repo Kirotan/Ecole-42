@@ -4,11 +4,16 @@
 class Fixed {
 
 	public :
+	//Constructor & Destructor
 		Fixed();
-		Fixed(const Fixed &other);
+		Fixed(const Fixed &copy);
 		~Fixed();
-		Fixed&operator=(const Fixed &other);
-		int	getRawBits( void ) const;
+
+	//Surcharge operator
+		Fixed	&operator=(const Fixed &other);
+
+	//Getter & Setter
+		int		getRawBits( void ) const;
 		void	setRawBits( int const raw );
 
 	private :
