@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <stdint.h>
 #include "Serializer.hpp"
 
 //Constructors & Destructor
