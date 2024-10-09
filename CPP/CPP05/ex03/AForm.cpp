@@ -37,7 +37,6 @@ AForm::AForm (std::string name, const short gradeSigned, const short gradeExecut
 }
 
 
-
 //Destructor
 AForm::~AForm(){
 	std::cout << "AForm destructor called." << std::endl;
@@ -51,7 +50,7 @@ AForm	&AForm::operator=(const AForm &other){
 }
 
 std::ostream	&operator<<(std::ostream &out, const AForm &other){
-	
+
 	out << other.getName() << " form with " << other.getGradeSigned()
 	<< " in grade signed and " << other.getGradeExecuted() << " in grade executed." << std::endl;
 	return out;

@@ -10,16 +10,18 @@ int	main(){
 
 	Intern someRandomIntern;
 	AForm* rrf;
-	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
 
-	Intern	*ii = new Intern;
+	rrf = someRandomIntern.makeForm("nul", "target_nul");
+	delete rrf;
 
-	ii->makeForm("nul", "target_nul");
-	ii->makeForm("ShrubberyCreationForm", "plant it");
-	ii->makeForm("RobotomyRequestForm", "die !");
-	ii->makeForm("PresidentialPardonForm", "Wash");
+	rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "plant it");
+	delete rrf;
 
-	delete ii;
+	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "die !");
+	delete rrf;
+
+	rrf = someRandomIntern.makeForm("PresidentialPardonForm", "Wash");
+	delete rrf;
 
 	return 0;
 }

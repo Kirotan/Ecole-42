@@ -17,7 +17,7 @@ class PresidentialPardonForm: public AForm {
 		PresidentialPardonForm(PresidentialPardonForm &copy);
 
 	// Destructor
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 
 	// Operator surcharge
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &other);

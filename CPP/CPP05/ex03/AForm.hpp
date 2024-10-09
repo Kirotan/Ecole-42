@@ -14,7 +14,7 @@ class AForm {
 		AForm (std::string name, const short gradeSigned, const short gradeExecuted);
 
 	//Destructor
-		~AForm();
+		virtual ~AForm();
 
 	//Surcharge operator
 		AForm	&operator=(const AForm &other);

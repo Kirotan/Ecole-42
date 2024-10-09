@@ -17,7 +17,7 @@ class ShrubberyCreationForm: public AForm {
 		ShrubberyCreationForm(ShrubberyCreationForm &copy);
 
 	// Destructor
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 
 	// Operator surcharge
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);

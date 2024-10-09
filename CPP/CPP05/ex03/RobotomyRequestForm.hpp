@@ -17,7 +17,7 @@ class RobotomyRequestForm: public AForm {
 		RobotomyRequestForm(RobotomyRequestForm &copy);
 
 	// Destructor
-		~RobotomyRequestForm();
+		virtual ~RobotomyRequestForm();
 
 	// Operator surcharge
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
