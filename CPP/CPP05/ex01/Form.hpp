@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
@@ -21,8 +22,8 @@ class Form {
 
 
 	//Getter
-		std::string	getName() const;
-		bool				getSigned() const;
+		std::string		getName() const;
+		bool			getSigned() const;
 		short			getGradeSigned() const;
 		short			getGradeExecuted() const;
 

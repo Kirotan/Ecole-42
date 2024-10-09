@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
@@ -8,7 +9,7 @@ class AForm;
 class Bureaucrat;
 
 class RobotomyRequestForm: public AForm {
-		
+
 	public:
 	// Constructors
 		RobotomyRequestForm(void);

@@ -1,8 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <stdexcept>
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
-#include <iostream>
-#include <fstream>
 
 // Constructors
 RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45), _target("default"){

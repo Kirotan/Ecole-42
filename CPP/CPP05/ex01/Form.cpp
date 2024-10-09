@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <stdexcept>
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
@@ -51,7 +53,7 @@ Form	&Form::operator=(const Form &other){
 }
 
 std::ostream	&operator<<(std::ostream &out, const Form &other){
-	
+
 	out << other.getName() << " form with " << other.getGradeSigned()
 	<< " in grade signed and " << other.getGradeExecuted() << " in grade executed." << std::endl;
 	return out;
@@ -85,7 +87,7 @@ void	Form::setSigned(Bureaucrat &a){
 	if (a.getGrade() > this->getGradeSigned())
 		throw Form::GradeTooHighException();
 	else {
-		std::cout << "Bureaucrat " << this->_name << " signed form " << a.getName() << "." << std::endl;
+		std::cout << "Bureaucrat " << a._name << " signed form " << this->getName() << "." << std::endl;
 		this->_signed = true;
 	}
 }

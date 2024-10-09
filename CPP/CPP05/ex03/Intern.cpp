@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
