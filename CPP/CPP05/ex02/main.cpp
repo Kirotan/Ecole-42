@@ -8,31 +8,29 @@
 
 int	main(){
 
-	Bureaucrat	k("Kiro", 1);
+	Bureaucrat	k("Ki", 1);
 
-	// ShrubberyCreationForm	tt("toto");
-	// ShrubberyCreationForm	dd("dede");
+	ShrubberyCreationForm	tt("Shrub1");
+	ShrubberyCreationForm	dd("Shrub1");
 
-	// RobotomyRequestForm		rr("die");
+	RobotomyRequestForm		rr;
 
-	PresidentialPardonForm		ww("Wash");
+	PresidentialPardonForm		ww("PPF");
 
-	// k.signAForm(tt);
-	// tt.execute(k);
+	k.signAForm(tt);
+	tt.execute(k);
 
-	// k.signAForm(dd);
-	// dd.execute(k);
+	k.signAForm(dd);
+	dd.execute(k);
 
-	// k.signAForm(rr);
-	// rr.execute(k);
-	// rr.execute(k);
-	// rr.execute(k);
-	// rr.execute(k);
+	k.signAForm(rr);
+	rr.execute(k);
+	rr.execute(k);
+	rr.execute(k);
+	rr.execute(k);
 
 	k.signAForm(ww);
 	ww.execute(k);
-
-
 
 	return 0;
 }

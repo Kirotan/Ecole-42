@@ -12,14 +12,14 @@ int	main(){
 	AForm* rrf;
 	rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
 
-	// Intern	*ii = new Intern;
+	Intern	*ii = new Intern;
 
-	// ii->makeForm("nul", "target_nul");
-	// ii->makeForm("ShrubberyCreationForm", "plant it");
-	// ii->makeForm("RobotomyRequestForm", "die !");
-	// ii->makeForm("PresidentialPardonForm", "Wash");
+	ii->makeForm("nul", "target_nul");
+	ii->makeForm("ShrubberyCreationForm", "plant it");
+	ii->makeForm("RobotomyRequestForm", "die !");
+	ii->makeForm("PresidentialPardonForm", "Wash");
 
-	// delete ii;
+	delete ii;
 
 	return 0;
 }

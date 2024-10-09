@@ -13,7 +13,7 @@ Form::Form(const Form &copy) : _name(copy._name + "_copy"), _signed(copy._signed
 	std::cout << "Copy form constructor called." << std::endl;
 }
 
-Form::Form (std::string name, const short gradeSigned, const short gradeExecuted) : _name(name), _gradeSigned(gradeSigned), _gradeExecuted(gradeExecuted){
+Form::Form (std::string name, const short gradeSigned, const short gradeExecuted) : _name(name), _signed(false), _gradeSigned(gradeSigned), _gradeExecuted(gradeExecuted){
 	std::cout << "Whole form constructor called." << std::endl;
 
 	try {
@@ -37,7 +37,6 @@ Form::Form (std::string name, const short gradeSigned, const short gradeExecuted
 		std::cerr << "Default form grade initialization to 150." << std::endl;
 	}
 }
-
 
 
 //Destructor
