@@ -25,6 +25,7 @@ Base	* generate(void){
 		return new C();
 }
 
+
 //It prints the actual type of the object pointed to by p: "A", "B" or "C".
 void	identify(Base* p){
 
