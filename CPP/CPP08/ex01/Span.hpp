@@ -9,6 +9,7 @@ class Span{
 	public:
 	//Constructors
 		Span(unsigned int n);
+		Span(Span const &copy);
 
 	//Destructor
 		~Span();
@@ -41,7 +42,6 @@ class Span{
 
 	private:
 		Span();
-		Span(Span const &copy);
 
 		unsigned int		_n;
 		std::vector<int>	_vecInt;
