@@ -86,20 +86,16 @@ bool	BitcoinExchange::checkFirstLineCSV(const std::string line){
 	}
 }
 
-bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
+bool	BitcoinExchange::checkDate(const std::string line, unsigned short i){
+
+	if (line.at(4) != '-' || line.at(7) != '-'){
+		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
+		return false;
+	}
 
 	unsigned int			year;
 	unsigned int			month;
 	unsigned int			day;
-
-	if (line.length() < 12){
-		std::cout << "Line " << i << ". Not enought character." << std::endl;
-		return false;
-	}
-	if (line.at(4) != '-' || line.at(7) != '-' || line.at(10) != ','){
-		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
-		return false;
-	}
 
 	std::string	yearStr = line.substr(0, 4);
 	std::string	monthStr = line.substr(5, 2);
@@ -130,6 +126,28 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 		std::cerr << "Line " << i << ". Too many days for this month."<< std::endl;
 		return false;
 	}
+}
+
+bool	BitcoinExchange::checkValue(const std::string line, unsigned short i){
+
+
+}
+
+
+bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
+
+	if (line.length() < 12){
+		std::cout << "Line " << i << ". Not enought character." << std::endl;
+		return false;
+	}
+
+	if (line.at(10) != ','){
+		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
+		return false;
+	}
+
+	checkDate(line, i);
+	checkValue(line, i);
 
 	return false;
 }
