@@ -97,7 +97,7 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 		return false;
 	}
 	if (line.at(4) != '-' || line.at(7) != '-' || line.at(10) != ','){
-		std::cerr << "Line " << i << "Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
+		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
 		return false;
 	}
 
@@ -117,17 +117,17 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 	}
 
 	if (year < 0 || year > 2024){
-		std::cerr << "Line " << i << "Year must be between 0 and 2024." << std::endl;
+		std::cerr << "Line " << i << ". Year must be between 0 and 2024." << std::endl;
 		return false;
 	}
 
 	if (month < 1 || month > 12){
-		std::cerr << "Line " << i << "Month must be between 1 and 12." << std::endl;
+		std::cerr << "Line " << i << ". Month must be between 1 and 12." << std::endl;
 		return false;
 	}
 
 	if(day > daysInMonth[month - 1]){
-		std::cerr << "Line " << i << "Too many days for this month."<< std::endl;
+		std::cerr << "Line " << i << ". Too many days for this month."<< std::endl;
 		return false;
 	}
 
