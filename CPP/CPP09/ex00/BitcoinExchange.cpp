@@ -39,6 +39,7 @@ std::map<std::string, float>	BitcoinExchange::createDataMap(){
 
 	std::string		line;
 	std::ifstream	file;
+	unsigned short	i = 2;
 
 	file.open("data.csv");
 	if(!file.is_open()){
@@ -50,9 +51,10 @@ std::map<std::string, float>	BitcoinExchange::createDataMap(){
 	if(checkFirstLineCSV(line) == false)
 		return this->_map;
 	while(std::getline(file, line)){
-		if(checkLineCSV(line) == true){
+		if(checkLineCSV(line, i) == true){
 			insertElementMap(line);
 		}
+		i++;
 	}
 	file.close();
 	return this->_map;
@@ -84,16 +86,18 @@ bool	BitcoinExchange::checkFirstLineCSV(const std::string line){
 	}
 }
 
-bool	BitcoinExchange::checkLineCSV(const std::string line){
+bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 
 	unsigned int			year;
 	unsigned int			month;
 	unsigned int			day;
 
-	if (line.length() < 12)
+	if (line.length() < 12){
+		std::cout << "Line " << i << ". Not enought character." << std::endl;
 		return false;
+	}
 	if (line.at(4) != '-' || line.at(7) != '-' || line.at(10) != ','){
-		std::cerr << "Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
+		std::cerr << "Line " << i << "Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
 		return false;
 	}
 
@@ -113,17 +117,17 @@ bool	BitcoinExchange::checkLineCSV(const std::string line){
 	}
 
 	if (year < 0 || year > 2024){
-		std::cerr << "Year must be between 0 and 2024." << std::endl;
+		std::cerr << "Line " << i << "Year must be between 0 and 2024." << std::endl;
 		return false;
 	}
 
 	if (month < 1 || month > 12){
-		std::cerr << "Month must be between 1 and 12." << std::endl;
+		std::cerr << "Line " << i << "Month must be between 1 and 12." << std::endl;
 		return false;
 	}
 
 	if(day > daysInMonth[month - 1]){
-		std::cerr << "Too many days for this month."<< std::endl;
+		std::cerr << "Line " << i << "Too many days for this month."<< std::endl;
 		return false;
 	}
 
