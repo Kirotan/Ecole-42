@@ -21,7 +21,7 @@ class BitcoinExchange{
 
 	private :
 	//Private Members functions
-		std::map<unsigned int, float>	createDataMap();
+		bool							createDataMap();
 		void							InputMap(char *fileName);
 		const std::string				findLine();
 		bool							checkFirstLineCSV(const std::string line);

@@ -9,7 +9,9 @@
 //Constructors
 BitcoinExchange::BitcoinExchange(){
 
-	this->createDataMap();
+	if(this->createDataMap() == false)
+		return;
+
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &copy){this->_map = copy._map;}
@@ -35,7 +37,7 @@ void		BitcoinExchange::exchangeRate(char *fileName){
 }
 
 //Private Members functions
-std::map<unsigned int, float>	BitcoinExchange::createDataMap(){
+bool	BitcoinExchange::createDataMap(){
 
 	std::string		line;
 	std::ifstream	file;
@@ -44,26 +46,50 @@ std::map<unsigned int, float>	BitcoinExchange::createDataMap(){
 	file.open("data.csv");
 	if(!file.is_open()){
 		std::cerr << "Error, can't open file." << std::endl;
-		return this->_map;
+		return false;
 	}
 
 	std::getline(file, line);
-	if(checkFirstLineCSV(line) == false)
-		return this->_map;
+	if(checkFirstLineCSV(line) == false){
+		file.close();
+		return false;
+	}
 	while(std::getline(file, line)){
 		if(checkLineCSV(line, i) == true){
 			insertElementMap(line);
 		}
-		else
-			return this->_map;
+		else{
+			file.close();
+			return false;
+		}
 		i++;
 	}
 	file.close();
-	return this->_map;
+	return true;
 }
 
 const std::string	BitcoinExchange::findLine(){
 	return NULL;
+}
+
+bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
+
+	if (line.length() < 12){
+		std::cout << "Line " << i << ". Not enought character." << std::endl;
+		return false;
+	}
+
+	if (line[10] && line.at(10) != ','){
+		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
+		return false;
+	}
+
+	if (checkDate(line, i) == false)
+		return false;
+	if (checkValueCSV(line, i) == false)
+		return false;
+
+	return true;
 }
 
 void BitcoinExchange::insertElementMap(std::string line){
@@ -205,25 +231,6 @@ bool	BitcoinExchange::checkValueCSV(const std::string line, unsigned short i){
 	return true;
 }
 
-bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
-
-	if (line.length() < 12){
-		std::cout << "Line " << i << ". Not enought character." << std::endl;
-		return false;
-	}
-
-	if (line[10] && line.at(10) != ','){
-		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
-		return false;
-	}
-
-	if (checkDate(line, i) == false)
-		return false;
-	if (checkValueCSV(line, i) == false)
-		return false;
-
-	return true;
-}
 
 void	BitcoinExchange::InputMap(char *fileName){
 
