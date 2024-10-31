@@ -5,12 +5,12 @@
 
 int	main(int argc, char **argv){
 
-	BitcoinExchange be;
-
 	if (argc != 2){
 		std::cerr << "Program must have one argument." << std::endl;
 		return 1;
 	}
+
+	BitcoinExchange be;
 
 	be.exchangeRate(argv[1]);
 

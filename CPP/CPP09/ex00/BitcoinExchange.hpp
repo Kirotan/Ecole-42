@@ -21,7 +21,7 @@ class BitcoinExchange{
 
 	private :
 	//Private Members functions
-		std::map<std::string, float>	createDataMap();
+		std::map<unsigned int, float>	createDataMap();
 		const std::string				findLine();
 		bool							checkFirstLineCSV(const std::string line);
 		bool							checkLineCSV(const std::string line, unsigned short i);
@@ -30,8 +30,11 @@ class BitcoinExchange{
 		void							checkLineTXT(const std::string line);
 		void							checkFirstLineTXT(const std::string line);
 		void							insertElementMap(std::string line);
-		void							exchangeCore(const std::string line, std::map<std::string, float> map);
+		void							exchangeCore(const std::string line, std::map<unsigned int, float> map);
+		bool							isLeapYear(unsigned int year);
+		unsigned int					daysInMonth(unsigned int month, unsigned int year);
+		unsigned int					daysSinceYearZero(unsigned int year, unsigned int month, unsigned int day);
 
 	//Map of data
-		std::map<std::string, float>	_map;
+		std::map<unsigned int, float>	_map;
 };

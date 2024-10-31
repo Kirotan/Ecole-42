@@ -34,9 +34,8 @@ void		BitcoinExchange::exchangeRate(char *argv){
 	(void)argv;
 }
 
-
 //Private Members functions
-std::map<std::string, float>	BitcoinExchange::createDataMap(){
+std::map<unsigned int, float>	BitcoinExchange::createDataMap(){
 
 	std::string		line;
 	std::ifstream	file;
@@ -69,12 +68,32 @@ const std::string	BitcoinExchange::findLine(){
 
 void BitcoinExchange::insertElementMap(std::string line){
 
-	std::string		key;
-	unsigned int	value;
-
-	(void)line;
 	//check key and value then add them
-	this->_map.insert(std::pair<std::string, unsigned int>(key, value));
+	// forbidden to have identical date
+	std::string		valueStr;
+	float			value;
+	unsigned int	key;
+
+	unsigned int			year;
+	unsigned int			month;
+	unsigned int			day;
+
+	std::string	yearStr = line.substr(0, 4);
+	std::string	monthStr = line.substr(5, 2);
+	std::string	dayStr = line.substr(8, 2);
+
+	year = atoi(yearStr.c_str());
+	month = atoi(monthStr.c_str());
+	day = atoi(dayStr.c_str());
+
+	(void)key;
+	key = daysSinceYearZero(year, month, day);
+	std::cout << key << std::endl;
+
+	valueStr = line.substr(12);
+	value = atof(valueStr.c_str());
+
+	this->_map.insert(std::pair<unsigned int, float>(key, value));
 }
 
 bool	BitcoinExchange::checkFirstLineCSV(const std::string line){
@@ -190,7 +209,6 @@ bool	BitcoinExchange::checkValueCSV(const std::string line, unsigned short i){
 	return true;
 }
 
-
 bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 
 	if (line.length() < 12){
@@ -219,7 +237,35 @@ void	BitcoinExchange::checkLineTXT(const std::string line){
 	(void)line;
 }
 
-void	BitcoinExchange::exchangeCore(const std::string line, std::map<std::string, float> map){
+void	BitcoinExchange::exchangeCore(const std::string line, std::map<unsigned int, float> map){
 	(void)line;
 	(void)map;
+}
+
+bool	BitcoinExchange::isLeapYear(unsigned int year){
+	return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+unsigned int	BitcoinExchange::daysInMonth(unsigned int month, unsigned int year){
+	unsigned int daysPerMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	if (month == 2 && isLeapYear(year)){
+		return 29;
+	}
+	return daysPerMonth[month - 1];
+}
+
+unsigned int	BitcoinExchange::daysSinceYearZero(unsigned int year, unsigned int month, unsigned int day){
+	unsigned int	totalDays = 0;
+
+	for (unsigned int y = 0; y < year; ++y) {
+		totalDays += isLeapYear(y) ? 366 : 365;
+	}
+
+	for (unsigned int m = 1; m < month; ++m) {
+		totalDays += daysInMonth(m, year);
+	}
+
+	totalDays += day;
+
+	return totalDays;
 }
