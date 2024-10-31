@@ -273,7 +273,7 @@ void BitcoinExchange::exchangeCore(std::string line){
 	valueStr = line.substr(13);
 	value = atof(valueStr.c_str());
 
-	std::cout << line << " = " << std::endl;
+	std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
 
 	//faire la conversion ici !
 }
@@ -294,7 +294,7 @@ void	BitcoinExchange::checkFirstLineTXT(const std::string line){
 bool	BitcoinExchange::checkLineTXT(const std::string line, unsigned short i){
 
 	if (line.length() < 14){
-		std::cout << "Not enought character." << std::endl;
+		std::cout << "Error: bad input => " << line << std::endl;
 		return  false;
 	}
 
@@ -360,7 +360,7 @@ bool	BitcoinExchange::checkValueTXT(const std::string line, unsigned short i){
 	float	value = atof(valueStr.c_str());
 
 	if (value < 0 || value > 1000){
-		std::cerr << "Value must be between 0 and 1000." << std::endl;
+		std::cerr << "Error: too large a number." << std::endl;
 		return false;
 	}
 	return true;
