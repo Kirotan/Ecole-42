@@ -3,6 +3,7 @@
 #include <map>
 #include <fstream>
 #include <cstdlib>
+#include <cctype>
 #include "BitcoinExchange.hpp"
 
 //Constructors
@@ -54,6 +55,8 @@ std::map<std::string, float>	BitcoinExchange::createDataMap(){
 		if(checkLineCSV(line, i) == true){
 			insertElementMap(line);
 		}
+		else
+			return this->_map;
 		i++;
 	}
 	file.close();
@@ -122,15 +125,69 @@ bool	BitcoinExchange::checkDate(const std::string line, unsigned short i){
 		return false;
 	}
 
+	if(day <= 0){
+		std::cerr << "Line " << i << ". Day can't be 0 or less."<< std::endl;
+		return false;
+	}
+
 	if(day > daysInMonth[month - 1]){
 		std::cerr << "Line " << i << ". Too many days for this month."<< std::endl;
 		return false;
 	}
+	return true;
 }
 
-bool	BitcoinExchange::checkValue(const std::string line, unsigned short i){
+bool	BitcoinExchange::checkValueCSV(const std::string line, unsigned short i){
 
 
+	unsigned int	j = 11;
+	unsigned int	dotPlace = 0;
+	bool			dot = false;
+
+	if(line.at(j) == '-'){
+		std::cerr << "Line " << i << ". Value can't be negative." << std::endl;
+		return false;
+	}
+	if(line.at(j) == '+'){
+		while(line.at(j) == '+')
+			j++;
+	}
+	if(isdigit(line.at(j)) == 0){
+		std::cerr << "Line " << i << ". Value must be digit only." << std::endl;
+		return false;
+	}
+
+	while(line[j] && (isdigit(line.at(j)) > 0 || line.at(j) == '.')){
+		if (line.at(j) == '.' && dot == true){
+			std::cerr << "Line " << i << ". Value can't have more than one '.'." << std::endl;
+			return false;
+		}
+		if(line.at(j) == '.'){
+			dot = true;
+			dotPlace = j;
+		}
+		if(isdigit(line.at(j)) == 0 && line.at(j) != '.'){
+			std::cerr << "Line " << i << ". Value must be digit only." << std::endl;
+			return false;
+		}
+		if(line[j + 1] && isdigit(line.at(j + 1)) == 0 && line.at(j + 1) != '.'){
+			std::cerr << "Line " << i << ". Value must be digit only." << std::endl;
+			return false;
+		}
+		j++;
+	}
+
+	if(dotPlace == j - 1){
+		std::cout << "Line " << i << ". Point can't be at the end without number after." << std::endl;
+		return false;
+	}
+
+	if (dot == true && (j - dotPlace - 1) > 2) {
+		std::cerr << "Line " << i << ". Precision set after '.' is 2, not more." << std::endl;
+		return false;
+	}
+
+	return true;
 }
 
 
@@ -146,10 +203,12 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 		return false;
 	}
 
-	checkDate(line, i);
-	checkValue(line, i);
+	if (checkDate(line, i) == false)
+		return false;
+	if (checkValueCSV(line, i) == false)
+		return false;
 
-	return false;
+	return true;
 }
 
 void	BitcoinExchange::checkFirstLineTXT(const std::string line){

@@ -26,7 +26,7 @@ class BitcoinExchange{
 		bool							checkFirstLineCSV(const std::string line);
 		bool							checkLineCSV(const std::string line, unsigned short i);
 		bool							checkDate(const std::string line, unsigned short i);
-		bool							checkValue(const std::string line, unsigned short i);
+		bool							checkValueCSV(const std::string line, unsigned short i);
 		void							checkLineTXT(const std::string line);
 		void							checkFirstLineTXT(const std::string line);
 		void							insertElementMap(std::string line);
