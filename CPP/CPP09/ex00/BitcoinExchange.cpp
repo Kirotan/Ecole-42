@@ -29,9 +29,9 @@ BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const &other){
 
 
 //Public Members functions
-void		BitcoinExchange::exchangeRate(char *argv){
+void		BitcoinExchange::exchangeRate(char *fileName){
 
-	(void)argv;
+	InputMap(fileName);
 }
 
 //Private Members functions
@@ -68,7 +68,6 @@ const std::string	BitcoinExchange::findLine(){
 
 void BitcoinExchange::insertElementMap(std::string line){
 
-	//check key and value then add them
 	// forbidden to have identical date
 	std::string		valueStr;
 	float			value;
@@ -86,9 +85,7 @@ void BitcoinExchange::insertElementMap(std::string line){
 	month = atoi(monthStr.c_str());
 	day = atoi(dayStr.c_str());
 
-	(void)key;
 	key = daysSinceYearZero(year, month, day);
-	std::cout << key << std::endl;
 
 	valueStr = line.substr(12);
 	value = atof(valueStr.c_str());
@@ -158,7 +155,6 @@ bool	BitcoinExchange::checkDate(const std::string line, unsigned short i){
 
 bool	BitcoinExchange::checkValueCSV(const std::string line, unsigned short i){
 
-
 	unsigned int	j = 11;
 	unsigned int	dotPlace = 0;
 	bool			dot = false;
@@ -216,7 +212,7 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 		return false;
 	}
 
-	if (line.at(10) != ','){
+	if (line[10] && line.at(10) != ','){
 		std::cerr << "Line " << i << ". Bad format. Format must be like : YYYY-MM-DD,value" << std::endl;
 		return false;
 	}
@@ -229,17 +225,145 @@ bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 	return true;
 }
 
+void	BitcoinExchange::InputMap(char *fileName){
+
+	std::string		line;
+	std::ifstream	file;
+	unsigned short	i = 2;
+
+	file.open(fileName);
+	if(!file.is_open()){
+		std::cerr << "Error, can't open file." << std::endl;
+		return ;
+	}
+
+	std::getline(file, line);
+	checkFirstLineTXT(line);
+	while(std::getline(file, line)){
+		if(checkLineTXT(line, i) == false){
+			i++;
+			continue;
+		}
+		exchangeCore(line);
+		i++;
+	}
+	file.close();
+}
+
+void BitcoinExchange::exchangeCore(std::string line){
+
+	std::string		valueStr;
+	float			value;
+	unsigned int	key;
+
+	unsigned int	year;
+	unsigned int	month;
+	unsigned int	day;
+
+	std::string	yearStr = line.substr(0, 4);
+	std::string	monthStr = line.substr(5, 2);
+	std::string	dayStr = line.substr(8, 2);
+
+	year = atoi(yearStr.c_str());
+	month = atoi(monthStr.c_str());
+	day = atoi(dayStr.c_str());
+
+	key = daysSinceYearZero(year, month, day);
+
+	valueStr = line.substr(13);
+	value = atof(valueStr.c_str());
+
+	std::cout << line << " = " << std::endl;
+
+	//faire la conversion ici !
+}
+
+
 void	BitcoinExchange::checkFirstLineTXT(const std::string line){
-	(void)line;
+
+	std::string const	firstLineMustBe = "date | value";
+
+	if(line.compare(firstLineMustBe) == 0)
+		return ;
+	else{
+		std::cerr << "First line isn't correct.\nThat must be : date | value" << std::endl;
+		return ;
+	}
 }
 
-void	BitcoinExchange::checkLineTXT(const std::string line){
-	(void)line;
+bool	BitcoinExchange::checkLineTXT(const std::string line, unsigned short i){
+
+	if (line.length() < 14){
+		std::cout << "Not enought character." << std::endl;
+		return  false;
+	}
+
+	if (line[11] && line.at(11) != '|'){
+		std::cerr << "Bad format. Format must be like : YYYY-MM-DD | value" << std::endl;
+	}
+	checkDate(line, i);
+	if(checkValueTXT(line, i) == false)
+ 		return false;
+	return true;
 }
 
-void	BitcoinExchange::exchangeCore(const std::string line, std::map<unsigned int, float> map){
-	(void)line;
-	(void)map;
+bool	BitcoinExchange::checkValueTXT(const std::string line, unsigned short i){
+
+	unsigned int	j = 13;
+	unsigned int	dotPlace = 0;
+	bool			dot = false;
+
+	if(line.at(j) == '-'){
+		std::cerr << "Error: not a positive number." << std::endl;
+		return false;
+	}
+	if(line.at(j) == '+'){
+		while(line.at(j) == '+')
+			j++;
+	}
+	if(isdigit(line.at(j)) == 0){
+		std::cerr << "Value must be digit only." << std::endl;
+		return false;
+	}
+
+	while(line[j] && (isdigit(line.at(j)) > 0 || line.at(j) == '.')){
+		if (line.at(j) == '.' && dot == true){
+			std::cerr << "Value can't have more than one '.'." << std::endl;
+			return false;
+		}
+		if(line.at(j) == '.'){
+			dot = true;
+			dotPlace = j;
+		}
+		if(isdigit(line.at(j)) == 0 && line.at(j) != '.'){
+			std::cerr << "Line " << i << "Value must be digit only." << std::endl;
+			return false;
+		}
+		if(line[j + 1] && isdigit(line.at(j + 1)) == 0 && line.at(j + 1) != '.'){
+			std::cerr << "Value must be digit only." << std::endl;
+			return false;
+		}
+		j++;
+	}
+
+	if(dotPlace == j - 1){
+		std::cout << "Point can't be at the end without number after." << std::endl;
+		return false;
+	}
+
+	if (dot == true && (j - dotPlace - 1) > 2) {
+		std::cerr << "Precision set after '.' is 2, not more." << std::endl;
+		return false;
+	}
+
+	std::string		valueStr = line.substr(13);
+	float	value = atof(valueStr.c_str());
+
+	if (value < 0 || value > 1000){
+		std::cerr << "Value must be between 0 and 1000." << std::endl;
+		return false;
+	}
+	return true;
 }
 
 bool	BitcoinExchange::isLeapYear(unsigned int year){
