@@ -297,7 +297,6 @@ void BitcoinExchange::exchangeCore(std::string line){
 	else
 		iter = _map.find(key);
 
-	// std::cout << iter->second << std::endl;
 	result = iter->second * value;
 
 	std::cout << std::setw(4) << std::setfill('0') << year << "-" << std::setw(2) << std::setfill('0') << month << "-"
