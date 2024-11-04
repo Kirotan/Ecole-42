@@ -4,6 +4,8 @@
 #include <fstream>
 #include <cstdlib>
 #include <cctype>
+#include <iomanip>
+#include <sstream>
 #include "BitcoinExchange.hpp"
 
 //Constructors
@@ -68,9 +70,6 @@ bool	BitcoinExchange::createDataMap(){
 	return true;
 }
 
-const std::string	BitcoinExchange::findLine(){
-	return NULL;
-}
 
 bool	BitcoinExchange::checkLineCSV(const std::string line, unsigned short i){
 
@@ -289,14 +288,20 @@ void BitcoinExchange::exchangeCore(std::string line){
 
 	//conversion
 	std::map<unsigned int, float>::iterator iter;
+	float	result;
 
 	if (_map.find(key) == _map.end()){
 		iter = _map.lower_bound(key);
+		iter--;
 	}
 	else
 		iter = _map.find(key);
 
-	std::cout << year << "-" << month << "-" << day << " => " << value << " = " << iter->second * value << std::endl;
+	// std::cout << iter->second << std::endl;
+	result = iter->second * value;
+
+	std::cout << std::setw(4) << std::setfill('0') << year << "-" << std::setw(2) << std::setfill('0') << month << "-"
+	<< std::setw(2) << std::setfill('0') << day << " => " << value << " = " << result << std::endl;
 
 }
 

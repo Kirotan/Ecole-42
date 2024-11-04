@@ -23,7 +23,6 @@ class BitcoinExchange{
 	//Private Members functions
 		bool							createDataMap();
 		void							InputMap(char *fileName);
-		const std::string				findLine();
 		bool							checkFirstLineCSV(const std::string line);
 		bool							checkLineCSV(const std::string line, unsigned short i);
 		bool							checkDate(const std::string line, unsigned short i);
