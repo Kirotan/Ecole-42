@@ -30,7 +30,7 @@ class BitcoinExchange{
 		bool							checkValueCSV(const std::string line, unsigned short i);
 		bool							checkValueTXT(const std::string line, unsigned short i);
 		bool							checkLineTXT(const std::string line, unsigned short i);
-		void							checkFirstLineTXT(const std::string line);
+		bool							checkFirstLineTXT(const std::string line);
 		void							insertElementMap(std::string line);
 		void							exchangeCore(std::string line);
 		bool							isLeapYear(unsigned int year);

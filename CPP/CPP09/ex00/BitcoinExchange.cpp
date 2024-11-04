@@ -112,8 +112,13 @@ void BitcoinExchange::insertElementMap(std::string line){
 	day = atoi(dayStr.c_str());
 
 	key = daysSinceYearZero(year, month, day);
+	if(this->_map.count(key) == 1){
+		std::cerr << year << "-" << month << "-" << day << " --- Can't have same day twice. " << std::endl;
+		std::map<unsigned int, float>::iterator	it = this->_map.find(key);
+		std::cerr << "Value of : " << year << "-" << month << "-" << day << " is : " << it->second << std::endl;
+	}
 
-	valueStr = line.substr(12);
+	valueStr = line.substr(11);
 	value = atof(valueStr.c_str());
 
 	this->_map.insert(std::pair<unsigned int, float>(key, value));
@@ -245,7 +250,8 @@ void	BitcoinExchange::InputMap(char *fileName){
 	}
 
 	std::getline(file, line);
-	checkFirstLineTXT(line);
+	if (checkFirstLineTXT(line) == false)
+		return ;
 	while(std::getline(file, line)){
 		if(checkLineTXT(line, i) == false){
 			i++;
@@ -286,16 +292,17 @@ void BitcoinExchange::exchangeCore(std::string line){
 }
 
 
-void	BitcoinExchange::checkFirstLineTXT(const std::string line){
+bool	BitcoinExchange::checkFirstLineTXT(const std::string line){
 
 	std::string const	firstLineMustBe = "date | value";
 
 	if(line.compare(firstLineMustBe) == 0)
-		return ;
+		return true;
 	else{
 		std::cerr << "First line isn't correct.\nThat must be : date | value" << std::endl;
-		return ;
+		return false ;
 	}
+	return true;
 }
 
 bool	BitcoinExchange::checkLineTXT(const std::string line, unsigned short i){
@@ -308,7 +315,8 @@ bool	BitcoinExchange::checkLineTXT(const std::string line, unsigned short i){
 	if (line[11] && line.at(11) != '|'){
 		std::cerr << "Bad format. Format must be like : YYYY-MM-DD | value" << std::endl;
 	}
-	checkDate(line, i);
+	if (checkDate(line, i) == false)
+		return false;
 	if(checkValueTXT(line, i) == false)
  		return false;
 	return true;
