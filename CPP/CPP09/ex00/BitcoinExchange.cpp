@@ -114,8 +114,8 @@ void BitcoinExchange::insertElementMap(std::string line){
 	key = daysSinceYearZero(year, month, day);
 	if(this->_map.count(key) == 1){
 		std::cerr << year << "-" << month << "-" << day << " --- Can't have same day twice. " << std::endl;
-		std::map<unsigned int, float>::iterator	it = this->_map.find(key);
-		std::cerr << "Value of : " << year << "-" << month << "-" << day << " is : " << it->second << std::endl;
+		std::map<unsigned int, float>::iterator	iter = this->_map.find(key);
+		std::cerr << "Value of : " << year << "-" << month << "-" << day << " is : " << iter->second << std::endl;
 	}
 
 	valueStr = line.substr(11);
@@ -286,9 +286,18 @@ void BitcoinExchange::exchangeCore(std::string line){
 	valueStr = line.substr(13);
 	value = atof(valueStr.c_str());
 
-	std::cout << year << "-" << month << "-" << day << " => " << value << " = " << std::endl;
 
-	//faire la conversion ici !
+	//conversion
+	std::map<unsigned int, float>::iterator iter;
+
+	if (_map.find(key) == _map.end()){
+		iter = _map.lower_bound(key);
+	}
+	else
+		iter = _map.find(key);
+
+	std::cout << year << "-" << month << "-" << day << " => " << value << " = " << iter->second * value << std::endl;
+
 }
 
 
