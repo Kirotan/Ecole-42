@@ -285,7 +285,6 @@ void BitcoinExchange::exchangeCore(std::string line){
 	valueStr = line.substr(13);
 	value = atof(valueStr.c_str());
 
-
 	//conversion
 	std::map<unsigned int, float>::iterator iter;
 	float	result;
