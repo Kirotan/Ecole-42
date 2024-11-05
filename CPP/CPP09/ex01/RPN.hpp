@@ -13,7 +13,7 @@ class RPN{
 		~RPN();
 
 	private :
-		std::stack<size_t>	_stack;
+		std::stack<double>	_stack;
 
 	// Constructors
 		RPN();
@@ -23,6 +23,11 @@ class RPN{
 		RPN	&operator=(RPN const &other);
 
 	//Member functions
-		bool	checkLine(const char *line) const;
+		bool		checkLine(const char *line) const;
+		void		fillArray(std::string str);
+		void		addNumber();
+		void		subtractNumber();
+		void		multiplyNumber();
+		void		diviseNumber();
 
 };

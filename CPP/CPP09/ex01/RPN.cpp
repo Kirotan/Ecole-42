@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <cstdlib>
 #include "RPN.hpp"
 
 //Constructors
@@ -9,11 +10,13 @@ RPN::RPN(RPN const &copy){this->_stack = copy._stack;}
 
 RPN::RPN(const char *line){
 
+	std::string	str(line);
+
 	if (checkLine(line) == false)
 		return ;
-	reversePolishNotation(line);
+	fillArray(str);
+	reversePolishNotation(str);
 }
-
 
 //Destructor
 RPN::~RPN(){}
@@ -29,11 +32,6 @@ RPN	&RPN::operator=(RPN const &other){
 
 
 //Member functions
-void	RPN::reversePolishNotation(std::string line){
-
-	(void)line;
-}
-
 bool	RPN::checkLine(const char *line) const{
 
 	unsigned short	i = 0;
@@ -72,6 +70,67 @@ bool	RPN::checkLine(const char *line) const{
 		}
 		i++;
 	}
-
 	return true;
+}
+
+void		RPN::fillArray(std::string str){
+
+	unsigned short	i = 0;
+
+	while(str[i]){
+		if(isdigit(str[i])){
+			_stack.push(atol(&str[i]));
+		}
+		i++;
+	}
+}
+
+void	RPN::addNumber(){
+
+	double	nb1 = _stack.top();
+	_stack.pop();
+	_stack.top() += nb1;
+}
+
+void	RPN::subtractNumber(){
+
+	double	nb1 = _stack.top();
+	_stack.pop();
+	_stack.top() -= nb1;
+}
+
+void	RPN::multiplyNumber(){
+
+	double	nb1 = _stack.top();
+	_stack.pop();
+	_stack.top() *= nb1;
+}
+
+void	RPN::diviseNumber(){
+
+	double	nb1 = _stack.top();
+	_stack.pop();
+	_stack.top() /= nb1;
+}
+
+void	RPN::reversePolishNotation(std::string line){
+
+	unsigned short	i = 0;
+
+	while(line[i]){
+		if(line[i] == '+'){
+			addNumber();
+		}
+		else if(line[i] == '-'){
+			subtractNumber();
+		}
+		else if(line[i] == '*'){
+			multiplyNumber();
+		}
+		else if(line[i] == '/'){
+			diviseNumber();
+		}
+		i++;
+	}
+	std::cout << _stack.top() << std::endl;
 }
