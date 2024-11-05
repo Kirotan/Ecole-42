@@ -1,5 +1,5 @@
 NAME			= RPN
-CXXFLAGS		= -Wall -Wextra -Werror -Wshadow -std=c++98
+CXXFLAGS		= -Wall -Wextra -Werror -g -Wshadow -std=c++98
 CXX				= c++
 
 SRC_FILES	= main.cpp \

@@ -28,5 +28,7 @@ class RPN{
 		void		subtractNumber();
 		void		multiplyNumber();
 		void		diviseNumber();
+		bool		checkSize();
+
 
 };
