@@ -14,7 +14,6 @@ RPN::RPN(const char *line){
 
 	if (checkLine(line) == false)
 		return ;
-	fillArray(str);
 	reversePolishNotation(str);
 }
 
@@ -73,18 +72,6 @@ bool	RPN::checkLine(const char *line) const{
 	return true;
 }
 
-void		RPN::fillArray(std::string str){
-
-	unsigned short	i = 0;
-
-	while(str[i]){
-		if(isdigit(str[i])){
-			_stack.push(atol(&str[i]));
-		}
-		i++;
-	}
-}
-
 void	RPN::addNumber(){
 
 	double	nb1 = _stack.top();
@@ -117,8 +104,12 @@ void	RPN::reversePolishNotation(std::string line){
 
 	unsigned short	i = 0;
 
+
 	while(line[i]){
-		if(line[i] == '+'){
+		if(isdigit(line[i])){
+			_stack.push(atol(&line[i]));
+		}
+		else if(line[i] == '+'){
 			addNumber();
 		}
 		else if(line[i] == '-'){

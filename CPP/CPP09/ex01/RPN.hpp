@@ -24,7 +24,6 @@ class RPN{
 
 	//Member functions
 		bool		checkLine(const char *line) const;
-		void		fillArray(std::string str);
 		void		addNumber();
 		void		subtractNumber();
 		void		multiplyNumber();
