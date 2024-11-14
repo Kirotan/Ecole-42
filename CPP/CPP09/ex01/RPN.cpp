@@ -147,7 +147,6 @@ void	RPN::reversePolishNotation(std::string line){
 	size_t	i = 0;
 
 	while(line[i]){
-
 		if(isdigit(line[i])){
 			_stack.push(atol(&line[i]));
 		}
