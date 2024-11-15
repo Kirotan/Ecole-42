@@ -1,8 +1,8 @@
 #include <string>
+#include <exception>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <typeinfo>
 #include <unistd.h>
 #include "Base.hpp"
 #include "A.hpp"
@@ -24,7 +24,6 @@ Base	* generate(void){
 	else
 		return new C();
 }
-
 
 //It prints the actual type of the object pointed to by p: "A", "B" or "C".
 void	identify(Base* p){
@@ -49,20 +48,20 @@ void	identify(Base& p){
 		std::cout << "A" << std::endl;
 		return;
 	}
-	catch (const std::bad_cast &e){}
+	catch (const std::exception &e){}
 
 	try{
 		(void)dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 		return;
 	}
-	catch (const std::bad_cast &e){}
+	catch (const std::exception &e){}
 
 	try{
 		(void)dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 	}
-	catch (const std::bad_cast &e){}
+	catch (const std::exception &e){}
 }
 
 int	main(){
@@ -95,3 +94,4 @@ int	main(){
 
 	return 0;
 }
+

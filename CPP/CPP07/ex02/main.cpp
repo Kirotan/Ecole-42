@@ -6,13 +6,14 @@ int	main(){
 
 	//Subject test
 	// int *a = new int();
+	// *a = 42;
 	// std::cout << a << std::endl;
-
-	// Array<int> b(3);
-	Array<std::string> c(5);
+	// std::cout << *a << std::endl;
+	// delete a;
 
 
 //test int array
+	// Array<int> b(3);
 	// b[1] = 9;
 
 	// try {
@@ -24,18 +25,20 @@ int	main(){
 
 	// std::cout << b[1] << std::endl;
 
+
 //test string array
-	c[2] = "Hello !";
+	// Array<std::string> c(5);
+	// c[2] = "Hello !";
 
-	try {
-		c[4] = "Coucou";
-	}
-	catch(Array<std::string>::IndexException &e){
-		std::cerr << e.what() << std::endl;
-	}
+	// try {
+	// 	c[4] = "Coucou";
+	// }
+	// catch(Array<std::string>::IndexException &e){
+	// 	std::cerr << e.what() << std::endl;
+	// }
 
-	std::cout << c[2] << std::endl;
-	std::cout << c[4] << std::endl;
+	// std::cout << c[2] << std::endl;
+	// std::cout << c[4] << std::endl;
 
 	return 0;
 }

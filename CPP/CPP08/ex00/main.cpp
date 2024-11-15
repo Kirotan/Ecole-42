@@ -24,8 +24,6 @@ int	main(){
 
 	}
 
-	std::cout << std::endl;
-
 	try{
 		easyfind(vecInt, j);
 	}

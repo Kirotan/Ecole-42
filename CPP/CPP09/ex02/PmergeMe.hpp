@@ -9,17 +9,30 @@
 
 class PmergeMe
 {
+
+	public:
+
+		PmergeMe(char **argv);
+		PmergeMe(PmergeMe const &src);
+		PmergeMe&	operator=(PmergeMe const &assign);
+		~PmergeMe();
+
+		char**	get_argv(void) const;
+
+
 	private:
 
+		PmergeMe();
+
 		static const int	K = 5;
-		char**	unsorted;
-		std::deque<int> dq;
-		std::vector<int> vec;
+		char				**_argv;
+		std::deque<int>		dq;
+		std::vector<int>	vec;
 
 		void	error();
-		void	printVector(std::vector<int> &v);
-		void	printDq(std::deque<int> &d);
-		void	printArray();
+		void	displayVector(std::vector<int> &v);
+		void	displayDq(std::deque<int> &d);
+		void	displayArray();
 
 		void	parsing();
 		void	sort();
@@ -32,14 +45,4 @@ class PmergeMe
 		void	insertionDq(int beg, int end);
 		void	mergeDq(int beg, int mid, int end);
 
-
-	public:
-
-		char**	getUnsorted(void) const;
-
-		PmergeMe(char** unsorted);
-		PmergeMe(PmergeMe const &src);
-		PmergeMe&	operator=(PmergeMe const &assign);
-		~PmergeMe(void);
 };
-

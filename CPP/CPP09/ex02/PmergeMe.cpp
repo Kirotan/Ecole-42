@@ -5,13 +5,39 @@
 #include <ios>
 #include <vector>
 
+PmergeMe::PmergeMe(){}
+
+PmergeMe::PmergeMe(PmergeMe const &copy)
+{
+	*this = copy;
+	return ;
+}
+
+PmergeMe &	PmergeMe::operator=(const PmergeMe &other)
+{
+	this->_argv = other.get_argv();
+	return (*this);
+}
+
+PmergeMe::~PmergeMe(void)
+{
+	return ;
+}
+
+PmergeMe::PmergeMe(char **argv) : _argv(argv)
+{
+	parsing();
+	sort();
+	return ;
+}
+
 void PmergeMe::error()
 {
 	std::cout << "Error" << std::endl;
-	exit(1);
+	exit (1);
 }
 
-void PmergeMe::printVector(std::vector<int> &v)
+void PmergeMe::displayVector(std::vector<int> &v)
 {
 	std::vector<int>::iterator	it;
 
@@ -21,7 +47,7 @@ void PmergeMe::printVector(std::vector<int> &v)
 	std::cout << std::endl;
 }
 
-void PmergeMe::printDq(std::deque<int> &d)
+void PmergeMe::displayDq(std::deque<int> &d)
 {
 	std::deque<int>::iterator	it;
 
@@ -31,13 +57,13 @@ void PmergeMe::printDq(std::deque<int> &d)
 	std::cout << std::endl;
 }
 
-void PmergeMe::printArray()
+void PmergeMe::displayArray()
 {
 	int i = 1;
 	std::cout << "Before:";
-	while (unsorted[i])
+	while (_argv[i])
 	{
-		std::cout << " " << unsorted[i];
+		std::cout << " " << _argv[i];
 		i++;
 	}
 	std::cout << std::endl;
@@ -48,26 +74,30 @@ void PmergeMe::parsing()
 	int	i, j;
 
 	i = 1;
-	while (unsorted[i])
+	while (_argv[i])
 	{
 		j = 0;
-		while (unsorted[i][j])
+		while (_argv[i][j])
 		{
-			if (isdigit(unsorted[i][j]) == 0)
+			if (isdigit(_argv[i][j]) == 0)
 				error();
 			j++;
 		}
-		vec.push_back(atoi(unsorted[i]));
-		dq.push_back(atoi(unsorted[i]));
+		vec.push_back(atoi(_argv[i]));
+		dq.push_back(atoi(_argv[i]));
 		i++;
 	}
-	printArray();
+	displayArray();
 }
 
 void PmergeMe::sort()
 {
-	clock_t	start, finish;
-	double	time_v, time_dq;
+	clock_t	start;
+	clock_t	finish;
+
+	double	time_v;
+	double	time_dq;
+
 
 	std::cout << "After:" << std::endl;
 
@@ -75,13 +105,13 @@ void PmergeMe::sort()
 	sortVector(0, vec.size() - 1);
 	finish = clock();
 	time_v = ((double) (finish - start)) / CLOCKS_PER_SEC;
-	printVector(vec);
+	displayVector(vec);
 
 	start = clock();
 	sortDq(0, dq.size() - 1);
 	finish = clock();
 	time_dq = ((double) (finish - start)) / CLOCKS_PER_SEC;
-	printDq(dq);
+	displayDq(dq);
 
 	std::cout <<"Time to process a range of " << vec.size() << " elements with std::vector is: " << std::fixed << time_v  << std::endl;
 	std::cout << "Time to process a range of " << dq.size() << " elements with std::deque is: " << std::fixed << time_dq  << std::endl;
@@ -216,32 +246,7 @@ void PmergeMe::sortDq(int beg, int end)
 
 }
 
-char** PmergeMe::getUnsorted(void) const
+char** PmergeMe::get_argv(void) const
 {
-	return (this->unsorted);
+	return (this->_argv);
 }
-
-PmergeMe::PmergeMe(char** unsorted) : unsorted(unsorted)
-{
-	parsing();
-	sort();
-	return ;
-}
-
-PmergeMe::PmergeMe(PmergeMe const &src)
-{
-	*this = src;
-	return ;
-}
-
-PmergeMe &	PmergeMe::operator=(const PmergeMe &assign)
-{
-	this->unsorted = assign.getUnsorted();
-	return (*this);
-}
-
-PmergeMe::~PmergeMe(void)
-{
-	return ;
-}
-

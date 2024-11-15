@@ -4,19 +4,13 @@
 
 
 void	printInt(int &nb){std::cout << nb << std::endl;}
-
 void	printChar(char &c){std::cout << c << std::endl;}
-
 void	printString(std::string &str){std::cout << str << std::endl;}
-
 void	printDouble(double &d){std::cout << d << std::endl;}
 
 void	incrementInt(int &nb){nb++;}
-
 void	decrementChar(char &c){c++;}
-
 void	appendString(std::string &str){str.append("_test");}
-
 void	multiDouble(double &d){d *= 2;}
 
 
