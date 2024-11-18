@@ -22,6 +22,7 @@ class Span{
 		long	longestSpan();
 		void	addNumber(int nb);
 
+
 	//Template range of iterators for several call to addNumber
 		template<typename InputIterator>
 		void	addNumber(InputIterator begin, InputIterator end) {

@@ -25,4 +25,3 @@ void	easyfind(T &haystack, int needle){
 		std::cout << "Found : " << *iter << std::endl;
 
 }
-
