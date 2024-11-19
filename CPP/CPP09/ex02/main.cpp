@@ -13,4 +13,3 @@ int main(int argc, char **argv)
 	PmergeMe	sorting(argv);
 	return (0);
 }
-
