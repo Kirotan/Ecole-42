@@ -113,8 +113,8 @@ void PmergeMe::sort()
 	time_dq = ((double) (finish - start)) / CLOCKS_PER_SEC;
 	displayDq(dq);
 
-	std::cout <<"Time to process a range of " << vec.size() << " elements with std::vector is: " << std::fixed << time_v << " seconds." << std::endl;
-	std::cout << "Time to process a range of " << dq.size() << " elements with std::deque is: " << std::fixed << time_dq << " seconds." << std::endl;
+	std::cout <<"Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed << time_v << " sec." << std::endl;
+	std::cout << "Time to process a range of " << dq.size() << " elements with std::deque : " << std::fixed << time_dq << " sec." << std::endl;
 
 	return ;
 }
