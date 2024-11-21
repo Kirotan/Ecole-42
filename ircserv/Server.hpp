@@ -21,6 +21,8 @@ class Server{
 
 	//Member functions
 		void	initServer();
+		int		socketNonBlocking(int fd);
+
 
 	private :
 
@@ -39,6 +41,5 @@ class Server{
 		std::string			_passw;
 		int					_serverSocket;
 		struct sockaddr_in	_serverAddres;
-
 
 };

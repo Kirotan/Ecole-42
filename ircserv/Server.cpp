@@ -27,6 +27,26 @@
 
 
 //Member functions
+int	Server::socketNonBlocking(int fd){
+
+	Server	&server = Server::getInstance(); //Call of server instance
+
+//Check if socket creation work
+	if(server._serverSocket == -1){
+		close(server._serverSocket);
+		std::cerr << "ERROR SOCKET : Socket can't be created." << std::endl;
+		exit(1);
+	}
+
+//Non-blocking mode socket
+	int flags = fcntl(fd, F_GETFL, 0);
+		if (flags == -1) {
+			return -1;
+		}
+	return fcntl(fd, F_SETFL, flags | O_NONBLOCK);
+}
+
+
 void	Server::initServer(){
 
 //Call of server instance
@@ -36,11 +56,10 @@ void	Server::initServer(){
 //Socket creation : for creating communication point, like a FD
 
 	server._serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if(server._serverSocket == -1){
-		close(server._serverSocket);
-		std::cerr << "ERROR SOCKET : Socket can't be created." << std::endl;
-		exit(1);
-	}
+	if (socketNonBlocking(server._serverSocket) < 0) {
+	std::cerr << "ERROR: Unable to set server socket to non-blocking mode." << std::endl;
+	exit(1);
+}
 
 //Address socket creation with sockaddr_in structure
 	memset(&server._serverAddres, 0, sizeof(server._serverAddres));
