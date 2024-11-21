@@ -40,9 +40,9 @@ int	Server::socketNonBlocking(int fd){
 
 //Non-blocking mode socket
 	int flags = fcntl(fd, F_GETFL, 0);
-		if (flags == -1) {
-			return -1;
-		}
+	if (flags == -1) {
+		return -1;
+	}
 	return fcntl(fd, F_SETFL, flags | O_NONBLOCK);
 }
 
@@ -59,7 +59,7 @@ void	Server::initServer(){
 	if (socketNonBlocking(server._serverSocket) < 0) {
 	std::cerr << "ERROR: Unable to set server socket to non-blocking mode." << std::endl;
 	exit(1);
-}
+	}
 
 //Address socket creation with sockaddr_in structure
 	memset(&server._serverAddres, 0, sizeof(server._serverAddres));
@@ -75,10 +75,32 @@ void	Server::initServer(){
 	}
 
 //Listen :server able to connect in
-	unsigned short	backLogSize = 128; //queue size
-	if(listen(server._serverSocket, backLogSize) < 0){
+	server._backLogSize = 128; //queue size
+	if(listen(server._serverSocket, server._backLogSize) < 0){
 		close(server._serverSocket);
 		std::cerr << "ERROR LISTEN : Unable to listen on the socket." << std::endl;
 		exit (1);
+	}
+}
+
+void	Server::initEpoll(){
+
+	Server	&server = getInstance();
+
+	server._epollFd = epoll_create1(0);
+	if (_epollFd == -1) {
+		std::cerr << "ERROR EPOLL: epoll_create1 failed." << std::endl;
+		close(server._serverSocket);
+		exit(1);
+	}
+
+	server._event.data.fd = server._serverSocket;
+	server._event.events = EPOLLIN;
+
+	if(epoll_ctl(server._epollFd, EPOLL_CTL_ADD, server._serverSocket, &server._event) == -1){
+		std::cerr << "ERROR EPOLL : epoll_ctl_add failed." << std::endl;
+		close(server._serverSocket);
+		close(server._epollFd);
+		exit(1);
 	}
 }

@@ -9,7 +9,7 @@ int	main(int argc, char ** argv){
 
 	Server &server = Server::getInstance();
 	server.initServer();
-
+	server.initEpoll();
 
 	return 0;
 }

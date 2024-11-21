@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <netinet/in.h>
+#include <sys/epoll.h>
 
 class Server{
 
@@ -22,6 +23,7 @@ class Server{
 	//Member functions
 		void	initServer();
 		int		socketNonBlocking(int fd);
+		void	initEpoll();
 
 
 	private :
@@ -41,5 +43,9 @@ class Server{
 		std::string			_passw;
 		int					_serverSocket;
 		struct sockaddr_in	_serverAddres;
+		int					_epollFd;
+		struct epoll_event	_event;
+		unsigned short		_backLogSize;
+
 
 };
