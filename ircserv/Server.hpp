@@ -3,6 +3,9 @@
 #include <string>
 #include <netinet/in.h>
 #include <sys/epoll.h>
+#include "User.hpp"
+#include "Operator.hpp"
+
 
 class Server{
 
@@ -19,6 +22,7 @@ class Server{
 		unsigned short	getPort();
 
 		void			setPassw(std::string port);
+		std::string		getPassw();
 
 	//Member functions
 		void	initServer();
@@ -46,6 +50,8 @@ class Server{
 		int					_epollFd;
 		struct epoll_event	_event;
 		unsigned short		_backLogSize;
+
+	//Array of : Channel, User and Operator
 
 
 };

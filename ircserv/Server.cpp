@@ -10,7 +10,7 @@
 #include "Server.hpp"
 
 //Constructor
-	Server::Server() : _port(0){}
+	Server::Server() : _port(0){this->_passw = "3MatAllGui";}
 	Server::Server(Server const &copy){(void)copy;}
 
 //Destructor
@@ -24,6 +24,7 @@
 	unsigned short	Server::getPort(){return this->_port;}
 
 	void			Server::setPassw(std::string password){this->_passw = password;}
+	std::string		Server::getPassw(){return this->_passw;};
 
 
 //Member functions
