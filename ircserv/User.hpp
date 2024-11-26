@@ -31,7 +31,7 @@ class User{
 		User	&operator=(User const &other);
 
 	//Variable member
-		unsigned short	_fd;
+		unsigned int	_fd;
 		std::string		_nickname;
 		std::string		_username;
 

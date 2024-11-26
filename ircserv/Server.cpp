@@ -7,10 +7,17 @@
 #include <unistd.h>
 #include <poll.h>
 #include <fcntl.h>
+#include <algorithm>
 #include "Server.hpp"
+#include "Operator.hpp"
+#include "Channel.hpp"
 
 //Constructor
-	Server::Server() : _port(0){this->_passw = "3MatAllGui";}
+	Server::Server() : _port(0){
+		this->_invitationOnly = false;
+		this->setNeedPasswTrue();
+		this->_passw = "3MatAllGui";
+	}
 	Server::Server(Server const &copy){(void)copy;}
 
 //Destructor
@@ -25,6 +32,10 @@
 
 	void			Server::setPassw(std::string password){this->_passw = password;}
 	std::string		Server::getPassw(){return this->_passw;};
+
+	void			Server::setNeedPasswFalse(){this->_needPassw = false;}
+	void			Server::setNeedPasswTrue(){this->_needPassw = true;}
+	bool			Server::getNeedPassw(){return this->_needPassw;}
 
 
 //Member functions
@@ -104,4 +115,23 @@ void	Server::initEpoll(){
 		close(server._epollFd);
 		exit(1);
 	}
+}
+
+void	Server::createChannel(Channel &chan){
+	this->_arrayChannel.push_back(chan);
+}
+
+
+void	Server::deleteChannel(std::string &channelName){
+
+	(void)channelName;
+
+}
+
+
+void	Server::run(){
+
+	// while(true){
+
+	// }
 }

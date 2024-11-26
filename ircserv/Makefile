@@ -7,6 +7,7 @@ SRC_FILES	= main.cpp \
 				User.cpp \
 				Operator.cpp \
 				Parsing.cpp \
+				Channel.cpp \
 
 
 OBJ_FILES	= $(SRC_FILES:%.cpp=object/%.o)

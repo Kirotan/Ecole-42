@@ -3,6 +3,9 @@
 #include <string>
 #include <netinet/in.h>
 #include <sys/epoll.h>
+#include <vector>
+#include <map>
+#include "Channel.hpp"
 #include "User.hpp"
 #include "Operator.hpp"
 
@@ -24,10 +27,24 @@ class Server{
 		void			setPassw(std::string port);
 		std::string		getPassw();
 
+		void			setNeedPasswFalse();
+		void			setNeedPasswTrue();
+		bool			getNeedPassw();
+
 	//Member functions
 		void	initServer();
 		int		socketNonBlocking(int fd);
 		void	initEpoll();
+		void	run();
+
+		void	createChannel(Channel &chan);
+		void	deleteChannel(std::string &channelName);
+
+		// void	createUser();
+		// void	deleteUser();
+
+		// void	createOperator();
+		// void	deleteOperator();
 
 
 	private :
@@ -50,8 +67,12 @@ class Server{
 		int					_epollFd;
 		struct epoll_event	_event;
 		unsigned short		_backLogSize;
+		bool				_invitationOnly;
+		bool				_needPassw;
 
 	//Array of : Channel, User and Operator
-
+		std::vector<Channel>	_arrayChannel;
+		std::map<int, User>		_arrayUser;
+		std::vector<Oper>		_arrayOperator;
 
 };
