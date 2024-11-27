@@ -14,12 +14,15 @@ class Channel{
 		Channel(std::string name);
 		~Channel();
 
+	//Surcharge operator
+		Channel	&operator=(Channel const &other);
+
 	//Getter
 		std::string	getTopic();
 		std::string	getName();
 
 	//Setter
-		void	setTopic(std::string topic);
+		void		setTopic(std::string topic);
 
 	//Member function
 		void	mode();
@@ -28,8 +31,5 @@ class Channel{
 	//Member variable
 		std::string	_name;
 		std::string	_topic;
-
-	//Surcharge operator
-		Channel	&operator=(Channel const &other);
 
 };

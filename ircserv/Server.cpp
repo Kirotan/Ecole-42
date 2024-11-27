@@ -121,13 +121,16 @@ void	Server::createChannel(Channel &chan){
 	this->_arrayChannel.push_back(chan);
 }
 
-
 void	Server::deleteChannel(std::string &channelName){
 
-	(void)channelName;
-
+	for (std::vector<Channel>::iterator it = _arrayChannel.begin(); it != _arrayChannel.end(); ) {
+		if (it->getName() == channelName) {
+			it = _arrayChannel.erase(it); // Remove and iterator go forward
+		} else {
+			++it; // Only go forward iterator
+		}
+	}
 }
-
 
 void	Server::run(){
 
