@@ -10,6 +10,8 @@ class User{
 		User(unsigned int fd);
 		~User();
 
+	//Surcharge operator
+		User	&operator=(User const &other);
 
 	// Getter
 		int			getFd();
@@ -26,9 +28,6 @@ class User{
 	//Constructor
 		User();
 		User(User const &copy);
-
-	//Surcharge operator
-		User	&operator=(User const &other);
 
 	//Variable member
 		unsigned int	_fd;

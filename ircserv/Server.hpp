@@ -20,6 +20,13 @@ class Server{
 		return instance;
 	}
 
+	//Constructor
+		Server();
+		Server(Server const &copy);
+
+	//Destructor
+		~Server();
+
 	//Setter & Getter
 		void			setPort(unsigned short port);
 		unsigned short	getPort();
@@ -31,6 +38,9 @@ class Server{
 		void			setNeedPasswTrue();
 		bool			getNeedPassw();
 
+	//Surcharge operator
+		Server	&operator=(Server const &other);
+
 	//Member functions
 		void	initServer();
 		int		socketNonBlocking(int fd);
@@ -40,25 +50,14 @@ class Server{
 		void	createChannel(Channel &chan);
 		void	deleteChannel(std::string &channelName);
 
-		// void	createUser();
-		// void	deleteUser();
+		void	createUser(int fd, User &user);
+		void	deleteUser(int fd);
 
 		// void	createOperator();
 		// void	deleteOperator();
 
 
 	private :
-
-	//Constructor
-		Server();
-		Server(Server const &copy);
-
-	//Destructor
-		~Server();
-
-	//Surcharge operator
-		Server	&operator=(Server const &other);
-
 	//Variable member
 		unsigned short		_port;
 		std::string			_passw;
@@ -72,7 +71,7 @@ class Server{
 
 	//Array of : Channel, User and Operator
 		std::vector<Channel>	_arrayChannel;
-		std::map<int, User>		_arrayUser;
+		std::map<int, User*>		_arrayUser;
 		std::vector<Oper>		_arrayOperator;
 
 };

@@ -117,6 +117,7 @@ void	Server::initEpoll(){
 	}
 }
 
+//Channel
 void	Server::createChannel(Channel &chan){
 	this->_arrayChannel.push_back(chan);
 }
@@ -131,6 +132,16 @@ void	Server::deleteChannel(std::string &channelName){
 		}
 	}
 }
+
+//User
+void	Server::createUser(int fd, User &user){
+		this->_arrayUser.insert(std::make_pair(fd, &user));
+}
+
+void	Server::deleteUser(int fd){
+	this->_arrayUser.erase(fd);
+}
+
 
 void	Server::run(){
 
