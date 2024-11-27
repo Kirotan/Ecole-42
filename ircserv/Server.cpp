@@ -37,6 +37,17 @@
 	void			Server::setNeedPasswTrue(){this->_needPassw = true;}
 	bool			Server::getNeedPassw(){return this->_needPassw;}
 
+	User*			Server::getUser(int fd){
+		if (this->_arrayUser.find(fd) != _arrayUser.end()) {
+			return _arrayUser[fd];
+		}
+		return NULL;
+	}
+
+	unsigned short		Server::getBackLogSize(){
+		return this->_backLogSize;
+	}
+
 
 //Member functions
 int	Server::socketNonBlocking(int fd){
@@ -51,13 +62,12 @@ int	Server::socketNonBlocking(int fd){
 	}
 
 //Non-blocking mode socket
-	int flags = fcntl(fd, F_GETFL, 0);
+	int flags = fcntl(fd, F_GETFL, 0); //-1 si bloquant
 	if (flags == -1) {
 		return -1;
 	}
 	return fcntl(fd, F_SETFL, flags | O_NONBLOCK);
 }
-
 
 void	Server::initServer(){
 
@@ -68,14 +78,14 @@ void	Server::initServer(){
 //Socket creation : for creating communication point, like a FD
 
 	server._serverSocket = socket(AF_INET, SOCK_STREAM, 0);
-	if (socketNonBlocking(server._serverSocket) < 0) {
+	if (socketNonBlocking(server._serverSocket) < 0){
 	std::cerr << "ERROR: Unable to set server socket to non-blocking mode." << std::endl;
 	exit(1);
 	}
 
 //Address socket creation with sockaddr_in structure
 	memset(&server._serverAddres, 0, sizeof(server._serverAddres));
-	server._serverAddres.sin_family = AF_INET; //AF_INET fir IPV4
+	server._serverAddres.sin_family = AF_INET; //AF_INET for IPV4
 	server._serverAddres.sin_addr.s_addr = INADDR_ANY; //Address to accept any incoming messages
 	server._serverAddres.sin_port = htons(server._port); //Convert local data to network data(network communication : big-endian)
 
@@ -107,7 +117,7 @@ void	Server::initEpoll(){
 	}
 
 	server._event.data.fd = server._serverSocket;
-	server._event.events = EPOLLIN;
+	server._event.events = EPOLLIN | EPOLLOUT;
 
 	if(epoll_ctl(server._epollFd, EPOLL_CTL_ADD, server._serverSocket, &server._event) == -1){
 		std::cerr << "ERROR EPOLL : epoll_ctl_add failed." << std::endl;
@@ -142,10 +152,32 @@ void	Server::deleteUser(int fd){
 	this->_arrayUser.erase(fd);
 }
 
+//Operator
+void	Server::createOperator(Oper &op){
+	this->_arrayOperator.push_back(op);
+}
+
+void	Server::deleteOperator(int fd){
+	for (std::vector<Oper>::iterator it = _arrayOperator.begin(); it != _arrayOperator.end(); ) {
+		if (it->getFd() == fd) {
+			it = _arrayOperator.erase(it); // Remove and iterator go forward
+		} else {
+			++it; // Only go forward iterator
+		}
+	}
+}
+
+std::vector<Oper>&	Server::getOperators() {
+	return this->_arrayOperator;
+}
 
 void	Server::run(){
 
-	// while(true){
+	// Server	&server = Server::getInstance();
 
-	// }
+	// struct epoll_event	events[this->_backLogSize];
+
+	while(true){
+
+	}
 }

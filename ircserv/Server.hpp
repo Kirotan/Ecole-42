@@ -9,7 +9,6 @@
 #include "User.hpp"
 #include "Operator.hpp"
 
-
 class Server{
 
 	public :
@@ -28,15 +27,18 @@ class Server{
 		~Server();
 
 	//Setter & Getter
-		void			setPort(unsigned short port);
-		unsigned short	getPort();
+		void				setPort(unsigned short port);
+		void				setPassw(std::string port);
+		void				setNeedPasswFalse();
+		void				setNeedPasswTrue();
 
-		void			setPassw(std::string port);
-		std::string		getPassw();
+		unsigned short		getPort();
+		std::string			getPassw();
+		User*				getUser(int fd);
+		std::vector<Oper>&	getOperators();
+		bool				getNeedPassw();
+		unsigned short		getBackLogSize();
 
-		void			setNeedPasswFalse();
-		void			setNeedPasswTrue();
-		bool			getNeedPassw();
 
 	//Surcharge operator
 		Server	&operator=(Server const &other);
@@ -53,8 +55,8 @@ class Server{
 		void	createUser(int fd, User &user);
 		void	deleteUser(int fd);
 
-		// void	createOperator();
-		// void	deleteOperator();
+		void	createOperator(Oper &op);
+		void	deleteOperator(int fd);
 
 
 	private :
