@@ -21,7 +21,6 @@ services:
       - /home/gdoumer/data/mariadb:/var/lib/mysql
     networks:
       - net
-    restart: always
     env_file:
       - .env
 
@@ -33,7 +32,6 @@ services:
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
-    restart: always
     env_file:
       - .env
     volumes:
