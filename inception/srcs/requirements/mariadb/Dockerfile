@@ -1,13 +1,13 @@
 FROM debian:bullseye
 
 RUN apt update -y && \
-    apt upgrade -y && \
-    apt-get install -y --no-install-recommends vim mariadb-server mariadb-client && \
-    rm -rf /var/lib/apt/lists/*
+	apt upgrade -y && \
+	apt-get install -y --no-install-recommends vim mariadb-server mariadb-client && \
+	rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /var/run/mysqld && \
-    chown -R mysql:mysql /var/run/mysqld /var/lib/mysql && \
-    chmod 750 /var/run/mysqld /var/lib/mysql
+	chown -R mysql:mysql /var/run/mysqld /var/lib/mysql && \
+	chmod 750 /var/run/mysqld /var/lib/mysql
 
 EXPOSE 3306
 
