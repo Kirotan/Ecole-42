@@ -45,5 +45,4 @@ else
 	echo "Installation terminée !"
 fi
 
-# 5. Exécuter la commande/entrée point par défaut (php-fpm, nginx, etc.)
 exec "$@"

@@ -1,5 +1,4 @@
 all:
-	echo >> /etc/hosts 127.0.0.1 gdoumer.42.fr
 	@docker compose -f ./srcs/docker-compose.yml up -d --build
 
 down:
@@ -9,8 +8,12 @@ re:
 	@docker compose -f ./srcs/docker-compose.yml up -d --build
 
 clean:
-	@docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);\
+	@if [ -n "$$(docker ps -qa)" ]; then \
+		docker stop $$(docker ps -qa); \
+		docker rm $$(docker ps -qa); \
+	fi
+	@if [ -n "$$(docker images -qa)" ]; then \
+		docker rmi -f $$(docker images -qa); \
+	fi
 
 .PHONY: all re down clean
