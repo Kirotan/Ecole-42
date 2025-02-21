@@ -42,6 +42,8 @@ else
 	--skip-email \
 	--allow-root
 
+	wp user create "${WP_USER}" "${WP_USER_EMAIL}" --role=editor --user_pass="${WP_USER_PASSWORD}" --allow-root --path=/var/www/html
+
 	echo "Installation terminée !"
 fi
 
