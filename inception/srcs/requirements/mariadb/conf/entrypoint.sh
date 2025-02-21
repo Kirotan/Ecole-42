@@ -12,9 +12,12 @@ until mariadb --user=root --execute="SELECT 1;" &>/dev/null; do
 	sleep 2
 done
 
-if [ -f "/docker-entrypoint-initdb.d/init.sql" ]; then
-	mariadb -u root < /docker-entrypoint-initdb.d/init.sql
-fi
+mariadb -u root <<EOSQL
+CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;
+CREATE USER IF NOT EXISTS '${SQL_USER}'@'%' IDENTIFIED BY '${SQL_PASSWORD}';
+GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO '${SQL_USER}'@'%';
+FLUSH PRIVILEGES;
+EOSQL
 
 mysqladmin --user=root shutdown
 

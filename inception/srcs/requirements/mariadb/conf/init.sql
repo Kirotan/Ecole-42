@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS wordpress;
-CREATE USER IF NOT EXISTS `gdoumer`@'%' IDENTIFIED BY 'gdoumer';
-GRANT ALL PRIVILEGES ON `wordpress`.* TO `gdoumer`@'%';
-FLUSH PRIVILEGES;

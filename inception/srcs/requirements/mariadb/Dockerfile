@@ -14,9 +14,7 @@ EXPOSE 3306
 VOLUME /var/lib/mysql
 RUN mkdir -p /docker-entrypoint-initdb.d/
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
-COPY conf/init.sql /docker-entrypoint-initdb.d/init.sql
 COPY conf/entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod 644 /docker-entrypoint-initdb.d/init.sql
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
