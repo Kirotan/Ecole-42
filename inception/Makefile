@@ -1,4 +1,5 @@
 all:
+	echo >> /etc/hosts "127.0.0.0	gdoumer.42.fr"
 	@docker compose -f ./srcs/docker-compose.yml up -d --build
 
 down:

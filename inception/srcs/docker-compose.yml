@@ -3,7 +3,7 @@ services:
     container_name: nginx
     build: ./requirements/nginx
     ports:
-      - 2020:2020
+      - 4430:4430
     volumes:
       - /home/gdoumer/data/wordpress:/var/www/html
       - /run/php:/run/php

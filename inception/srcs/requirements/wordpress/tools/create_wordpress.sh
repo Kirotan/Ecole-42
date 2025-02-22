@@ -1,12 +1,12 @@
 #!/bin/sh
 
 if [ -f /var/www/html/wp-config.php ] && wp core is-installed --path=/var/www/html --allow-root; then
-	echo "WordPress déjà installé."
+	echo "WordPress already installed."
 else
-	echo "Installation de WordPress..."
+	echo "Installing WordPress..."
 
 	if [ ! -f /var/www/html/wp-config.php ]; then
-		echo "Téléchargement de WordPress..."
+		echo "Downloading WordPress..."
 		wget http://wordpress.org/latest.tar.gz
 		tar -xzf latest.tar.gz
 		mv wordpress/* /var/www/html/
@@ -20,17 +20,17 @@ else
 		sed -i "s/localhost/${SQL_HOSTNAME}/g" /var/www/html/wp-config.php
 	fi
 
-	echo "Vérification que la DB est accessible..."
+	echo "Verification DB access..."
 	for i in {1..20}; do
 		if mysqladmin -h "${SQL_HOSTNAME}" -u"${SQL_USER}" -p"${SQL_PASSWORD}" ping &>/dev/null; then
-			echo "Base de données disponible."
+			echo "DB enable."
 			break
 		fi
-		echo "En attente de la base de données..."
+		echo "Waiting DB..."
 		sleep 3
 	done
 
-	echo "Installation de WordPress via WP-CLI..."
+	echo "Installing WordPress by WP-CLI..."
 	cd /var/www/html || exit 1
 
 	wp core install \
@@ -44,7 +44,7 @@ else
 
 	wp user create "${WP_USER}" "${WP_USER_EMAIL}" --role=editor --user_pass="${WP_USER_PASSWORD}" --allow-root --path=/var/www/html
 
-	echo "Installation terminée !"
+	echo "Installation over !"
 fi
 
 exec "$@"
