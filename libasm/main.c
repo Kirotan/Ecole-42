@@ -47,26 +47,26 @@ int main(){
 
 
 	printf("######### FT_WRITE #########\n");
-	int	ret_write = ft_write(-1, "Test de mon ft_write en Assembleur.\n", 37);
+	int	ret_write = ft_write(1, "Test de mon ft_write en Assembleur.\n", 37);
 	if (ret_write == -1){
 		printf("Erreur write: ret = %d, errno = %d (%s)\n",ret_write, errno, strerror(errno));
 	}
 	ret_write = write(-1, "Le vrai write.\n\n\n", 18);
-	if (ret_write == -1){
+	if (ret_write == 1){
 		printf("Erreur write: ret = %d, errno = %d (%s)\n",ret_write, errno, strerror(errno));
 	}
 
 
 	printf("######### FT_READ #########\n");
 	char buffer[100];
-	ssize_t ret = ft_read(0, buffer, 100);
+	ssize_t ret = ft_read(1, buffer, 100);
 	buffer[ret] = '\0';
 	if (ret == -1) {
 		printf("Erreur read: ft_read retourne -1.\n");
 		printf("errno = %d\n", errno); // Affiche la valeur errno
 	}
 	printf("Texte lu par mon ft_read: %s\n", buffer);
-	ssize_t ret_bis = read(0, buffer, 100);
+	ssize_t ret_bis = read(1, buffer, 100);
 	buffer[ret_bis] = '\0';
 	if (ret_bis == -1) {
 		printf("Erreur : ft_read retourne -1.\n");
