@@ -1,34 +1,38 @@
 NAME = libasm.a
 
-SRCS_S = ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRCS = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
+OBJS = $(SRCS:.s=.o)
 
-OBJS = $(SRCS_S:.s=.o)
-
-MAIN = main.c
-MAIN_OBJ = main.o
-EXE = test_libasm
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+NASM = nasm
+NASMFLAGS = -f elf64
 
 AR = ar rcs
+
+TEST = test_libasm
+MAIN = main.c
+MAIN_OBJ = main.o
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 %.o: %.s
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(NASM) $(NASMFLAGS) $< -o $@
 
-test: all $(MAIN)
-	@$(CC) $(CFLAGS) -c $(MAIN) -o $(MAIN_OBJ)
-	@$(CC) $(MAIN_OBJ) -L. -lasm -o $(EXE)
+$(TEST): $(NAME) $(MAIN)
+	$(CC) $(CFLAGS) $(MAIN) -L. -lasm -o $(TEST)
+
+test: $(TEST)
 
 clean:
-	@rm -f $(OBJS) $(MAIN_OBJ)
+	rm -f $(OBJS) $(MAIN_OBJ)
 
 fclean: clean
-	@rm -f $(NAME) $(EXE)
+	rm -f $(NAME) $(TEST)
 
 re: fclean all
+
+.PHONY: all clean fclean re test

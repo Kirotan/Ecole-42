@@ -1,18 +1,19 @@
-.intel_syntax noprefix
-.text
-.global ft_strlen
+global ft_strlen
+section .text
 
 ft_strlen:
-	xor	rcx, rcx
+	push	rdi
+	xor		rcx, rcx
 
 .loop:
-	mov	al, byte ptr [rdi]
-	test	al, al
-	je	.done
-	inc	rdi
-	inc rcx
-	jmp .loop
+	mov		al, byte [rdi]
+	cmp		al, 0
+	je		.done
+	inc		rdi
+	inc		rcx
+	jmp		.loop
 
 .done:
-	mov	rax, rcx
+	mov		rax, rcx
+	pop		rdi
 	ret

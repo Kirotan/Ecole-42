@@ -1,15 +1,15 @@
-.intel_syntax noprefix
-.text
-.global ft_strcpy
+global ft_strcpy
+section .text
 
 ft_strcpy:
-	mov		rax, rdi
+	push	rdi
 
-.loop:
-	mov		al, byte ptr [rsi]
-	mov		byte ptr [rdi], al
+.copy_loop:
+	mov		al, [rsi]
+	mov		[rdi], al
 	inc		rsi
 	inc		rdi
 	test	al, al
-	jne		.loop
+	jne		.copy_loop
+	pop		rax
 	ret
