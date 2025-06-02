@@ -1,0 +1,7 @@
+{
+	"files.associations": {
+		"*.tpp": "cpp",
+		"pthread.h": "c",
+		"malloc_structs.h": "c"
+	}
+}
