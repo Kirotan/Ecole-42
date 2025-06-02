@@ -10,6 +10,7 @@ int	main(){
 		printf("Allocation reussie 1: %p\n", ptr);
 	else
 		printf("Echec d'allocation.\n");
+	free(ptr);
 
 
 	ptr = malloc(0);
@@ -17,6 +18,7 @@ int	main(){
 		printf("Allocation reussie 2: %p\n", ptr);
 	else
 		printf("Echec d'allocation.\n");
+	free(ptr);
 
 
 
@@ -24,7 +26,9 @@ int	main(){
 	if(ptr)
 		printf("Allocation reussie 3: %p\n", ptr);
 	else
+	free(ptr);
 		printf("Echec d'allocation.\n");
+	free(ptr);
 
 
 
@@ -33,14 +37,17 @@ int	main(){
 		printf("Allocation reussie 4: %p\n", ptr);
 	else
 		printf("Echec d'allocation.\n");
+	free(ptr);
 
 
 
-	ptr = malloc(2);
+	ptr = malloc(12345);
 	if(ptr)
 		printf("Allocation reussie 5: %p\n", ptr);
 	else
 		printf("Echec d'allocation.\n");
+	free(ptr);
+
 
 	return (0);
 }
