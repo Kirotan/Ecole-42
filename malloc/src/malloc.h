@@ -1,8 +1,7 @@
-#ifndef MALLOC_STRUCTS_H
-#define MALLOC_STRUCTS_H
+#ifndef MALLOC_H
+#define MALLOC_H
 
 #include <unistd.h>
-#include <stddef.h>
 #include <sys/mman.h>
 #include <pthread.h>
 

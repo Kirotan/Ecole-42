@@ -1,6 +1,5 @@
 #define _GNU_SOURCE
-#include "malloc_structs.h"
-#include <sys/mman.h>
+#include "malloc.h"
 
 t_zone *g_zones = NULL; //zone globale en liste chainee
 pthread_mutex_t g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER; //Verrou pour proteger l'acces a g_zones en cas de multithreading
@@ -89,8 +88,9 @@ t_block *allocate_block(t_zone *zone, size_t size) {
 
 
 void *malloc(size_t size) {
-	if (size == 0)
+	if (size == 0){
 		return NULL;
+	}
 
 	pthread_mutex_lock(&g_malloc_mutex);
 
