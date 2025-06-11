@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <pthread.h>
+#include "../libft/libft.h"
 
 typedef enum e_type {
 	TINY,
@@ -37,5 +38,7 @@ typedef struct s_zone {
 void *malloc(size_t size);
 void free(void *ptr);
 void *realloc(void *ptr, size_t size);
+t_zone *find_zone_for_ptr(void *ptr);
+
 
 #endif

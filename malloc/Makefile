@@ -48,10 +48,11 @@ symlink:
 test: $(NAME)
 	@echo "=> Construction de l'exécutable de test ($(TEST_NAME))"
 	gcc $(CFLAGS) -I src \
-		$(TEST_SRC) \
-		-L. -Wl,-rpath=. -lft_malloc \
+		main.c \
+		-L. -Wl,-rpath=. -lft_malloc $(LIBFT) \
 		-o $(TEST_NAME)
 	@echo "=> Pour exécuter : ./${TEST_NAME}"
+
 
 clean:
 	$(RM) $(OBJ)

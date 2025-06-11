@@ -20,8 +20,22 @@ static int zone_is_empty(t_zone *zone) {
 			return 0;
 		b = b->next;
 	}
-	return 1;
+	return 1; //retourne 1 si tous les blocs sont libres
 }
+
+
+static int count_zones(t_type type) {
+	t_zone *z = g_zones;
+	int count = 0;
+
+	while (z) {
+		if (z->type == type)
+			count++;
+		z = z->next;
+	}
+	return count;
+}
+
 
 static void remove_zone(t_zone *zone) {
 	t_zone *prev = NULL;
@@ -37,17 +51,6 @@ static void remove_zone(t_zone *zone) {
 	else
 		prev->next = cur->next;
 	munmap(cur->start, cur->total_size);
-}
-
-static t_zone *find_zone_for_ptr(void *ptr) {
-	t_zone *z = g_zones;
-	while (z) {
-		if (ptr > (void *)z && (char *)ptr < (char *)z->start + z->total_size) {
-			return z;
-		}
-		z = z->next;
-	}
-	return NULL;
 }
 
 void free(void *ptr) {
@@ -71,6 +74,7 @@ void free(void *ptr) {
 		return;
 	}
 
+	//chercher bloc dans zone->blocks
 	prev_block = NULL;
 	block = zone->blocks;
 	while (block) {
@@ -90,9 +94,9 @@ void free(void *ptr) {
 	if (prev_block && prev_block->free)
 		block = merge_with_next(prev_block);
 
-	if (zone_is_empty(zone)) {
+	if (zone_is_empty(zone) && count_zones(zone->type) > 1)
 		remove_zone(zone);
-	}
+
 
 	pthread_mutex_unlock(&g_malloc_mutex);
 }

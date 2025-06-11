@@ -4,6 +4,8 @@
 		"pthread.h": "c",
 		"malloc_structs.h": "c",
 		"unistd.h": "c",
-		"mman.h": "c"
+		"mman.h": "c",
+		"compare": "c",
+		"type_traits": "c"
 	}
 }

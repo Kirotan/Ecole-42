@@ -4,7 +4,7 @@
 t_zone *g_zones = NULL; //zone globale en liste chainee
 pthread_mutex_t g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER; //Verrou pour proteger l'acces a g_zones en cas de multithreading
 
-t_type get_type(size_t size) {
+static t_type get_type(size_t size) {
 	if (size <= TINY_MAX)
 		return TINY;
 	else if (size <= SMALL_MAX)
@@ -13,7 +13,7 @@ t_type get_type(size_t size) {
 }
 
 
-size_t zone_size(t_type type) {
+static size_t zone_size(t_type type) {
 	if (type == TINY)
 		return TINY_ZONE_SIZE;
 	if (type == SMALL)
@@ -22,7 +22,7 @@ size_t zone_size(t_type type) {
 }
 
 
-t_zone *create_zone(t_type type, size_t size) {
+static t_zone *create_zone(t_type type, size_t size) {
 	size_t total_size;
 	if (type == LARGE)
 		total_size = ALIGN( ALIGN(sizeof(t_zone)) + ALIGN(sizeof(t_block)) + size );
@@ -50,7 +50,7 @@ t_zone *create_zone(t_type type, size_t size) {
 }
 
 
-t_block *find_free_block(t_zone *zone, size_t size) {
+static t_block *find_free_block(t_zone *zone, size_t size) {
 	t_block *block = zone->blocks;
 	while (block) {
 		if (block->free && block->size >= size)
@@ -61,7 +61,7 @@ t_block *find_free_block(t_zone *zone, size_t size) {
 }
 
 
-t_block *allocate_block(t_zone *zone, size_t size) {
+static t_block *allocate_block(t_zone *zone, size_t size) {
 	t_block *block = find_free_block(zone, size);
 	if (block) {
 		block->free = 0;
