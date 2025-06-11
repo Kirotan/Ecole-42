@@ -98,6 +98,7 @@ void *malloc(size_t size) {
 	t_type	type = get_type(size);
 	t_zone	*zone = g_zones;
 	t_block	*block = NULL;
+	t_zone	*new_zone;
 
 	//cherche un bloc libre dans zones existantes du bon type
 	while (zone) {
@@ -111,7 +112,7 @@ void *malloc(size_t size) {
 
 	//si aucun bloc libre creeation nouvelle zone
 	if (!block) {
-		t_zone	*new_zone = create_zone(type, size);
+		new_zone = create_zone(type, size);
 		if(!new_zone) {
 			pthread_mutex_unlock(&g_malloc_mutex);
 			return NULL;

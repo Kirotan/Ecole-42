@@ -16,17 +16,20 @@ static t_block *find_block_in_zone(t_zone *zone, void *ptr) {
 static int try_expand_in_place(t_block *block, size_t new_size) {
 	size_t	old_size = block->size;
 	t_block	*next = block->next;
+	size_t	combined_size;
+	size_t	remainder;
+	t_block	*new_block;
 
 	if (next && next->free) {
-		size_t	combined_size = old_size + ALIGN(sizeof(t_block)) + next->size;
+		combined_size = old_size + ALIGN(sizeof(t_block)) + next->size;
 		if (combined_size >= new_size) {
 			block->size = new_size;
 			if (combined_size == new_size) {
 				block->next = next->next;
 			} else {
-				size_t remainder = combined_size - new_size - ALIGN(sizeof(t_block));
+				remainder = combined_size - new_size - ALIGN(sizeof(t_block));
 				void *new_block_addr = (char *)block->data + new_size;
-				t_block *new_block = (t_block *)((char *)new_block_addr + remainder);
+				new_block = (t_block *)((char *)new_block_addr + remainder);
 				new_block->size = next->size - (new_size - old_size);
 				new_block->free = 1;
 				new_block->next = next->next;
@@ -42,6 +45,7 @@ static int try_expand_in_place(t_block *block, size_t new_size) {
 void *realloc(void *ptr, size_t size) {
 	t_zone	*zone;
 	t_block	*block;
+	size_t	old_size;
 	void	*new_ptr;
 
 	if (!ptr)
@@ -62,7 +66,7 @@ void *realloc(void *ptr, size_t size) {
 
 	if (zone->type == LARGE) {
 		block = zone->blocks; // le premier et unique bloc
-		size_t	old_size = block->size;
+		old_size = block->size;
 
 		if (size <= old_size) {
 			pthread_mutex_unlock(&g_malloc_mutex);
@@ -84,7 +88,7 @@ void *realloc(void *ptr, size_t size) {
 		return NULL;
 	}
 
-	size_t	old_size = block->size;
+	old_size = block->size;
 	if (size == old_size) {
 		pthread_mutex_unlock(&g_malloc_mutex);
 		return ptr;
