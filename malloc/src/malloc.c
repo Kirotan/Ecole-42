@@ -1,8 +1,8 @@
 #define _GNU_SOURCE
 #include "malloc.h"
 
-t_zone *g_zones = NULL; //zone globale en liste chainee
-pthread_mutex_t g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER; //Verrou pour proteger l'acces a g_zones en cas de multithreading
+t_zone			*g_zones = NULL; //zone globale en liste chainee
+pthread_mutex_t	g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER; //Verrou pour proteger l'acces a g_zones en cas de multithreading
 
 static t_type get_type(size_t size) {
 	if (size <= TINY_MAX)
@@ -23,7 +23,7 @@ static size_t zone_size(t_type type) {
 
 
 static t_zone *create_zone(t_type type, size_t size) {
-	size_t total_size;
+	size_t	total_size;
 	if (type == LARGE)
 		total_size = ALIGN( ALIGN(sizeof(t_zone)) + ALIGN(sizeof(t_block)) + size );
 	else
@@ -33,7 +33,7 @@ static t_zone *create_zone(t_type type, size_t size) {
 	if (ptr == MAP_FAILED)
 		return NULL;
 
-	t_zone *zone = (t_zone *)ptr;
+	t_zone	*zone = (t_zone *)ptr;
 	zone->type = type;
 	zone->total_size = total_size;
 	zone->start = ptr;
@@ -51,7 +51,7 @@ static t_zone *create_zone(t_type type, size_t size) {
 
 
 static t_block *find_free_block(t_zone *zone, size_t size) {
-	t_block *block = zone->blocks;
+	t_block	*block = zone->blocks;
 	while (block) {
 		if (block->free && block->size >= size)
 			return block;
@@ -62,7 +62,7 @@ static t_block *find_free_block(t_zone *zone, size_t size) {
 
 
 static t_block *allocate_block(t_zone *zone, size_t size) {
-	t_block *block = find_free_block(zone, size);
+	t_block	*block = find_free_block(zone, size);
 	if (block) {
 		block->free = 0;
 		return block;
@@ -76,7 +76,7 @@ static t_block *allocate_block(t_zone *zone, size_t size) {
 	if ((char *)new_block_addr + ALIGN(sizeof(t_block)) + size > (char *)zone->start + zone->total_size)
 		return NULL;
 
-	t_block *new_block = (t_block *)new_block_addr;
+	t_block	*new_block = (t_block *)new_block_addr;
 	new_block->size = size;
 	new_block->free = 0;
 	new_block->next = NULL;
@@ -95,9 +95,9 @@ void *malloc(size_t size) {
 	pthread_mutex_lock(&g_malloc_mutex);
 
 	size = ALIGN(size);
-	t_type type = get_type(size);
-	t_zone *zone = g_zones;
-	t_block *block = NULL;
+	t_type	type = get_type(size);
+	t_zone	*zone = g_zones;
+	t_block	*block = NULL;
 
 	//cherche un bloc libre dans zones existantes du bon type
 	while (zone) {
@@ -111,7 +111,7 @@ void *malloc(size_t size) {
 
 	//si aucun bloc libre creeation nouvelle zone
 	if (!block) {
-		t_zone *new_zone = create_zone(type, size);
+		t_zone	*new_zone = create_zone(type, size);
 		if(!new_zone) {
 			pthread_mutex_unlock(&g_malloc_mutex);
 			return NULL;

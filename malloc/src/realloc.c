@@ -1,10 +1,10 @@
 #include "malloc.h"
 
-extern t_zone *g_zones;
-extern pthread_mutex_t g_malloc_mutex;
+extern t_zone			*g_zones;
+extern pthread_mutex_t	g_malloc_mutex;
 
 static t_block *find_block_in_zone(t_zone *zone, void *ptr) {
-	t_block *b = zone->blocks;
+	t_block	*b = zone->blocks;
 	while (b) {
 		if (b->data == ptr)
 			return b;
@@ -14,11 +14,11 @@ static t_block *find_block_in_zone(t_zone *zone, void *ptr) {
 }
 
 static int try_expand_in_place(t_block *block, size_t new_size) {
-	size_t old_size = block->size;
-	t_block *next = block->next;
+	size_t	old_size = block->size;
+	t_block	*next = block->next;
 
 	if (next && next->free) {
-		size_t combined_size = old_size + ALIGN(sizeof(t_block)) + next->size;
+		size_t	combined_size = old_size + ALIGN(sizeof(t_block)) + next->size;
 		if (combined_size >= new_size) {
 			block->size = new_size;
 			if (combined_size == new_size) {
@@ -40,9 +40,9 @@ static int try_expand_in_place(t_block *block, size_t new_size) {
 }
 
 void *realloc(void *ptr, size_t size) {
-	t_zone  *zone;
-	t_block *block;
-	void    *new_ptr;
+	t_zone	*zone;
+	t_block	*block;
+	void	*new_ptr;
 
 	if (!ptr)
 		return malloc(size);
@@ -62,7 +62,7 @@ void *realloc(void *ptr, size_t size) {
 
 	if (zone->type == LARGE) {
 		block = zone->blocks; // le premier et unique bloc
-		size_t old_size = block->size;
+		size_t	old_size = block->size;
 
 		if (size <= old_size) {
 			pthread_mutex_unlock(&g_malloc_mutex);
@@ -84,7 +84,7 @@ void *realloc(void *ptr, size_t size) {
 		return NULL;
 	}
 
-	size_t old_size = block->size;
+	size_t	old_size = block->size;
 	if (size == old_size) {
 		pthread_mutex_unlock(&g_malloc_mutex);
 		return ptr;

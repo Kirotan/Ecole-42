@@ -1,11 +1,11 @@
 #include "malloc.h"
 
-extern t_zone *g_zones;
-extern pthread_mutex_t g_malloc_mutex;
+extern t_zone			*g_zones;
+extern pthread_mutex_t	g_malloc_mutex;
 
 
 static t_block *merge_with_next(t_block *block) {
-	t_block *next = block->next;
+	t_block	*next = block->next;
 	if (next && next->free) {
 		block->size += ALIGN(sizeof(t_block)) + next->size;
 		block->next = next->next;
@@ -14,7 +14,7 @@ static t_block *merge_with_next(t_block *block) {
 }
 
 static int zone_is_empty(t_zone *zone) {
-	t_block *b = zone->blocks;
+	t_block	*b = zone->blocks;
 	while (b) {
 		if (b->free == 0)
 			return 0;
@@ -25,8 +25,8 @@ static int zone_is_empty(t_zone *zone) {
 
 
 static int count_zones(t_type type) {
-	t_zone *z = g_zones;
-	int count = 0;
+	t_zone	*z = g_zones;
+	int	count = 0;
 
 	while (z) {
 		if (z->type == type)
@@ -38,8 +38,8 @@ static int count_zones(t_type type) {
 
 
 static void remove_zone(t_zone *zone) {
-	t_zone *prev = NULL;
-	t_zone *cur  = g_zones;
+	t_zone	*prev = NULL;
+	t_zone	*cur  = g_zones;
 	while (cur && cur != zone) {
 		prev = cur;
 		cur = cur->next;
@@ -54,8 +54,8 @@ static void remove_zone(t_zone *zone) {
 }
 
 void free(void *ptr) {
-	t_zone *zone;
-	t_block *block, *prev_block;
+	t_zone	*zone;
+	t_block	*block, *prev_block;
 
 	if (!ptr)
 		return;

@@ -21,18 +21,18 @@ typedef enum e_type {
 #define SMALL_ZONE_SIZE (getpagesize() * 128)
 
 typedef struct s_block {
-	size_t size;
-	int free;
-	struct s_block *next;
-	void *data;
+	size_t			size;
+	int				free;
+	struct s_block	*next;
+	void			*data;
 } t_block;
 
 typedef struct s_zone {
-	t_type type;
-	size_t total_size;
-	struct s_zone *next;
-	t_block *blocks;
-	void *start;
+	t_type			type;
+	size_t			total_size;
+	struct s_zone	*next;
+	t_block			*blocks;
+	void			*start;
 } t_zone;
 
 void *malloc(size_t size);
