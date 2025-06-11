@@ -1,8 +1,4 @@
 #include "malloc.h"
-#include <stdio.h>
-#include <pthread.h>
-#include <inttypes.h>
-#include <stdbool.h>
 
 extern t_zone			*g_zones;
 extern pthread_mutex_t	g_malloc_mutex;
@@ -13,35 +9,35 @@ static void print_ptr(void *p) {
 
 void show_alloc_mem(void) {
 
-	size_t	total;
-	t_type	types[] = { TINY, SMALL, LARGE }; // Ordre affichage voulu
-	t_type	want;
-	bool	header_printed;
-	t_block	*b;
-	char	*buf;
+	size_t		total;
+	int			ti;
+	t_zone		*z;
+	t_type		want;
+	t_block		*b;
+	void		*start;
+	void		*end;
+	bool		header_printed;
+	t_type		types[] = { TINY, SMALL, LARGE };
+	const char	*names[] = { "TINY :", "SMALL :", "LARGE :" };
 
-	pthread_mutex_lock(&g_malloc_mutex);
-
-	// si aucune allocation faite
+	// Si rien alloue dans g_zones
 	if (!g_zones) {
-		write(1, "Total : 0 bytes\n", 17);
-		pthread_mutex_unlock(&g_malloc_mutex);
+		printf("Total : 0 bytes\n");
 		return;
 	}
 
 	total = 0;
-	// Ordre affichage voulu
-	const char *names[] = { "TINY :", "SMALL:", "LARGE:" };
 
-	for (int ti = 0; ti < 3; ti++) {
+	for (ti = 0; ti < 3; ti++) {
 		want = types[ti];
 		header_printed = false;
 
-		for (t_zone *z = g_zones; z; z = z->next) {
+		// Parcours liste g_zones
+		for (z = g_zones; z; z = z->next) {
 			if (z->type != want)
 				continue;
 
-			// afficher le type une seule fois
+			// afficher le label une fois
 			if (!header_printed) {
 				printf("%s\n", names[ti]);
 				header_printed = true;
@@ -53,8 +49,8 @@ void show_alloc_mem(void) {
 
 			// Parcours des blocs dans la zone
 			for (b = z->blocks; b; b = b->next) {
-				void *start = b->data;
-				void *end   = (char *)b->data + b->size;
+				start = b->data;
+				end = (char *)b->data + b->size;
 				print_ptr(start);
 				printf(" - ");
 				print_ptr(end);
@@ -67,5 +63,4 @@ void show_alloc_mem(void) {
 	// Total global
 	printf("Total : %zu bytes\n", total);
 
-	pthread_mutex_unlock(&g_malloc_mutex);
 }

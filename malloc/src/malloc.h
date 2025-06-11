@@ -4,6 +4,10 @@
 #include <unistd.h>
 #include <sys/mman.h>
 #include <pthread.h>
+#include <stdio.h>
+#include <inttypes.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include "../libft/libft.h"
 
 typedef enum e_type {
