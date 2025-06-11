@@ -38,6 +38,7 @@ typedef struct s_zone {
 void *malloc(size_t size);
 void free(void *ptr);
 void *realloc(void *ptr, size_t size);
+void show_alloc_mem(void);
 t_zone *find_zone_for_ptr(void *ptr);
 
 
