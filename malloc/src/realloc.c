@@ -4,7 +4,9 @@ extern t_zone			*g_zones;
 extern pthread_mutex_t	g_malloc_mutex;
 
 static t_block *find_block_in_zone(t_zone *zone, void *ptr) {
+
 	t_block	*b = zone->blocks;
+
 	while (b) {
 		if (b->data == ptr)
 			return b;
@@ -14,6 +16,7 @@ static t_block *find_block_in_zone(t_zone *zone, void *ptr) {
 }
 
 static int try_expand_in_place(t_block *block, size_t new_size) {
+
 	size_t	old_size = block->size;
 	t_block	*next = block->next;
 	size_t	combined_size;
@@ -39,10 +42,12 @@ static int try_expand_in_place(t_block *block, size_t new_size) {
 			return 1;
 		}
 	}
+
 	return 0;
 }
 
 void *realloc(void *ptr, size_t size) {
+
 	t_zone	*zone;
 	t_block	*block;
 	size_t	old_size;

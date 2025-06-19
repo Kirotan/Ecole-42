@@ -35,8 +35,8 @@ typedef struct s_zone {
 	t_type			type;
 	size_t			total_size;
 	struct s_zone	*next;
-	t_block			*blocks;
-	void			*start;
+	t_block			*blocks; // adresse du bloc courant
+	void			*start; // adresse du dernier bloc
 } t_zone;
 
 void *malloc(size_t size);

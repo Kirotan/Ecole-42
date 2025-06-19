@@ -5,13 +5,13 @@ t_zone			*g_zones = NULL; //zone globale en liste chainee
 pthread_mutex_t	g_malloc_mutex = PTHREAD_MUTEX_INITIALIZER; //Verrou pour proteger l'acces a g_zones en cas de multithreading
 
 static t_type get_type(size_t size) {
+
 	if (size <= TINY_MAX)
 		return TINY;
 	else if (size <= SMALL_MAX)
 		return SMALL;
 	return LARGE;
 }
-
 
 static size_t zone_size(t_type type) {
 	if (type == TINY)
@@ -21,19 +21,22 @@ static size_t zone_size(t_type type) {
 	return ALIGN(sizeof(t_block) + SMALL_MAX);
 }
 
-
 static t_zone *create_zone(t_type type, size_t size) {
+
 	size_t	total_size;
+	void	*ptr;
+	t_zone	*zone;
+
 	if (type == LARGE)
 		total_size = ALIGN( ALIGN(sizeof(t_zone)) + ALIGN(sizeof(t_block)) + size );
 	else
 		total_size = zone_size(type);
 
-	void *ptr = mmap(NULL, total_size, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+	ptr = mmap(NULL, total_size, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
 	if (ptr == MAP_FAILED)
 		return NULL;
 
-	t_zone	*zone = (t_zone *)ptr;
+	zone = (t_zone *)ptr;
 	zone->type = type;
 	zone->total_size = total_size;
 	zone->start = ptr;
@@ -49,9 +52,10 @@ static t_zone *create_zone(t_type type, size_t size) {
 	return zone;
 }
 
-
 static t_block *find_free_block(t_zone *zone, size_t size) {
+
 	t_block	*block = zone->blocks;
+
 	while (block) {
 		if (block->free && block->size >= size)
 			return block;
@@ -60,9 +64,12 @@ static t_block *find_free_block(t_zone *zone, size_t size) {
 	return NULL;
 }
 
-
 static t_block *allocate_block(t_zone *zone, size_t size) {
+
 	t_block	*block = find_free_block(zone, size);
+	t_block	*new_block;
+	void	*new_block_addr;
+
 	if (block) {
 		block->free = 0;
 		return block;
@@ -72,20 +79,20 @@ static t_block *allocate_block(t_zone *zone, size_t size) {
 	while (block->next)
 		block = block->next;
 
-	void *new_block_addr = (char *)block->data + ALIGN(block->size);
-	if ((char *)new_block_addr + ALIGN(sizeof(t_block)) + size > (char *)zone->start + zone->total_size)
+	new_block_addr = (char *)block->data + ALIGN(block->size);
+	if ((char *)new_block_addr + ALIGN(sizeof(t_block)) + size > (char *)zone->start + zone->total_size) // si la taille du bloc ne depasse pas la taille de la zone
 		return NULL;
 
-	t_block	*new_block = (t_block *)new_block_addr;
+	new_block = (t_block *)new_block_addr;
 	new_block->size = size;
 	new_block->free = 0;
 	new_block->next = NULL;
 	new_block->data = (void *)((char *)new_block + ALIGN(sizeof(t_block)));
 
 	block->next = new_block;
+
 	return new_block;
 }
-
 
 void *malloc(size_t size) {
 	if (size == 0){
@@ -110,7 +117,7 @@ void *malloc(size_t size) {
 		zone = zone->next;
 	}
 
-	//si aucun bloc libre creeation nouvelle zone
+	//si aucun bloc libre creation nouvelle zone
 	if (!block) {
 		new_zone = create_zone(type, size);
 		if(!new_zone) {

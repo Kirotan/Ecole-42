@@ -3,9 +3,10 @@
 extern t_zone			*g_zones;
 extern pthread_mutex_t	g_malloc_mutex;
 
-
 static t_block *merge_with_next(t_block *block) {
+
 	t_block	*next = block->next;
+
 	if (next && next->free) {
 		block->size += ALIGN(sizeof(t_block)) + next->size;
 		block->next = next->next;
@@ -14,7 +15,9 @@ static t_block *merge_with_next(t_block *block) {
 }
 
 static int zone_is_empty(t_zone *zone) {
+
 	t_block	*b = zone->blocks;
+
 	while (b) {
 		if (b->free == 0)
 			return 0;
@@ -23,8 +26,8 @@ static int zone_is_empty(t_zone *zone) {
 	return 1; //retourne 1 si tous les blocs sont libres
 }
 
-
 static int count_zones(t_type type) {
+
 	t_zone	*z = g_zones;
 	int	count = 0;
 
@@ -36,10 +39,11 @@ static int count_zones(t_type type) {
 	return count;
 }
 
-
 static void remove_zone(t_zone *zone) {
+
 	t_zone	*prev = NULL;
 	t_zone	*cur  = g_zones;
+
 	while (cur && cur != zone) {
 		prev = cur;
 		cur = cur->next;
@@ -50,12 +54,15 @@ static void remove_zone(t_zone *zone) {
 		g_zones = cur->next;
 	else
 		prev->next = cur->next;
+
 	munmap(cur->start, cur->total_size);
 }
 
 void free(void *ptr) {
+
 	t_zone	*zone;
-	t_block	*block, *prev_block;
+	t_block	*block;
+	t_block	*prev_block;
 
 	if (!ptr)
 		return;
