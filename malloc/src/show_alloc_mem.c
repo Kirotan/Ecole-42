@@ -15,7 +15,8 @@ static void	safe_write(const char *s, size_t len) {
 
 	while (written < len) {
 		ret = write(1, s + written, len - written);
-		if (ret <= 0) break;
+		if (ret <= 0)
+			break;
 		written += ret;
 	}
 }
